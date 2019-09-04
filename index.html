@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Student Semester Management System</title>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+      <meta name="description" content="">
+      <meta name="generator" content="Grapedrop">
+      <!-- Apple Stuff -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <!-- Google / Search Engine Tags -->
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="">
+      <!-- Facebook Meta Tags -->
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="">
+      <meta property="og:description" content="">
+      <meta property="og:image" content="">
+      <meta property="og:url" content="http://0d1c7ef.grapedrop.com">
+      <!-- Twitter Meta Tags -->
+      <meta name="twitter:card" content="summary_large_image">
+      <link rel="icon" type="image/png" href="images/favicon.png">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/lory.js/2.2.0/lory.min.js"></script>
+      <!--Start Edit-->	
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.20.0/jquery.daterangepicker.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+      <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+      <script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/export/bootstrap-table-export.min.js"></script>
+      <!--End Edit-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.20.0/daterangepicker.min.css">
+      <link rel="stylesheet" href="styles/base.css">
+      <link rel="stylesheet" href="styles/style.css">
+   </head>
+   <body>
+      <style>
+         body {
+         margin: 0;
+         padding: 0;
+         overflow-x: hidden;
+         }
+      </style>
+      <div data-tabs="1" id="i1ar">
+         <nav data-tab-container="1" class="tab-container"><a href="#tab1" data-tab="1" class="tab">Dashboard</a><a href="#tab2" data-tab="1" 
+            class="tab">Student Login</a></nav>
+         <div id="tab1" data-tab-content="1" class="tab-content">
+            <div class="collapse-wrapper">
+               <a data-toggle="collapse" href="#clps-890q4g0nmj" role="button" class="btn btn-primary">Filters</a>
+               <div id="clps-890q4g0nmj" class="collapse hide">
+                  <form id="filters">
+                     <div class="card-group" id="idkjof">
+                        <div class="card">
+                           <div class="card-header">Organizational Filters:</div>
+                           <div class="card-body">
+                              <div class="form-group">
+                                 <label class="label">Section</label>
+                                 <!--Start Edit-->
+                                 <select id="section" name="section" class="select">
+                                    <option value="unselected">unselected</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <!--End Edit-->
+                                 </select>
+                              </div>
+                              <div class="form-group">
+                                 <label class="label">USN</label>
+                                 <input placeholder="1HKxxCSxxx" name="usn" type="text" id="usn" class="input" />
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card">
+                           <div class="card-header">Curricular Filters:</div>
+                           <div class="card-body">
+                              <div class="form-group">
+                                 <label class="label">Semester</label>
+                                 <select name="semester" id="semester" class="select">
+                                    <option value="unselected">unselected</option>
+                                    <option value="0">0</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                 </select>
+                              </div>
+                              <div class="form-group">
+                                 <label class="label">Subject</label>
+                                 <select name="subject" id="subject" class="select">
+                                    <option value="">unselected</option>
+                                 </select>
+                              </div>
+                              <div class="form-group">
+                                 <label class="label">Module</label>
+                                 <select name="module" id="module" class="select">
+                                    <option value="unselected">unselected</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                 </select>
+                              </div>
+                              <div class="form-group">
+                                 <label class="label">Course Outcome</label>
+                                 <select name="co" id="co" class="select">
+                                    <option value="unselected">unselected</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                 </select>
+                              </div>
+                              <div class="form-group">
+                                 <label class="label">Abstraction Level</label>
+                                 <select name="abstraction" class="select" id="abstraction">
+                                    <option value="unselected">unselected</option>
+                                    <option value="1">Creations of Allah</option>
+                                    <option value="1.1">&#10148;Vocabulary of Programmer</option>
+                                    <option value="1.11">&nbsp;&#9871;Algorithm</option>
+                                    <option value="1.12">&nbsp;&#9871;High Level Language</option>
+                                    <option value="1.13">&nbsp;&#9871;System Softwares</option>
+                                    <option value="1.2">&#10148;Vocabulary of Processor</option>
+                                    <option value="1.21">&nbsp;&#9871;Assembly Language</option>
+                                    <option value="1.22">&nbsp;&#9871;Machine Language</option>
+                                    <option value="1.3">&#10148;Microarchitecture</option>
+                                    <option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
+                                    <option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
+                                    <option value="1.4">&#10148;Analog & Digital Circuits</option>
+                                    <option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
+                                    <option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
+                                    <option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
+                                    <option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
+                                    <option value="1.5">&#10148;Voltage</option>
+                                    <option value="1.51">&nbsp;&#9871;Electric Power System</option>
+                                    <option value="1.52">&nbsp;&#9871;Quantum Particles</option>
+                                    <option value="2">Allah</option>
+                                    <option value="2.1">&#10148;His Actions</option>
+                                    <option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
+                                    <option value="2.2">&#10148;His Attributes</option>
+                                    <option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
+                                    <option value="2.3">&#10148;His Essence</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card">
+                           <div class="card-header">Intellectual Filters:</div>
+                           <div class="card-body">
+                              <div class="form-group">
+                                 <label class="label">Understanding</label>
+                                 <select name="difficulty" id="difficulty" class="select">
+                                    <option value="unselected">unselected</option>
+                                    <option value="Hard">summarized</option>
+                                    <option value="Medium">reconciled</option>
+                                    <option value="Easy">structured</option>
+                                 </select>
+                              </div>
+                              <div class="form-group">
+                                 <label class="label">Retention</label>
+                                 <select name="retention" id = "retention" class="select">
+                                    <option value="unselected">unselected</option>
+                                    <option value="Low">low</option>
+                                    <option value="High">high</option>
+                                 </select>
+                              </div>
+                              <div class="form-group">
+                                 <label class="label">Coverage</label>
+                                 <select name="coverage" id = "coverage" class="select">
+                                    <option value="unselected">unselected</option>
+                                    <option value="Partial">Partial</option>
+                                    <option value="Complete">Complete</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card">
+                           <div class="card-header">Date Filters:</div>
+                           <div class="card-body">
+                              <label class="label">Study Date Range</label>
+                              <div class="input-group mb-3">
+                                 <input id="studyDateRange" name="studyDateRange" class="form-control" />
+                                 <div class="input-group-append">
+                                    <button id="clearStudyDateButton" class="btn btn-outline-secondary btn-sm" type="button">Clear</button>
+                                 </div>
+                              </div>
+                              <label class="label">Lecture Date Range</label>
+                              <div class="input-group mb-3">
+                                 <input id="lectureDateRange" name ="lectureDateRange" class="form-control" />
+                                 <div class="input-group-append">
+                                    <button id="clearLectureDateButton" class="btn btn-outline-secondary btn-sm" type="button">Clear</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+			<div class="btn-group" role="group" aria-label="Filter Buttons">
+                  		<button type="reset" class="btn btn-secondary">Clear</button>
+                  		<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
+               		</div>
+                  </form>
+               </div>
+            </div>
+            <div class="gpd-container" id="i5f3md">
+               <table  
+		  id="table" 
+                  data-toggle="table"
+		  data-sortable="true"
+		  data-show-export="true"
+		  data-show-columns="true"
+		  data-height="400" 
+                  data-virtual-scroll="true"
+                  >
+                  <thead>
+                     <tr id="iwoq03">
+                        <th data-field="Topic Name" data-sortable="true"><span id="i811jv">Topic Name</span></th>
+                        <th data-field="Textbook Name"><span id="iqixrp">Textbook Name</span></th>
+                        <th data-field="Page Number" data-sortable="true"><span id="i50ldh">Page Number</span></th>
+                        <th data-field="Question Statement"><span id="iyhkdr">Question Statement</span></th>
+                        <th data-field="Total Marks" data-sortable="true"><span id="inr38f">Total Marks</span></th>
+                        <th data-field="Total Students (%)" data-sortable="true"><span>Total Students (%)</span></th>
+                        <th data-visible="false" data-field="Obtained Marks (%)" data-sortable="true"><span>Obtained Marks (%)</span></th>
+                     </tr>
+                  </thead>
+                  <tr>
+                  </tr>
+               </table>
+            </div>
+         </div>
+         <div id="tab2" data-tab-content="1" class="tab-content">
+            <form method="post" id="loginForm" class="form">
+               <div class="form-group">
+                  <label class="label">USN</label>
+                  <input placeholder="Type here your USN" id="loginUsn" name="loginUsn" type="text" class="input" required/>
+               </div>
+               <div class="form-group">
+                  <label class="label">Password</label>
+                  <input placeholder="Type here your password" name="loginPassword" type="password" class="input" required/>
+               </div>
+               <div class="form-group">
+                  <button type="submit" class="button">Login</button>
+               </div>
+               <div data-form-state="loginSuccess" class="state-success" id="i1124e">Logged in successfully</div>
+               <div data-form-state="loginError" class="state-error" id="iszsuh">Either your usn or password is incorrect</div>
+            </form>
+	<div id=entryDiv style="display: none;">
+           <div class="form-group gpd-container">
+               <div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
+                  <input type="radio" onclick="showEntryLectureDate()" name="entryState" id="chk-xo4b0ts4ll" class="custom-control-input"/>
+                  <label for="chk-xo4b0ts4ll" class="custom-control-label">Admin Entry</label>
+               </div>
+               <div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
+                  <input type="radio" name="entryState" id="chk-3h9jah21ga" class="custom-control-input"/>
+                  <label for="chk-3h9jah21ga" class="custom-control-label">Question Entry</label>
+               </div>
+               <div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
+                  <input type="radio" name="entryState" id="chk-csft5j9nek" class="custom-control-input"/>
+                  <label for="chk-csft5j9nek" class="custom-control-label">Syllabus Entry</label>
+               </div>
+               <div class="custom-control-inline custom-control custom-radio">
+                  <input type="radio" onclick="hideEntryLectureDate()" name="entryState" id="chk-yabwst1jy4" checked class="custom-control-input"/>
+                  <label for="chk-yabwst1jy4" class="custom-control-label">Student Entry</label>
+               </div>
+               <div class="custom-control-inline custom-control custom-radio">
+                  <input type="radio" name="entryState" id="chk-14aib822hf" class="custom-control-input"/>
+                  <label for="chk-14aib822hf" class="custom-control-label">Marks Entry</label>
+               </div>
+            </div>
+            <form method="post" id="entryForm" class="form">
+               <div id="entryLectureDateDiv" style="display: none;" class="form-group">
+               	<label class="label">Lecture date</label>
+                <div class="input-group mb-3">
+                	<input id="entryLectureDate" name="entryLectureDate" class="form-control"/>
+                        <div class="input-group-append">
+                        	<button id="clearEntryLectureDateButton" class="btn btn-outline-secondary btn-sm" type="button">Clear</button>
+                        </div>
+                </div>
+               </div>
+               <div class="form-group">
+			<label class="label">Semester</label>
+                                 <select name="entrySemester" id="entrySemester" class="select">
+                                    <option value="">unselected</option>
+                                    <option value="0">0</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                 </select>
+               </div>
+
+               <div class="form-group">
+                  <label for="frmg-qdlgq0ct49" >Subject</label>
+                  <select type="text" id="entrySubject" name="entrySubject" class="form-control">
+                     <option value="">unselected</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="frmg-qdlgq0ct49" id="i4rq3">Module</label>
+                  <select type="text" name="entryModule" class="form-control">
+                                    <option value="">unselected</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="frmg-qdlgq0ct49" id="iii3k">Topic</label>
+                  <select type="text" id="entryTopic" name="entryTopic" class="form-control" required>
+                     <option value="">unselected</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="frmg-qdlgq0ct49" id="i3ymh">Difficulty</label>
+                  <select type="text" class="form-control" name="entryDifficulty" required>
+                     <option value="">unselected</option>
+                                    <option value="Hard">summarized</option>
+                                    <option value="Medium">reconciled</option>
+                                    <option value="Easy">structured</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="frmg-qdlgq0ct49" id="izmh2">Retention</label>
+                  <select type="text" class="form-control" name="entryRetention" required>
+                     <option value="">unselected</option>
+                                    <option value="0">complete blackout</option>
+                                    <option value="1">incorrect response; the correct one remembered</option>
+                                    <option value="2">incorrect response; where the correct one seemed easy to recall</option>
+                                    <option value="3">correct response recalled with serious difficulty</option>
+                                    <option value="4">correct response after a hesitation</option>
+                                    <option value="5">perfect response</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="frmg-qdlgq0ct49" id="ieudb">Abstraction</label>
+                  <select type="text" name="entryAbstraction" class="form-control">
+                     <option value="">unselected</option>
+                                    <option value="1">Creations of Allah</option>
+                                    <option value="1.1">&#10148;Vocabulary of Programmer</option>
+                                    <option value="1.11">&nbsp;&#9871;Algorithm</option>
+                                    <option value="1.12">&nbsp;&#9871;High Level Language</option>
+                                    <option value="1.13">&nbsp;&#9871;System Softwares</option>
+                                    <option value="1.2">&#10148;Vocabulary of Processor</option>
+                                    <option value="1.21">&nbsp;&#9871;Assembly Language</option>
+                                    <option value="1.22">&nbsp;&#9871;Machine Language</option>
+                                    <option value="1.3">&#10148;Microarchitecture</option>
+                                    <option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
+                                    <option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
+                                    <option value="1.4">&#10148;Analog & Digital Circuits</option>
+                                    <option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
+                                    <option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
+                                    <option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
+                                    <option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
+                                    <option value="1.5">&#10148;Voltage</option>
+                                    <option value="1.51">&nbsp;&#9871;Electric Power System</option>
+                                    <option value="1.52">&nbsp;&#9871;Quantum Particles</option>
+                                    <option value="2">Allah</option>
+                                    <option value="2.1">&#10148;His Actions</option>
+                                    <option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
+                                    <option value="2.2">&#10148;His Attributes</option>
+                                    <option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
+                                    <option value="2.3">&#10148;His Essence</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <button type="submit" class="button">Enter</button>
+               </div>
+               <div data-form-state="entrySuccess" class="state-success" id="i1124eh">Entered successfully</div>
+               <div data-form-state="entryError" class="state-error" id="iszsuhj">There was an error in entering the details</div>
+            </form>
+	 </div>
+         </div>
+      </div>
+      <!--Start Edit-->
+      <script> var serverUrl="http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"</script>
+      <script>
+         function formatDate(d) {
+            		month = '' + (d.getMonth() + 1),
+                	day = '' + d.getDate(),
+                	year = d.getFullYear();
+         
+            		if (month.length < 2) month = '0' + month;
+            		if (day.length < 2) day = '0' + day;
+         
+            		return [year, month, day].join('-');
+         }
+         function DateRange(initialDate,finalDate){
+         	this.initialDate=formatDate(initialDate);
+         	this.finalDate=formatDate(finalDate);
+         }
+         function EmptyDateRange(){
+         	this.initialDate="";
+         	this.finalDate="";
+         }
+            
+      </script>
+      <script>
+         function showEntryLectureDate(){
+         
+		 $("#entryLectureDateDiv").show("slow");
+		 $("#entryLectureDate").prop('required',true);
+		 entryUrl=serverUrl+"/enter/adminStatus";
+         }
+         function hideEntryLectureDate(){
+         
+		 $("#entryLectureDateDiv").hide("slow");
+		 $("#entryLectureDate").prop('required',false);
+		 entryUrl=serverUrl+"/enter/status";
+         }
+         $('#clearEntryLectureDateButton').click(function(evt)
+         {
+         	evt.stopPropagation();
+         	$('#entryLectureDate').data('dateRangePicker').clear();
+         });	
+         $('#clearStudyDateButton').click(function(evt)
+         {
+         	evt.stopPropagation();
+         	$('#studyDateRange').data('dateRangePicker').clear();		
+         	loadTable();
+         });
+         $('#clearLectureDateButton').click(function(evt)
+         {
+         	evt.stopPropagation();
+         	$('#lectureDateRange').data('dateRangePicker').clear();
+         	loadTable();
+         });	
+            
+      </script>
+      <script>
+         $('#entryLectureDate').dateRangePicker(
+         {
+		autoClose: true,
+		singleDate : true,
+		showShortcuts: false,
+		singleMonth: true
+         })
+         $('#studyDateRange').dateRangePicker(
+         {
+         	format: 'YYYY-MM-DD'
+         }).on('datepicker-change',function(event,obj)
+         {
+         	loadTable();
+         });
+         $('#lectureDateRange').dateRangePicker(
+         {
+         	format: 'YYYY-MM-DD'
+         }).on('datepicker-change',function(event,obj)
+         {
+         	loadTable();
+         });
+            
+      </script>
+      <script>	 
+
+	function fillCombo(comboId,formId,path,fieldName){
+         	var combo = document.getElementById(comboId);
+		combo.addEventListener('click',function clicked() {populateData(combo,formId,path,fieldName,clicked)});
+         	combo.addEventListener('focusout',()=>combo.addEventListener('click',function clicked() {populateData(combo,formId,path,fieldName,clicked)}));
+         }
+
+	 function populateData(combo,formId,path,fieldName,clicked){
+         	$.getJSON(serverUrl+path+$('#'+formId).serialize(),function(data){
+	         	combo.value = "";
+        	 	combo.options.length=1;
+         		for( index in data ) {
+             			combo.add( new Option( data[index][fieldName] ) );
+         		}
+         		combo.removeEventListener('click',clicked);
+         	});
+	}
+
+
+	fillCombo('subject','filters','/fill/subjects?','Subject_Name');
+	fillCombo('entrySubject','entryForm','/fill/entrySubjects?','Subject_Name');
+	fillCombo('entryTopic','entryForm','/fill/topics?','Topic_Name');
+
+      </script>
+      <script>
+         function loadTable(){
+		$('#table').bootstrapTable('refresh', {url: serverUrl+'/filter?'+$('#filters').serialize()})
+         }
+      </script>
+      <script>
+         function filterUsing (element,trigger='change'){
+         	const combo = document.querySelector('#'+element);
+         	combo.addEventListener(trigger,(event)=>{
+         		var value=(event.target.value);
+         		loadTable();
+         	});
+         }			
+            
+      </script>
+      <script>
+         filterUsing('section');
+         filterUsing('semester');
+         filterUsing('module');
+         filterUsing('co');
+         filterUsing('difficulty');
+         filterUsing('retention');
+         filterUsing('subject');
+         filterUsing('abstraction');
+         filterUsing('coverage');            
+      </script>
+      <script>
+         const usnField = document.querySelector('#usn');
+         usnField.addEventListener('input',(event)=>{
+         	var usn=(event.target.value);
+         	$.getJSON(serverUrl+'/filter?'+$('#filters').serialize(), 
+         
+         function(tuples) {
+         		$('#table').bootstrapTable('load',tuples)
+         		if(usn!="" && tuples!=[]){				
+         			$('#table').bootstrapTable('hideColumn', 'Total Students (%)');
+         			$('#table').bootstrapTable('showColumn', 'Obtained Marks (%)');
+         		}
+         		else if(usn==""){
+         			$('#table').bootstrapTable('showColumn', 'Total Students (%)');
+         			$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
+         		}
+            		});
+         });
+            
+      </script>
+      <!--End Edit-->
+      <script>
+         var items = document.querySelectorAll('#i1ar');
+         for (var i = 0, len = items.length; i < len; i++) {
+             (function() {
+                 var t, e = this,
+                     n = "[data-tab]",
+                     r = document.body,
+                     o = r.matchesSelector || r.webkitMatchesSelector || r.mozMatchesSelector || r.msMatchesSelector,
+                     i = function(r) {
+                         var o = e.querySelectorAll(n) || [];
+                         for (t = 0; t < o.length; t++) {
+                             var i = o[t],
+                                 a = i.className.replace("tab-active", "").trim();
+                             i.className = a
+                         }(function() {
+                             var n = e.querySelectorAll("[data-tab-content]") || [];
+                             for (t = 0; t < n.length; t++) n[t].style.display = "none"
+                         })(), r.className += " tab-active";
+                         var s = r.getAttribute("href"),
+                             l = e.querySelector(s);
+                         l && (l.style.display = "")
+                     },
+                     a = e.querySelector(".tab-active" + n);
+                 (a = a || e.querySelector(n)) && i(a), e.addEventListener("click", function(t) {
+                     var e = t.target;
+                     o.call(e, n) && i(e)
+                 })
+             }.bind(items[i]))();
+         }
+      </script>
+      <style>
+         a.page-brand-badge {
+         border-radius: 3px !important;
+         background-color: white !important;
+         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+         padding: 5px 7px !important;
+         font-family: Helvetica, sans-serif !important;
+         font-size: 12px !important;
+         text-decoration: none !important;
+         color: #555 !important;
+         transition: box-shadow 0.25s !important;
+         }
+         a.page-brand-badge:hover {
+         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
+         }
+      </style>
+      <!--
+         <a href="https://grapedrop.com" target="_blank" class="page-brand-badge" style="bottom: 10px !important; left: 10px !important; display: block !
+         
+         important; opacity: 1 !important; visibility: visible !important; position: fixed !important;">
+             <svg class="logo-circ" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" style="width:13px; height:13px; vertical-align: 
+         
+         middle; 
+         
+         margin-right: 3px; margin-top: -2px;">
+                 <defs>
+                     <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-2">
+                         <stop stop-color="#EAB3D5" offset="0%"></stop>
+                         <stop stop-color="#D06E9A" offset="100%"></stop>
+                     </linearGradient>
+                 </defs>
+                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                     <g>
+                         <circle fill="url(#linearGradient-2)" cx="251" cy="251" r="250"></circle>
+                         <path d="M244.664082,104.558858 L162.460627,248.205767 C145.186418,278.574619 143.852224,317.189676 162.460627,349.706818 
+         
+         C190.433829,398.588565 252.659,415.493783 301.444357,387.464755 C350.229714,359.436081 367.101474,297.087868 339.127919,248.205413 
+         
+         L256.924464,104.558858 
+         
+         C254.209082,99.813714 247.379111,99.813714 244.664082,104.558858 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+                     </g>
+                 </g>
+             </svg>
+             Made with Grapedrop
+         </a>
+         -->
+      <script>
+         var loginUsnParam="";
+         var formStateName = 'data-form-state';
+         var formStateEls = $('[' + formStateName + ']');
+         formStateEls.hide();
+         $('#loginForm').submit(function(e) {
+             e.preventDefault();
+             var form = $(this);
+             var action = serverUrl+"/login";
+             var formData = $('#loginForm').serialize();
+             var chkSelected = {};
+             var name = this.getAttribute('name');
+             name && formData.append('__name', name);
+         
+             form.find('[type=radio], [type=checkbox]').each(function(item) {
+                 var chkName = this.name;
+                 if (this.checked) {
+                     chkSelected[chkName] = 1;
+                     return;
+                 }
+                 chkSelected[chkName] = 0;
+             });
+         
+             for (var chk in chkSelected) {
+                 if (!chkSelected[chk]) {
+                     formData.append(chk, '');
+                 }
+             }
+         
+             $.ajax({
+                 url: action,
+                 method: 'POST',
+                 processData: false,
+                 data: formData,
+             }).done(function(data) {
+		 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
+                 formStateEls.hide();
+                 form.find('[' + formStateName + '=loginSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
+		 $("#entryDiv").show("slow");
+		 if(data=="admin")
+		 	$(".adminComponent").show("slow");
+		 else
+		 	$(".adminComponent").hide();
+             }).fail(function(data) {
+                 loginUsnParam="";
+                 formStateEls.hide();
+                 form.find('[' + formStateName + '=loginError]').stop(1).fadeIn().delay(3000).fadeOut();
+		 $("#entryDiv").hide("slow");
+             });
+         });
+      </script>
+      <script>
+	 var entryUrl=serverUrl+"/enter/status";
+         $('#entryForm').submit(function(e) {
+             e.preventDefault();
+             var form = $(this);
+             var action=entryUrl;
+             var formData = $('#entryForm').serialize()+"&"+loginUsnParam;
+             var chkSelected = {};
+             var name = this.getAttribute('name');
+             name && formData.append('__name', name);
+         
+             form.find('[type=radio], [type=checkbox]').each(function(item) {
+                 var chkName = this.name;
+                 if (this.checked) {
+                     chkSelected[chkName] = 1;
+                     return;
+                 }
+                 chkSelected[chkName] = 0;
+             });
+         
+             for (var chk in chkSelected) {
+                 if (!chkSelected[chk]) {
+                     formData.append(chk, '');
+                 }
+             }
+         
+             $.ajax({
+                 url: action,
+                 method: 'POST',
+                 processData: false,
+                 data: formData,
+             }).done(function(data) {
+		 formStateEls.hide();
+                 form.find('[' + formStateName + '=entrySuccess]').stop(1).fadeIn().delay(3000).fadeOut();
+             }).fail(function(data) {
+                 formStateEls.hide();
+                 form.find('[' + formStateName + '=entryError]').stop(1).fadeIn().delay(3000).fadeOut();
+             });
+
+         });
+      </script>
+   </body>
+</html>
