@@ -21,6 +21,7 @@
       <meta property="og:url" content="http://0d1c7ef.grapedrop.com">
       <!-- Twitter Meta Tags -->
       <meta name="twitter:card" content="summary_large_image">
+      <meta name="viewport" content="width=device-width,minimum-scale=1">
       <link rel="icon" type="image/png" href="images/favicon.png">
       <script src="//cdnjs.cloudflare.com/ajax/libs/lory.js/2.2.0/lory.min.js"></script>
       <!--Start Edit-->	
@@ -32,6 +33,7 @@
       <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
       <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
       <script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/export/bootstrap-table-export.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/jquery.sidr.min.js"></script>
       <!--End Edit-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
@@ -39,7 +41,8 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.20.0/daterangepicker.min.css">
       <link rel="stylesheet" href="styles/base.css">
       <link rel="stylesheet" href="styles/style.css">
-   </head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/stylesheets/jquery.sidr.light.min.css">
+ </head>
    <body>
       <style>
          body {
@@ -53,10 +56,10 @@
             class="tab">Student Login</a></nav>
          <div id="tab1" data-tab-content="1" class="tab-content">
             <div class="collapse-wrapper">
-               <a data-toggle="collapse" href="#clps-890q4g0nmj" role="button" class="btn btn-primary">Filters</a>
-               <div id="clps-890q4g0nmj" class="collapse hide">
+               <a id="simple-menu" href="#sidr" role="button" class="btn btn-primary">Filters</a>
+               <div id="sidr">
                   <form id="filters">
-                     <div class="card-group" id="idkjof">
+                     <ul>
                         <div class="card">
                            <div class="card-header">Organizational Filters:</div>
                            <div class="card-body">
@@ -200,7 +203,7 @@
                               </div>
                            </div>
                         </div>
-                     </div>
+                     </ul>
 			<div class="btn-group" role="group" aria-label="Filter Buttons">
                   		<button type="reset" class="btn btn-secondary">Clear</button>
                   		<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
@@ -381,6 +384,7 @@
       <!--Start Edit-->
       <script> var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"</script>
       <script>
+	 $('#simple-menu').sidr();
          function formatDate(d) {
             		month = '' + (d.getMonth() + 1),
                 	day = '' + d.getDate(),
