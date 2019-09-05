@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
    <head>
       <title>Student Semester Management System</title>
@@ -56,7 +56,6 @@
             class="tab">Student Login</a></nav>
          <div id="tab1" data-tab-content="1" class="tab-content">
             <div class="collapse-wrapper">
-               <a id="simple-menu" href="#sidr" role="button" class="btn btn-primary">Filters</a>
                <div id="sidr">
                   <form id="filters">
                      <ul>
@@ -204,13 +203,14 @@
                            </div>
                         </div>
                      </ul>
-			<div class="btn-group" role="group" aria-label="Filter Buttons">
-                  		<button type="reset" class="btn btn-secondary">Clear</button>
-                  		<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
-               		</div>
                   </form>
                </div>
             </div>
+			<div class="btn-group" role="group" aria-label="Filter Buttons">
+               			<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary">Filters</a>
+                  		<button type="reset" class="btn btn-secondary">Clear</button>
+                  		<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
+               		</div>
             <div class="gpd-container" id="i5f3md">
                <table  
 		  id="table" 
