@@ -34,6 +34,8 @@
       <script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
       <script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/export/bootstrap-table-export.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/jquery.sidr.min.js"></script>
+      <script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+      <script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/print/bootstrap-table-print.min.js"></script>
       <!--End Edit-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
@@ -207,8 +209,8 @@
             </div>
 			<div class="btn-group" role="group" aria-label="Filter Buttons">
                			<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary">Filters</a>
-                  		<button type="reset" class="btn btn-secondary">Clear</button>
                   		<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
+                  		<button type="reset" class="btn btn-secondary">Clear</button>
                		</div>
                   </form>
                <table  
@@ -216,9 +218,13 @@
                   data-toggle="table"
 		  data-sortable="true"
 		  data-show-export="true"
+		  data-show-print="true"
 		  data-show-columns="true"
                   data-virtual-scroll="true"
-                  >
+                  data-height="400"
+		  data-search="true"
+		  data-mobile-responsive="true"
+		  data-check-on-init="true">
                   <thead>
                      <tr id="iwoq03">
                         <th data-field="Topic Name" data-sortable="true"><span id="i811jv">Topic Name</span></th>
