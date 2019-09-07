@@ -282,13 +282,9 @@
             <form method="post" id="entryForm" class="form">
                <div id="entryLectureDateDiv" style="display: none;" class="form-group">
                	<label class="label">Lecture date</label>
-                <div class="input-group mb-3 flatpickr">
+                <div class="input-group mb-3 flatpickr-single">
                 	<input id="entryLectureDate" name="entryLectureDate" class="form-control" data-input/>
-                        <div class="input-group-append">
-    				<a class="input-button" title="clear" data-clear>
-        				<i class="icon-close"></i>
-    				</a>
-                        </div>
+			<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button" >Clear</a>
                 </div>
                </div>
                <div class="form-group">
@@ -408,7 +404,7 @@
 	}
       </script>
       <script>
-	flatpickr("#entryLectureDate", {mode: "range"});
+	flatpickr(".flatpickr-single", {wrap: true});
 	flatpickr
 		(".flatpickr-multi"
 		, {
