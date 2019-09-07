@@ -444,31 +444,34 @@
             
       </script>
       <script>
-         $('#entryLectureDate').dateRangePicker(
-         {
-		autoClose: true,
-		singleDate : true,
-		showShortcuts: false,
-		singleMonth: true
-         })
-         $('#studyDateRange').dateRangePicker(
-         {
-		singleMonth: true,
-		showShortcuts: false,
-		showTopbar: false
-         }).on('datepicker-change',function(event,obj)
-         {
-         	loadTable();
-         });
-         $('#lectureDateRange').dateRangePicker(
-         {
-		singleMonth: true,
-		showShortcuts: false,
-		showTopbar: false
-         }).on('datepicker-change',function(event,obj)
-         {
-         	loadTable();
-         });
+	$(function(){
+
+	         $('#entryLectureDate').dateRangePicker(
+        	 {
+			autoClose: true,
+			singleDate : true,
+			showShortcuts: false,
+			singleMonth: true
+         	})
+         	$('#studyDateRange').dateRangePicker(
+         	{
+			singleMonth: true,
+			showShortcuts: false,
+			showTopbar: false
+        	}).on('datepicker-change',function(event,obj)
+         	{
+         		loadTable();
+         	});
+         	$('#lectureDateRange').dateRangePicker(
+         	{
+			singleMonth: true,
+			showShortcuts: false,
+			showTopbar: false
+        	}).on('datepicker-change',function(event,obj)
+         	{
+         		loadTable();
+         	});
+	});
             
       </script>
       <script>	 
