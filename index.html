@@ -453,14 +453,18 @@
          })
          $('#studyDateRange').dateRangePicker(
          {
-         	format: 'YYYY-MM-DD'
+		singleMonth: true,
+		showShortcuts: false,
+		showTopbar: false
          }).on('datepicker-change',function(event,obj)
          {
          	loadTable();
          });
          $('#lectureDateRange').dateRangePicker(
          {
-         	format: 'YYYY-MM-DD'
+		singleMonth: true,
+		showShortcuts: false,
+		showTopbar: false
          }).on('datepicker-change',function(event,obj)
          {
          	loadTable();
