@@ -64,6 +64,21 @@
                <div id="sidr">
                   <form id="filters">
                      <ul>
+			<div class="card">
+                           <div class="card-header">Date Filters:</div>
+                           <div class="card-body">
+                              <label class="label">Study Date Range</label>
+                              <div class="input-group mb-3 flatpickr-multi">
+                                 <input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/>
+				 <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button" >Clear</a>
+				</div>
+                              <label class="label">Lecture Date Range</label>
+                              <div class="input-group mb-3 flatpickr-multi">
+                                 <input type="text" name ="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/>
+				 <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+			      </div>
+                           </div>
+                        </div>
                         <div class="card">
                            <div class="card-header">Organizational Filters:</div>
                            <div class="card-body">
@@ -159,7 +174,7 @@
                            </div>
                         </div>
                         <div class="card">
-                           <div class="card-header">Intellectual Filters:</div>
+                           <div class="card-header">Cognitive Filters:</div>
                            <div class="card-body">
                               <div class="form-group">
                                  <label class="label">Understanding</label>
@@ -188,21 +203,7 @@
                               </div>
                            </div>
                         </div>
-                        <div class="card">
-                           <div class="card-header">Date Filters:</div>
-                           <div class="card-body">
-                              <label class="label">Study Date Range</label>
-                              <div class="input-group mb-3 flatpickr-multi">
-                                 <input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/>
-				 <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button" >Clear</a>
-				</div>
-                              <label class="label">Lecture Date Range</label>
-                              <div class="input-group mb-3 flatpickr-multi">
-                                 <input type="text" name ="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/>
-				 <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-			      </div>
-                           </div>
-                        </div>
+                        
                      </ul>
                </div>
             </div>
