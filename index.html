@@ -27,7 +27,7 @@
       <!--Start Edit-->	
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.20.0/jquery.daterangepicker.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
@@ -40,7 +40,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.20.0/daterangepicker.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
       <link rel="stylesheet" href="styles/base.css">
       <link rel="stylesheet" href="styles/style.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/stylesheets/jquery.sidr.light.min.css">
@@ -51,6 +51,7 @@
          margin: 0;
          padding: 0;
          overflow-x: hidden;
+	 min-height: 100vh;
          }
       </style>
       <div data-tabs="1" id="i1ar">
@@ -191,19 +192,15 @@
                            <div class="card-header">Date Filters:</div>
                            <div class="card-body">
                               <label class="label">Study Date Range</label>
-                              <div class="input-group mb-3">
-                                 <input id="studyDateRange" name="studyDateRange" class="form-control" />
-                                 <div class="input-group-append">
-                                    <button id="clearStudyDateButton" class="btn btn-outline-secondary btn-sm" type="button">Clear</button>
-                                 </div>
-                              </div>
+                              <div class="input-group mb-3 flatpickr-multi">
+                                 <input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/>
+				 <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button" >Clear</a>
+				</div>
                               <label class="label">Lecture Date Range</label>
-                              <div class="input-group mb-3">
-                                 <input id="lectureDateRange" name ="lectureDateRange" class="form-control" />
-                                 <div class="input-group-append">
-                                    <button id="clearLectureDateButton" class="btn btn-outline-secondary btn-sm" type="button">Clear</button>
-                                 </div>
-                              </div>
+                              <div class="input-group mb-3 flatpickr-multi">
+                                 <input type="text" name ="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/>
+				 <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+			      </div>
                            </div>
                         </div>
                      </ul>
@@ -285,10 +282,12 @@
             <form method="post" id="entryForm" class="form">
                <div id="entryLectureDateDiv" style="display: none;" class="form-group">
                	<label class="label">Lecture date</label>
-                <div class="input-group mb-3">
-                	<input id="entryLectureDate" name="entryLectureDate" class="form-control"/>
+                <div class="input-group mb-3 flatpickr">
+                	<input id="entryLectureDate" name="entryLectureDate" class="form-control" data-input/>
                         <div class="input-group-append">
-                        	<button id="clearEntryLectureDateButton" class="btn btn-outline-secondary btn-sm" type="button">Clear</button>
+    				<a class="input-button" title="clear" data-clear>
+        				<i class="icon-close"></i>
+    				</a>
                         </div>
                 </div>
                </div>
@@ -391,27 +390,6 @@
       <script> var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"</script>
       <script>
 	 $('#simple-menu').sidr();
-         function formatDate(d) {
-            		month = '' + (d.getMonth() + 1),
-                	day = '' + d.getDate(),
-                	year = d.getFullYear();
-         
-            		if (month.length < 2) month = '0' + month;
-            		if (day.length < 2) day = '0' + day;
-         
-            		return [year, month, day].join('-');
-         }
-         function DateRange(initialDate,finalDate){
-         	this.initialDate=formatDate(initialDate);
-         	this.finalDate=formatDate(finalDate);
-         }
-         function EmptyDateRange(){
-         	this.initialDate="";
-         	this.finalDate="";
-         }
-            
-      </script>
-      <script>
          function showEntryLectureDate(){
          
 		 $("#entryLectureDateDiv").show("slow");
@@ -424,54 +402,19 @@
 		 $("#entryLectureDate").prop('required',false);
 		 entryUrl=serverUrl+"/enter/status";
          }
-         $('#clearEntryLectureDateButton').click(function(evt)
-         {
-         	evt.stopPropagation();
-         	$('#entryLectureDate').data('dateRangePicker').clear();
-         });	
-         $('#clearStudyDateButton').click(function(evt)
-         {
-         	evt.stopPropagation();
-         	$('#studyDateRange').data('dateRangePicker').clear();		
-         	loadTable();
-         });
-         $('#clearLectureDateButton').click(function(evt)
-         {
-         	evt.stopPropagation();
-         	$('#lectureDateRange').data('dateRangePicker').clear();
-         	loadTable();
-         });	
-            
+	 function rangeTableUpdate(){
+	 	var date=$(".rangeTableUpdate").val();
+		if(date.includes('to')||date=="")loadTable();	
+	}
       </script>
       <script>
-	$(document).ready(function(){
-
-	         $('#entryLectureDate').dateRangePicker(
-        	 {
-			autoClose: true,
-			singleDate : true,
-			showShortcuts: false,
-			singleMonth: true
-         	})
-         	$('#studyDateRange').dateRangePicker(
-         	{
-			singleMonth: true,
-			showShortcuts: false,
-			showTopbar: false
-        	}).on('datepicker-change',function(event,obj)
-         	{
-         		loadTable();
-         	});
-         	$('#lectureDateRange').dateRangePicker(
-         	{
-			singleMonth: true,
-			showShortcuts: false,
-			showTopbar: false
-        	}).on('datepicker-change',function(event,obj)
-         	{
-         		loadTable();
-         	});
-	});
+	flatpickr("#entryLectureDate", {});
+	flatpickr
+		(".flatpickr-multi"
+		, {
+		   wrap: true,
+		   mode: "range",
+		  });	
             
       </script>
       <script>	 
