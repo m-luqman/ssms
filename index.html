@@ -243,8 +243,8 @@
          <div id="tab2" data-tab-content="1" class="tab-content">
 
 <div >
-  <div class="row" style=" display: flex;overflow-y:scroll;">
-    <div class="col-4">
+  <div class="row" >
+    <div class="col-4 same-height">
       <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column">
         <a class="navbar-brand" href="#">Phases</a>
         <nav class="nav nav-pills flex-column">
@@ -261,7 +261,7 @@
         </nav>
       </nav>
     </div>
-    <div class="col-8" >
+    <div class="col-8 same-height" >
       <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" >
         <h4 id="item-1">Forethought phase</h4>
         <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
@@ -425,7 +425,14 @@
       <!--Start Edit-->
       <script> var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"</script>
       <script>
-	 $('#simple-menu').sidr();
+jQuery(document).ready(function($) { //noconflict wrapper
+    var heights = $(".same-height").map(function() {
+        return $(this).height();
+    }).get(),
+    maxHeight = Math.max.apply(null, heights);
+    $(".same-height").height(maxHeight);
+});	 
+	$('#simple-menu').sidr();
          function showEntryLectureDate(){
          
 		 $("#entryLectureDateDiv").show("slow");
