@@ -222,86 +222,95 @@
 							</p>
 							<h5 id="item-1-1">Goal setting</h5>
 							<p>
-								For setting each of the following goals, first filter the topics by your USN.
+								The goals are arranged according to their order of importance. 
+								<br><br>
+								<i>General Procedure</i>
+								<br>
+								a. For setting each of the following goals, first filter the topics by your USN.
+								<br><br>
+								<i>General Preferences</i>
+								<br>
+								a. Whenever possible, start with the topics that you have structured, then reconciled and finally, summarized.
 								<br><br>
 								<b>Goal 1: To learn minimum number of new topics per subject per day</b>
 								<br><br>
 								<i>1.1. Preference</i>
 								<br>
-								a. Start with the subject with the largest minimum number of topics per day.
-								<br>
-								b. For each subject, learn the topics in incrieasing order of page/topic number.
+								a. Start with the subject with the highest number of minimum topics to be covered per day.
 								<br><br>
 								<b>Goal 2: To learn partially covered topics</b>
 								<br><br>								
 								<i>2.1. Preference</i>
 								<br>
 								a. Start with the topics with high retention.
-								<br>
-								b. For each retention level, start with the topics which you have structured, then reconciled and finally, summarized.
 								<br><br>
 								<b>Goal 3: To revise topics with low retention</b>
 								<br><br>								
-								<i>3.1. Preference</i>
+								<i>3.1. Procedure</i>
 								<br>
-								Start with the topics which you have structured, then reconciled and finally, summarized.
+								a. Under cognitive filters, select the retention filter.
+								<br>
+								b. Select the retention level as low.
 								<br><br>
 								<b>Goal 4: To self-test the topics of high retention</b> 
 								<br><br>								
 								<i>4.1. Preference</i>
 								<br>
-								a. Start with the topics which you have structured, then reconciled and finally, summarized.
-								<br>
-								b. For each learning technique applied, start with the topics which have questions with higher marks.
+								a. For each learning technique applied, start with the topics which have questions with higher marks.
 							</p>
-			
-							<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
-								<button type="reset" class="btn btn-secondary">Clear</button>
-								<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
-								<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
+							
+							<div class="mb-3">
+								<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
+									<button type="reset" class="btn btn-secondary">Clear</button>
+									<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
+									<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
+								</div>
+								</form>
+								<table 
+									id="table" 
+									data-toggle="table" 
+									data-sortable="true" 
+									data-show-export="true" 
+									data-show-print="true" 
+									data-show-columns="true" 
+									data-virtual-scroll="true" 
+									data-height="400" 
+									data-search="true" 
+									data-show-search-clear-button="true" 
+									data-mobile-responsive="true" 
+									data-check-on-init="true" 
+									data-single-select="true"
+									data-click-to-select="true"
+									data-escape="true"							
+									data-min-width="750">
+									<thead>
+										<tr id="iwoq03">
+											<th data-field="state" data-checkbox="true">
+											</th>
+											<th data-field="Topic Name" data-sortable="true">Topic
+											</th>
+											<th data-field="Textbook Name">Textbook
+											</th>
+											<th data-field="Page Number" data-sortable="true">Page
+											</th>
+											<th data-field="Question Statement">Question
+											</th>
+											<th data-field="Total Marks" data-sortable="true">Total Marks
+											</th>
+											<th data-field="Total Students (%)" data-sortable="true">Total Students (%)
+											</th>
+											<th data-visible="false" data-field="Obtained Marks (%)" data-sortable="true">Obtained Marks (%)
+											</th>
+										</tr>
+									</thead>
+									<tr></tr>
+								</table>
 							</div>
-							</form>
-							<table 
-								id="table" 
-								data-toggle="table" 
-								data-sortable="true" 
-								data-show-export="true" 
-								data-show-print="true" 
-								data-show-columns="true" 
-								data-virtual-scroll="true" 
-								data-height="400" 
-								data-search="true" 
-								data-show-search-clear-button="true" 
-								data-mobile-responsive="true" 
-								data-check-on-init="true" 
-								data-single-select="true"
-								data-click-to-select="true"								
-								data-min-width="750">
-								<thead>
-									<tr id="iwoq03">
-										<th data-field="state" data-checkbox="true">
-										</th>
-										<th data-field="Topic Name" data-sortable="true"><span id="i811jv">Topic</span>
-										</th>
-										<th data-field="Textbook Name"><span id="iqixrp">Textbook</span>
-										</th>
-										<th data-field="Page Number" data-sortable="true"><span id="i50ldh">Page</span>
-										</th>
-										<th data-field="Question Statement"><span id="iyhkdr">Question</span>
-										</th>
-										<th data-field="Total Marks" data-sortable="true"><span id="inr38f">Total Marks</span>
-										</th>
-										<th data-field="Total Students (%)" data-sortable="true"><span>Total Students (%)</span>
-										</th>
-										<th data-visible="false" data-field="Obtained Marks (%)" data-sortable="true"><span>Obtained Marks (%)</span>
-										</th>
-									</tr>
-								</thead>
-								<tr></tr>
-							</table>
 							
 							<h5 id="item-1-2">Assesment criteria</h5>
-							<p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
+							<p>
+								<em>Retention</em> of the studied topic is to be assessed by <em>explaining the studied topic to yourself without looking at the study material.</em>
+							</p>
 							<h5 id="item-1-3">Performance level</h5>
 							<p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
 							<h5 id="item-1-4">Strategic planning</h5>
@@ -776,7 +785,7 @@
 	         $('#registrationForm').submit(function(e) {
 	             e.preventDefault();
 	             var form = $(this);
-	             var action=#;
+	             var action='#';
 	             var formData = $('#registrationForm').serialize();
 	             var chkSelected = {};
 	             var name = this.getAttribute('name');
