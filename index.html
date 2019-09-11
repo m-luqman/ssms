@@ -217,7 +217,9 @@
 					<div class="col-xs-6 col-sm-8 col-md-9 col-lg-10">
 						<div>
 							<h4 id="item-1">Forethought phase</h4>
-							<p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
+							<p>
+								What follows is a description of the <em>minimum</em> requirements that a learner needs to fullfill in the forethought phase.
+							</p>
 							<h5 id="item-1-1">Goal setting</h5>
 							<p>
 								For setting each of the following goals, first filter the topics by your USN.
@@ -303,7 +305,7 @@
 									<button type="submit" class="button">Login</button>
 								</div>
 								<div data-form-state="loginSuccess" class="state-success" id="i1124e">Logged in successfully</div>
-								<div data-form-state="loginError" class="state-error" id="iszsuh">Either your usn or password is incorrect</div>
+								<div data-form-state="loginError" class="state-error" id="iszsuh">There was a problem in logging in</div>
 							</form>
 							<div id=entryDiv style="display: none;">
 								<div class="form-group gpd-container">
@@ -429,8 +431,8 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-success">Enter</button>
-										<button type="button" class="btn btn-outline-danger" onclick="logout()" class="button">Logout</button>
+										<button type="submit" class="btn btn-primary">Enter</button>
+										<button type="button" class="btn btn-outline-secondary" onclick="logout()" class="button">Logout</button>
 									</div>
 									<div data-form-state="entrySuccess" class="state-success" id="i1124eh">Entered successfully</div>
 									<div data-form-state="entryError" class="state-error" id="iszsuhj">There was an error in entering the details</div>
@@ -440,6 +442,46 @@
 					</div>
 				</div>
 		</div>
+	</div>
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-body">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+							<form method="post" id="registrationForm" class="form">
+								<div class="form-group">
+									<label class="label">USN</label>
+									<input placeholder="Type here your USN" id="registrationUsn" name="registrationUsn" type="text" class="input" required/>
+								</div>
+									<div class="form-group">
+										<label class="label">Section</label>
+										<!--Start Edit-->
+										<select id="registrationSection" name="registrationSection" class="select" required>
+											<option value="unselected">unselected</option>
+											<option value="A">A</option>
+											<option value="B">B</option>
+											<option value="C">C</option>
+											<!--End Edit-->
+										</select>
+									</div>
+								<div class="form-group">
+									<label class="label">Password</label>
+									<input placeholder="Type here your password" name="registrationPassword" type="password" class="input" required/>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="button">Register</button>
+								</div>
+								<div data-form-state="registrationSuccess" class="state-success" id="i1124ef">Registered successfully</div>
+								<div data-form-state="registrationError" class="state-error" id="iszsuhs">There was a problem in registering</div>
+							</form>
+		  </div>
+		</div>
+
+	  </div>
 	</div>
 	<!--Start Edit-->
 	<script>
@@ -587,8 +629,8 @@
 		         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
 		         }
 	</style>
-	<!--
-         <a href="https://grapedrop.com" target="_blank" class="page-brand-badge" style="bottom: 10px !important; left: 10px !important; display: block !
+
+         <a href="#" data-toggle="modal" data-target="#myModal" class="page-brand-badge" style="bottom: 10px !important; left: 10px !important; display: block !
          
          important; opacity: 1 !important; visibility: visible !important; position: fixed !important;">
              <svg class="logo-circ" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" style="width:13px; height:13px; vertical-align: 
@@ -615,9 +657,9 @@
                      </g>
                  </g>
              </svg>
-             Made with Grapedrop
+             Register
          </a>
-         -->
+
 	<script>
 		function logout(){
 			$("#loginForm").show("slow");
@@ -709,6 +751,47 @@
 	             }).fail(function(data) {
 	                 formStateEls.hide();
 	                 form.find('[' + formStateName + '=entryError]').stop(1).fadeIn().delay(3000).fadeOut();
+	             });
+	
+	         });
+	</script>
+	<script>
+		var entryUrl="#";
+	         $('#registrationForm').submit(function(e) {
+	             e.preventDefault();
+	             var form = $(this);
+	             var action=entryUrl;
+	             var formData = $('#registrationForm').serialize();
+	             var chkSelected = {};
+	             var name = this.getAttribute('name');
+	             name && formData.append('__name', name);
+	         
+	             form.find('[type=radio], [type=checkbox]').each(function(item) {
+	                 var chkName = this.name;
+	                 if (this.checked) {
+	                     chkSelected[chkName] = 1;
+	                     return;
+	                 }
+	                 chkSelected[chkName] = 0;
+	             });
+	         
+	             for (var chk in chkSelected) {
+	                 if (!chkSelected[chk]) {
+	                     formData.append(chk, '');
+	                 }
+	             }
+	         
+	             $.ajax({
+	                 url: action,
+	                 method: 'POST',
+	                 processData: false,
+	                 data: formData,
+	             }).done(function(data) {
+			 formStateEls.hide();
+	                 form.find('[' + formStateName + 'registrationSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
+	             }).fail(function(data) {
+	                 formStateEls.hide();
+	                 form.find('[' + formStateName + '=registrationError]').stop(1).fadeIn().delay(3000).fadeOut();
 	             });
 	
 	         });
