@@ -336,11 +336,11 @@
 							<div id=entryDiv style="display: none;">
 								<div class="form-group gpd-container">
 									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
-										<input type="radio" onclick="showEntryLectureDate()" name="entryState" id="chk-xo4b0ts4ll" class="custom-control-input" />
+										<input type="radio" onclick="showAdminEntry()" name="entryState" id="chk-xo4b0ts4ll" class="custom-control-input" />
 										<label for="chk-xo4b0ts4ll" class="custom-control-label">Admin Entry</label>
 									</div>
 									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
-										<input type="radio" name="entryState" id="chk-3h9jah21ga" class="custom-control-input" />
+										<input type="radio" onclick="showQuestionEntry()" name="entryState" id="chk-3h9jah21ga" class="custom-control-input" />
 										<label for="chk-3h9jah21ga" class="custom-control-label">Question Entry</label>
 									</div>
 									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
@@ -348,7 +348,7 @@
 										<label for="chk-csft5j9nek" class="custom-control-label">Syllabus Entry</label>
 									</div>
 									<div class="custom-control-inline custom-control custom-radio">
-										<input type="radio" onclick="hideEntryLectureDate()" name="entryState" id="chk-yabwst1jy4" checked class="custom-control-input" />
+										<input type="radio" onclick="showStudentEntry()" name="entryState" id="chk-yabwst1jy4" checked class="custom-control-input" />
 										<label for="chk-yabwst1jy4" class="custom-control-label">Student Entry</label>
 									</div>
 									<div class="custom-control-inline custom-control custom-radio">
@@ -357,13 +357,13 @@
 									</div>
 								</div>
 								<form method="post" id="entryForm" class="form">
-									<div id="entryLectureDateDiv" style="display: none;" class="form-group">
+									<div id="entryLectureDateDiv" style="display: none;" class="admin">
 										<label class="label">Lecture date</label>
 										<div class="input-group mb-3 flatpickr-single">
-											<input id="entryLectureDate" name="entryLectureDate" class="form-control" data-input/>	<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+											<input name="entryLectureDate" class="form-control admin-required" data-input/>	<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group admin student question">
 										<label class="label">Semester</label>
 										<select name="entrySemester" id="entrySemester" class="select">
 											<option value="">unselected</option>
@@ -373,13 +373,13 @@
 											<option value="7">7</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div class="form-group admin student question">
 										<label for="frmg-qdlgq0ct49">Subject</label>
 										<select type="text" id="entrySubject" name="entrySubject" class="form-control">
 											<option value="">unselected</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div class="form-group admin student question">
 										<label for="frmg-qdlgq0ct49" id="i4rq3">Module</label>
 										<select type="text" name="entryModule" class="form-control">
 											<option value="">unselected</option>
@@ -390,24 +390,24 @@
 											<option value="5">5</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div class="form-group admin student question">
 										<label for="frmg-qdlgq0ct49" id="iii3k">Topic</label>
-										<select type="text" id="entryTopic" name="entryTopic" class="form-control" required>
+										<select type="text" id="entryTopic" name="entryTopic" class="form-control admin-required student-required question-required" required>
 											<option value="">unselected</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div class="form-group admin student">
 										<label for="frmg-qdlgq0ct49" id="i3ymh">Difficulty</label>
-										<select type="text" class="form-control" name="entryDifficulty" required>
+										<select type="text" class="form-control admin-required student-required" name="entryDifficulty" required>
 											<option value="">unselected</option>
 											<option value="Hard">summarized</option>
 											<option value="Medium">reconciled</option>
 											<option value="Easy">structured</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div class="form-group admin student">
 										<label for="frmg-qdlgq0ct49" id="izmh2">Retention</label>
-										<select type="text" class="form-control" name="entryRetention" required>
+										<select type="text" class="form-control admin-required student-required" name="entryRetention" required>
 											<option value="">unselected</option>
 											<option value="0">complete blackout</option>
 											<option value="1">incorrect response; the correct one remembered</option>
@@ -417,17 +417,17 @@
 											<option value="5">perfect response</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div class="form-group admin student">
 										<label for="frmg-qdlgq0ct49" id="izmh2">Coverage</label>
-										<select type="text" class="form-control" name="entryCoverage" required>
+										<select type="text" class="form-control admin-required student-required" name="entryCoverage" required>
 											<option value="">unselected</option>
 											<option value="Partial">Partial</option>
 											<option value="Complete">Complete</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<div class="form-group admin student">
 										<label for="frmg-qdlgq0ct49" id="ieudb">Abstraction</label>
-										<select type="text" name="entryAbstraction" class="form-control">
+										<select type="text" name="entryAbstraction" class="form-control admin-required">
 											<option value="">unselected</option>
 											<option value="1">Creations of Allah</option>
 											<option value="1.1">&#10148;Vocabulary of Programmer</option>
@@ -455,6 +455,19 @@
 											<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
 											<option value="2.3">&#10148;His Essence</option>
 										</select>
+									</div>
+									<div class="form-group question">
+										<label for="frmg-qdlgq0ct49" id="izmh2">Question</label>
+										<textarea class="form-control question-required" name="entryQuestion" rows="4">
+										</textarea>
+									</div>
+									<div class="form-group question">
+										<label for="frmg-qdlgq0ct49" id="izmh2">Course Outcome</label>
+										<input class="form-control question-required" type="text" name="entryCo" placeholder="1,2.."/>
+									</div>
+									<div class="form-group question">
+										<label for="frmg-qdlgq0ct49" id="izmh2">Total Marks</label>
+										<input class="form-control question-required" type="text" name="entryTotalMarks" />
 									</div>
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary">Enter</button>
@@ -515,17 +528,32 @@
 	</script>
 	<script>
 		$('#simple-menu').sidr({side:"right"});
-	         function showEntryLectureDate(){
-	         
-			 $("#entryLectureDateDiv").show("slow");
-			 $("#entryLectureDate").prop('required',true);
-			 entryUrl=serverUrl+"/enter/adminStatus";
+			 function hideAllEntry(){
+				$(".student-required").prop('required',false);
+				$(".question-required").prop('required',false);
+				$(".admin-required").prop('required',false);
+				
+				$(".admin").hide();	
+				$(".student").hide();	
+				$(".question").hide();	
+			 }
+	         function showAdminEntry(){
+	         	hideAllEntry();	
+				$(".admin").show("slow");
+				$(".admin-required").prop('required',true);
+				entryUrl=serverUrl+"/enter/adminStatus";
 	         }
-	         function hideEntryLectureDate(){
-	         
-			 $("#entryLectureDateDiv").hide("slow");
-			 $("#entryLectureDate").prop('required',false);
-			 entryUrl=serverUrl+"/enter/status";
+	         function showStudentEntry(){
+	         	hideAllEntry();
+				$(".student").show("slow");
+				$(".student-required").prop('required',true);
+				entryUrl=serverUrl+"/enter/status";
+	         }
+	         function showQuestionEntry(){
+	         	hideAllEntry();
+				$(".question").show("slow");
+				$(".question-required").prop('required',true);
+				entryUrl=serverUrl+"/enter/question";
 	         }
 		 function rangeTableUpdate(){
 		 	var date=$(".rangeTableUpdate").val();
@@ -729,8 +757,10 @@
 		                 formStateEls.hide();
 						 $("#loginForm").hide("slow");
 				 $("#entryDiv").show("slow");
-				 if(data=="admin")
+				 if(data=="admin"){
 				 	$(".adminComponent").show("slow");
+					showStudentEntry();
+				}
 				 else
 				 	$(".adminComponent").hide();
 		             }).fail(function(data) {
