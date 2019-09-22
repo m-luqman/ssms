@@ -527,7 +527,14 @@
 		var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"
 	</script>
 	<script>
-		$('#simple-menu').sidr({side:"right"});
+			$('#table').on('check.bs.table', function (e, row) {
+				$('#entryTopic').find('option').not(':first').remove();
+				$('#entryTopic').append(new Option(row['Topic Name'],row['Topic Name'], true, true));
+			});
+			$('#table').on('uncheck.bs.table', function (e, row) { 
+				$('#entryTopic').find('option').not(':first').remove();
+			});
+			 $('#simple-menu').sidr({side:"right"});
 			 function hideAllEntry(){
 				$(".student-required").prop('required',false);
 				$(".question-required").prop('required',false);
