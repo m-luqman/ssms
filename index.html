@@ -542,8 +542,10 @@
 			$('#fullpage').fullpage({
 			//options here
 			scrollBar: true,
+			loopBottom: true,
 			paddingBottom: "50vh",
-			bigSectionsDestination:top
+			bigSectionsDestination:top,
+			autoScrolling:false
 			});
 			$('#table').on('check.bs.table', function (e, row) {
 				$('#entryTopic').find('option').not(':first').remove();
