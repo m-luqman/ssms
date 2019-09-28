@@ -37,7 +37,7 @@
 	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/print/bootstrap-table-print.min.js"></script>
 	<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>	
-	<script src="https://cdn.jsdelivr.net/npm/pagepiling-js-version-kostyast@2.0.5/jquery.pagepiling.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js" integrity="sha256-Lw96aZrbaAuj9vBh9haoZrkYmRA9Rbkv4K6C8LonvBk=" crossorigin="anonymous"></script>
 	<!--End Edit-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
@@ -46,470 +46,505 @@
 	<link rel="stylesheet" href="styles/base.css">
 	<link rel="stylesheet" href="styles/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/stylesheets/jquery.sidr.light.min.css">
-	<link
-	  rel="stylesheet"
-	  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
-	/>	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pagepiling-js-version-kostyast@2.0.5/jquery.pagepiling.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+/>	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.css" integrity="sha256-3IkGqGYOvq1Ype2MXFwVJFeBtBACgiveho3SacOEEP8=" crossorigin="anonymous" />
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#toc" data-offset="200">
 	<style>
 		body {
 		         margin: 0;
 		         padding: 0;
-		         overflow-x: scroll;
-				 overflow-y: scroll;
+		         overflow-x: hidden;
 		         }
-		.section {
-			background-color: white;
-		}		
 	</style>
-	<div class="row">
-		<div class="col-xs-1 col-sm-4 col-md-3 col-lg-2" >
-			<nav id="myMenu" class="navbar navbar-light bg-light flex-column" >
-				<a class="navbar-brand" href="#">Phases</a>
-				<nav class="nav nav-pills flex-column">
-					<a id="forethought" href="#" class="nav-link bg-primary text-white" data-toggle="popover" data-content="What follows is a description of the minimum requirements that a learner needs to fullfill in the forethought phase.">Forethought</a>
-					<nav class="nav nav-pills flex-column d-none d-sm-block">
-						<a class="nav-link ml-3 my-1 active" data-menuanchor="firstPage" href="#firstPage">Goal setting</a>
-						<a class="nav-link ml-3 my-1" data-menuanchor="secondPage" href="#secondPage">Strategic planning</a>
-						<a href="#" class="nav-link ml-3 my-1 " data-toggle="popover" data-content="Retention of the studied topic is to be assessed by explaining the studied topic to yourself without looking at the study material.">Assesment criteria</a>
-						<a href="#" class="nav-link ml-3 my-1" data-toggle="popover" data-content="Recalling everything summarized without hesitation">Performance level</a>
-					</nav>
-					<a class="nav-link" data-menuanchor="thirdPage" href="#thirdPage">Afterthought</a>
-				</nav>
-			</nav>
-		</div>
-		<div id="pagepiling" class="col-xs-11 col-sm-8 col-md-9 col-lg-10" style="height:100vh;">
-			<div class="section pp-scrollable">
-				<h5>Goal setting</h5>
-				<ol>
-					<li>To learn minimum number of new topics per subject per day</li>
-					<li>To learn partially covered topics</li>
-					<li>To revise topics with low retention</li>
-					<li>To self-test the topics of high retention</li>
-				</ol>
-				<div class="mb-3">
-					<div class="collapse-wrapper">
-						<div id="sidr">
-							<form id="filters">
-								<ul>
-									<div class="card">
-										<div class="card-header">Date Filters:</div>
-										<div class="card-body">
-											<label class="label">Study Date Range</label>
-											<div class="input-group mb-3 flatpickr-multi">
-												<input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-											</div>
-											<label class="label">Lecture Date Range</label>
-											<div class="input-group mb-3 flatpickr-multi">
-												<input type="text" name="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-											</div>
-										</div>
+	<div>
+		<div >
+			<div >
+				<div id="sidr">
+					<form id="filters">
+						<ul>
+							<div class="card">
+								<div class="card-header">Date Filters:</div>
+								<div class="card-body">
+									<label class="label">Study Date Range</label>
+									<div class="input-group mb-3 flatpickr-multi">
+										<input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 									</div>
-									<div class="card">
-										<div class="card-header">Organizational Filters:</div>
-										<div class="card-body">
-											<div class="form-group">
-												<label class="label">Section</label>
-												<!--Start Edit-->
-												<select id="section" name="section" class="select">
-													<option value="unselected">unselected</option>
-													<option value="A">A</option>
-													<option value="B">B</option>
-													<option value="C">C</option>
-													<!--End Edit-->
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="label">USN</label>
-												<input placeholder="1HKxxCSxxx" name="usn" type="text" id="usn" class="input" />
-											</div>
-										</div>
+									<label class="label">Lecture Date Range</label>
+									<div class="input-group mb-3 flatpickr-multi">
+										<input type="text" name="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 									</div>
-									<div class="card">
-										<div class="card-header">Curricular Filters:</div>
-										<div class="card-body">
-											<div class="form-group">
-												<label class="label">Semester</label>
-												<select name="semester" id="semester" class="select">
-													<option value="unselected">unselected</option>
-													<option value="0">0</option>
-													<option value="5">5</option>
-													<option value="6">6</option>
-													<option value="7">7</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="label">Subject</label>
-												<select name="subject" id="subject" class="select">
-													<option value="">unselected</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="label">Module</label>
-												<select name="module" id="module" class="select">
-													<option value="unselected">unselected</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="label">Course Outcome</label>
-												<select name="co" id="co" class="select">
-													<option value="unselected">unselected</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="label">Abstraction Level</label>
-												<select name="abstraction" class="select" id="abstraction">
-													<option value="unselected">unselected</option>
-													<option value="1">Creations of Allah</option>
-													<option value="1.1">&#10148;Vocabulary of Programmer</option>
-													<option value="1.11">&nbsp;&#9871;Algorithm</option>
-													<option value="1.12">&nbsp;&#9871;High Level Language</option>
-													<option value="1.13">&nbsp;&#9871;System Softwares</option>
-													<option value="1.2">&#10148;Vocabulary of Processor</option>
-													<option value="1.21">&nbsp;&#9871;Assembly Language</option>
-													<option value="1.22">&nbsp;&#9871;Machine Language</option>
-													<option value="1.3">&#10148;Microarchitecture</option>
-													<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
-													<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
-													<option value="1.4">&#10148;Analog & Digital Circuits</option>
-													<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
-													<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
-													<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
-													<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
-													<option value="1.5">&#10148;Voltage</option>
-													<option value="1.51">&nbsp;&#9871;Electric Power System</option>
-													<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
-													<option value="2">Allah</option>
-													<option value="2.1">&#10148;His Actions</option>
-													<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
-													<option value="2.2">&#10148;His Attributes</option>
-													<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
-													<option value="2.3">&#10148;His Essence</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-header">Cognitive Filters:</div>
-										<div class="card-body">
-											<div class="form-group">
-												<label class="label">Understanding</label>
-												<select name="difficulty" id="difficulty" class="select">
-													<option value="unselected">unselected</option>
-													<option value="Hard">summarized</option>
-													<option value="Medium">reconciled</option>
-													<option value="Easy">structured</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="label">Retention</label>
-												<select name="retention" id="retention" class="select">
-													<option value="unselected">unselected</option>
-													<option value="Low">low</option>
-													<option value="High">high</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label class="label">Coverage</label>
-												<select name="coverage" id="coverage" class="select">
-													<option value="unselected">unselected</option>
-													<option value="Partial">Partial</option>
-													<option value="Complete">Complete</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</ul>
+								</div>
 							</div>
-						</div>							
-						<div class="btn-group mt-2" role="group" aria-label="Filter Buttons">	
-							<button type="reset" class="btn btn-secondary">Clear</button>
-							<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
-							<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
-						</div>
-					</form>
-					<table 
-						id="table" 
-						data-toggle="table" 
-						data-sortable="true" 
-						data-show-export="true" 
-						data-show-print="true" 
-						data-show-columns="true" 
-						data-virtual-scroll="true" 
-						data-height="400" 
-						data-search="true" 
-						data-show-search-clear-button="true" 
-						data-mobile-responsive="true" 
-						data-check-on-init="true" 
-						data-single-select="true"
-						data-click-to-select="true"
-						data-escape="true"							
-						data-min-width="750">
-						<thead>
-							<tr id="iwoq03">
-								<th data-field="state" data-checkbox="true">
-								</th>
-								<th data-field="Topic Name" data-sortable="true">Topic
-								</th>
-								<th data-field="Textbook Name">Textbook
-								</th>
-								<th data-field="Page Number" data-sortable="true">Page
-								</th>
-								<th data-field="Question Statement">Question
-								</th>
-								<th data-field="Total Marks" data-sortable="true">Total Marks
-								</th>
-								<th data-field="Total Students (%)" data-sortable="true">Total Students (%)
-								</th>
-								<th data-visible="false" data-field="Obtained Marks (%)" data-sortable="true">Obtained Marks (%)
-								</th>
-							</tr>
-						</thead>
-						<tr></tr>
-					</table>
+							<div class="card">
+								<div class="card-header">Organizational Filters:</div>
+								<div class="card-body">
+									<div class="form-group">
+										<label class="label">Section</label>
+										<!--Start Edit-->
+										<select id="section" name="section" class="select">
+											<option value="unselected">unselected</option>
+											<option value="A">A</option>
+											<option value="B">B</option>
+											<option value="C">C</option>
+											<!--End Edit-->
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="label">USN</label>
+										<input placeholder="1HKxxCSxxx" name="usn" type="text" id="usn" class="input" />
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">Curricular Filters:</div>
+								<div class="card-body">
+									<div class="form-group">
+										<label class="label">Semester</label>
+										<select name="semester" id="semester" class="select">
+											<option value="unselected">unselected</option>
+											<option value="0">0</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="label">Subject</label>
+										<select name="subject" id="subject" class="select">
+											<option value="">unselected</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="label">Module</label>
+										<select name="module" id="module" class="select">
+											<option value="unselected">unselected</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="label">Course Outcome</label>
+										<select name="co" id="co" class="select">
+											<option value="unselected">unselected</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="label">Abstraction Level</label>
+										<select name="abstraction" class="select" id="abstraction">
+											<option value="unselected">unselected</option>
+											<option value="1">Creations of Allah</option>
+											<option value="1.1">&#10148;Vocabulary of Programmer</option>
+											<option value="1.11">&nbsp;&#9871;Algorithm</option>
+											<option value="1.12">&nbsp;&#9871;High Level Language</option>
+											<option value="1.13">&nbsp;&#9871;System Softwares</option>
+											<option value="1.2">&#10148;Vocabulary of Processor</option>
+											<option value="1.21">&nbsp;&#9871;Assembly Language</option>
+											<option value="1.22">&nbsp;&#9871;Machine Language</option>
+											<option value="1.3">&#10148;Microarchitecture</option>
+											<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
+											<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
+											<option value="1.4">&#10148;Analog & Digital Circuits</option>
+											<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
+											<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
+											<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
+											<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
+											<option value="1.5">&#10148;Voltage</option>
+											<option value="1.51">&nbsp;&#9871;Electric Power System</option>
+											<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
+											<option value="2">Allah</option>
+											<option value="2.1">&#10148;His Actions</option>
+											<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
+											<option value="2.2">&#10148;His Attributes</option>
+											<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
+											<option value="2.3">&#10148;His Essence</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">Cognitive Filters:</div>
+								<div class="card-body">
+									<div class="form-group">
+										<label class="label">Understanding</label>
+										<select name="difficulty" id="difficulty" class="select">
+											<option value="unselected">unselected</option>
+											<option value="Hard">summarized</option>
+											<option value="Medium">reconciled</option>
+											<option value="Easy">structured</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="label">Retention</label>
+										<select name="retention" id="retention" class="select">
+											<option value="unselected">unselected</option>
+											<option value="Low">low</option>
+											<option value="High">high</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="label">Coverage</label>
+										<select name="coverage" id="coverage" class="select">
+											<option value="unselected">unselected</option>
+											<option value="Partial">Partial</option>
+											<option value="Complete">Complete</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</ul>
 				</div>
 			</div>
-			<div class="section">
-				<h5 id="item-1-4">Strategic planning</h5>
-				<p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
-			</div>
-			<div class="section pp-scrollable">
-				<h4 id="item-3">Afterthought phase</h4>
-				<form method="post" id="loginForm" class="form">
-					<div class="form-group">
-						<label class="label">USN</label>
-						<input placeholder="Type here your USN" id="loginUsn" name="loginUsn" type="text" class="input" required/>
+				<div class="row">
+					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+						<nav id="toc" data-toggle="toc" class="d-none d-sm-block navbar navbar-light bg-light flex-column sticky-top"> 
+							<a class="navbar-brand" href="#">Phases</a>
+						</nav>
 					</div>
-					<div class="form-group">
-						<label class="label">Password</label>
-						<input placeholder="Type here your password" name="loginPassword" type="password" class="input" required/>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="button">Login</button>
-					</div>
-					<div data-form-state="loginSuccess" class="state-success" id="i1124e">Logged in successfully</div>
-					<div data-form-state="loginError" class="state-error" id="iszsuh">There was a problem in logging in</div>
-				</form>
-				<div id=entryDiv style="display: none;">
-					<div class="form-group gpd-container">
-						<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
-							<input type="radio" onclick="showAdminEntry()" name="entryState" id="chk-xo4b0ts4ll" class="custom-control-input" />
-							<label for="chk-xo4b0ts4ll" class="custom-control-label">Admin Entry</label>
+					<div id="fullpage" class="col-xs-6 col-sm-8 col-md-9 col-lg-10">
+						<div>
+						<div class="section">
+							<h4 id="item-1">Forethought phase</h4>
+							<p>
+								What follows is a description of the <em>minimum</em> requirements that a learner needs to fullfill in the forethought phase.
+							</p>
 						</div>
-						<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
-							<input type="radio" onclick="showQuestionEntry()" name="entryState" id="chk-3h9jah21ga" class="custom-control-input" />
-							<label for="chk-3h9jah21ga" class="custom-control-label">Question Entry</label>
-						</div>
-						<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
-							<input type="radio" name="entryState" id="chk-csft5j9nek" class="custom-control-input" />
-							<label for="chk-csft5j9nek" class="custom-control-label">Syllabus Entry</label>
-						</div>
-						<div class="custom-control-inline custom-control custom-radio">
-							<input type="radio" onclick="showStudentEntry()" name="entryState" id="chk-yabwst1jy4" checked class="custom-control-input" />
-							<label for="chk-yabwst1jy4" class="custom-control-label">Student Entry</label>
-						</div>
-						<div class="custom-control-inline custom-control custom-radio">
-							<input type="radio" name="entryState" id="chk-14aib822hf" class="custom-control-input" />
-							<label for="chk-14aib822hf" class="custom-control-label">Marks Entry</label>
-						</div>
-					</div>
-					<form method="post" id="entryForm" class="form">
-						<div id="entryLectureDateDiv" style="display: none;" class="admin">
-							<label class="label">Lecture date</label>
-							<div class="input-group mb-3 flatpickr-single">
-								<input name="entryLectureDate" class="form-control admin-required" data-input/>	<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+						<div class="section">						
+							<h5 id="item-1-1">Goal setting</h5>
+							<p>
+								The goals are arranged according to their order of importance. 
+								<br><br>
+								<i>General Procedure</i>
+								<br>
+								a. For setting each of the following goals, first filter the topics by your USN.
+								<br><br>
+								<i>General Preferences</i>
+								<br>
+								a. Whenever possible, start with the topics that you have structured, then reconciled and finally, summarized.
+								<br><br>
+								<b>Goal 1: To learn minimum number of new topics per subject per day</b>
+								<br><br>
+								<i>1.1. Preference</i>
+								<br>
+								a. Start with the subject with the highest number of minimum topics to be covered per day.
+								<br><br>
+								<b>Goal 2: To learn partially covered topics</b>
+								<br><br>								
+								<i>2.1. Preference</i>
+								<br>
+								a. Start with the topics with high retention.
+								<br><br>
+								<b>Goal 3: To revise topics with low retention</b>
+								<br><br>								
+								<i>3.1. Procedure</i>
+								<br>
+								a. Under cognitive filters, select the retention filter.
+								<br>
+								b. Select the retention level as low.
+								<br><br>
+								<b>Goal 4: To self-test the topics of high retention</b> 
+								<br><br>								
+								<i>4.1. Preference</i>
+								<br>
+								a. For each learning technique applied, start with the topics which have questions with higher marks.
+							</p>
+							
+							<div class="mb-3">
+								<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
+									<button type="reset" class="btn btn-secondary">Clear</button>
+									<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
+									<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
+								</div>
+								</form>
+								<table 
+									id="table" 
+									data-toggle="table" 
+									data-sortable="true" 
+									data-show-export="true" 
+									data-show-print="true" 
+									data-show-columns="true" 
+									data-virtual-scroll="true" 
+									data-height="400" 
+									data-search="true" 
+									data-show-search-clear-button="true" 
+									data-mobile-responsive="true" 
+									data-check-on-init="true" 
+									data-single-select="true"
+									data-click-to-select="true"
+									data-escape="true"							
+									data-min-width="750">
+									<thead>
+										<tr id="iwoq03">
+											<th data-field="state" data-checkbox="true">
+											</th>
+											<th data-field="Topic Name" data-sortable="true">Topic
+											</th>
+											<th data-field="Textbook Name">Textbook
+											</th>
+											<th data-field="Page Number" data-sortable="true">Page
+											</th>
+											<th data-field="Question Statement">Question
+											</th>
+											<th data-field="Total Marks" data-sortable="true">Total Marks
+											</th>
+											<th data-field="Total Students (%)" data-sortable="true">Total Students (%)
+											</th>
+											<th data-visible="false" data-field="Obtained Marks (%)" data-sortable="true">Obtained Marks (%)
+											</th>
+										</tr>
+									</thead>
+									<tr></tr>
+								</table>
 							</div>
 						</div>
-						<div class="form-group admin student question">
-							<label class="label">Semester</label>
-							<select name="entrySemester" id="entrySemester" class="select">
-								<option value="">unselected</option>
-								<option value="0">0</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-							</select>
+						<div class="section">
+							<h5 id="item-1-2">Assesment criteria</h5>
+							<p>
+								<em>Retention</em> of the studied topic is to be assessed by <em>explaining the studied topic to yourself without looking at the study material.</em>
+							</p>
 						</div>
-						<div class="form-group admin student question">
-							<label for="frmg-qdlgq0ct49">Subject</label>
-							<select type="text" id="entrySubject" name="entrySubject" class="form-control">
-								<option value="">unselected</option>
-							</select>
+						<div class="section">
+							<h5 id="item-1-3">Performance level</h5>
+							<p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
 						</div>
-						<div class="form-group admin student question">
-							<label for="frmg-qdlgq0ct49" id="i4rq3">Module</label>
-							<select type="text" name="entryModule" class="form-control">
-								<option value="">unselected</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
+						<div class="section">						
+							<h5 id="item-1-4">Strategic planning</h5>
+							<p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
 						</div>
-						<div class="form-group admin student question">
-							<label for="frmg-qdlgq0ct49" id="iii3k">Topic</label>
-							<select type="text" id="entryTopic" name="entryTopic" class="form-control admin-required student-required question-required" required>
-								<option value="">unselected</option>
-							</select>
+						<div class="section">
+						<h5 id="item-1-5">Goal orientation</h5>
+							<p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
+						</div>										
+						<div class="section">
+							<h4 id="item-3">Afterthought phase</h4>
+							<form method="post" id="loginForm" class="form">
+								<div class="form-group">
+									<label class="label">USN</label>
+									<input placeholder="Type here your USN" id="loginUsn" name="loginUsn" type="text" class="input" required/>
+								</div>
+								<div class="form-group">
+									<label class="label">Password</label>
+									<input placeholder="Type here your password" name="loginPassword" type="password" class="input" required/>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="button">Login</button>
+								</div>
+								<div data-form-state="loginSuccess" class="state-success" id="i1124e">Logged in successfully</div>
+								<div data-form-state="loginError" class="state-error" id="iszsuh">There was a problem in logging in</div>
+							</form>
+							<div id=entryDiv style="display: none;">
+								<div class="form-group gpd-container">
+									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
+										<input type="radio" onclick="showAdminEntry()" name="entryState" id="chk-xo4b0ts4ll" class="custom-control-input" />
+										<label for="chk-xo4b0ts4ll" class="custom-control-label">Admin Entry</label>
+									</div>
+									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
+										<input type="radio" onclick="showQuestionEntry()" name="entryState" id="chk-3h9jah21ga" class="custom-control-input" />
+										<label for="chk-3h9jah21ga" class="custom-control-label">Question Entry</label>
+									</div>
+									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
+										<input type="radio" name="entryState" id="chk-csft5j9nek" class="custom-control-input" />
+										<label for="chk-csft5j9nek" class="custom-control-label">Syllabus Entry</label>
+									</div>
+									<div class="custom-control-inline custom-control custom-radio">
+										<input type="radio" onclick="showStudentEntry()" name="entryState" id="chk-yabwst1jy4" checked class="custom-control-input" />
+										<label for="chk-yabwst1jy4" class="custom-control-label">Student Entry</label>
+									</div>
+									<div class="custom-control-inline custom-control custom-radio">
+										<input type="radio" name="entryState" id="chk-14aib822hf" class="custom-control-input" />
+										<label for="chk-14aib822hf" class="custom-control-label">Marks Entry</label>
+									</div>
+								</div>
+								<form method="post" id="entryForm" class="form">
+									<div id="entryLectureDateDiv" style="display: none;" class="admin">
+										<label class="label">Lecture date</label>
+										<div class="input-group mb-3 flatpickr-single">
+											<input name="entryLectureDate" class="form-control admin-required" data-input/>	<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+										</div>
+									</div>
+									<div class="form-group admin student question">
+										<label class="label">Semester</label>
+										<select name="entrySemester" id="entrySemester" class="select">
+											<option value="">unselected</option>
+											<option value="0">0</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+										</select>
+									</div>
+									<div class="form-group admin student question">
+										<label for="frmg-qdlgq0ct49">Subject</label>
+										<select type="text" id="entrySubject" name="entrySubject" class="form-control">
+											<option value="">unselected</option>
+										</select>
+									</div>
+									<div class="form-group admin student question">
+										<label for="frmg-qdlgq0ct49" id="i4rq3">Module</label>
+										<select type="text" name="entryModule" class="form-control">
+											<option value="">unselected</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+									<div class="form-group admin student question">
+										<label for="frmg-qdlgq0ct49" id="iii3k">Topic</label>
+										<select type="text" id="entryTopic" name="entryTopic" class="form-control admin-required student-required question-required" required>
+											<option value="">unselected</option>
+										</select>
+									</div>
+									<div class="form-group admin student">
+										<label for="frmg-qdlgq0ct49" id="i3ymh">Difficulty</label>
+										<select type="text" class="form-control admin-required student-required" name="entryDifficulty" required>
+											<option value="">unselected</option>
+											<option value="Hard">summarized</option>
+											<option value="Medium">reconciled</option>
+											<option value="Easy">structured</option>
+										</select>
+									</div>
+									<div class="form-group admin student">
+										<label for="frmg-qdlgq0ct49" id="izmh2">Retention</label>
+										<select type="text" class="form-control admin-required student-required" name="entryRetention" required>
+											<option value="">unselected</option>
+											<option value="0">complete blackout</option>
+											<option value="1">incorrect response; the correct one remembered</option>
+											<option value="2">incorrect response; where the correct one seemed easy to recall</option>
+											<option value="3">correct response recalled with serious difficulty</option>
+											<option value="4">correct response after a hesitation</option>
+											<option value="5">perfect response</option>
+										</select>
+									</div>
+									<div class="form-group admin student">
+										<label for="frmg-qdlgq0ct49" id="izmh2">Coverage</label>
+										<select type="text" class="form-control admin-required student-required" name="entryCoverage" required>
+											<option value="">unselected</option>
+											<option value="Partial">Partial</option>
+											<option value="Complete">Complete</option>
+										</select>
+									</div>
+									<div class="form-group admin student">
+										<label for="frmg-qdlgq0ct49" id="ieudb">Abstraction</label>
+										<select type="text" name="entryAbstraction" class="form-control admin-required">
+											<option value="">unselected</option>
+											<option value="1">Creations of Allah</option>
+											<option value="1.1">&#10148;Vocabulary of Programmer</option>
+											<option value="1.11">&nbsp;&#9871;Algorithm</option>
+											<option value="1.12">&nbsp;&#9871;High Level Language</option>
+											<option value="1.13">&nbsp;&#9871;System Softwares</option>
+											<option value="1.2">&#10148;Vocabulary of Processor</option>
+											<option value="1.21">&nbsp;&#9871;Assembly Language</option>
+											<option value="1.22">&nbsp;&#9871;Machine Language</option>
+											<option value="1.3">&#10148;Microarchitecture</option>
+											<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
+											<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
+											<option value="1.4">&#10148;Analog & Digital Circuits</option>
+											<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
+											<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
+											<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
+											<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
+											<option value="1.5">&#10148;Voltage</option>
+											<option value="1.51">&nbsp;&#9871;Electric Power System</option>
+											<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
+											<option value="2">Allah</option>
+											<option value="2.1">&#10148;His Actions</option>
+											<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
+											<option value="2.2">&#10148;His Attributes</option>
+											<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
+											<option value="2.3">&#10148;His Essence</option>
+										</select>
+									</div>
+									<div class="form-group question">
+										<label for="frmg-qdlgq0ct49" id="izmh2">Question</label>
+										<textarea class="form-control question-required" name="entryQuestion" rows="4">
+										</textarea>
+									</div>
+									<div class="form-group question">
+										<label for="frmg-qdlgq0ct49" id="izmh2">Course Outcome</label>
+										<input class="form-control question-required" type="text" name="entryCo" placeholder="1,2.."/>
+									</div>
+									<div class="form-group question">
+										<label for="frmg-qdlgq0ct49" id="izmh2">Total Marks</label>
+										<input class="form-control question-required" type="text" name="entryTotalMarks" />
+									</div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary">Enter</button>
+										<button type="button" class="btn btn-outline-secondary" onclick="logout()" class="button">Logout</button>
+									</div>
+									<div data-form-state="entrySuccess" class="state-success" id="i1124eh">Entered successfully</div>
+									<div data-form-state="entryError" class="state-error" id="iszsuhj">There was an error in entering the details</div>
+								</form>
+							</div>
+							</div>
 						</div>
-						<div class="form-group admin student">
-							<label for="frmg-qdlgq0ct49" id="i3ymh">Difficulty</label>
-							<select type="text" class="form-control admin-required student-required" name="entryDifficulty" required>
-								<option value="">unselected</option>
-								<option value="Hard">summarized</option>
-								<option value="Medium">reconciled</option>
-								<option value="Easy">structured</option>
-							</select>
-						</div>
-						<div class="form-group admin student">
-							<label for="frmg-qdlgq0ct49" id="izmh2">Retention</label>
-							<select type="text" class="form-control admin-required student-required" name="entryRetention" required>
-								<option value="">unselected</option>
-								<option value="0">complete blackout</option>
-								<option value="1">incorrect response; the correct one remembered</option>
-								<option value="2">incorrect response; where the correct one seemed easy to recall</option>
-								<option value="3">correct response recalled with serious difficulty</option>
-								<option value="4">correct response after a hesitation</option>
-								<option value="5">perfect response</option>
-							</select>
-						</div>
-						<div class="form-group admin student">
-							<label for="frmg-qdlgq0ct49" id="izmh2">Coverage</label>
-							<select type="text" class="form-control admin-required student-required" name="entryCoverage" required>
-								<option value="">unselected</option>
-								<option value="Partial">Partial</option>
-								<option value="Complete">Complete</option>
-							</select>
-						</div>
-						<div class="form-group admin student">
-							<label for="frmg-qdlgq0ct49" id="ieudb">Abstraction</label>
-							<select type="text" name="entryAbstraction" class="form-control admin-required">
-								<option value="">unselected</option>
-								<option value="1">Creations of Allah</option>
-								<option value="1.1">&#10148;Vocabulary of Programmer</option>
-								<option value="1.11">&nbsp;&#9871;Algorithm</option>
-								<option value="1.12">&nbsp;&#9871;High Level Language</option>
-								<option value="1.13">&nbsp;&#9871;System Softwares</option>
-								<option value="1.2">&#10148;Vocabulary of Processor</option>
-								<option value="1.21">&nbsp;&#9871;Assembly Language</option>
-								<option value="1.22">&nbsp;&#9871;Machine Language</option>
-								<option value="1.3">&#10148;Microarchitecture</option>
-								<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
-								<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
-								<option value="1.4">&#10148;Analog & Digital Circuits</option>
-								<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
-								<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
-								<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
-								<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
-								<option value="1.5">&#10148;Voltage</option>
-								<option value="1.51">&nbsp;&#9871;Electric Power System</option>
-								<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
-								<option value="2">Allah</option>
-								<option value="2.1">&#10148;His Actions</option>
-								<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
-								<option value="2.2">&#10148;His Attributes</option>
-								<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
-								<option value="2.3">&#10148;His Essence</option>
-							</select>
-						</div>
-						<div class="form-group question">
-							<label for="frmg-qdlgq0ct49" id="izmh2">Question</label>
-							<textarea class="form-control question-required" name="entryQuestion" rows="4">
-							</textarea>
-						</div>
-						<div class="form-group question">
-							<label for="frmg-qdlgq0ct49" id="izmh2">Course Outcome</label>
-							<input class="form-control question-required" type="text" name="entryCo" placeholder="1,2.."/>
-						</div>
-						<div class="form-group question">
-							<label for="frmg-qdlgq0ct49" id="izmh2">Total Marks</label>
-							<input class="form-control question-required" type="text" name="entryTotalMarks" />
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary">Enter</button>
-							<button type="button" class="btn btn-outline-secondary" onclick="logout()" class="button">Logout</button>
-						</div>
-						<div data-form-state="entrySuccess" class="state-success" id="i1124eh">Entered successfully</div>
-						<div data-form-state="entryError" class="state-error" id="iszsuhj">There was an error in entering the details</div>
-					</form>
+					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 	<div id="myModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<form method="post" id="registrationForm" class="form">
-						<div class="form-group">
-							<label class="label">USN</label>
-							<input placeholder="Type here your USN" id="registrationUsn" name="registrationUsn" type="text" class="input" required/>
-						</div>
-							<div class="form-group">
-								<label class="label">Section</label>
-								<!--Start Edit-->
-								<select id="registrationSection" name="registrationSection" class="select" required>
-									<option value="">unselected</option>
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
-									<!--End Edit-->
-								</select>
-							</div>
-						<div class="form-group">
-							<label class="label">Password</label>
-							<input placeholder="Type here your password" name="registrationPassword" type="password" class="input" required/>
-						</div>
-						<div class="form-group">
-							<button type="submit" class="button">Register</button>
-						</div>
-						<div data-form-state="registrationSuccess" class="state-success" id="i1124ef">Registered successfully</div>
-						<div data-form-state="registrationError" class="state-error" id="iszsuhs">There was a problem in registering</div>
-					</form>
-				</div>
-			</div>
+	  <div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+		  <div class="modal-body">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+							<form method="post" id="registrationForm" class="form">
+								<div class="form-group">
+									<label class="label">USN</label>
+									<input placeholder="Type here your USN" id="registrationUsn" name="registrationUsn" type="text" class="input" required/>
+								</div>
+									<div class="form-group">
+										<label class="label">Section</label>
+										<!--Start Edit-->
+										<select id="registrationSection" name="registrationSection" class="select" required>
+											<option value="">unselected</option>
+											<option value="A">A</option>
+											<option value="B">B</option>
+											<option value="C">C</option>
+											<!--End Edit-->
+										</select>
+									</div>
+								<div class="form-group">
+									<label class="label">Password</label>
+									<input placeholder="Type here your password" name="registrationPassword" type="password" class="input" required/>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="button">Register</button>
+								</div>
+								<div data-form-state="registrationSuccess" class="state-success" id="i1124ef">Registered successfully</div>
+								<div data-form-state="registrationError" class="state-error" id="iszsuhs">There was a problem in registering</div>
+							</form>
+		  </div>
 		</div>
+
+	  </div>
 	</div>
 	<!--Start Edit-->
 	<script>
 		var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"
 	</script>
 	<script>
-			$('[data-toggle="popover"]').popover({
-				trigger: 'focus'
-			});
-			$('#pagepiling').pagepiling({
-				loopBottom: true,
-				anchors: ['firstPage', 'secondPage', 'thirdPage'],
-				menu: '#myMenu',
-				onLeave: function(index, nextIndex, direction){
-					//after leaving section 2
-					if(index == 3){
-						$("#forethought").addClass("bg-primary text-white");						
-					}
-
-					else if(index == 2){
-						$("#forethought").removeClass("bg-primary text-white");
-					}
-				}				
+			$('#fullpage').fullpage({
+			//options here
+			scrollBar: true,
+			loopBottom: true,
+			paddingBottom: "50vh",
+			bigSectionsDestination:top
 			});
 			$('#table').on('check.bs.table', function (e, row) {
 				$('#entryTopic').find('option').not(':first').remove();
@@ -518,7 +553,7 @@
 			$('#table').on('uncheck.bs.table', function (e, row) { 
 				$('#entryTopic').find('option').not(':first').remove();
 			});
-			 $('#simple-menu').sidr({side:"right",displace:false});
+			 $('#simple-menu').sidr({side:"right"});
 			 function hideAllEntry(){
 				$(".student-required").prop('required',false);
 				$(".question-required").prop('required',false);
