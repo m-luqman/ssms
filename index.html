@@ -74,6 +74,10 @@
 									<div class="input-group mb-3 flatpickr-multi">
 										<input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 									</div>
+									<label class="label">Revision Date Range</label>
+									<div class="input-group mb-3 flatpickr-multi">
+										<input type="text" name="revisionDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+									</div>
 									<label class="label">Lecture Date Range</label>
 									<div class="input-group mb-3 flatpickr-multi">
 										<input type="text" name="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
@@ -223,44 +227,17 @@
 						</div>
 						<div class="section">						
 							<h5 id="item-1-1">Goal setting</h5>
-							<p>
-								The goals are arranged according to their order of importance. 
-								<br><br>
-								<i>General Procedure</i>
-								<br>
-								a. For setting each of the following goals, first filter the topics by your USN.
-								<br><br>
-								<i>General Preferences</i>
-								<br>
-								a. Whenever possible, start with the topics that you have structured, then reconciled and finally, summarized.
-								<br><br>
-								<b>Goal 1: To learn minimum number of new topics per subject per day</b>
-								<br><br>
-								<i>1.1. Preference</i>
-								<br>
-								a. Start with the subject with the highest number of minimum topics to be covered per day.
-								<br><br>
-								<b>Goal 2: To learn partially covered topics</b>
-								<br><br>								
-								<i>2.1. Preference</i>
-								<br>
-								a. Start with the topics with high retention.
-								<br><br>
-								<b>Goal 3: To revise topics with low retention</b>
-								<br><br>								
-								<i>3.1. Procedure</i>
-								<br>
-								a. Under cognitive filters, select the retention filter.
-								<br>
-								b. Select the retention level as low.
-								<br><br>
-								<b>Goal 4: To self-test the topics of high retention</b> 
-								<br><br>								
-								<i>4.1. Preference</i>
-								<br>
-								a. For each learning technique applied, start with the topics which have questions with higher marks.
-							</p>
-							
+							<dl class="mt-3">
+								<dt><b>Goal 1:</b></dt>
+								<dd>To learn minimum number of new topics per subject per day</dd>
+								<dt><b>Goal 2:</b></dt>
+								<dd>To learn partially covered topics</dd>
+								<dt><b>Goal 3:</b></dt>
+								<dd>To revise topics with low retention</dd>
+								<dt><b>Goal 4:</b></dt>
+								<dd>To self-test the topics of high retention</dd>
+							</dl>
+
 							<div class="mb-3">
 								<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
 									<button type="reset" class="btn btn-secondary">Clear</button>
@@ -635,14 +612,14 @@
 	</script>
 	<script>
 		filterUsing('section');
-		         filterUsing('semester');
-		         filterUsing('module');
-		         filterUsing('co');
-		         filterUsing('difficulty');
-		         filterUsing('retention');
-		         filterUsing('subject');
-		         filterUsing('abstraction');
-		         filterUsing('coverage');
+		filterUsing('semester');
+		filterUsing('module');
+		filterUsing('co');
+		filterUsing('difficulty');
+		filterUsing('retention');
+		filterUsing('subject');
+		filterUsing('abstraction');
+		filterUsing('coverage');
 	</script>
 	<script>
 		const usnField = document.querySelector('#usn');
