@@ -251,13 +251,21 @@
 					<div id="fullpage" class="col-xs-6 col-sm-8 col-md-9 col-lg-10">
 						<div>
 						<div class="section">
-							<h4 id="item-1">Forethought phase</h4>
+							<h4 id="item-1">
+								Forethought phase
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="This is the phase of learning that comes before reading a text."><i class="fa fa-question-circle"></i>
+								</a>
+							</h4>
 							<p>
 								What follows is a description of the <em>minimum</em> requirements that a learner needs to fullfill in the forethought phase.
 							</p>
 						</div>
 						<div class="section">						
-							<h5 id="item-1-1">Goal setting</h5>
+							<h5 id="item-1-1">
+								Goal setting
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Opening the textbook with the chosen page number"><i class="fa fa-question-circle"></i>
+								</a>								
+							</h5>
 							<div class="accordion" id="goalAccordion">
 							  <div class="card">
 								<div class="card-header" id="goalOne">
@@ -366,7 +374,11 @@
 							</div>
 						</div>
 						<div class="section">
-							<h5 id="item-1-2">Assesment criteria</h5>
+							<h5 id="item-1-2">
+								Assesment criteria
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Standards against which text reading will be assessed"><i class="fa fa-question-circle"></i>
+								</a>							
+							</h5>
 							<p>
 								<em>Retention</em> of the studied topic is to be assessed by <em>explaining the studied topic to yourself without looking at the study material.</em>
 							</p>
@@ -420,11 +432,19 @@
 							</div>
 						</div>
 						<div class="section">
-							<h5 id="item-1-3">Performance level</h5>
-							<p>To remember everything summarized without hesiatation</p>
+							<h5 id="item-1-3">
+								Performance level
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The level of perfection that is intended to be achieved"><i class="fa fa-question-circle"></i>
+								</a>														
+							</h5>
+							<p>To remember everything summarized without hesitation</p>
 						</div>
 						<div class="section">
-							<h5 id="item-1-5">Goal orientation</h5>
+							<h5 id="item-1-5">
+								Goal orientation
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Beliefs about learning purposes"><i class="fa fa-question-circle"></i>
+								</a>														
+							</h5>
 							<div class="accordion" id="goalOrientationAccordion">
 							  <div class="card">
 								<div class="card-header" id="orientationOne">
@@ -698,7 +718,11 @@
 
 						</div>										
 						<div class="section">
-							<h4 id="item-3">Afterthought phase</h4>
+							<h4 id="item-3">
+								Afterthought phase
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="This is the phase of learning that comes after reading a text."><i class="fa fa-question-circle"></i>
+								</a>								
+							</h4>
 							<form method="post" id="loginForm" class="form">
 								<div class="form-group">
 									<label class="label">USN</label>
@@ -909,6 +933,7 @@
 		var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"
 	</script>
 	<script>
+			$('[data-toggle="popover"]').popover();
 			$('#fullpage').fullpage({
 			//options here
 			scrollBar: true,
