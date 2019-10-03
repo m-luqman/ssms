@@ -38,6 +38,7 @@
 	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/print/bootstrap-table-print.min.js"></script>
 	<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js" integrity="sha256-Lw96aZrbaAuj9vBh9haoZrkYmRA9Rbkv4K6C8LonvBk=" crossorigin="anonymous"></script>
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>	
 	<!--End Edit-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
@@ -46,11 +47,12 @@
 	<link rel="stylesheet" href="styles/base.css">
 	<link rel="stylesheet" href="styles/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/stylesheets/jquery.sidr.light.min.css">
-<link
-  rel="stylesheet"
-  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
-/>	
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.css" integrity="sha256-3IkGqGYOvq1Ype2MXFwVJFeBtBACgiveho3SacOEEP8=" crossorigin="anonymous" />
+	<link
+	  rel="stylesheet"
+	  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+	/>	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.css" integrity="sha256-3IkGqGYOvq1Ype2MXFwVJFeBtBACgiveho3SacOEEP8=" crossorigin="anonymous" />
+	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"/>
 </head>
 
 <body data-spy="scroll" data-target="#toc" data-offset="300">
@@ -76,15 +78,15 @@
 								<div class="card-header">Date Filters:</div>
 								<div class="card-body">
 									<label class="label">Study Date Range</label>
-									<div class="input-group mb-3 flatpickr-multi">
+									<div class="input-group mb-5 flatpickr-multi">
 										<input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 									</div>
 									<label class="label">Revision Date Range</label>
-									<div class="input-group mb-3 flatpickr-multi">
+									<div class="input-group mb-5 flatpickr-multi">
 										<input type="text" name="revisionDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 									</div>
 									<label class="label">Lecture Date Range</label>
-									<div class="input-group mb-3 flatpickr-multi">
+									<div class="input-group mb-5 flatpickr-multi">
 										<input type="text" name="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 									</div>
 								</div>
@@ -105,7 +107,12 @@
 									</div>
 									<div class="form-group">
 										<label class="label">USN</label>
-										<input placeholder="1HKxxCSxxx" name="usn" type="text" id="usn" class="input" />
+										<div class="input-group">										
+											<select id="usn" name="usn" class="select">
+												<option value="unselected">unselected</option>
+											</select>
+											<input id="filterModeToggle" data-on="covered" data-off="uncovered" type="checkbox" onchange="changeFilterMode()" checked data-toggle="toggle" data-size="mini">
+										</div>
 									</div>
 								</div>
 							</div>
@@ -927,7 +934,7 @@
 	</div>
 	<!--Start Edit-->
 	<script>
-		var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"
+		var serverUrl="http://localhost:8080"
 	</script>
 	<script>
 			$('[data-toggle="popover"]').popover();
@@ -946,6 +953,19 @@
 				$('#entryTopic').find('option').not(':first').remove();
 			});
 			 $('#simple-menu').sidr({side:"right"});
+			var filterEndPoint="/filter";
+			function changeFilterMode(){
+				
+				var checkBox = document.getElementById("filterModeToggle");
+				
+				if (checkBox.checked == true){
+					filterEndPoint="/filter";
+				} else {
+					filterEndPoint="/filterComplement";
+				}
+				
+				loadTable();
+			}
 			 function hideAllEntry(){
 				$(".student-required").prop('required',false);
 				$(".question-required").prop('required',false);
@@ -1007,20 +1027,27 @@
 	
 	
 		fillCombo('subject','filters','/fill/subjects?','Subject_Name');
+		fillCombo('usn','filters','/fill/usn?','USN');
 		fillCombo('entrySubject','entryForm','/fill/entrySubjects?','Subject_Name');
 		fillCombo('entryTopic','entryForm','/fill/topics?','Topic_Name');
 	</script>
 	<script>
 		function loadTable(){
-				$('#table').bootstrapTable('refresh', {url: serverUrl+'/filter?'+$('#filters').serialize()})
-		         }
+				$('#table').bootstrapTable('refresh', {url: serverUrl+filterEndPoint+'?'+$('#filters').serialize()})
+		}
 	</script>
 	<script>
-		function filterUsing (element,trigger='change'){
+		function filterUsing (element,selected=function(){},unselected=function(){}){
 		         	const combo = document.querySelector('#'+element);
-		         	combo.addEventListener(trigger,(event)=>{
+		         	combo.addEventListener('change',(event)=>{
 		         		var value=(event.target.value);
-		         		loadTable();
+		         		if(value=="unselected" || value==""){
+							unselected();
+						}
+						else{
+							selected();
+						}
+						loadTable();
 		         	});
 		         }
 	</script>
@@ -1034,25 +1061,17 @@
 		filterUsing('subject');
 		filterUsing('abstraction');
 		filterUsing('coverage');
-	</script>
-	<script>
-		const usnField = document.querySelector('#usn');
-		         usnField.addEventListener('input',(event)=>{
-		         	var usn=(event.target.value);
-		         	$.getJSON(serverUrl+'/filter?'+$('#filters').serialize(), 
-		         
-		         function(tuples) {
-		         		$('#table').bootstrapTable('load',tuples)
-		         		if(usn!="" && tuples!=[]){				
-		         			$('#table').bootstrapTable('hideColumn', 'Total Students (%)');
-		         			$('#table').bootstrapTable('showColumn', 'Obtained Marks (%)');
-		         		}
-		         		else if(usn==""){
-		         			$('#table').bootstrapTable('showColumn', 'Total Students (%)');
-		         			$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
-		         		}
-		            		});
-		         });
+		filterUsing(
+		'usn'
+		,function(){
+			$('#table').bootstrapTable('hideColumn', 'Total Students (%)');
+			$('#table').bootstrapTable('showColumn', 'Obtained Marks (%)');
+		}
+		,function(){
+			$('#table').bootstrapTable('showColumn', 'Total Students (%)');
+			$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
+		}
+		);		
 	</script>
 	<!--End Edit-->
 	<script>
