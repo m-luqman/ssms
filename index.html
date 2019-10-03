@@ -70,185 +70,6 @@
 	</style>
 	<div>
 		<div >
-			<div >
-				<div id="sidr">
-					<form id="filters">
-						<ul>
-							<div class="card">
-								<div class="card-header">Date Filters:</div>
-								<div class="card-body">
-									<label class="label">Study Date Range</label>
-									<div class="input-group mb-5 flatpickr-multi">
-										<input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-									</div>
-									<label class="label">Revision Date Range</label>
-									<div class="input-group mb-5 flatpickr-multi">
-										<input type="text" name="revisionDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-									</div>
-									<label class="label">Lecture Date Range</label>
-									<div class="input-group mb-5 flatpickr-multi">
-										<input type="text" name="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header">Organizational Filters:</div>
-								<div class="card-body">
-									<div class="form-group">
-										<label class="label">Section</label>
-										<!--Start Edit-->
-										<select id="section" name="section" class="select">
-											<option value="unselected">unselected</option>
-											<option value="A">A</option>
-											<option value="B">B</option>
-											<option value="C">C</option>
-											<!--End Edit-->
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="label">USN</label>
-										<div class="input-group">										
-											<select id="usn" name="usn" class="select">
-												<option value="unselected">unselected</option>
-											</select>
-											<input id="filterModeToggle" data-on="covered" data-off="uncovered" type="checkbox" onchange="changeFilterMode()" checked data-toggle="toggle" data-size="mini">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header">Curricular Filters:</div>
-								<div class="card-body">
-									<div class="form-group">
-										<label class="label">Semester</label>
-										<select name="semester" id="semester" class="select">
-											<option value="unselected">unselected</option>
-											<option value="0">0</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="label">Subject</label>
-										<select name="subject" id="subject" class="select">
-											<option value="">unselected</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="label">Module</label>
-										<select name="module" id="module" class="select">
-											<option value="unselected">unselected</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="label">Course Outcome</label>
-										<select name="co" id="co" class="select">
-											<option value="unselected">unselected</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="label">Abstraction Level</label>
-										<select name="abstraction" class="select" id="abstraction">
-											<option value="unselected">unselected</option>
-											<option value="1">Creations of Allah</option>
-											<option value="1.1">&#10148;Vocabulary of Programmer</option>
-											<option value="1.11">&nbsp;&#9871;Algorithm</option>
-											<option value="1.12">&nbsp;&#9871;High Level Language</option>
-											<option value="1.13">&nbsp;&#9871;System Softwares</option>
-											<option value="1.2">&#10148;Vocabulary of Processor</option>
-											<option value="1.21">&nbsp;&#9871;Assembly Language</option>
-											<option value="1.22">&nbsp;&#9871;Machine Language</option>
-											<option value="1.3">&#10148;Microarchitecture</option>
-											<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
-											<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
-											<option value="1.4">&#10148;Analog & Digital Circuits</option>
-											<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
-											<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
-											<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
-											<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
-											<option value="1.5">&#10148;Voltage</option>
-											<option value="1.51">&nbsp;&#9871;Electric Power System</option>
-											<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
-											<option value="2">Allah</option>
-											<option value="2.1">&#10148;His Actions</option>
-											<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
-											<option value="2.2">&#10148;His Attributes</option>
-											<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
-											<option value="2.3">&#10148;His Essence</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-header">Motivational Filters:</div>
-								<div class="card-body">
-									<div class="form-group">
-										<label class="label">Objective</label>
-										<select name="objective" id="objective" class="select">
-											<option value="unselected">unselected</option>
-											<option value="religion">preservation of religion</option>
-											<option value="life">preservation of the life</option>
-											<option value="mind">preservation of the mind</option>
-											<option value="family">preservation of lineage/offspring/honour/dignity</option>
-											<option value="wealth">preservation of wealth</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="label">Priority</label>
-										<select name="priority" id="priority" class="select">
-											<option value="unselected">unselected</option>
-											<option value="essentials">essentials</option>
-											<option value="complementary">complementary</option>
-											<option value="desirable">desirable</option>
-										</select>
-									</div>
-								</div>
-							</div>
-
-							<div class="card">
-								<div class="card-header">Cognitive Filters:</div>
-								<div class="card-body">
-									<div class="form-group">
-										<label class="label">Understanding</label>
-										<select name="difficulty" id="difficulty" class="select">
-											<option value="unselected">unselected</option>
-											<option value="Hard">summarized</option>
-											<option value="Medium">reconciled</option>
-											<option value="Easy">structured</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="label">Retention</label>
-										<select name="retention" id="retention" class="select">
-											<option value="unselected">unselected</option>
-											<option value="Low">low</option>
-											<option value="High">high</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="label">Coverage</label>
-										<select name="coverage" id="coverage" class="select">
-											<option value="unselected">unselected</option>
-											<option value="Partial">Partial</option>
-											<option value="Complete">Complete</option>
-										</select>
-									</div>
-								</div>
-							</div>
-						</ul>
-				</div>
-			</div>
 				<div class="row">
 					<div class="d-none d-sm-block col-sm-4 col-md-3 col-lg-2">
 						<nav id="toc" data-toggle="toc" class="navbar navbar-light bg-light flex-column sticky-top"> 
@@ -332,13 +153,192 @@
 								</div>
 							  </div>						  
 							</div>
+							<div >
+								<div id="sidr">
+									<form id="filters">
+										<ul>
+											<div class="card">
+												<div class="card-header">Date Filters:</div>
+												<div class="card-body">
+													<label class="label">Study Date Range</label>
+													<div class="input-group mb-5 flatpickr-multi">
+														<input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+													</div>
+													<label class="label">Revision Date Range</label>
+													<div class="input-group mb-5 flatpickr-multi">
+														<input type="text" name="revisionDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+													</div>
+													<label class="label">Lecture Date Range</label>
+													<div class="input-group mb-5 flatpickr-multi">
+														<input type="text" name="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+													</div>
+												</div>
+											</div>
+											<div class="card">
+												<div class="card-header">Organizational Filters:</div>
+												<div class="card-body">
+													<div class="form-group">
+														<label class="label">Section</label>
+														<!--Start Edit-->
+														<select id="section" name="section" class="select">
+															<option value="unselected">unselected</option>
+															<option value="A">A</option>
+															<option value="B">B</option>
+															<option value="C">C</option>
+															<!--End Edit-->
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="label">USN</label>
+														<div class="input-group">										
+															<select id="usn" name="usn" class="select">
+																<option value="unselected">unselected</option>
+															</select>
+															<input id="filterModeToggle" data-on="covered" data-off="uncovered" type="checkbox" onchange="changeFilterMode()" checked data-toggle="toggle" data-size="mini">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="card">
+												<div class="card-header">Curricular Filters:</div>
+												<div class="card-body">
+													<div class="form-group">
+														<label class="label">Semester</label>
+														<select name="semester" id="semester" class="select">
+															<option value="unselected">unselected</option>
+															<option value="0">0</option>
+															<option value="5">5</option>
+															<option value="6">6</option>
+															<option value="7">7</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="label">Subject</label>
+														<select name="subject" id="subject" class="select">
+															<option value="">unselected</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="label">Module</label>
+														<select name="module" id="module" class="select">
+															<option value="unselected">unselected</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="label">Course Outcome</label>
+														<select name="co" id="co" class="select">
+															<option value="unselected">unselected</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="label">Abstraction Level</label>
+														<select name="abstraction" class="select" id="abstraction">
+															<option value="unselected">unselected</option>
+															<option value="1">Creations of Allah</option>
+															<option value="1.1">&#10148;Vocabulary of Programmer</option>
+															<option value="1.11">&nbsp;&#9871;Algorithm</option>
+															<option value="1.12">&nbsp;&#9871;High Level Language</option>
+															<option value="1.13">&nbsp;&#9871;System Softwares</option>
+															<option value="1.2">&#10148;Vocabulary of Processor</option>
+															<option value="1.21">&nbsp;&#9871;Assembly Language</option>
+															<option value="1.22">&nbsp;&#9871;Machine Language</option>
+															<option value="1.3">&#10148;Microarchitecture</option>
+															<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
+															<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
+															<option value="1.4">&#10148;Analog & Digital Circuits</option>
+															<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
+															<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
+															<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
+															<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
+															<option value="1.5">&#10148;Voltage</option>
+															<option value="1.51">&nbsp;&#9871;Electric Power System</option>
+															<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
+															<option value="2">Allah</option>
+															<option value="2.1">&#10148;His Actions</option>
+															<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
+															<option value="2.2">&#10148;His Attributes</option>
+															<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
+															<option value="2.3">&#10148;His Essence</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="card">
+												<div class="card-header">Motivational Filters:</div>
+												<div class="card-body">
+													<div class="form-group">
+														<label class="label">Objective</label>
+														<select name="objective" id="objective" class="select">
+															<option value="unselected">unselected</option>
+															<option value="religion">preservation of religion</option>
+															<option value="life">preservation of the life</option>
+															<option value="mind">preservation of the mind</option>
+															<option value="family">preservation of lineage/offspring/honour/dignity</option>
+															<option value="wealth">preservation of wealth</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="label">Priority</label>
+														<select name="priority" id="priority" class="select">
+															<option value="unselected">unselected</option>
+															<option value="essentials">essentials</option>
+															<option value="complementary">complementary</option>
+															<option value="desirable">desirable</option>
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="card">
+												<div class="card-header">Cognitive Filters:</div>
+												<div class="card-body">
+													<div class="form-group">
+														<label class="label">Understanding</label>
+														<select name="difficulty" id="difficulty" class="select">
+															<option value="unselected">unselected</option>
+															<option value="Hard">summarized</option>
+															<option value="Medium">reconciled</option>
+															<option value="Easy">structured</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="label">Retention</label>
+														<select name="retention" id="retention" class="select">
+															<option value="unselected">unselected</option>
+															<option value="Low">low</option>
+															<option value="High">high</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label class="label">Coverage</label>
+														<select name="coverage" id="coverage" class="select">
+															<option value="unselected">unselected</option>
+															<option value="Partial">Partial</option>
+															<option value="Complete">Complete</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</ul>
+								</div>
+							</div>							
 							<div class="mb-3">
 								<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
 									<button type="reset" class="btn btn-secondary">Clear</button>
 									<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
 									<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
 								</div>
-								</form>
+							</form>
 								<table 
 									id="table" 
 									data-toggle="table" 
@@ -934,7 +934,7 @@
 	</div>
 	<!--Start Edit-->
 	<script>
-		var serverUrl="http://localhost:8080"
+		var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"
 	</script>
 	<script>
 			$('[data-toggle="popover"]').popover();
