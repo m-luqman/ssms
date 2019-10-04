@@ -38,7 +38,7 @@
 	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/print/bootstrap-table-print.min.js"></script>
 	<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js" integrity="sha256-Lw96aZrbaAuj9vBh9haoZrkYmRA9Rbkv4K6C8LonvBk=" crossorigin="anonymous"></script>
-	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>	
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
 	<!--End Edit-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
@@ -52,7 +52,7 @@
 	  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
 	/>	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.css" integrity="sha256-3IkGqGYOvq1Ype2MXFwVJFeBtBACgiveho3SacOEEP8=" crossorigin="anonymous" />
-	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"/>
+	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target="#toc" data-offset="300">
@@ -194,7 +194,7 @@
 															<select id="usn" name="usn" class="select">
 																<option value="unselected">unselected</option>
 															</select>
-															<input id="filterModeToggle" data-on="covered" data-off="uncovered" type="checkbox" onchange="changeFilterMode()" checked data-toggle="toggle" data-size="mini">
+															<input id="filterModeToggle" data-on="covered" data-off="uncovered" data-onstyle="outline-primary" data-offstyle="outline-secondary" type="checkbox" onchange="changeFilterMode()" checked data-toggle="toggle" data-size="sm">
 														</div>
 													</div>
 												</div>
@@ -396,7 +396,7 @@
 							  <div class="card">
 								<div class="card-header" id="strategyOne">
 								  <div class="mb-0">
-									<input type="radio" id="summarization" name="strategy" value="summarization" data-toggle="collapse" data-target="#collapseStrategyOne" aria-expanded="true" aria-controls="collapseStrategyOne"/>
+									<input type="radio" id="summarization" name="strategy" value="Hard" data-toggle="collapse" data-target="#collapseStrategyOne" aria-expanded="true" aria-controls="collapseStrategyOne"/>
 									<label for="summarization">Summarization</label>
 								  </div>
 								</div>
@@ -410,7 +410,7 @@
 							  <div class="card">
 								<div class="card-header" id="strategyTwo">
 								  <div class="mb-0">
-									<input type="radio" id="reconciliation" name="strategy" value="reconciliation" data-toggle="collapse" data-target="#collapseStrategyTwo" aria-expanded="true" aria-controls="collapseStrategyTwo"/>
+									<input type="radio" id="reconciliation" name="strategy" value="Medium" data-toggle="collapse" data-target="#collapseStrategyTwo" aria-expanded="true" aria-controls="collapseStrategyTwo"/>
 									<label for="reconciliation">Reconciliation</label>
 								  </div>
 								</div>
@@ -423,7 +423,7 @@
 							  <div class="card">
 								<div class="card-header" id="strategyThree">
 								  <div class="mb-0">
-									<input type="radio" id="structuring" name="strategy" value="structuring" data-toggle="collapse" data-target="#collapseStrategyThree" aria-expanded="true" aria-controls="collapseStrategyThree"/>
+									<input type="radio" id="structuring" name="strategy" value="Easy" data-toggle="collapse" data-target="#collapseStrategyThree" aria-expanded="true" aria-controls="collapseStrategyThree"/>
 									<label for="structuring">Structuring</label>
 								  </div>
 								</div>
@@ -743,27 +743,27 @@
 								<div data-form-state="loginError" class="state-error" id="iszsuh">There was a problem in logging in</div>
 							</form>
 							<div id=entryDiv style="display: none;">
-								<div class="form-group gpd-container">
-									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
-										<input type="radio" onclick="showAdminEntry()" name="entryState" id="chk-xo4b0ts4ll" class="custom-control-input" />
-										<label for="chk-xo4b0ts4ll" class="custom-control-label">Admin Entry</label>
-									</div>
-									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
-										<input type="radio" onclick="showQuestionEntry()" name="entryState" id="chk-3h9jah21ga" class="custom-control-input" />
-										<label for="chk-3h9jah21ga" class="custom-control-label">Question Entry</label>
-									</div>
-									<div class="custom-control-inline custom-control custom-radio adminComponent" style="display: none;">
-										<input type="radio" name="entryState" id="chk-csft5j9nek" class="custom-control-input" />
-										<label for="chk-csft5j9nek" class="custom-control-label">Syllabus Entry</label>
-									</div>
-									<div class="custom-control-inline custom-control custom-radio">
-										<input type="radio" onclick="showStudentEntry()" name="entryState" id="chk-yabwst1jy4" checked class="custom-control-input" />
-										<label for="chk-yabwst1jy4" class="custom-control-label">Student Entry</label>
-									</div>
-									<div class="custom-control-inline custom-control custom-radio">
-										<input type="radio" name="entryState" id="chk-14aib822hf" class="custom-control-input" />
-										<label for="chk-14aib822hf" class="custom-control-label">Marks Entry</label>
-									</div>
+								<div data-toggle="buttons">
+									<label class="btn btn-secondary adminComponent" style="display: none;">
+										<input type="radio" onchange="showAdminEntry()" name="entryState" />
+										Admin Entry
+									</label>
+									<label class="btn btn-secondary adminComponent" style="display: none;">
+										<input type="radio" onchange="showQuestionEntry()" name="entryState" />
+										Question Entry
+									</label>
+									<label class="btn btn-secondary adminComponent" style="display: none;">
+										<input type="radio" name="entryState" />
+										Syllabus Entry
+									</label>
+									<label class="btn btn-secondary active">
+										<input type="radio" onchange="showStudentEntry()" name="entryState" checked />
+										Student Entry
+									</label>
+									<label class="btn btn-secondary">
+										<input type="radio" name="entryState" />
+										Marks Entry
+									</label>
 								</div>
 								<form method="post" id="entryForm" class="form">
 									<div id="entryLectureDateDiv" style="display: none;" class="admin">
@@ -773,46 +773,12 @@
 										</div>
 									</div>
 									<div class="form-group admin student question">
-										<label class="label">Semester</label>
-										<select name="entrySemester" id="entrySemester" class="select">
-											<option value="">unselected</option>
-											<option value="0">0</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-										</select>
-									</div>
-									<div class="form-group admin student question">
-										<label for="frmg-qdlgq0ct49">Subject</label>
-										<select type="text" id="entrySubject" name="entrySubject" class="form-control">
-											<option value="">unselected</option>
-										</select>
-									</div>
-									<div class="form-group admin student question">
-										<label for="frmg-qdlgq0ct49" id="i4rq3">Module</label>
-										<select type="text" name="entryModule" class="form-control">
-											<option value="">unselected</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
-									</div>
-									<div class="form-group admin student question">
 										<label for="frmg-qdlgq0ct49" id="iii3k">Topic</label>
-										<select type="text" id="entryTopic" name="entryTopic" class="form-control admin-required student-required question-required" required>
-											<option value="">unselected</option>
-										</select>
+										<input id="entryTopic" name="entryTopic" placeholder="please select a topic in the forethought phase" type="text" class="readonly form-control admin-required student-required question-required" required/>
 									</div>
 									<div class="form-group admin student">
 										<label for="frmg-qdlgq0ct49" id="i3ymh">Difficulty</label>
-										<select type="text" class="form-control admin-required student-required" name="entryDifficulty" required>
-											<option value="">unselected</option>
-											<option value="Hard">summarized</option>
-											<option value="Medium">reconciled</option>
-											<option value="Easy">structured</option>
-										</select>
+										<input id="entryDifficulty" name="entryDifficulty" placeholder="please select a learning strategy in the forethought phase" type="text" class="readonly form-control admin-required student-required" required/>										
 									</div>
 									<div class="form-group admin student">
 										<label for="frmg-qdlgq0ct49" id="izmh2">Retention</label>
@@ -937,6 +903,9 @@
 		var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"
 	</script>
 	<script>
+			$(".readonly").on('keydown paste cut', function(e){
+				e.preventDefault();
+			});
 			$('[data-toggle="popover"]').popover();
 			$('#fullpage').fullpage({
 			//options here
@@ -945,12 +914,14 @@
 			fitToSection:false,
 			autoScrolling:false
 			});
+			$('input[type=radio][name=strategy]').change(function() {
+				$('#entryDifficulty').val(this.value);
+			});
 			$('#table').on('check.bs.table', function (e, row) {
-				$('#entryTopic').find('option').not(':first').remove();
-				$('#entryTopic').append(new Option(row['Topic Name'],row['Topic Name'], true, true));
+				$('#entryTopic').val(row['Topic Name']);
 			});
 			$('#table').on('uncheck.bs.table', function (e, row) { 
-				$('#entryTopic').find('option').not(':first').remove();
+				$('#entryTopic').val("");
 			});
 			 $('#simple-menu').sidr({side:"right"});
 			var filterEndPoint="/filter";
@@ -1028,8 +999,6 @@
 	
 		fillCombo('subject','filters','/fill/subjects?','Subject_Name');
 		fillCombo('usn','filters','/fill/usn?','USN');
-		fillCombo('entrySubject','entryForm','/fill/entrySubjects?','Subject_Name');
-		fillCombo('entryTopic','entryForm','/fill/topics?','Topic_Name');
 	</script>
 	<script>
 		function loadTable(){
