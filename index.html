@@ -905,6 +905,7 @@
 	<script>
 			$(".readonly").on('keydown paste cut', function(e){
 				e.preventDefault();
+				return false;
 			});
 			$('[data-toggle="popover"]').popover();
 			$('#fullpage').fullpage({
