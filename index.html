@@ -85,7 +85,6 @@
 							</p>
 						</div>
 						<div class="section">						
-						<div class="slide active">
 							<h5 id="item-1-1">
 								Goal setting
 								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Opening the textbook with the chosen page number"><i class="fa fa-question-circle"></i>
@@ -150,9 +149,10 @@
 								</div>
 							  </div>						  
 							</div>
-							<form class="slide" id="filters">
+							<form id="filters">
 									<div >
-										<div class="card-group" >
+										<div id="sidr">
+										<ul>
 											<div class="card">
 												<div class="card-header">Date Filters:</div>
 												<div class="card-body">
@@ -325,12 +325,14 @@
 													</div>
 												</div>
 											</div>
+										</ul>
 									</div>
 								</div>							
 								<div class="mb-3">
 									<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
 										<button type="reset" class="btn btn-secondary">Clear</button>
 										<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
+										<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
 									</div>
 								</div>
 							</form>
@@ -373,7 +375,6 @@
 								</thead>
 								<tr></tr>
 							</table>
-						</div>
 						</div>
 						<div class="section">
 							<h5 id="item-1-2">
@@ -909,7 +910,8 @@
 			scrollOverflow: true,
 			loopBottom: true,
 			fitToSection:true,
-			autoScrolling:true
+			autoScrolling:true,
+			normalScrollElements: '#siddr, #table'
 			});
 			$('input[type=radio][name=strategy]').change(function() {
 				$('#entryDifficulty').find('option').remove();
@@ -923,6 +925,7 @@
 				$('#entryTopic').find('option').remove();
 				$('#entryTopic').append(new Option("please select a topic in the forethought phase","", true, true));
 			});
+			 $('#simple-menu').sidr({side:"left",displace:false});
 			var filterEndPoint="/filter";
 			function changeFilterMode(){
 				
