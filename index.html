@@ -908,12 +908,14 @@
 	</script>
 	<script>
 			$('[data-toggle="popover"]').popover();
-			$('#fullpage').fullpage({
-			//options here
-			scrollBar: true,
-			loopBottom: false,
-			fitToSection:true,
-			autoScrolling:false
+			$(document).ready(function(){
+				$('#fullpage').fullpage({
+					//options here
+					scrollBar: true,
+					loopBottom: false,
+					fitToSection:true,
+					autoScrolling:false
+				});
 			});
 			$('input[type=radio][name=strategy]').change(function() {
 				$('#entryDifficulty').find('option').remove();
