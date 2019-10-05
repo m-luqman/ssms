@@ -912,10 +912,8 @@
 			autoScrolling:true,
 			normalScrollElements: '#table',
 			scrollOverflowOptions: {
-				preventDefaultException: {
-					
-					tagName: /.*/
-				}
+				click:false, 
+				preventDefaultException: {tagName: /.*/} 
 			}			
 			});
 			$('input[type=radio][name=strategy]').change(function() {
