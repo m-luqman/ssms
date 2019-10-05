@@ -909,13 +909,12 @@
 	</script>
 	<script>
 			$('[data-toggle="popover"]').popover();
-			$('#fullpage').fullpage({
+			new fullpage('#fullpage', {
 			//options here
 			scrollBar: true,
 			scrollOverflow: true,
-			scrollOverflowReset:true,
-			loopBottom: false,
-			fitToSection:false,
+			loopBottom: true,
+			fitToSection:true,
 			autoScrolling:true
 			});
 			$('input[type=radio][name=strategy]').change(function() {
@@ -955,21 +954,24 @@
 			 }
 	         function showAdminEntry(){
 	         	hideAllEntry();	
-				$(".admin").show("slow");
+				$(".admin").show();
 				$(".admin-required").prop('required',true);
 				entryUrl=serverUrl+"/enter/adminStatus";
+				fullpage_api.reBuild();
 	         }
 	         function showStudentEntry(){
 	         	hideAllEntry();
-				$(".student").show("slow");
+				$(".student").show();
 				$(".student-required").prop('required',true);
 				entryUrl=serverUrl+"/enter/status";
+				fullpage_api.reBuild();
 	         }
 	         function showQuestionEntry(){
 	         	hideAllEntry();
-				$(".question").show("slow");
+				$(".question").show();
 				$(".question-required").prop('required',true);
 				entryUrl=serverUrl+"/enter/question";
+				fullpage_api.reBuild();
 	         }
 		 function rangeTableUpdate(){
 		 	var date=$(".rangeTableUpdate").val();
@@ -1129,8 +1131,9 @@
 
 	<script>
 		function logout(){
-			$("#loginForm").show("slow");
-			$("#entryDiv").hide("slow");			
+			$("#loginForm").show();
+			$("#entryDiv").hide();
+			fullpage_api.reBuild();
 		}
 		var loginUsnParam="";
 		         var formStateName = 'data-form-state';
@@ -1168,14 +1171,15 @@
 		             }).done(function(data) {
 						 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
 		                 formStateEls.hide();
-						 $("#loginForm").hide("slow");
-				 $("#entryDiv").show("slow");
-				 if(data=="admin"){
-				 	$(".adminComponent").show("slow");
-					showStudentEntry();
-				}
-				 else
-				 	$(".adminComponent").hide();
+						 $("#loginForm").hide();
+						 $("#entryDiv").show();
+						 if(data=="admin"){
+							$(".adminComponent").show();
+							showStudentEntry();
+						}
+						else
+							$(".adminComponent").hide();
+						fullpage_api.reBuild();
 		             }).fail(function(data) {
 		                 loginUsnParam="";
 		                 formStateEls.hide();
