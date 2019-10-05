@@ -910,7 +910,13 @@
 			loopBottom: true,
 			fitToSection:true,
 			autoScrolling:true,
-			normalScrollElements: '#table'
+			normalScrollElements: '#table',
+			scrollOverflowOptions: {
+				preventDefaultException: {
+					click:false,
+					tagName: /.*/
+				}
+			}			
 			});
 			$('input[type=radio][name=strategy]').change(function() {
 				$('#entryDifficulty').find('option').remove();
