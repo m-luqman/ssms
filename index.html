@@ -37,7 +37,6 @@
 	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
 	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/print/bootstrap-table-print.min.js"></script>
 	<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/vendors/scrolloverflow.min.js" integrity="sha256-R7CttZ4L0/szai0hbFUlPDiRaEJmqYuvLhyAOr19vQg=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js" integrity="sha256-Lw96aZrbaAuj9vBh9haoZrkYmRA9Rbkv4K6C8LonvBk=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
 	<!--End Edit-->
@@ -56,7 +55,7 @@
 	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
 </head>
 
-<body >
+<body data-spy="scroll" data-target="#toc" data-offset="300">
 	<style>
 		body {
 		         margin: 0;
@@ -71,8 +70,13 @@
 	</style>
 	<div>
 		<div >
-				<div >
-					<div id="fullpage" >
+				<div class="row">
+					<div class="d-none d-sm-block col-sm-4 col-md-3 col-lg-2">
+						<nav id="toc" data-toggle="toc" class="navbar navbar-light bg-light flex-column sticky-top"> 
+							<a class="navbar-brand" href="#">Phases</a>
+						</nav>
+					</div>
+					<div id="fullpage" class="col-sm-8 col-md-9 col-lg-10">
 						<div>
 						<div class="section">
 							<h4 id="item-1">
@@ -85,7 +89,6 @@
 							</p>
 						</div>
 						<div class="section">						
-						<div class="slide active">
 							<h5 id="item-1-1">
 								Goal setting
 								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Opening the textbook with the chosen page number"><i class="fa fa-question-circle"></i>
@@ -150,9 +153,10 @@
 								</div>
 							  </div>						  
 							</div>
-							<form class="slide" id="filters">
+							<form id="filters">
 									<div >
-										<div class="card-group" >
+										<div id="sidr">
+										<ul>
 											<div class="card">
 												<div class="card-header">Date Filters:</div>
 												<div class="card-body">
@@ -325,12 +329,14 @@
 													</div>
 												</div>
 											</div>
+										</ul>
 									</div>
 								</div>							
 								<div class="mb-3">
 									<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
 										<button type="reset" class="btn btn-secondary">Clear</button>
 										<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
+										<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
 									</div>
 								</div>
 							</form>
@@ -373,7 +379,6 @@
 								</thead>
 								<tr></tr>
 							</table>
-						</div>
 						</div>
 						<div class="section">
 							<h5 id="item-1-2">
@@ -903,18 +908,12 @@
 	</script>
 	<script>
 			$('[data-toggle="popover"]').popover();
-			new fullpage('#fullpage', {
+			$('#fullpage').fullpage({
 			//options here
 			scrollBar: true,
-			scrollOverflow: true,
 			loopBottom: true,
-			fitToSection:true,
-			autoScrolling:true,
-			normalScrollElements: '#table,#myModal',
-			scrollOverflowOptions: {
-				click:false, 
-				preventDefaultException: {tagName: /.*/} 
-			}			
+			fitToSection:false,
+			autoScrolling:false
 			});
 			$('input[type=radio][name=strategy]').change(function() {
 				$('#entryDifficulty').find('option').remove();
@@ -928,6 +927,7 @@
 				$('#entryTopic').find('option').remove();
 				$('#entryTopic').append(new Option("please select a topic in the forethought phase","", true, true));
 			});
+			 $('#simple-menu').sidr({side:"right"});
 			var filterEndPoint="/filter";
 			function changeFilterMode(){
 				
@@ -955,21 +955,18 @@
 				$(".admin").show();
 				$(".admin-required").prop('required',true);
 				entryUrl=serverUrl+"/enter/adminStatus";
-				fullpage_api.reBuild();
 	         }
 	         function showStudentEntry(){
 	         	hideAllEntry();
 				$(".student").show();
 				$(".student-required").prop('required',true);
 				entryUrl=serverUrl+"/enter/status";
-				fullpage_api.reBuild();
 	         }
 	         function showQuestionEntry(){
 	         	hideAllEntry();
 				$(".question").show();
 				$(".question-required").prop('required',true);
 				entryUrl=serverUrl+"/enter/question";
-				fullpage_api.reBuild();
 	         }
 		 function rangeTableUpdate(){
 		 	var date=$(".rangeTableUpdate").val();
@@ -1129,9 +1126,8 @@
 
 	<script>
 		function logout(){
-			$("#loginForm").show();
-			$("#entryDiv").hide();
-			fullpage_api.reBuild();
+			$("#loginForm").show("slow");
+			$("#entryDiv").hide("slow");			
 		}
 		var loginUsnParam="";
 		         var formStateName = 'data-form-state';
@@ -1169,15 +1165,14 @@
 		             }).done(function(data) {
 						 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
 		                 formStateEls.hide();
-						 $("#loginForm").hide();
-						 $("#entryDiv").show();
-						 if(data=="admin"){
-							$(".adminComponent").show();
-							showStudentEntry();
-						}
-						else
-							$(".adminComponent").hide();
-						fullpage_api.reBuild();
+						 $("#loginForm").hide("slow");
+				 $("#entryDiv").show("slow");
+				 if(data=="admin"){
+				 	$(".adminComponent").show("slow");
+					showStudentEntry();
+				}
+				 else
+				 	$(".adminComponent").hide();
 		             }).fail(function(data) {
 		                 loginUsnParam="";
 		                 formStateEls.hide();
