@@ -162,15 +162,15 @@
 												<div class="card-body">
 													<label class="label">Study Date Range</label>
 													<div class="input-group mb-5 flatpickr-multi">
-														<input type="text" name="studyDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+														<input type="text" id="studyDateRange" name="studyDateRange" class="form-control" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 													</div>
 													<label class="label">Revision Date Range</label>
 													<div class="input-group mb-5 flatpickr-multi">
-														<input type="text" name="revisionDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+														<input type="text" id="revisionDateRange" name="revisionDateRange" class="form-control" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 													</div>
 													<label class="label">Lecture Date Range</label>
 													<div class="input-group mb-5 flatpickr-multi">
-														<input type="text" name="lectureDateRange" class="form-control rangeTableUpdate" onChange="rangeTableUpdate()" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+														<input type="text" id="lectureDateRange" name="lectureDateRange" class="form-control" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 													</div>
 												</div>
 											</div>
@@ -337,6 +337,9 @@
 										<button type="reset" class="btn btn-secondary">Clear</button>
 										<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
 										<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
+										<button id="minCount" class="btn btn-outline-primary" type="button" onClick="countMinTopics()">
+										<i class="fa fa-hourglass-half"></i>
+										</button>
 									</div>
 								</div>
 							</form>
@@ -904,7 +907,7 @@
 	</div>
 	<!--Start Edit-->
 	<script>
-		var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com"
+		var serverUrl="http://localhost:8080";
 	</script>
 	<script>
 			$('[data-toggle="popover"]').popover();
@@ -931,6 +934,16 @@
 			});
 			 $('#simple-menu').sidr({side:"right"});
 			var filterEndPoint="/filter";
+			function countMinTopics(){
+				$.getJSON(serverUrl+"/countMinTopics?"+$('#filters').serialize(), function(count) {
+					if(count==-1){
+						alert("Select the usn and semester filters");
+					}
+					else{
+						alert("The minimum number of new topics to be covered today is: "+count);
+					}
+				});
+			}
 			function changeFilterMode(){
 				
 				var checkBox = document.getElementById("filterModeToggle");
@@ -970,10 +983,6 @@
 				$(".question-required").prop('required',true);
 				entryUrl=serverUrl+"/enter/question";
 	         }
-		 function rangeTableUpdate(){
-		 	var date=$(".rangeTableUpdate").val();
-			if(date.includes('to')||date=="")loadTable();	
-		}
 	</script>
 	<script>
 		flatpickr(".flatpickr-single", {wrap: true});
@@ -1013,18 +1022,18 @@
 	</script>
 	<script>
 		function filterUsing (element,selected=function(){},unselected=function(){}){
-		         	const combo = document.querySelector('#'+element);
-		         	combo.addEventListener('change',(event)=>{
-		         		var value=(event.target.value);
-		         		if(value=="unselected" || value==""){
-							unselected();
-						}
-						else{
-							selected();
-						}
-						loadTable();
-		         	});
-		         }
+			const combo = document.querySelector('#'+element);
+			combo.addEventListener('change',(event)=>{
+				var value=(event.target.value);
+				if(value=="unselected" || value==""){
+					unselected();
+				}
+				else{
+					selected();
+				}
+				loadTable();
+			});
+		}
 	</script>
 	<script>
 		filterUsing('section');
@@ -1036,6 +1045,9 @@
 		filterUsing('subject');
 		filterUsing('abstraction');
 		filterUsing('coverage');
+		filterUsing('lectureDateRange');
+		filterUsing('revisionDateRange');
+		filterUsing('studyDateRange');
 		filterUsing(
 		'usn'
 		,function(){
@@ -1046,7 +1058,7 @@
 			$('#table').bootstrapTable('showColumn', 'Total Students (%)');
 			$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
 		}
-		);		
+		);
 	</script>
 	<!--End Edit-->
 	<script>
