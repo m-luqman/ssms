@@ -94,65 +94,16 @@
 								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Opening the textbook with the chosen page number"><i class="fa fa-question-circle"></i>
 								</a>								
 							</h5>
-							<div class="accordion" id="goalAccordion">
-							  <div class="card">
-								<div class="card-header" id="goalOne">
-								  <div class="mb-0">
-									<button class="btn btn-link btn-wrap-text " type="button" data-toggle="collapse" data-target="#collapseGoalOne" aria-expanded="true" aria-controls="collapseGoalOne">
-										Goal 1: To learn minimum number of new topics per subject per day
-									</button>
-								  </div>
-								</div>
-
-								<div id="collapseGoalOne" class="collapse" aria-labelledby="goalOne" data-parent="#goalAccordion">
-								  <div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								  </div>
-								</div>
-							  </div>
-							  <div class="card">
-								<div class="card-header" id="goalTwo">
-								  <div class="mb-0">
-									<button class="btn btn-link btn-wrap-text  collapsed" type="button" data-toggle="collapse" data-target="#collapseGoalTwo" aria-expanded="false" aria-controls="collapseGoalTwo">
-										Goal 2: To learn partially covered topics
-									</button>
-								  </div>
-								</div>
-								<div id="collapseGoalTwo" class="collapse" aria-labelledby="goalTwo" data-parent="#goalAccordion">
-								  <div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								  </div>
-								</div>
-							  </div>
-							  <div class="card">
-								<div class="card-header" id="goalThree">
-								  <div class="mb-0">
-									<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseGoalThree" aria-expanded="false" aria-controls="collapseGoalThree">
-										Goal 3: To revise topics with low retention
-									</button>
-								  </div>
-								</div>
-								<div id="collapseGoalThree" class="collapse" aria-labelledby="goalThree" data-parent="#goalAccordion">
-								  <div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								  </div>
-								</div>
-							  </div>						  
-							  <div class="card">
-								<div class="card-header" id="goalFour">
-								  <div class="mb-0">
-									<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseGoalFour" aria-expanded="false" aria-controls="collapseGoalFour">
-										Goal 4: To self-test the topics of high retention
-									</button>
-								  </div>
-								</div>
-								<div id="collapseGoalFour" class="collapse" aria-labelledby="goalFour" data-parent="#goalAccordion">
-								  <div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								  </div>
-								</div>
-							  </div>						  
-							</div>
+							<dl class="list-group">
+								<dt class="list-group-item list-group-item-light">Goal 1</dt>
+								<dd class="list-group-item">To learn minimum number of new topics per day</dd>
+								<dt class="list-group-item list-group-item-light">Goal 2</dt>
+								<dd class="list-group-item">To revise topics with low retention</dd>
+								<dt class="list-group-item list-group-item-light">Goal 3</dt>
+								<dd class="list-group-item">To self-test the topics of high retention</dd>
+								<dt class="list-group-item list-group-item-light">Goal 4</dt>
+								<dd class="list-group-item">To learn partially covered topics</dd>
+							</dl>
 							<form id="filters">
 									<div >
 										<div id="sidr">
@@ -230,17 +181,6 @@
 														</select>
 													</div>
 													<div class="form-group">
-														<label class="label">Course Outcome</label>
-														<select name="co" id="co" class="select filters">
-															<option value="unselected">unselected</option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-														</select>
-													</div>
-													<div class="form-group">
 														<label class="label">Abstraction Level</label>
 														<select name="abstraction" class="select filters" id="abstraction">
 															<option value="unselected">unselected</option>
@@ -288,12 +228,14 @@
 														</select>
 													</div>
 													<div class="form-group">
-														<label class="label">Priority</label>
-														<select name="priority" id="priority" class="select filters">
+														<label class="label">Course Outcome</label>
+														<select name="co" id="co" class="select filters">
 															<option value="unselected">unselected</option>
-															<option value="essentials">essentials</option>
-															<option value="complementary">complementary</option>
-															<option value="desirable">desirable</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
 														</select>
 													</div>
 												</div>
@@ -805,6 +747,17 @@
 											<option value="">unselected</option>
 											<option value="Partial">Partial</option>
 											<option value="Complete">Complete</option>
+										</select>
+									</div>
+									<div class="form-group admin student">
+										<label for="entryObjective">Objective</label>
+										<select type="text" class="form-control admin-required student-required" id="entryObjective" name="entryObjective" required>
+											<option value="unselected">unselected</option>
+											<option value="religion">preservation of religion</option>
+											<option value="life">preservation of the life</option>
+											<option value="mind">preservation of the mind</option>
+											<option value="family">preservation of lineage/offspring/honour/dignity</option>
+											<option value="wealth">preservation of wealth</option>
 										</select>
 									</div>
 									<div class="form-group admin student">
