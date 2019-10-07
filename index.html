@@ -162,15 +162,15 @@
 												<div class="card-body">
 													<label class="label">Study Date Range</label>
 													<div class="input-group mb-5 flatpickr-multi">
-														<input type="text" id="studyDateRange" name="studyDateRange" class="form-control" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+														<input type="text" id="studyDateRange" name="studyDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 													</div>
 													<label class="label">Revision Date Range</label>
 													<div class="input-group mb-5 flatpickr-multi">
-														<input type="text" id="revisionDateRange" name="revisionDateRange" class="form-control" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+														<input type="text" id="revisionDateRange" name="revisionDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 													</div>
 													<label class="label">Lecture Date Range</label>
 													<div class="input-group mb-5 flatpickr-multi">
-														<input type="text" id="lectureDateRange" name="lectureDateRange" class="form-control" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+														<input type="text" id="lectureDateRange" name="lectureDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
 													</div>
 												</div>
 											</div>
@@ -180,7 +180,7 @@
 													<div class="form-group">
 														<label class="label">Section</label>
 														<!--Start Edit-->
-														<select id="section" name="section" class="select">
+														<select id="section" name="section" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="A">A</option>
 															<option value="B">B</option>
@@ -194,7 +194,7 @@
 															<select id="usn" name="usn" class="select">
 																<option value="unselected">unselected</option>
 															</select>
-															<input id="filterModeToggle" data-on="covered" data-off="uncovered" data-onstyle="outline-primary" data-offstyle="outline-secondary" type="checkbox" onchange="changeFilterMode()" checked data-toggle="toggle" data-size="sm">
+															<input id="newOldToggle" name="newOldToggle" type="checkbox" class="filters" data-on="uncovered" data-off="covered" data-offstyle="outline-primary" data-onstyle="outline-secondary" data-toggle="toggle" data-size="sm"/>
 														</div>
 													</div>
 												</div>
@@ -204,7 +204,7 @@
 												<div class="card-body">
 													<div class="form-group">
 														<label class="label">Semester</label>
-														<select name="semester" id="semester" class="select">
+														<select name="semester" id="semester" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="0">0</option>
 															<option value="5">5</option>
@@ -214,13 +214,13 @@
 													</div>
 													<div class="form-group">
 														<label class="label">Subject</label>
-														<select name="subject" id="subject" class="select">
+														<select name="subject" id="subject" class="select filters">
 															<option value="">unselected</option>
 														</select>
 													</div>
 													<div class="form-group">
 														<label class="label">Module</label>
-														<select name="module" id="module" class="select">
+														<select name="module" id="module" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="1">1</option>
 															<option value="2">2</option>
@@ -231,7 +231,7 @@
 													</div>
 													<div class="form-group">
 														<label class="label">Course Outcome</label>
-														<select name="co" id="co" class="select">
+														<select name="co" id="co" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="1">1</option>
 															<option value="2">2</option>
@@ -242,7 +242,7 @@
 													</div>
 													<div class="form-group">
 														<label class="label">Abstraction Level</label>
-														<select name="abstraction" class="select" id="abstraction">
+														<select name="abstraction" class="select filters" id="abstraction">
 															<option value="unselected">unselected</option>
 															<option value="1">Creations of Allah</option>
 															<option value="1.1">&#10148;Vocabulary of Programmer</option>
@@ -278,7 +278,7 @@
 												<div class="card-body">
 													<div class="form-group">
 														<label class="label">Objective</label>
-														<select name="objective" id="objective" class="select">
+														<select name="objective" id="objective" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="religion">preservation of religion</option>
 															<option value="life">preservation of the life</option>
@@ -289,7 +289,7 @@
 													</div>
 													<div class="form-group">
 														<label class="label">Priority</label>
-														<select name="priority" id="priority" class="select">
+														<select name="priority" id="priority" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="essentials">essentials</option>
 															<option value="complementary">complementary</option>
@@ -304,7 +304,7 @@
 												<div class="card-body">
 													<div class="form-group">
 														<label class="label">Understanding</label>
-														<select name="difficulty" id="difficulty" class="select">
+														<select name="difficulty" id="difficulty" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="Hard">summarized</option>
 															<option value="Medium">reconciled</option>
@@ -313,7 +313,7 @@
 													</div>
 													<div class="form-group">
 														<label class="label">Retention</label>
-														<select name="retention" id="retention" class="select">
+														<select name="retention" id="retention" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="Low">low</option>
 															<option value="High">high</option>
@@ -321,7 +321,7 @@
 													</div>
 													<div class="form-group">
 														<label class="label">Coverage</label>
-														<select name="coverage" id="coverage" class="select">
+														<select name="coverage" id="coverage" class="select filters">
 															<option value="unselected">unselected</option>
 															<option value="Partial">Partial</option>
 															<option value="Complete">Complete</option>
@@ -745,7 +745,7 @@
 								<div data-form-state="loginSuccess" class="state-success" id="i1124e">Logged in successfully</div>
 								<div data-form-state="loginError" class="state-error" id="iszsuh">There was a problem in logging in</div>
 							</form>
-							<div id=entryDiv style="display: none;">
+							<div id="entryDiv" style="display: none;">
 								<div data-toggle="buttons">
 									<label class="btn btn-secondary adminComponent" style="display: none;">
 										<input type="radio" onchange="showAdminEntry()" name="entryState" class="custom-control-input"/>
@@ -756,7 +756,7 @@
 										Question Entry
 									</label>
 									<label class="btn btn-secondary adminComponent" style="display: none;">
-										<input type="radio" name="entryState" class="custom-control-input" />
+										<input type="radio" onchange="showSyllabusEntry()" name="entryState" class="custom-control-input" />
 										Syllabus Entry
 									</label>
 									<label class="btn btn-secondary active">
@@ -776,20 +776,20 @@
 										</div>
 									</div>
 									<div class="form-group admin student question">
-										<label for="frmg-qdlgq0ct49" id="iii3k">Topic</label>
+										<label for="entryTopic">Topic</label>
 										<select id="entryTopic" name="entryTopic" class="form-control admin-required student-required question-required" required/>
 											<option value="">please select a topic in the forethought phase</option>
 										</select>
 									</div>
 									<div class="form-group admin student">
-										<label for="frmg-qdlgq0ct49" id="i3ymh">Difficulty</label>
+										<label for="entryDifficulty">Difficulty</label>
 										<select id="entryDifficulty" name="entryDifficulty" class="form-control admin-required student-required" required/>
 											<option value="">please select a learning strategy in the forethought phase</option>
 										</select>
 									</div>
 									<div class="form-group admin student">
-										<label for="frmg-qdlgq0ct49" id="izmh2">Retention</label>
-										<select type="text" class="form-control admin-required student-required" name="entryRetention" required>
+										<label for="entryRetention">Retention</label>
+										<select type="text" class="form-control admin-required student-required" name="entryRetention" id="entryRetention" required>
 											<option value="">unselected</option>
 											<option value="0">complete blackout</option>
 											<option value="1">incorrect response; the correct one remembered</option>
@@ -800,16 +800,16 @@
 										</select>
 									</div>
 									<div class="form-group admin student">
-										<label for="frmg-qdlgq0ct49" id="izmh2">Coverage</label>
-										<select type="text" class="form-control admin-required student-required" name="entryCoverage" required>
+										<label for="entryCoverage">Coverage</label>
+										<select type="text" class="form-control admin-required student-required" id="entryCoverage" name="entryCoverage" required>
 											<option value="">unselected</option>
 											<option value="Partial">Partial</option>
 											<option value="Complete">Complete</option>
 										</select>
 									</div>
 									<div class="form-group admin student">
-										<label for="frmg-qdlgq0ct49" id="ieudb">Abstraction</label>
-										<select type="text" name="entryAbstraction" class="form-control admin-required">
+										<label for="entryAbstraction">Abstraction</label>
+										<select type="text" id="entryAbstraction" name="entryAbstraction" class="form-control admin-required">
 											<option value="">unselected</option>
 											<option value="1">Creations of Allah</option>
 											<option value="1.1">&#10148;Vocabulary of Programmer</option>
@@ -839,17 +839,58 @@
 										</select>
 									</div>
 									<div class="form-group question">
-										<label for="frmg-qdlgq0ct49" id="izmh2">Question</label>
-										<textarea class="form-control question-required" name="entryQuestion" rows="4">
+										<label for="entryQuestion">Question</label>
+										<textarea class="form-control question-required" name="entryQuestion" id="entryQuestion" rows="4">
 										</textarea>
 									</div>
 									<div class="form-group question">
-										<label for="frmg-qdlgq0ct49" id="izmh2">Course Outcome</label>
-										<input class="form-control question-required" type="text" name="entryCo" placeholder="1,2.."/>
+										<label for="entryCo">Course Outcome</label>
+										<input class="form-control question-required" type="text" name="entryCo" id="entryCo" placeholder="1,2.."/>
 									</div>
 									<div class="form-group question">
-										<label for="frmg-qdlgq0ct49" id="izmh2">Total Marks</label>
-										<input class="form-control question-required" type="text" name="entryTotalMarks" />
+										<label for="entryTotalMarks">Total Marks</label>
+										<input class="form-control question-required" type="text" name="entryTotalMarks" id="entryTotalMarks"/>
+									</div>
+									<div class="form-group syllabus">
+										<label for="entrySemester" >Semester</label>
+										<select name="semester" id="entrySemester" class="form-control">
+											<option value="unselected">unselected</option>
+											<option value="0">0</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+										</select>
+									</div>									
+									<div class="form-group syllabus">
+										<label for="entrySubject" >Subject</label>
+										<select name="subject" id="entrySubject" class="form-control ">
+											<option value="">unselected</option>
+										</select>
+									</div>
+									<div class="form-group syllabus">
+										<label for="entryModule">Module</label>
+										<select name="module" id="entryModule" class="form-control syllabus-required">
+											<option value="">unselected</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+										</select>
+									</div>
+									<div class="form-group syllabus">
+										<label for="entryNewTopic">New Topic</label>
+										<input class="form-control syllabus-required" type="text" name="entryNewTopic" id="entryNewTopic"/>
+									</div>
+									<div class="form-group syllabus">
+										<label for="entryPage">Page</label>
+										<input class="form-control syllabus-required" type="text" name="entryPage" id="entryPage"/>
+									</div>
+									<div class="form-group syllabus">
+										<label for="entryTextbook" >Textbook</label>
+										<select name="entryTextbook" id="entryTextbook" class="form-control syllabus-required ">
+											<option value="">unselected</option>
+										</select>
 									</div>
 									<div class="form-group">
 										<button type="submit" class="btn btn-primary">Enter</button>
@@ -933,7 +974,6 @@
 				$('#entryTopic').append(new Option("please select a topic in the forethought phase","", true, true));
 			});
 			 $('#simple-menu').sidr({side:"right"});
-			var filterEndPoint="/filter";
 			function countMinTopics(){
 				$.getJSON(serverUrl+"/countMinTopics?"+$('#filters').serialize(), function(count) {
 					if(count==-1){
@@ -944,26 +984,16 @@
 					}
 				});
 			}
-			function changeFilterMode(){
-				
-				var checkBox = document.getElementById("filterModeToggle");
-				
-				if (checkBox.checked == true){
-					filterEndPoint="/filter";
-				} else {
-					filterEndPoint="/filterComplement";
-				}
-				
-				loadTable();
-			}
 			 function hideAllEntry(){
 				$(".student-required").prop('required',false);
 				$(".question-required").prop('required',false);
 				$(".admin-required").prop('required',false);
+				$(".syllabus-required").prop('required',false);
 				
 				$(".admin").hide();	
 				$(".student").hide();	
-				$(".question").hide();	
+				$(".question").hide();
+				$(".syllabus").hide();
 			 }
 	         function showAdminEntry(){
 	         	hideAllEntry();	
@@ -982,6 +1012,12 @@
 				$(".question").show();
 				$(".question-required").prop('required',true);
 				entryUrl=serverUrl+"/enter/question";
+	         }
+	         function showSyllabusEntry(){
+	         	hideAllEntry();
+				$(".syllabus").show();
+				$(".syllabus-required").prop('required',true);
+				entryUrl=serverUrl+"/enter/syllabus";
 	         }
 	</script>
 	<script>
@@ -1014,50 +1050,36 @@
 	
 		fillCombo('subject','filters','/fill/subjects?','Subject_Name');
 		fillCombo('usn','filters','/fill/usn?','USN');
+		fillCombo('entryTextbook','entryForm','/fill/textbooks?','Textbook_Name');
+		fillCombo('entrySubject','entryForm','/fill/subjects?','Subject_Name');
 	</script>
 	<script>
 		function loadTable(){
-				$('#table').bootstrapTable('refresh', {url: serverUrl+filterEndPoint+'?'+$('#filters').serialize()})
+				$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filters').serialize()})
 		}
 	</script>
 	<script>
-		function filterUsing (element,selected=function(){},unselected=function(){}){
-			const combo = document.querySelector('#'+element);
-			combo.addEventListener('change',(event)=>{
-				var value=(event.target.value);
-				if(value=="unselected" || value==""){
-					unselected();
+		function filterUsing (element,reactTo=function (e){}){
+		    $(element).change(function() {
+				reactTo(event);
+				loadTable();
+			})
+		}
+	</script>
+	<script>
+		filterUsing('.filters');
+		filterUsing(
+			'#usn'
+			,function(event){
+				if(event.target.value=="unselected" || event.target.value==""){
+					$('#table').bootstrapTable('showColumn', 'Total Students (%)');
+					$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
 				}
 				else{
-					selected();
+					$('#table').bootstrapTable('hideColumn', 'Total Students (%)');
+					$('#table').bootstrapTable('showColumn', 'Obtained Marks (%)');
 				}
-				loadTable();
-			});
-		}
-	</script>
-	<script>
-		filterUsing('section');
-		filterUsing('semester');
-		filterUsing('module');
-		filterUsing('co');
-		filterUsing('difficulty');
-		filterUsing('retention');
-		filterUsing('subject');
-		filterUsing('abstraction');
-		filterUsing('coverage');
-		filterUsing('lectureDateRange');
-		filterUsing('revisionDateRange');
-		filterUsing('studyDateRange');
-		filterUsing(
-		'usn'
-		,function(){
-			$('#table').bootstrapTable('hideColumn', 'Total Students (%)');
-			$('#table').bootstrapTable('showColumn', 'Obtained Marks (%)');
-		}
-		,function(){
-			$('#table').bootstrapTable('showColumn', 'Total Students (%)');
-			$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
-		}
+			}
 		);
 	</script>
 	<!--End Edit-->
