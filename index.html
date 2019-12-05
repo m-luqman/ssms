@@ -39,6 +39,7 @@
 	<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js" integrity="sha256-Lw96aZrbaAuj9vBh9haoZrkYmRA9Rbkv4K6C8LonvBk=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>	
 	<!--End Edit-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
@@ -70,7 +71,7 @@
 	</style>
 	<div>
 		<div >
-				<div class="row">
+				<div class="row" style="margin-right: 0px;margin-left: 0px;">
 					<div class="d-none d-sm-block col-sm-4 col-md-3 col-lg-2">
 						<nav id="toc" data-toggle="toc" class="navbar navbar-light bg-light flex-column sticky-top"> 
 							<a class="navbar-brand" href="#">Phases</a>
@@ -95,17 +96,46 @@
 								</a>								
 							</h5>
 							<dl class="list-group">
-								<dt class="list-group-item list-group-item-light">Goal 1</dt>
+								<dt class="list-group-item list-group-item-light">
+									Goal 1
+									<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
+									data-content='
+									<ul class="list-group">
+										<li class="list-group-item">Click <i class="fa fa-hourglass-half text-primary"></i> to get the count for odd semester</li>
+										<li class="list-group-item">Click <i class="fa fa-hourglass-half text-secondary"></i> to get the count for even semester</li>
+									</ul>
+									'
+									<i class="text-secondary fa fa-question-circle"></i></a>
+								
+								</dt>
 								<dd class="list-group-item">To learn minimum number of new topics per day</dd>
-								<dt class="list-group-item list-group-item-light">Goal 2</dt>
+								<dt class="list-group-item list-group-item-light">
+									Goal 2
+									<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
+									data-content="Use 'revision date range' filter to get the topics for revision">
+									<i class="text-secondary fa fa-question-circle"></i></a>
+									
+								</dt>
 								<dd class="list-group-item">To revise topics with low retention</dd>
-								<dt class="list-group-item list-group-item-light">Goal 3</dt>
-								<dd class="list-group-item">To self-test the topics of high retention</dd>
-								<dt class="list-group-item list-group-item-light">Goal 4</dt>
+								<dt class="list-group-item list-group-item-light">
+									Goal 3
+									<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
+									data-content="This goal is always in combination with goal 2 or goal 4">
+									<i class="text-secondary fa fa-question-circle"></i></a>
+								
+								</dt>
 								<dd class="list-group-item">To learn partially covered topics</dd>
+								<dt class="list-group-item list-group-item-light">
+									Goal 4
+									<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
+									data-content="Click the 'Total Marks' header to sort topics by it">
+									<i class="text-secondary fa fa-question-circle"></i></a>
+								
+								</dt>
+								<dd class="list-group-item">To self-test the topics of high retention</dd>
 							</dl>
 							<form id="filters">
-									<div >
+									<div>
 										<div id="sidr">
 										<ul>
 											<div class="card">
@@ -213,9 +243,11 @@
 													</div>
 												</div>
 											</div>
+<!--
 											<div class="card">
 												<div class="card-header">Motivational Filters:</div>
 												<div class="card-body">
+													
 													<div class="form-group">
 														<label class="label">Objective</label>
 														<select name="objective" id="objective" class="select filters">
@@ -227,6 +259,7 @@
 															<option value="wealth">preservation of wealth</option>
 														</select>
 													</div>
+
 													<div class="form-group">
 														<label class="label">Course Outcome</label>
 														<select name="co" id="co" class="select filters">
@@ -240,17 +273,76 @@
 													</div>
 												</div>
 											</div>
-
+-->
 											<div class="card">
 												<div class="card-header">Cognitive Filters:</div>
 												<div class="card-body">
 													<div class="form-group">
-														<label class="label">Understanding</label>
+														<label class="label">Strategy</label>
 														<select name="difficulty" id="difficulty" class="select filters">
 															<option value="unselected">unselected</option>
-															<option value="Hard">summarized</option>
-															<option value="Medium">reconciled</option>
-															<option value="Easy">structured</option>
+															<option value="survey">survey</option>
+															<option value="question">question</option>
+															<option value="summarize">summarize</option>
+															<option value="other">other</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="entryEffort">Effort</label>
+														<select type="text" class="select filters" id="effort" name="effort">
+															<option value="unselected">
+															unselected
+															</option>
+															<option value="1">
+															very, very low mental effort
+															</option>
+															<option value="2">
+															very low mental effort
+															</option>
+															<option value="3">
+															low mental effort
+															</option>
+															<option value="4">
+															rather low mental effort
+															</option>
+															<option value="5">
+															neither low nor high mental effort
+															</option>
+															<option value="6">
+															rather high mental effort
+															</option>
+															<option value="7">
+															high mental effort
+															</option>
+															<option value="8">
+															very high mental effort
+															</option>
+															<option value="9">
+															very, very high mental effort
+															</option>
+														</select>
+													</div>
+													<div class="form-group">
+														<label for="intuition">Intuition</label>
+														<select type="text" class="select filters" id="intuition" name="intuition">
+															<option value="unselected">
+															unselected
+															</option>
+															<option value="1">
+															maximally counterintuitive
+															</option>
+															<option value="2">
+															minimally counterintuitive
+															</option>
+															<option value="3">
+															maximally unintuitive
+															</option>
+															<option value="4">
+															minimally unintuitive
+															</option>
+															<option value="5">
+															intuitive
+															</option>
 														</select>
 													</div>
 													<div class="form-group">
@@ -265,8 +357,9 @@
 														<label class="label">Coverage</label>
 														<select name="coverage" id="coverage" class="select filters">
 															<option value="unselected">unselected</option>
-															<option value="Partial">Partial</option>
-															<option value="Complete">Complete</option>
+															<option value="Minor">Minor</option>
+															<option value="Major">Major</option>
+															<option value="Full">Full</option>
 														</select>
 													</div>
 												</div>
@@ -279,7 +372,13 @@
 										<button type="reset" class="btn btn-secondary">Clear</button>
 										<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
 										<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
-										<button id="minCount" class="btn btn-outline-primary" type="button" onClick="countMinTopics()">
+									</div>
+								</div>
+								<div class="mb-3">
+									<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Count Buttons">	
+										<button id="minOddCount" class="btn btn-outline-primary" type="button" onClick="countOddSemMinTopics()"><i class="fa fa-hourglass-half"></i>
+										</button>
+										<button id="minEvenCount" class="btn btn-outline-secondary" type="button" onClick="countEvenSemMinTopics()">
 										<i class="fa fa-hourglass-half"></i>
 										</button>
 									</div>
@@ -293,7 +392,7 @@
 								data-show-print="true" 
 								data-show-columns="true" 
 								data-virtual-scroll="true" 
-								data-height="400" 
+								data-height="500" 
 								data-search="true" 
 								data-show-search-clear-button="true" 
 								data-mobile-responsive="true" 
@@ -325,69 +424,10 @@
 								<tr></tr>
 							</table>
 						</div>
-						<div class="section">
-							<h5 id="item-1-2">
-								Assesment criteria
-								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Standards against which text reading will be assessed"><i class="fa fa-question-circle"></i>
-								</a>							
-							</h5>
-							<p>
-								<em>Retention</em> of the studied topic is to be assessed by <em>explaining the studied topic to yourself without looking at the study material.</em>
-							</p>
-						</div>
-						<div class="section">						
-							<h5 id="item-1-4">Strategic planning</h5>
-							<div class="accordion" id="strategyAccordion">
-							  <div class="card">
-								<div class="card-header" id="strategyOne">
-								  <div class="mb-0">
-									<input type="radio" id="summarization" name="strategy" value="Hard" data-toggle="collapse" data-target="#collapseStrategyOne" aria-expanded="true" aria-controls="collapseStrategyOne"/>
-									<label for="summarization">Summarization</label>
-								  </div>
-								</div>
+						<select name="entryTopic" class="forethoughtEntry entryTopic" hidden required/>
+						</select>
 
-								<div id="collapseStrategyOne" class="collapse" aria-labelledby="strategyOne" data-parent="#strategyAccordion">
-								  <div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								  </div>
-								</div>
-							  </div>
-							  <div class="card">
-								<div class="card-header" id="strategyTwo">
-								  <div class="mb-0">
-									<input type="radio" id="reconciliation" name="strategy" value="Medium" data-toggle="collapse" data-target="#collapseStrategyTwo" aria-expanded="true" aria-controls="collapseStrategyTwo"/>
-									<label for="reconciliation">Reconciliation</label>
-								  </div>
-								</div>
-								<div id="collapseStrategyTwo" class="collapse" aria-labelledby="strategyTwo" data-parent="#strategyAccordion">
-								  <div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								  </div>
-								</div>
-							  </div>
-							  <div class="card">
-								<div class="card-header" id="strategyThree">
-								  <div class="mb-0">
-									<input type="radio" id="structuring" name="strategy" value="Easy" data-toggle="collapse" data-target="#collapseStrategyThree" aria-expanded="true" aria-controls="collapseStrategyThree"/>
-									<label for="structuring">Structuring</label>
-								  </div>
-								</div>
-								<div id="collapseStrategyThree" class="collapse" aria-labelledby="strategyThree" data-parent="#strategyAccordion">
-								  <div class="card-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								  </div>
-								</div>
-							  </div>
-							</div>
-						</div>
-						<div class="section">
-							<h5 id="item-1-3">
-								Performance level
-								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The level of perfection that is intended to be achieved"><i class="fa fa-question-circle"></i>
-								</a>														
-							</h5>
-							<p>To remember everything summarized without hesitation</p>
-						</div>
+<!--
 						<div class="section">
 							<h5 id="item-1-5">
 								Goal orientation
@@ -663,9 +703,122 @@
 								</div>
 							  </div>
 							</div>
-							</div>
+							</div>							
+						</div>
+-->
+						<div class="section">						
+							<h5 id="item-1-4">
+							Strategic planning
+							<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The outputs maybe written or oral."><i class="fa fa-question-circle"></i>
+							</a>															
+							</h5>
+							<div class="accordion" id="strategyAccordion">
+							  <div class="card">
+								<div class="card-header" id="strategyOne">
+								  <div class="mb-0">
+									<input required type="radio" class="forethoughtEntry" id="survey" name="entryDifficulty" value="survey" data-toggle="collapse" data-target="#collapseStrategyOne" aria-expanded="true" aria-controls="collapseStrategyOne"/>
+									<label for="survey" class='text-primary'>survey</label>
+								  </div>
+								</div>
 
-						</div>										
+								<div id="collapseStrategyOne" class="collapse" aria-labelledby="strategyOne" data-parent="#strategyAccordion">
+								  <div class="card-body">
+									<b>Procedure: </b>Survey the following components of a topic:
+									<ul>
+										<li>Diagrams</li>
+										<li>Diagram captions</li>
+										<li>Subheadings</li>
+										<li>Tables</li>
+										<li>Table captions</li>
+										<li>Words in bold/italics</li>
+										<li>Words suffixed by "-" or ":"</li>
+										<li>Sentences with question mark</li>
+									</ul>
+									<b>Output: </b>List of key artifacts of the topic.
+								  </div>
+								</div>
+							  </div>
+							  <div class="card">
+								<div class="card-header" id="strategyTwo">
+								  <div class="mb-0">
+									<input required type="radio" class="forethoughtEntry" id="question" name="entryDifficulty" value="question" data-toggle="collapse" data-target="#collapseStrategyTwo" aria-expanded="true" aria-controls="collapseStrategyTwo"/>
+									<label for="question" class='text-primary'>question</label>
+								  </div>
+								</div>
+								<div id="collapseStrategyTwo" class="collapse" aria-labelledby="strategyTwo" data-parent="#strategyAccordion">
+								  <div class="card-body">
+									<b>Input: </b>Output of survey<br>
+									<b>Procedure: </b>Convert what was surveyed into questions. Center your questions around the following:
+									<ul>
+										<li>Purpose</li>
+										<li>Definitions</li>
+										<li>Declarative Description</li>
+										<li>Procedural Description</li>
+										<li>Compare and contrast</li>
+										<li>Pros and cons</li>
+										<li>Examples</li>
+									</ul>
+									<b>Output: </b>List of questions.
+								  </div>
+								</div>
+							  </div>
+							  <div class="card">
+								<div class="card-header" id="strategyThree">
+								  <div class="mb-0">
+									<input required type="radio" class="forethoughtEntry" id="summarize" name="entryDifficulty" value="summarize" data-toggle="collapse" data-target="#collapseStrategyThree" aria-expanded="true" aria-controls="collapseStrategyThree"/>
+									<label for="summarize" class='text-primary'>summarize</label>
+								  </div>
+								</div>
+								<div id="collapseStrategyThree" class="collapse" aria-labelledby="strategyThree" data-parent="#strategyAccordion">
+								  <div class="card-body">
+									<b>Input: </b>Output of question<br>
+									<b>Procedure: </b>
+									<ol>
+										<li>Read the topic seeking to answer the questions formulated earlier.</li>
+										<li>Reduce the selected portions of the text using the following heuristics
+											<ul>
+												<li>Remove unnecessary words</li>
+												<li>Replace general ideas with more specific ones</li>
+											</ul>
+										</li>
+									</ol>
+									<b>Output: </b>List of answers.									
+								  </div>
+								</div>
+							  </div>
+							  <div class="card">
+								<div class="card-header" id="strategyFour">
+								  <div class="mb-0">
+									<input required type="radio" class="forethoughtEntry" id="otherStrategy" name="entryDifficulty" value="other" data-toggle="collapse" data-target="#collapseStrategyFour" aria-expanded="true" aria-controls="collapseStrategyFour"/>
+									<label for="otherStrategy" class='text-primary'>other</label>
+								  </div>
+								</div>
+								<div id="collapseStrategyFour" class="collapse" aria-labelledby="strategyFour" data-parent="#strategyAccordion">
+								  <div class="card-body">
+									<b>Output: </b>List of answers.									
+								  </div>
+								</div>								
+							  </div>
+							  </div>
+						</div>						
+						<div class="section">
+							<h5 id="item-1-2">
+								Assesment criteria
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Standards against which text reading will be assessed"><i class="fa fa-question-circle"></i>
+								</a>							
+							</h5>
+							<p>
+								<em>Retention</em> of the studied topic is to be assessed by explaining what was studied, to yourself without looking at the study material.
+							</p>
+						</div>
+						<div class="section">
+							<h5 id="item-1-3">
+								Performance level
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The level of perfection that is intended to be achieved"><i class="fa fa-question-circle"></i>
+								</a>														
+							</h5>
+							<p>To remember everything studied without hesitation</p>
+						</div>
 						<div class="section">
 							<h4 id="item-3">
 								Afterthought phase
@@ -675,10 +828,14 @@
 							<form method="post" id="loginForm" class="form">
 								<div class="form-group">
 									<label class="label">USN</label>
-									<input placeholder="Type here your USN" id="loginUsn" name="loginUsn" type="text" class="input" required/>
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="try for example: 1hk16cs000"><i class="fa fa-question-circle"></i>
+								</a>
+									<input placeholder="1hkXXcsXXX" id="loginUsn" name="loginUsn" type="text" class="input" required/>
 								</div>
 								<div class="form-group">
 									<label class="label">Password</label>
+									<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="try for example:  test"><i class="fa fa-question-circle"></i>
+									</a>
 									<input placeholder="Type here your password" name="loginPassword" type="password" class="input" required/>
 								</div>
 								<div class="form-group">
@@ -688,177 +845,308 @@
 								<div data-form-state="loginError" class="state-error" id="iszsuh">There was a problem in logging in</div>
 							</form>
 							<div id="entryDiv" style="display: none;">
-								<div data-toggle="buttons">
-									<label class="btn btn-secondary adminComponent" style="display: none;">
-										<input type="radio" onchange="showAdminEntry()" name="entryState" class="custom-control-input"/>
-										Admin Entry
-									</label>
-									<label class="btn btn-secondary adminComponent" style="display: none;">
-										<input type="radio" onchange="showQuestionEntry()" name="entryState" class="custom-control-input"/>
-										Question Entry
-									</label>
-									<label class="btn btn-secondary adminComponent" style="display: none;">
-										<input type="radio" onchange="showSyllabusEntry()" name="entryState" class="custom-control-input" />
-										Syllabus Entry
-									</label>
-									<label class="btn btn-secondary active">
-										<input type="radio" onchange="showStudentEntry()" name="entryState" class="custom-control-input" checked />
-										Student Entry
-									</label>
-									<label class="btn btn-secondary">
-										<input type="radio" name="entryState" class="custom-control-input"/>
-										Marks Entry
-									</label>
-								</div>
-								<form method="post" id="entryForm" class="form">
-									<div id="entryLectureDateDiv" style="display: none;" class="admin">
-										<label class="label">Lecture date</label>
-										<div class="input-group mb-3 flatpickr-single">
-											<input name="entryLectureDate" class="form-control admin-required" data-input/>	<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+								<div class="accordion" id="entryAccordion">			
+								  <div class="card">
+									<div class="card-header" id="statusEntryHeading">
+									  <div class="mb-0">
+										<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseStatusEntry" aria-expanded="false" aria-controls="collapseStatusEntry">
+											Diary Entry
+										</button>
+										<button title="refresh conversation" type="button" class="btn btn-link btn-wrap-text collapsed" id="refreshConversation"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 										</div>
 									</div>
-									<div class="form-group admin student question">
-										<label for="entryTopic">Topic</label>
-										<select id="entryTopic" name="entryTopic" class="form-control admin-required student-required question-required" required/>
-											<option value="">please select a topic in the forethought phase</option>
-										</select>
+									<div id="collapseStatusEntry" class="collapse show" aria-labelledby="statusEntryHeading" data-parent="#entryAccordion">
+									  <div id="statusEntryContainer" class="card-body">								
+										<form method="post" action="/enter/status" id="statusEntryForm" class="form">
+											<div class="form-group">
+												<label for="entryEffort">Effort to apply strategy</label>
+												<select cf-questions="Effort to apply strategy" type="text" class="form-control student-required" id="entryEffort" name="entryEffort" required>
+													<option value="">
+													unselected
+													</option>
+													<option value="1">
+													very, very low mental effort
+													</option>
+													<option value="2">
+													very low mental effort
+													</option>
+													<option value="3">
+													low mental effort
+													</option>
+													<option value="4">
+													rather low mental effort
+													</option>
+													<option value="5">
+													neither low nor high mental effort
+													</option>
+													<option value="6">
+													rather high mental effort
+													</option>
+													<option value="7">
+													high mental effort
+													</option>
+													<option value="8">
+													very high mental effort
+													</option>
+													<option value="9">
+													very, very high mental effort
+													</option>
+												</select>
+											</div>
+											<cf-robot-message cf-questions="Even minimally counter intuitive content is memorable in the long term"></cf-robot-message>
+											<div class="form-group">
+												<label for="entryIntuition">Intuition</label>
+												<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Even minimally counter intuitive information tends to be retained longer"><i class="fa fa-question-circle"></i>
+												</a>
+												<select type="text" class="form-control" id="entryIntuition" name="entryIntuition" required>
+													<option value="">
+													unselected
+													</option>
+													<option value="1">
+													maximally counterintuitive
+													</option>
+													<option value="2">
+													minimally counterintuitive
+													</option>
+													<option value="3">
+													maximally unintuitive
+													</option>
+													<option value="4">
+													minimally unintuitive
+													</option>
+													<option value="5">
+													intuitive
+													</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="entryCoverage">Coverage</label>
+												<select type="text" class="form-control" id="entryCoverage" name="entryCoverage" required>
+													<option value="">unselected</option>
+													<option value="Minor">Minor</option>
+													<option value="Major">Major</option>
+													<option value="Full">Full</option>
+												</select>
+											</div>
+											<cf-robot-message cf-questions="Even recalling with great difficulty helps in long term retention"></cf-robot-message>
+											<div class="form-group">
+												<label for="entryRetention">Retention</label>
+												<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Responding with difficulty is also a sign of remembering longer"><i class="fa fa-question-circle"></i>
+												</a>
+												<select type="text" class="form-control" name="entryRetention" id="entryRetention" required>
+													<option value="">unselected</option>
+													<option value="0">complete blackout</option>
+													<option value="1">incomplete response; the complete one can be recognized</option>
+													<option value="2">incomplete response; the complete one seemed easy to recall</option>
+													<option value="3">complete response recalled with serious difficulty</option>
+													<option value="4">complete response after a hesitation</option>
+													<option value="5">perfect response</option>
+												</select>
+											</div>								
+										</form>
+									  </div>
 									</div>
-									<div class="form-group admin student">
-										<label for="entryDifficulty">Difficulty</label>
-										<select id="entryDifficulty" name="entryDifficulty" class="form-control admin-required student-required" required/>
-											<option value="">please select a learning strategy in the forethought phase</option>
-										</select>
+								  </div>
+								  <div class="card adminComponent">
+									<div class="card-header" id="adminEntryHeading">
+									  <div class="mb-0">
+										<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseAdminEntry" aria-expanded="false" aria-controls="collapseAdminEntry">
+											Admin Entry
+										</button>
+									  </div>
 									</div>
-									<div class="form-group admin student">
-										<label for="entryRetention">Retention</label>
-										<select type="text" class="form-control admin-required student-required" name="entryRetention" id="entryRetention" required>
-											<option value="">unselected</option>
-											<option value="0">complete blackout</option>
-											<option value="1">incorrect response; the correct one remembered</option>
-											<option value="2">incorrect response; where the correct one seemed easy to recall</option>
-											<option value="3">correct response recalled with serious difficulty</option>
-											<option value="4">correct response after a hesitation</option>
-											<option value="5">perfect response</option>
-										</select>
+									<div id="collapseAdminEntry" class="collapse" aria-labelledby="adminEntryHeading" data-parent="#entryAccordion">
+									  <div class="card-body">															  
+										<form method="post" action="/enter/adminStatus" id="adminEntryForm" class="form entryForm">
+											<label class="label">Lecture date</label>
+											<div class="input-group mb-3 flatpickr-single">
+												<input requried name="entryLectureDate" class="form-control" data-input/>	<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+											</div>
+											<div class="form-group">
+												<label for="entryTopic">Topic</label>
+												<select name="entryTopic" class="form-control entryTopic" required/>
+													<option value="">please select a topic in the forethought phase</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary">Enter</button>
+												<button type="reset" class="btn btn-outline-primary">Clear</button>
+											</div>
+											<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
+											<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
+										</form>
+									  </div>
 									</div>
-									<div class="form-group admin student">
-										<label for="entryCoverage">Coverage</label>
-										<select type="text" class="form-control admin-required student-required" id="entryCoverage" name="entryCoverage" required>
-											<option value="">unselected</option>
-											<option value="Partial">Partial</option>
-											<option value="Complete">Complete</option>
-										</select>
+								  </div>
+								  <div class="card adminComponent">
+									<div class="card-header" id="questionEntryHeading">
+									  <div class="mb-0">
+										<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseQuestionEntry" aria-expanded="false" aria-controls="collapseQuestionEntry">
+											Question Entry
+										</button>
+									  </div>
 									</div>
-									<div class="form-group admin student">
-										<label for="entryObjective">Objective</label>
-										<select type="text" class="form-control admin-required student-required" id="entryObjective" name="entryObjective" required>
-											<option value="unselected">unselected</option>
-											<option value="religion">preservation of religion</option>
-											<option value="life">preservation of the life</option>
-											<option value="mind">preservation of the mind</option>
-											<option value="family">preservation of lineage/offspring/honour/dignity</option>
-											<option value="wealth">preservation of wealth</option>
-										</select>
+									<div id="collapseQuestionEntry" class="collapse" aria-labelledby="questionEntryHeading" data-parent="#entryAccordion">
+									  <div class="card-body">															  
+										<form method="post" action="/enter/question" id="questionEntryForm" class="form entryForm">
+											<div class="form-group">
+												<label for="entryTopic">Topic</label>
+												<select required name="entryTopic" class="form-control entryTopic" required/>
+													<option value="">please select a topic in the forethought phase</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="entryQuestion">Question</label>
+												<textarea required class="form-control" name="entryQuestion" id="entryQuestion" rows="4">
+												</textarea>
+											</div>
+											<div class="form-group">
+												<label for="entryTotalMarks">Total Marks</label>
+												<input required class="form-control" type="text" name="entryTotalMarks" id="entryTotalMarks"/>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary">Enter</button>
+												<button type="reset" class="btn btn-outline-primary">Clear</button>
+											</div>
+											<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
+											<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
+										</form>
+									  </div>
 									</div>
-									<div class="form-group admin student">
-										<label for="entryAbstraction">Abstraction</label>
-										<select type="text" id="entryAbstraction" name="entryAbstraction" class="form-control admin-required">
-											<option value="">unselected</option>
-											<option value="1">Creations of Allah</option>
-											<option value="1.1">&#10148;Vocabulary of Programmer</option>
-											<option value="1.11">&nbsp;&#9871;Algorithm</option>
-											<option value="1.12">&nbsp;&#9871;High Level Language</option>
-											<option value="1.13">&nbsp;&#9871;System Softwares</option>
-											<option value="1.2">&#10148;Vocabulary of Processor</option>
-											<option value="1.21">&nbsp;&#9871;Assembly Language</option>
-											<option value="1.22">&nbsp;&#9871;Machine Language</option>
-											<option value="1.3">&#10148;Microarchitecture</option>
-											<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
-											<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
-											<option value="1.4">&#10148;Analog & Digital Circuits</option>
-											<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
-											<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
-											<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
-											<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
-											<option value="1.5">&#10148;Voltage</option>
-											<option value="1.51">&nbsp;&#9871;Electric Power System</option>
-											<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
-											<option value="2">Allah</option>
-											<option value="2.1">&#10148;His Actions</option>
-											<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
-											<option value="2.2">&#10148;His Attributes</option>
-											<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
-											<option value="2.3">&#10148;His Essence</option>
-										</select>
+								  </div>
+								  <div class="card adminComponent">
+									<div class="card-header" id="syllabusEntryHeading">
+									  <div class="mb-0">
+										<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseSyllabusEntry" aria-expanded="false" aria-controls="collapseSyllabusEntry">
+											Syllabus Entry
+										</button>
+									  </div>
 									</div>
-									<div class="form-group question">
-										<label for="entryQuestion">Question</label>
-										<textarea class="form-control question-required" name="entryQuestion" id="entryQuestion" rows="4">
-										</textarea>
+									<div id="collapseSyllabusEntry" class="collapse" aria-labelledby="syllabusEntryHeading" data-parent="#entryAccordion">
+									  <div class="card-body">								
+										<form method="post" action="/enter/syllabus" id="syllabusEntryForm" class="form entryForm">
+											<div class="form-group">
+												<label for="entrySemester" >Semester</label>
+												<select name="semester" id="entrySemester" class="form-control">
+													<option value="unselected">unselected</option>
+													<option value="0">0</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+												</select>
+											</div>									
+											<div class="form-group">
+												<label for="entrySubject" >Subject</label>
+												<select name="subject" id="entrySubject" class="form-control ">
+													<option value="">unselected</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="entryModule">Module</label>
+												<select name="module" id="entryModule" class="form-control">
+													<option value="">unselected</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="entryNewTopic">New Topic</label>
+												<input class="form-control" type="text" name="entryNewTopic" id="entryNewTopic"/>
+											</div>
+											<div class="form-group">
+												<label for="entryPage">Page</label>
+												<input class="form-control" type="text" name="entryPage" id="entryPage"/>
+											</div>
+											<div class="form-group">
+												<label for="entryTextbook" >Textbook</label>
+												<select name="entryTextbook" id="entryTextbook" class="form-control">
+													<option value="">unselected</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary">Enter</button>
+												<button type="reset" class="btn btn-outline-primary">Clear</button>
+											</div>
+											<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
+											<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
+										</form>
+									  </div>
 									</div>
-									<div class="form-group question">
-										<label for="entryCo">Course Outcome</label>
-										<input class="form-control question-required" type="text" name="entryCo" id="entryCo" placeholder="1,2.."/>
-									</div>
-									<div class="form-group question">
-										<label for="entryTotalMarks">Total Marks</label>
-										<input class="form-control question-required" type="text" name="entryTotalMarks" id="entryTotalMarks"/>
-									</div>
-									<div class="form-group syllabus">
-										<label for="entrySemester" >Semester</label>
-										<select name="semester" id="entrySemester" class="form-control">
-											<option value="unselected">unselected</option>
-											<option value="0">0</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-										</select>
-									</div>									
-									<div class="form-group syllabus">
-										<label for="entrySubject" >Subject</label>
-										<select name="subject" id="entrySubject" class="form-control ">
-											<option value="">unselected</option>
-										</select>
-									</div>
-									<div class="form-group syllabus">
-										<label for="entryModule">Module</label>
-										<select name="module" id="entryModule" class="form-control syllabus-required">
-											<option value="">unselected</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
-									</div>
-									<div class="form-group syllabus">
-										<label for="entryNewTopic">New Topic</label>
-										<input class="form-control syllabus-required" type="text" name="entryNewTopic" id="entryNewTopic"/>
-									</div>
-									<div class="form-group syllabus">
-										<label for="entryPage">Page</label>
-										<input class="form-control syllabus-required" type="text" name="entryPage" id="entryPage"/>
-									</div>
-									<div class="form-group syllabus">
-										<label for="entryTextbook" >Textbook</label>
-										<select name="entryTextbook" id="entryTextbook" class="form-control syllabus-required ">
-											<option value="">unselected</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Enter</button>
-										<button type="button" class="btn btn-outline-secondary" onclick="logout()" class="button">Logout</button>
-									</div>
-									<div data-form-state="entrySuccess" class="state-success" id="i1124eh">Entered successfully</div>
-									<div data-form-state="entryError" class="state-error" id="iszsuhj">There was an error in entering the details</div>
-								</form>
+								  </div>
+								<button type="button" class="btn btn-light" onclick="logout()" class="button">Logout</button> 
+								</div>
 							</div>
-							</div>
-						</div>
+						</div>  
+							<form method="post" id="entryForm" style="display: none;" class="form">
+								<div id="entryLectureDateDiv"  class="admin">
+								</div>
+<!--
+								<div class="form-group student">
+									<label for="entryCo">Course Outcome</label>
+									<select type="text" class="form-control student-required" id="entryCo" name="entryCo" required>
+										<option value="unselected">unselected</option>
+									</select>
+								</div>
+-->
+								<div class="form-group adminComponent">
+									<label for="entryAbstraction">Abstraction</label>
+									<select type="text" id="entryAbstraction" name="entryAbstraction" class="form-control">
+										<option value="">unselected</option>
+										<option value="1">Creations of Allah</option>
+										<option value="1.1">&#10148;Vocabulary of Programmer</option>
+										<option value="1.11">&nbsp;&#9871;Algorithm</option>
+										<option value="1.12">&nbsp;&#9871;High Level Language</option>
+										<option value="1.13">&nbsp;&#9871;System Softwares</option>
+										<option value="1.2">&#10148;Vocabulary of Processor</option>
+										<option value="1.21">&nbsp;&#9871;Assembly Language</option>
+										<option value="1.22">&nbsp;&#9871;Machine Language</option>
+										<option value="1.3">&#10148;Microarchitecture</option>
+										<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
+										<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
+										<option value="1.4">&#10148;Analog & Digital Circuits</option>
+										<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
+										<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
+										<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
+										<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
+										<option value="1.5">&#10148;Voltage</option>
+										<option value="1.51">&nbsp;&#9871;Electric Power System</option>
+										<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
+										<option value="2">Allah</option>
+										<option value="2.1">&#10148;His Actions</option>
+										<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
+										<option value="2.2">&#10148;His Attributes</option>
+										<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
+										<option value="2.3">&#10148;His Essence</option>
+									</select>
+								</div>
+							<!--
+								<div class="form-group student">
+									<label for="entryLocation">Location</label>
+									<select type="text" class="form-control student-required" id="entryLocation" name="entryLocation" required>
+										<option value="unselected">unselected</option>
+										<option value="Home">Home</option>
+										<option value="College">College</option>
+										<option value="Other">Other</option>
+									</select>
+								</div>
+							-->
+<!--									
+								<div class="form-group question">
+									<label for="entryCo">Course Outcome</label>
+									<input class="form-control question-required" type="text" name="entryCo" id="entryCo" placeholder="1,2.."/>
+								</div>
+-->									
+
+								</div>
+							</form>
 					</div>
 				</div>
 		</div>
 	</div>
+
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 
@@ -868,67 +1156,111 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-							<form method="post" id="registrationForm" class="form">
-								<div class="form-group">
-									<label class="label">USN</label>
-									<input placeholder="Type here your USN" id="registrationUsn" name="registrationUsn" type="text" class="input" required/>
-								</div>
-									<div class="form-group">
-										<label class="label">Section</label>
-										<!--Start Edit-->
-										<select id="registrationSection" name="registrationSection" class="select" required>
-											<option value="">unselected</option>
-											<option value="A">A</option>
-											<option value="B">B</option>
-											<option value="C">C</option>
-											<!--End Edit-->
-										</select>
-									</div>
-								<div class="form-group">
-									<label class="label">Password</label>
-									<input placeholder="Type here your password" name="registrationPassword" type="password" class="input" required/>
-								</div>
-								<div class="form-group">
-									<button type="submit" class="button">Register</button>
-								</div>
-								<div data-form-state="registrationSuccess" class="state-success" id="i1124ef">Registered successfully</div>
-								<div data-form-state="registrationError" class="state-error" id="iszsuhs">There was a problem in registering</div>
-							</form>
-		  </div>
+	<form method="post" id="registrationForm" class="form">
+		<div class="form-group">
+			<label class="label">USN</label>
+			<input placeholder="Type here your USN" id="registrationUsn" name="registrationUsn" type="text" class="input" required/>
 		</div>
-
+		<div class="form-group">
+			<label class="label">Section</label>
+			<!--Start Edit-->
+			<select id="registrationSection" name="registrationSection" class="select" required>
+				<option value="">unselected</option>
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+				<!--End Edit-->
+			</select>
+		</div>
+		<div class="form-group">
+			<label class="label">Password</label>
+			<input placeholder="Type here your password" name="registrationPassword" type="password" class="input" required/>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="button">Register</button>
+		</div>
+		<div data-form-state="registrationSuccess" class="state-success" id="i1124ef">Registered successfully</div>
+		<div data-form-state="registrationError" class="state-error" id="iszsuhs">There was a problem in registering</div>
+	</form>
 	  </div>
 	</div>
+
+  </div>
+</div>
 	<!--Start Edit-->
 	<script>
-		var serverUrl="https://cors-anywhere.herokuapp.com/http://studentsemestermanagementsystem-env.umtmffhrhh.ap-south-1.elasticbeanstalk.com";
+		var serverUrl="https://ssms-app.herokuapp.com/";
 	</script>
 	<script>
-			$('[data-toggle="popover"]').popover();
+			$('#refreshConversation').click(function() {
+				initializeConversation();
+			});	
+			function initializeConversation(){
+				$("#statusEntryForm").conversationalForm({
+					formEl:document.getElementById("statusEntryForm"),
+					context:document.getElementById("statusEntryContainer"),
+					hideUserInputOnNoneTextInput:true,
+					preventAutoFocus:true,
+					submitCallback: function() {
+					
+					var slides = document.getElementsByClassName("forethoughtEntry");
+					for(var i = 0; i < slides.length; i++)
+						if(! slides.item(i).validity.valid){
+							window.ConversationalForm.addRobotChatResponse("Some fields in forethought phase have not been filled");
+							return;						
+						}
+					
+					if( ! $('#statusEntryForm')[0].checkValidity()){
+						window.ConversationalForm.addRobotChatResponse("Some fields have not been filled");
+						return;
+					}
+					
+					var formData=$('#statusEntryForm').serializeArray();
+					$.merge(formData,$(".forethoughtEntry").serializeArray());
+					$.merge(formData,$("#loginForm").serializeArray());
+					formData.push({ name: "entryDateTime", value: moment().format('YYYY-MM-DD H:mm:ss') });
+					  					  
+					var action =serverUrl+$('#statusEntryForm').attr('action');
+					 $.ajax({
+						 url: action,
+						 method: 'POST',
+						 processData: false,
+						 data: $.param(formData),
+					 }).done(function(data) {
+						window.ConversationalForm.addRobotChatResponse("Successfully entered");
+					 }).fail(function(data) {
+						window.ConversationalForm.addRobotChatResponse("There was an error entering the details");
+					 });
+					}			
+				});
+			}
+			$('[data-toggle="popover"]').popover(
+			{
+			    placement: 'top',
+				html: true
+			}
+			);
 			$(document).ready(function(){
 				$('#fullpage').fullpage({
 					//options here
 					scrollBar: true,
 					loopBottom: false,
-					fitToSection:true,
-					autoScrolling:false
+					fitToSection:false,
+					autoScrolling:false,
+					licenseKey:"40E19E81-306A46E3-85506FDC-25A03E3A"
 				});
-			});
-			$('input[type=radio][name=strategy]').change(function() {
-				$('#entryDifficulty').find('option').remove();
-				$('#entryDifficulty').append(new Option(this.value,this.value, true, true));
 			});
 			$('#table').on('check.bs.table', function (e, row) {
-				$('#entryTopic').find('option').remove();
-				$('#entryTopic').append(new Option(row['Topic Name'],row['Topic Name'], true, true));
-				});
+				$('.entryTopic').find('option').remove();
+				$('.entryTopic').append(new Option(row['Topic Name'],row['Topic Name'], true, true));
+			});
 			$('#table').on('uncheck.bs.table', function (e, row) { 
-				$('#entryTopic').find('option').remove();
-				$('#entryTopic').append(new Option("please select a topic in the forethought phase","", true, true));
+				$('.entryTopic').find('option').remove();
+				$('.entryTopic').append(new Option("please select a topic in the forethought phase","", true, true));
 			});
 			 $('#simple-menu').sidr({side:"right"});
-			function countMinTopics(){
-				$.getJSON(serverUrl+"/countMinTopics?"+$('#filters').serialize(), function(count) {
+			function countEvenSemMinTopics(){
+				$.getJSON(serverUrl+"/countEvenSemMinTopics?"+$('#filters').serialize(), function(count) {
 					if(count==-1){
 						alert("Select the usn and semester filters");
 					}
@@ -937,49 +1269,25 @@
 					}
 				});
 			}
-			 function hideAllEntry(){
-				$(".student-required").prop('required',false);
-				$(".question-required").prop('required',false);
-				$(".admin-required").prop('required',false);
-				$(".syllabus-required").prop('required',false);
-				
-				$(".admin").hide();	
-				$(".student").hide();	
-				$(".question").hide();
-				$(".syllabus").hide();
-			 }
-	         function showAdminEntry(){
-	         	hideAllEntry();	
-				$(".admin").show();
-				$(".admin-required").prop('required',true);
-				entryUrl=serverUrl+"/enter/adminStatus";
-	         }
-	         function showStudentEntry(){
-	         	hideAllEntry();
-				$(".student").show();
-				$(".student-required").prop('required',true);
-				entryUrl=serverUrl+"/enter/status";
-	         }
-	         function showQuestionEntry(){
-	         	hideAllEntry();
-				$(".question").show();
-				$(".question-required").prop('required',true);
-				entryUrl=serverUrl+"/enter/question";
-	         }
-	         function showSyllabusEntry(){
-	         	hideAllEntry();
-				$(".syllabus").show();
-				$(".syllabus-required").prop('required',true);
-				entryUrl=serverUrl+"/enter/syllabus";
-	         }
+			function countOddSemMinTopics(){
+				$.getJSON(serverUrl+"/countOddSemMinTopics?"+$('#filters').serialize(), function(count) {
+					if(count==-1){
+						alert("Select the usn and semester filters");
+					}
+					else{
+						alert("The minimum number of new topics to be covered today is: "+count);
+					}
+				});
+			}
 	</script>
 	<script>
-		flatpickr(".flatpickr-single", {wrap: true});
+		flatpickr(".flatpickr-single", {wrap: true, dateFormat: "Y-m-d"});
 		flatpickr
 			(".flatpickr-multi"
 			, {
 			   wrap: true,
 			   mode: "range",
+			   dateFormat: "Y-m-d"
 			  });
 	</script>
 	<script>
@@ -1003,8 +1311,8 @@
 	
 		fillCombo('subject','filters','/fill/subjects?','Subject_Name');
 		fillCombo('usn','filters','/fill/usn?','USN');
-		fillCombo('entryTextbook','entryForm','/fill/textbooks?','Textbook_Name');
-		fillCombo('entrySubject','entryForm','/fill/subjects?','Subject_Name');
+		fillCombo('entryTextbook','syllabusEntryForm','/fill/textbooks?','Textbook_Name');
+		fillCombo('entrySubject','syllabusEntryForm','/fill/subjects?','Subject_Name');
 	</script>
 	<script>
 		function loadTable(){
@@ -1131,7 +1439,7 @@
 		             var name = this.getAttribute('name');
 		             name && formData.append('__name', name);
 		         
-		             form.find('[type=radio], [type=checkbox]').each(function(item) {
+		             form.find('[type=radio], [type=checkbox]').each(function(item){
 		                 var chkName = this.name;
 		                 if (this.checked) {
 		                     chkSelected[chkName] = 1;
@@ -1155,13 +1463,14 @@
 						 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
 		                 formStateEls.hide();
 						 $("#loginForm").hide("slow");
-				 $("#entryDiv").show("slow");
-				 if(data=="admin"){
-				 	$(".adminComponent").show("slow");
-					showStudentEntry();
-				}
-				 else
-				 	$(".adminComponent").hide();
+						 $("#entryDiv").show("slow");
+						 initializeConversation();
+						 if(data=="admin"){
+							$(".adminComponent").show("slow");
+						}
+						 else{
+							$(".adminComponent").hide();
+						}
 		             }).fail(function(data) {
 		                 loginUsnParam="";
 		                 formStateEls.hide();
@@ -1170,12 +1479,14 @@
 		         });
 	</script>
 	<script>
-		var entryUrl=serverUrl+"/enter/status";
-	         $('#entryForm').submit(function(e) {
+	         $('.entryForm').submit(function(e) {
 	             e.preventDefault();
 	             var form = $(this);
-	             var action=entryUrl;
-	             var formData = $('#entryForm').serialize()+"&"+loginUsnParam;
+	             var action=serverUrl+$(this).attr('action');
+	             var formData = 
+				 $(this).serialize()
+				 +"&"+loginUsnParam
+				 +"&"+$.param({"entryDateTime" : moment().format('YYYY-MM-DD H:mm:ss')});
 	             var chkSelected = {};
 	             var name = this.getAttribute('name');
 	             name && formData.append('__name', name);
@@ -1201,7 +1512,7 @@
 	                 processData: false,
 	                 data: formData,
 	             }).done(function(data) {
-			 formStateEls.hide();
+					 formStateEls.hide();
 	                 form.find('[' + formStateName + '=entrySuccess]').stop(1).fadeIn().delay(3000).fadeOut();
 	             }).fail(function(data) {
 	                 formStateEls.hide();
@@ -1214,7 +1525,7 @@
 	         $('#registrationForm').submit(function(e) {
 	             e.preventDefault();
 	             var form = $(this);
-	             var action='#';
+	             var action=serverUrl+"/register";
 	             var formData = $('#registrationForm').serialize();
 	             var chkSelected = {};
 	             var name = this.getAttribute('name');
@@ -1241,8 +1552,8 @@
 	                 processData: false,
 	                 data: formData,
 	             }).done(function(data) {
-			 formStateEls.hide();
-	                 form.find('[' + formStateName + 'registrationSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
+					formStateEls.hide();
+	                 form.find('[' + formStateName + '=registrationSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
 	             }).fail(function(data) {
 	                 formStateEls.hide();
 	                 form.find('[' + formStateName + '=registrationError]').stop(1).fadeIn().delay(3000).fadeOut();
