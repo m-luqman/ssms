@@ -54,9 +54,10 @@
 	/>	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.css" integrity="sha256-3IkGqGYOvq1Ype2MXFwVJFeBtBACgiveho3SacOEEP8=" crossorigin="anonymous" />
 	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/balzss/luxbar/ae5835e2/build/luxbar.min.css">
 </head>
 
-<body data-spy="scroll" data-target="#toc" data-offset="500">
+<body>
 	<style>
 		body {
 		         margin: 0;
@@ -66,12 +67,15 @@
 		.btn-wrap-text {
 			white-space: normal !important;
 			word-wrap: break-word !important;
-		}	
-	
+		}
+		
+		#fp-nav ul li .fp-tooltip {
+			color: #000000;
+		}		
 	</style>
 	<div>
 		<div >
-				<div class="row" style="margin-right: 0px;margin-left: 0px;">
+				<div class="px-5">
 					<div id="fullpage" >
 						<div>
 						<div class="section">
@@ -361,12 +365,6 @@
 											</div>
 										</ul>
 									</div>
-								</div>
-								<div class="mt-3 alert alert-warning alert-dismissible fade show" role="alert">
-								  <strong>NOTE:</strong> You should use <span class="p-1 bg-primary text-white"> Filters</span> to view topics
-								  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								  </button>
 								</div>
 								<div class="mb-3">
 									<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
@@ -804,26 +802,24 @@
 							  </div>
 						</div>						
 						<div class="section">
-							<div class="alert alert-info" role="alert">
-								<h5 id="item-1-2">
-									Assesment criteria
-									<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Standards against which text reading will be assessed"><i class="fa fa-question-circle"></i>
-									</a>							
-								</h5>
-								<p>
-									<em>Retention</em> of the studied topic is to be assessed by explaining what was studied, to yourself without looking at the study material.
-								</p>
-							</div>
+							<h5 id="item-1-2">
+								Assesment criteria
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Standards against which text reading will be assessed"><i class="fa fa-question-circle"></i>
+								</a>							
+							</h5>
+							Self assesment must be done by self-explaning the <strong> output </strong> of <strong>strategic planning</strong>,
+							<ol>
+								<li>While looking at the output. (If unable to self explain, read the topic only so much so as to be able to coherently correlate the items in the output list)</li>
+								<li>Without looking at the output.</li>
+							</ol>
 						</div>
 						<div class="section">
-							<div class="alert alert-info" role="alert">
-								<h5 class="alert-heading" id="item-1-3">
-									Performance level
-									<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The level of perfection that is intended to be achieved"><i class="fa fa-question-circle"></i>
-									</a>														
-								</h5>
-								<p>To remember everything studied without hesitation</p>
-							</div>
+							<h5 class="alert-heading" id="item-1-3">
+								Performance level
+								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The level of perfection that is intended to be achieved"><i class="fa fa-question-circle"></i>
+								</a>														
+							</h5>
+							<p>To remember everything studied without hesitation</p>
 						</div>
 						<div class="section">
 							<h4 id="item-3">
@@ -1254,6 +1250,16 @@
 					loopBottom: false,
 					fitToSection:false,
 					autoScrolling:false,
+					navigation: true,
+					navigationPosition: 'right',
+					navigationTooltips: [
+					'Forethought phase', 
+					'Goal setting', 
+					'Strategic planning',
+					'Assesment criteria',
+					'Performance level',
+					'Afterthought phase'
+					],
 					licenseKey:"40E19E81-306A46E3-85506FDC-25A03E3A"
 				});
 			});
