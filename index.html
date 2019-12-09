@@ -901,8 +901,6 @@
 							<cf-robot-message cf-questions="Even minimally counter intuitive content is memorable in the long term"></cf-robot-message>
 							<div class="form-group">
 								<label for="entryIntuition">Intuition</label>
-								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Even minimally counter intuitive information tends to be retained longer"><i class="fa fa-question-circle"></i>
-								</a>
 								<select type="text" class="form-control" id="entryIntuition" name="entryIntuition" required>
 									<option value="">
 									unselected
@@ -936,8 +934,6 @@
 							<cf-robot-message cf-questions="Even recalling with great difficulty helps in long term retention"></cf-robot-message>
 							<div class="form-group">
 								<label for="entryRetention">Retention</label>
-								<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Responding with difficulty is also a sign of remembering longer"><i class="fa fa-question-circle"></i>
-								</a>
 								<select type="text" class="form-control" name="entryRetention" id="entryRetention" required>
 									<option value="">unselected</option>
 									<option value="0">complete blackout</option>
@@ -947,7 +943,27 @@
 									<option value="4">complete response after a hesitation</option>
 									<option value="5">perfect response</option>
 								</select>
-							</div>								
+							</div>							
+							<div class="form-group">
+								<label for="entryFavourRecognition">Recognition of favour</label>
+								<select 
+								required
+								class="form-control" 
+								name="entryFavourRecognition" 
+								id="entryFavourRecognition"
+								cf-questions=
+								"How aware were you of Allah's favour of teaching you what you just learned ?
+								||How aware were you of Allah favouring you over others who haven't learned this topic ?
+								||How aware were you of the reality that all of creation is a shadow of Allah's command ?
+								"
+								>
+									<option value="">unselected</option>
+									<option value="0">Not at all</option>
+									<option value="1">Rarely</option>
+									<option value="2">Frequently</option>
+									<option value="3">Constantly</option>
+								</select>
+							</div>
 						</form>
 					  </div>
 					</div>
