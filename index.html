@@ -947,8 +947,7 @@
 							<div class="form-group">
 								<label for="entryFavourRecognition">Recognition of favour</label>
 								<select 
-								required
-								class="form-control" 
+								class="form-control adminComponent" 
 								name="entryFavourRecognition" 
 								id="entryFavourRecognition"
 								cf-questions=
@@ -1505,15 +1504,15 @@
 		             }).done(function(data) {
 						 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
 		                 formStateEls.hide();
-						 $("#loginForm").hide("slow");
-						 $("#entryDiv").show("slow");
-						 initializeConversation();
 						 if(data=="admin"){
 							$(".adminComponent").show("slow");
 						}
 						 else{
 							$(".adminComponent").hide();
 						}
+						$("#loginForm").hide("slow");
+						$("#entryDiv").show("slow");
+						initializeConversation();
 		             }).fail(function(data) {
 		                 loginUsnParam="";
 		                 formStateEls.hide();
