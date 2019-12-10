@@ -1292,7 +1292,9 @@
 				$('.entryTopic').append(new Option("please select a topic in the forethought phase","", true, true));
 			});
 			$('#simple-menu').sidr({
-				side:"right"
+				side:"right",
+				onOpenEnd: function(){$('html').css('overflow', 'hidden');},
+				onCloseEnd: function(){$('html').css('overflow', 'auto');}
 			});
 			$('#goalSetting').swipe( {
 				//Single swipe handler for left swipes
@@ -1303,7 +1305,8 @@
 					$.sidr('close');
 				},
 				//Default is 75px, set to 0 for demo so any distance triggers swipe
-				threshold: 45
+				threshold: 45,
+				excludedElements: "a,label, button, input, select, textarea"
 			});
 			
 			function countEvenSemMinTopics(){
@@ -1335,7 +1338,8 @@
 			   wrap: true,
 			   mode: "range",
 			   dateFormat: "Y-m-d"
-			  });
+			  }
+			);
 	</script>
 	<script>
 		function fillCombo(comboId,formId,path,fieldName){
@@ -1363,7 +1367,7 @@
 	</script>
 	<script>
 		function loadTable(){
-				$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filters').serialize()})
+			$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filters').serialize()})
 		}
 	</script>
 	<script>
@@ -1393,49 +1397,49 @@
 	<!--End Edit-->
 	<script>
 		var items = document.querySelectorAll('#i1ar');
-		         for (var i = 0, len = items.length; i < len; i++) {
-		             (function() {
-		                 var t, e = this,
-		                     n = "[data-tab]",
-		                     r = document.body,
-		                     o = r.matchesSelector || r.webkitMatchesSelector || r.mozMatchesSelector || r.msMatchesSelector,
-		                     i = function(r) {
-		                         var o = e.querySelectorAll(n) || [];
-		                         for (t = 0; t < o.length; t++) {
-		                             var i = o[t],
-		                                 a = i.className.replace("tab-active", "").trim();
-		                             i.className = a
-		                         }(function() {
-		                             var n = e.querySelectorAll("[data-tab-content]") || [];
-		                             for (t = 0; t < n.length; t++) n[t].style.display = "none"
-		                         })(), r.className += " tab-active";
-		                         var s = r.getAttribute("href"),
-		                             l = e.querySelector(s);
-		                         l && (l.style.display = "")
-		                     },
-		                     a = e.querySelector(".tab-active" + n);
-		                 (a = a || e.querySelector(n)) && i(a), e.addEventListener("click", function(t) {
-		                     var e = t.target;
-		                     o.call(e, n) && i(e)
-		                 })
-		             }.bind(items[i]))();
-		         }
+		for (var i = 0, len = items.length; i < len; i++) {
+			 (function() {
+				 var t, e = this,
+					 n = "[data-tab]",
+					 r = document.body,
+					 o = r.matchesSelector || r.webkitMatchesSelector || r.mozMatchesSelector || r.msMatchesSelector,
+					 i = function(r) {
+						 var o = e.querySelectorAll(n) || [];
+						 for (t = 0; t < o.length; t++) {
+							 var i = o[t],
+								 a = i.className.replace("tab-active", "").trim();
+							 i.className = a
+						 }(function() {
+							 var n = e.querySelectorAll("[data-tab-content]") || [];
+							 for (t = 0; t < n.length; t++) n[t].style.display = "none"
+						 })(), r.className += " tab-active";
+						 var s = r.getAttribute("href"),
+							 l = e.querySelector(s);
+						 l && (l.style.display = "")
+					 },
+					 a = e.querySelector(".tab-active" + n);
+				 (a = a || e.querySelector(n)) && i(a), e.addEventListener("click", function(t) {
+					 var e = t.target;
+					 o.call(e, n) && i(e)
+				 })
+			 }.bind(items[i]))();
+		}
 	</script>
 	<style>
 		a.page-brand-badge {
-		         border-radius: 3px !important;
-		         background-color: white !important;
-		         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-		         padding: 5px 7px !important;
-		         font-family: Helvetica, sans-serif !important;
-		         font-size: 12px !important;
-		         text-decoration: none !important;
-		         color: #555 !important;
-		         transition: box-shadow 0.25s !important;
-		         }
-		         a.page-brand-badge:hover {
-		         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
-		         }
+			 border-radius: 3px !important;
+			 background-color: white !important;
+			 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+			 padding: 5px 7px !important;
+			 font-family: Helvetica, sans-serif !important;
+			 font-size: 12px !important;
+			 text-decoration: none !important;
+			 color: #555 !important;
+			 transition: box-shadow 0.25s !important;
+			 }
+			 a.page-brand-badge:hover {
+			 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
+		}
 	</style>
 
          <a href="#" data-toggle="modal" data-target="#myModal" class="page-brand-badge" style="bottom: 10px !important; left: 10px !important; display: block !
@@ -1474,139 +1478,139 @@
 			$("#entryDiv").hide("slow");			
 		}
 		var loginUsnParam="";
-		         var formStateName = 'data-form-state';
-		         var formStateEls = $('[' + formStateName + ']');
-		         formStateEls.hide();
-		         $('#loginForm').submit(function(e) {
-		             e.preventDefault();
-		             var form = $(this);
-		             var action = serverUrl+"/login";
-		             var formData = $('#loginForm').serialize();
-		             var chkSelected = {};
-		             var name = this.getAttribute('name');
-		             name && formData.append('__name', name);
-		         
-		             form.find('[type=radio], [type=checkbox]').each(function(item){
-		                 var chkName = this.name;
-		                 if (this.checked) {
-		                     chkSelected[chkName] = 1;
-		                     return;
-		                 }
-		                 chkSelected[chkName] = 0;
-		             });
-		         
-		             for (var chk in chkSelected) {
-		                 if (!chkSelected[chk]) {
-		                     formData.append(chk, '');
-		                 }
-		             }
-		         
-		             $.ajax({
-		                 url: action,
-		                 method: 'POST',
-		                 processData: false,
-		                 data: formData,
-		             }).done(function(data) {
-						 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
-		                 formStateEls.hide();
-						 if(data=="admin"){
-							$(".adminComponent").show("slow");
-						}
-						 else{
-							$(".adminComponent").hide();
-						}
-						$("#loginForm").hide("slow");
-						$("#entryDiv").show("slow");
-						initializeConversation();
-		             }).fail(function(data) {
-		                 loginUsnParam="";
-		                 formStateEls.hide();
-		                 form.find('[' + formStateName + '=loginError]').stop(1).fadeIn().delay(3000).fadeOut();
-		             });
-		         });
+		 var formStateName = 'data-form-state';
+		 var formStateEls = $('[' + formStateName + ']');
+		 formStateEls.hide();
+		 $('#loginForm').submit(function(e) {
+			 e.preventDefault();
+			 var form = $(this);
+			 var action = serverUrl+"/login";
+			 var formData = $('#loginForm').serialize();
+			 var chkSelected = {};
+			 var name = this.getAttribute('name');
+			 name && formData.append('__name', name);
+		 
+			 form.find('[type=radio], [type=checkbox]').each(function(item){
+				 var chkName = this.name;
+				 if (this.checked) {
+					 chkSelected[chkName] = 1;
+					 return;
+				 }
+				 chkSelected[chkName] = 0;
+			 });
+		 
+			 for (var chk in chkSelected) {
+				 if (!chkSelected[chk]) {
+					 formData.append(chk, '');
+				 }
+			 }
+		 
+			 $.ajax({
+				 url: action,
+				 method: 'POST',
+				 processData: false,
+				 data: formData,
+			 }).done(function(data) {
+				 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
+				 formStateEls.hide();
+				 if(data=="admin"){
+					$(".adminComponent").show("slow");
+				}
+				 else{
+					$(".adminComponent").hide();
+				}
+				$("#loginForm").hide("slow");
+				$("#entryDiv").show("slow");
+				initializeConversation();
+			 }).fail(function(data) {
+				 loginUsnParam="";
+				 formStateEls.hide();
+				 form.find('[' + formStateName + '=loginError]').stop(1).fadeIn().delay(3000).fadeOut();
+			 });
+		 });
 	</script>
 	<script>
-	         $('.entryForm').submit(function(e) {
-	             e.preventDefault();
-	             var form = $(this);
-	             var action=serverUrl+$(this).attr('action');
-	             var formData = 
-				 $(this).serialize()
-				 +"&"+loginUsnParam
-				 +"&"+$.param({"entryDateTime" : moment().format('YYYY-MM-DD H:mm:ss')});
-	             var chkSelected = {};
-	             var name = this.getAttribute('name');
-	             name && formData.append('__name', name);
-	         
-	             form.find('[type=radio], [type=checkbox]').each(function(item) {
-	                 var chkName = this.name;
-	                 if (this.checked) {
-	                     chkSelected[chkName] = 1;
-	                     return;
-	                 }
-	                 chkSelected[chkName] = 0;
-	             });
-	         
-	             for (var chk in chkSelected) {
-	                 if (!chkSelected[chk]) {
-	                     formData.append(chk, '');
-	                 }
-	             }
-	         
-	             $.ajax({
-	                 url: action,
-	                 method: 'POST',
-	                 processData: false,
-	                 data: formData,
-	             }).done(function(data) {
-					 formStateEls.hide();
-	                 form.find('[' + formStateName + '=entrySuccess]').stop(1).fadeIn().delay(3000).fadeOut();
-	             }).fail(function(data) {
-	                 formStateEls.hide();
-	                 form.find('[' + formStateName + '=entryError]').stop(1).fadeIn().delay(3000).fadeOut();
-	             });
-	
-	         });
+		 $('.entryForm').submit(function(e) {
+			 e.preventDefault();
+			 var form = $(this);
+			 var action=serverUrl+$(this).attr('action');
+			 var formData = 
+			 $(this).serialize()
+			 +"&"+loginUsnParam
+			 +"&"+$.param({"entryDateTime" : moment().format('YYYY-MM-DD H:mm:ss')});
+			 var chkSelected = {};
+			 var name = this.getAttribute('name');
+			 name && formData.append('__name', name);
+		 
+			 form.find('[type=radio], [type=checkbox]').each(function(item) {
+				 var chkName = this.name;
+				 if (this.checked) {
+					 chkSelected[chkName] = 1;
+					 return;
+				 }
+				 chkSelected[chkName] = 0;
+			 });
+		 
+			 for (var chk in chkSelected) {
+				 if (!chkSelected[chk]) {
+					 formData.append(chk, '');
+				 }
+			 }
+		 
+			 $.ajax({
+				 url: action,
+				 method: 'POST',
+				 processData: false,
+				 data: formData,
+			 }).done(function(data) {
+				 formStateEls.hide();
+				 form.find('[' + formStateName + '=entrySuccess]').stop(1).fadeIn().delay(3000).fadeOut();
+			 }).fail(function(data) {
+				 formStateEls.hide();
+				 form.find('[' + formStateName + '=entryError]').stop(1).fadeIn().delay(3000).fadeOut();
+			 });
+
+		 });
 	</script>
 	<script>
-	         $('#registrationForm').submit(function(e) {
-	             e.preventDefault();
-	             var form = $(this);
-	             var action=serverUrl+"/register";
-	             var formData = $('#registrationForm').serialize();
-	             var chkSelected = {};
-	             var name = this.getAttribute('name');
-	             name && formData.append('__name', name);
-	         
-	             form.find('[type=radio], [type=checkbox]').each(function(item) {
-	                 var chkName = this.name;
-	                 if (this.checked) {
-	                     chkSelected[chkName] = 1;
-	                     return;
-	                 }
-	                 chkSelected[chkName] = 0;
-	             });
-	         
-	             for (var chk in chkSelected) {
-	                 if (!chkSelected[chk]) {
-	                     formData.append(chk, '');
-	                 }
-	             }
-	         
-	             $.ajax({
-	                 url: action,
-	                 method: 'POST',
-	                 processData: false,
-	                 data: formData,
-	             }).done(function(data) {
-					formStateEls.hide();
-	                 form.find('[' + formStateName + '=registrationSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
-	             }).fail(function(data) {
-	                 formStateEls.hide();
-	                 form.find('[' + formStateName + '=registrationError]').stop(1).fadeIn().delay(3000).fadeOut();
-	             });
-	
-	         });
+		 $('#registrationForm').submit(function(e) {
+			 e.preventDefault();
+			 var form = $(this);
+			 var action=serverUrl+"/register";
+			 var formData = $('#registrationForm').serialize();
+			 var chkSelected = {};
+			 var name = this.getAttribute('name');
+			 name && formData.append('__name', name);
+		 
+			 form.find('[type=radio], [type=checkbox]').each(function(item) {
+				 var chkName = this.name;
+				 if (this.checked) {
+					 chkSelected[chkName] = 1;
+					 return;
+				 }
+				 chkSelected[chkName] = 0;
+			 });
+		 
+			 for (var chk in chkSelected) {
+				 if (!chkSelected[chk]) {
+					 formData.append(chk, '');
+				 }
+			 }
+		 
+			 $.ajax({
+				 url: action,
+				 method: 'POST',
+				 processData: false,
+				 data: formData,
+			 }).done(function(data) {
+				formStateEls.hide();
+				 form.find('[' + formStateName + '=registrationSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
+			 }).fail(function(data) {
+				 formStateEls.hide();
+				 form.find('[' + formStateName + '=registrationError]').stop(1).fadeIn().delay(3000).fadeOut();
+			 });
+
+		 });
 	</script>
 </body>
 
