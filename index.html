@@ -1,1219 +1,1216 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>Student Semester Management System</title>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+		<meta name="description" content="">
+		<meta name="generator" content="Grapedrop">
+		<!-- Apple Stuff -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- Google / Search Engine Tags -->
+		<meta itemprop="description" content="">
+		<meta itemprop="image" content="">
+		<!-- Facebook Meta Tags -->
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="">
+		<meta property="og:description" content="">
+		<meta property="og:image" content="">
+		<meta property="og:url" content="http://0d1c7ef.grapedrop.com">
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<link rel="icon" type="image/png" href="images/favicon.png">
+		<!--Start Edit-->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/export/bootstrap-table-export.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/jquery.sidr.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/print/bootstrap-table-print.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/vendors/scrolloverflow.min.js" integrity="sha256-R7CttZ4L0/szai0hbFUlPDiRaEJmqYuvLhyAOr19vQg=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js" integrity="sha256-Lw96aZrbaAuj9vBh9haoZrkYmRA9Rbkv4K6C8LonvBk=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.js" integrity="sha256-2TmoPqKfma3+qUJlrw6vBxLkXhLZG81GZsP7dJov1/o=" crossorigin="anonymous"></script>
+		<!--End Edit-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+		<link rel="stylesheet" href="styles/base.css">
+		<link rel="stylesheet" href="styles/style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/stylesheets/jquery.sidr.light.min.css">
+		<link
+		  rel="stylesheet"
+		  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+		/>	
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.css" integrity="sha256-3IkGqGYOvq1Ype2MXFwVJFeBtBACgiveho3SacOEEP8=" crossorigin="anonymous" />
+		<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<style>
+			body {
+			 margin: 0;
+			 padding: 0;
+			 overflow-x: hidden;
+			}
+			.btn-wrap-text {
+				white-space: normal !important;
+				word-wrap: break-word !important;
+			}		
+			#fp-nav ul li .fp-tooltip {
+				color: #000000;
+			}
+			div#fp-nav li {
+				width: 45px;
+				height: 45px;
+				margin-top: 15px;
+			}
+			div#fp-nav span {
+				width: 16px;
+				height: 16px;
 
-<head>
-	<title>Student Semester Management System</title>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-	<meta name="description" content="">
-	<meta name="generator" content="Grapedrop">
-	<!-- Apple Stuff -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<!-- Google / Search Engine Tags -->
-	<meta itemprop="description" content="">
-	<meta itemprop="image" content="">
-	<!-- Facebook Meta Tags -->
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="">
-	<meta property="og:description" content="">
-	<meta property="og:image" content="">
-	<meta property="og:url" content="http://0d1c7ef.grapedrop.com">
-	<!-- Twitter Meta Tags -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="viewport" content="width=device-width,minimum-scale=1">
-	<link rel="icon" type="image/png" href="images/favicon.png">
-	<!--Start Edit-->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-	<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
-	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/export/bootstrap-table-export.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/jquery.sidr.min.js"></script>
-	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
-	<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/extensions/print/bootstrap-table-print.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/vendors/scrolloverflow.min.js" integrity="sha256-R7CttZ4L0/szai0hbFUlPDiRaEJmqYuvLhyAOr19vQg=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.js" integrity="sha256-Lw96aZrbaAuj9vBh9haoZrkYmRA9Rbkv4K6C8LonvBk=" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.js" integrity="sha256-2TmoPqKfma3+qUJlrw6vBxLkXhLZG81GZsP7dJov1/o=" crossorigin="anonymous"></script>
-	<!--End Edit-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-	<link rel="stylesheet" href="styles/base.css">
-	<link rel="stylesheet" href="styles/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sidr/2.2.1/stylesheets/jquery.sidr.light.min.css">
-	<link
-	  rel="stylesheet"
-	  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
-	/>	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.css" integrity="sha256-3IkGqGYOvq1Ype2MXFwVJFeBtBACgiveho3SacOEEP8=" crossorigin="anonymous" />
-	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
-</head>
-
-<body>
-	<style>
-		body {
-		 margin: 0;
-		 padding: 0;
-		 overflow-x: hidden;
-		}
-		.btn-wrap-text {
-			white-space: normal !important;
-			word-wrap: break-word !important;
-		}		
-		#fp-nav ul li .fp-tooltip {
-			color: #000000;
-		}
-		div#fp-nav li {
-			width: 45px;
-			height: 45px;
-			margin-top: 15px;
-		}
-		div#fp-nav span {
-			width: 16px;
-			height: 16px;
-
-			top: 14px;
-			left: 14px;
-		}
-	</style>
-	<div id="fullpage" class="px-5" >
-		<div class="section" style="text-align:center;">
-			<h4 id="item-1">
-				Forethought phase
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="This is the phase of learning that comes before reading a text."><i class="fa fa-question-circle"></i>
-				</a>
-			</h4>
-			<p>
-				What follows is a description of the <em>minimum</em> requirements that a learner needs to fullfill in the forethought phase.
-			</p>
-		</div>
-		<div id="goalSetting" class="section">						
-			<h5 id="item-1-1">
-				Goal setting
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Opening the textbook with the chosen page number"><i class="fa fa-question-circle"></i>
-				</a>								
-			</h5>
-			<dl class="list-group">
-				<dt class="list-group-item list-group-item-light">
-					Goal 1
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
-					data-content='
-					<ul class="list-group">
-						<li class="list-group-item">Click <i class="fa fa-hourglass-half text-primary"></i> to get the count for odd semester</li>
-						<li class="list-group-item">Click <i class="fa fa-hourglass-half text-secondary"></i> to get the count for even semester</li>
-					</ul>
-					'
-					<i class="text-secondary fa fa-question-circle"></i></a>
-				
-				</dt>
-				<dd class="list-group-item">To learn minimum number of new topics per day</dd>
-				<dt class="list-group-item list-group-item-light">
-					Goal 2
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
-					data-content="Use 'revision date range' filter to get the topics for revision">
-					<i class="text-secondary fa fa-question-circle"></i></a>
+				top: 14px;
+				left: 14px;
+			}
+		</style>
+		<div id="fullpage" class="px-5" >
+			<div class="section" style="text-align:center;">
+				<h4 id="item-1">
+					Forethought phase
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="This is the phase of learning that comes before reading a text."><i class="fa fa-question-circle"></i>
+					</a>
+				</h4>
+				<p>
+					What follows is a description of the <em>minimum</em> requirements that a learner needs to fullfill in the forethought phase.
+				</p>
+			</div>
+			<div id="goalSetting" class="section">						
+				<h5 id="item-1-1">
+					Goal setting
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Opening the textbook with the chosen page number"><i class="fa fa-question-circle"></i>
+					</a>								
+				</h5>
+				<dl class="list-group">
+					<dt class="list-group-item list-group-item-light">
+						Goal 1
+						<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
+						data-content='
+						<ul class="list-group">
+							<li class="list-group-item">Click <i class="fa fa-hourglass-half text-primary"></i> to get the count for odd semester</li>
+							<li class="list-group-item">Click <i class="fa fa-hourglass-half text-secondary"></i> to get the count for even semester</li>
+						</ul>
+						'
+						<i class="text-secondary fa fa-question-circle"></i></a>					
+					</dt>
+					<dd class="list-group-item">To learn minimum number of new topics per day</dd>
+					<dt class="list-group-item list-group-item-light">
+						Goal 2
+						<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
+						data-content="Use 'revision date range' filter to get the topics for revision">
+						<i class="text-secondary fa fa-question-circle"></i></a>						
+					</dt>
+					<dd class="list-group-item">To revise topics with low retention</dd>
+					<dt class="list-group-item list-group-item-light">
+						Goal 3
+						<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
+						data-content="This goal is always in combination with goal 2 or goal 4">
+						<i class="text-secondary fa fa-question-circle"></i></a>
 					
-				</dt>
-				<dd class="list-group-item">To revise topics with low retention</dd>
-				<dt class="list-group-item list-group-item-light">
-					Goal 3
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
-					data-content="This goal is always in combination with goal 2 or goal 4">
-					<i class="text-secondary fa fa-question-circle"></i></a>
-				
-				</dt>
-				<dd class="list-group-item">To learn partially covered topics</dd>
-				<dt class="list-group-item list-group-item-light">
-					Goal 4
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
-					data-content="Click the 'Total Marks' header to sort topics by it">
-					<i class="text-secondary fa fa-question-circle"></i></a>
-				
-				</dt>
-				<dd class="list-group-item">To self-test the topics of high retention</dd>
-			</dl>
-			<form id="filters">
-				<div id="sidr">
-					<div class="card">
-						<div class="card-header">Date Filters:</div>
-						<div class="card-body">
-							<label class="label">Study Date Range</label>
-							<div class="input-group mb-5 flatpickr-multi">
-								<input type="text" id="studyDateRange" name="studyDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-							</div>
-							<label class="label">Revision Date Range</label>
-							<div class="input-group mb-5 flatpickr-multi">
-								<input type="text" id="revisionDateRange" name="revisionDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-							</div>
-							<label class="label">Lecture Date Range</label>
-							<div class="input-group mb-5 flatpickr-multi">
-								<input type="text" id="lectureDateRange" name="lectureDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+					</dt>
+					<dd class="list-group-item">To learn partially covered topics</dd>
+					<dt class="list-group-item list-group-item-light">
+						Goal 4
+						<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" 
+						data-content="Click the 'Total Marks' header to sort topics by it">
+						<i class="text-secondary fa fa-question-circle"></i></a>
+					
+					</dt>
+					<dd class="list-group-item">To self-test the topics of high retention</dd>
+				</dl>
+				<form id="filters">
+					<div id="sidr">
+						<div class="card">
+							<div class="card-header">Date Filters:</div>
+							<div class="card-body">
+								<label class="label">Study Date Range</label>
+								<div class="input-group mb-5 flatpickr-multi">
+									<input type="text" id="studyDateRange" name="studyDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+								</div>
+								<label class="label">Revision Date Range</label>
+								<div class="input-group mb-5 flatpickr-multi">
+									<input type="text" id="revisionDateRange" name="revisionDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+								</div>
+								<label class="label">Lecture Date Range</label>
+								<div class="input-group mb-5 flatpickr-multi">
+									<input type="text" id="lectureDateRange" name="lectureDateRange" class="form-control filters" data-input/> <a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="card">
-						<div class="card-header">Organizational Filters:</div>
-						<div class="card-body">
-							<div class="form-group">
-								<label class="label">Section</label>
-								<!--Start Edit-->
-								<select id="section" name="section" class="select filters">
-									<option value="unselected">unselected</option>
-									<option value="A">A</option>
-									<option value="B">B</option>
-									<option value="C">C</option>
-									<!--End Edit-->
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="label">USN</label>
-								<div class="input-group">										
-									<select id="usn" name="usn" class="select">
+						<div class="card">
+							<div class="card-header">Organizational Filters:</div>
+							<div class="card-body">
+								<div class="form-group">
+									<label class="label">Section</label>
+									<!--Start Edit-->
+									<select id="section" name="section" class="select filters">
 										<option value="unselected">unselected</option>
+										<option value="A">A</option>
+										<option value="B">B</option>
+										<option value="C">C</option>
+										<!--End Edit-->
 									</select>
-									<input id="newOldToggle" name="newOldToggle" type="checkbox" class="filters" data-on="uncovered" data-off="covered" data-offstyle="outline-primary" data-onstyle="outline-secondary" data-toggle="toggle" data-size="sm"/>
+								</div>
+								<div class="form-group">
+									<label class="label">USN</label>
+									<div class="input-group">										
+										<select id="usn" name="usn" class="select">
+											<option value="unselected">unselected</option>
+										</select>
+										<input id="newOldToggle" name="newOldToggle" type="checkbox" class="filters" data-on="uncovered" data-off="covered" data-offstyle="outline-primary" data-onstyle="outline-secondary" data-toggle="toggle" data-size="sm"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">Curricular Filters:</div>
+							<div class="card-body">
+								<div class="form-group">
+									<label class="label">Semester</label>
+									<select name="semester" id="semester" class="select filters">
+										<option value="unselected">unselected</option>
+										<option value="0">0</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="label">Subject</label>
+									<select name="subject" id="subject" class="select filters">
+										<option value="">unselected</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="label">Module</label>
+									<select name="module" id="module" class="select filters">
+										<option value="unselected">unselected</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="label">Abstraction Level</label>
+									<select name="abstraction" class="select filters" id="abstraction">
+										<option value="unselected">unselected</option>
+										<option value="1">Creations of Allah</option>
+										<option value="1.1">&#10148;Vocabulary of Programmer</option>
+										<option value="1.11">&nbsp;&#9871;Algorithm</option>
+										<option value="1.12">&nbsp;&#9871;High Level Language</option>
+										<option value="1.13">&nbsp;&#9871;System Softwares</option>
+										<option value="1.2">&#10148;Vocabulary of Processor</option>
+										<option value="1.21">&nbsp;&#9871;Assembly Language</option>
+										<option value="1.22">&nbsp;&#9871;Machine Language</option>
+										<option value="1.3">&#10148;Microarchitecture</option>
+										<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
+										<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
+										<option value="1.4">&#10148;Analog & Digital Circuits</option>
+										<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
+										<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
+										<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
+										<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
+										<option value="1.5">&#10148;Voltage</option>
+										<option value="1.51">&nbsp;&#9871;Electric Power System</option>
+										<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
+										<option value="2">Allah</option>
+										<option value="2.1">&#10148;His Actions</option>
+										<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
+										<option value="2.2">&#10148;His Attributes</option>
+										<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
+										<option value="2.3">&#10148;His Essence</option>
+									</select>
+								</div>
+							</div>
+						</div>
+	<!--
+						<div class="card">
+							<div class="card-header">Motivational Filters:</div>
+							<div class="card-body">
+								
+								<div class="form-group">
+									<label class="label">Objective</label>
+									<select name="objective" id="objective" class="select filters">
+										<option value="unselected">unselected</option>
+										<option value="religion">preservation of religion</option>
+										<option value="life">preservation of the life</option>
+										<option value="mind">preservation of the mind</option>
+										<option value="family">preservation of lineage/offspring/honour/dignity</option>
+										<option value="wealth">preservation of wealth</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label class="label">Course Outcome</label>
+									<select name="co" id="co" class="select filters">
+										<option value="unselected">unselected</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+							</div>
+						</div>
+	-->
+						<div class="card">
+							<div class="card-header">Cognitive Filters:</div>
+							<div class="card-body">
+								<div class="form-group">
+									<label class="label">Strategy</label>
+									<select name="difficulty" id="difficulty" class="select filters">
+										<option value="unselected">unselected</option>
+										<option value="survey">survey</option>
+										<option value="question">question</option>
+										<option value="summarize">summarize</option>
+										<option value="other">other</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="entryEffort">Effort</label>
+									<select type="text" class="select filters" id="effort" name="effort">
+										<option value="unselected">
+										unselected
+										</option>
+										<option value="1">
+										very, very low mental effort
+										</option>
+										<option value="2">
+										very low mental effort
+										</option>
+										<option value="3">
+										low mental effort
+										</option>
+										<option value="4">
+										rather low mental effort
+										</option>
+										<option value="5">
+										neither low nor high mental effort
+										</option>
+										<option value="6">
+										rather high mental effort
+										</option>
+										<option value="7">
+										high mental effort
+										</option>
+										<option value="8">
+										very high mental effort
+										</option>
+										<option value="9">
+										very, very high mental effort
+										</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="intuition">Intuition</label>
+									<select type="text" class="select filters" id="intuition" name="intuition">
+										<option value="unselected">
+										unselected
+										</option>
+										<option value="1">
+										maximally counterintuitive
+										</option>
+										<option value="2">
+										minimally counterintuitive
+										</option>
+										<option value="3">
+										maximally unintuitive
+										</option>
+										<option value="4">
+										minimally unintuitive
+										</option>
+										<option value="5">
+										intuitive
+										</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="label">Retention</label>
+									<select name="retention" id="retention" class="select filters">
+										<option value="unselected">unselected</option>
+										<option value="Low">low</option>
+										<option value="High">high</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="label">Coverage</label>
+									<select name="coverage" id="coverage" class="select filters">
+										<option value="unselected">unselected</option>
+										<option value="Minor">Minor</option>
+										<option value="Major">Major</option>
+										<option value="Full">Full</option>
+									</select>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="card">
-						<div class="card-header">Curricular Filters:</div>
-						<div class="card-body">
-							<div class="form-group">
-								<label class="label">Semester</label>
-								<select name="semester" id="semester" class="select filters">
-									<option value="unselected">unselected</option>
-									<option value="0">0</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="label">Subject</label>
-								<select name="subject" id="subject" class="select filters">
-									<option value="">unselected</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="label">Module</label>
-								<select name="module" id="module" class="select filters">
-									<option value="unselected">unselected</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="label">Abstraction Level</label>
-								<select name="abstraction" class="select filters" id="abstraction">
-									<option value="unselected">unselected</option>
-									<option value="1">Creations of Allah</option>
-									<option value="1.1">&#10148;Vocabulary of Programmer</option>
-									<option value="1.11">&nbsp;&#9871;Algorithm</option>
-									<option value="1.12">&nbsp;&#9871;High Level Language</option>
-									<option value="1.13">&nbsp;&#9871;System Softwares</option>
-									<option value="1.2">&#10148;Vocabulary of Processor</option>
-									<option value="1.21">&nbsp;&#9871;Assembly Language</option>
-									<option value="1.22">&nbsp;&#9871;Machine Language</option>
-									<option value="1.3">&#10148;Microarchitecture</option>
-									<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
-									<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
-									<option value="1.4">&#10148;Analog & Digital Circuits</option>
-									<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
-									<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
-									<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
-									<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
-									<option value="1.5">&#10148;Voltage</option>
-									<option value="1.51">&nbsp;&#9871;Electric Power System</option>
-									<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
-									<option value="2">Allah</option>
-									<option value="2.1">&#10148;His Actions</option>
-									<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
-									<option value="2.2">&#10148;His Attributes</option>
-									<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
-									<option value="2.3">&#10148;His Essence</option>
-								</select>
-							</div>
+					<div class="mb-3">
+						<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
+							<button type="reset" class="btn btn-secondary">Clear</button>
+							<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
+							<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
 						</div>
 					</div>
-<!--
-					<div class="card">
-						<div class="card-header">Motivational Filters:</div>
-						<div class="card-body">
-							
-							<div class="form-group">
-								<label class="label">Objective</label>
-								<select name="objective" id="objective" class="select filters">
-									<option value="unselected">unselected</option>
-									<option value="religion">preservation of religion</option>
-									<option value="life">preservation of the life</option>
-									<option value="mind">preservation of the mind</option>
-									<option value="family">preservation of lineage/offspring/honour/dignity</option>
-									<option value="wealth">preservation of wealth</option>
-								</select>
-							</div>
-
-							<div class="form-group">
-								<label class="label">Course Outcome</label>
-								<select name="co" id="co" class="select filters">
-									<option value="unselected">unselected</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</div>
+					<div class="mb-3">
+						<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Count Buttons">	
+							<button id="minOddCount" class="btn btn-outline-primary" type="button" onClick="countOddSemMinTopics()"><i class="fa fa-hourglass-half"></i>
+							</button>
+							<button id="minEvenCount" class="btn btn-outline-secondary" type="button" onClick="countEvenSemMinTopics()">
+							<i class="fa fa-hourglass-half"></i>
+							</button>
 						</div>
 					</div>
--->
-					<div class="card">
-						<div class="card-header">Cognitive Filters:</div>
-						<div class="card-body">
-							<div class="form-group">
-								<label class="label">Strategy</label>
-								<select name="difficulty" id="difficulty" class="select filters">
-									<option value="unselected">unselected</option>
-									<option value="survey">survey</option>
-									<option value="question">question</option>
-									<option value="summarize">summarize</option>
-									<option value="other">other</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="entryEffort">Effort</label>
-								<select type="text" class="select filters" id="effort" name="effort">
-									<option value="unselected">
-									unselected
-									</option>
-									<option value="1">
-									very, very low mental effort
-									</option>
-									<option value="2">
-									very low mental effort
-									</option>
-									<option value="3">
-									low mental effort
-									</option>
-									<option value="4">
-									rather low mental effort
-									</option>
-									<option value="5">
-									neither low nor high mental effort
-									</option>
-									<option value="6">
-									rather high mental effort
-									</option>
-									<option value="7">
-									high mental effort
-									</option>
-									<option value="8">
-									very high mental effort
-									</option>
-									<option value="9">
-									very, very high mental effort
-									</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="intuition">Intuition</label>
-								<select type="text" class="select filters" id="intuition" name="intuition">
-									<option value="unselected">
-									unselected
-									</option>
-									<option value="1">
-									maximally counterintuitive
-									</option>
-									<option value="2">
-									minimally counterintuitive
-									</option>
-									<option value="3">
-									maximally unintuitive
-									</option>
-									<option value="4">
-									minimally unintuitive
-									</option>
-									<option value="5">
-									intuitive
-									</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="label">Retention</label>
-								<select name="retention" id="retention" class="select filters">
-									<option value="unselected">unselected</option>
-									<option value="Low">low</option>
-									<option value="High">high</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="label">Coverage</label>
-								<select name="coverage" id="coverage" class="select filters">
-									<option value="unselected">unselected</option>
-									<option value="Minor">Minor</option>
-									<option value="Major">Major</option>
-									<option value="Full">Full</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="mb-3">
-					<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">	
-						<button type="reset" class="btn btn-secondary">Clear</button>
-						<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
-						<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
-					</div>
-				</div>
-				<div class="mb-3">
-					<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Count Buttons">	
-						<button id="minOddCount" class="btn btn-outline-primary" type="button" onClick="countOddSemMinTopics()"><i class="fa fa-hourglass-half"></i>
-						</button>
-						<button id="minEvenCount" class="btn btn-outline-secondary" type="button" onClick="countEvenSemMinTopics()">
-						<i class="fa fa-hourglass-half"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-			<table 
-				id="table"
-				data-toggle="table" 
-				data-sortable="true" 
-				data-show-export="true" 
-				data-show-print="true" 
-				data-show-columns="true" 
-				data-virtual-scroll="true" 
-				data-pagination="true"
-				data-page-size= "1"
-				data-page-list= "[1, 2 ,3, 5, 10, 25, 50, 100, 200]"
-				data-pagination-v-align="top"
-				data-search="true" 
-				data-show-search-clear-button="true" 
-				data-mobile-responsive="true" 
-				data-check-on-init="true" 
-				data-single-select="true"
-				data-click-to-select="true"
-				data-escape="true"							
-				data-min-width="750">
-				<thead>
-					<tr id="iwoq03">
-						<th data-field="state" data-checkbox="true">
-						</th>
-						<th data-field="Topic Name" data-sortable="true">Topic
-						</th>
-						<th data-field="Textbook Name">Textbook
-						</th>
-						<th data-field="Page Number" data-sortable="true">Page
-						</th>
-						<th data-field="Question Statement">Question
-						</th>
-						<th data-field="Total Marks" data-sortable="true">Total Marks
-						</th>
-						<th data-field="Total Students (%)" data-sortable="true">Total Students (%)
-						</th>
-						<th data-visible="false" data-field="Obtained Marks (%)" data-sortable="true">Obtained Marks (%)
-						</th>
-					</tr>
-				</thead>
-				<tr></tr>
-			</table>
-			<select name="entryTopic" class="forethoughtEntry entryTopic" hidden required/>
-			</select>
-		</div>
-
-<!--
-		<div class="section">
-			<h5 id="item-1-5">
-				Goal orientation
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Beliefs about learning purposes"><i class="fa fa-question-circle"></i>
-				</a>														
-			</h5>
-			<div class="accordion" id="goalOrientationAccordion">
-			  <div class="card">
-				<div class="card-header" id="orientationOne">
-				  <div class="mb-0">
-					<button class="btn btn-wrap-text btn-link" type="button" data-toggle="collapse" data-target="#collapseOrientationOne" aria-expanded="true" aria-controls="collapseOrientationOne">
-						Higher objective of Islam
-					</button>
-				  </div>
-				</div>
-
-				<div id="collapseOrientationOne" class="collapse" aria-labelledby="orientationOne" data-parent="#goalOrientationAccordion">
-				  <div class="card-body">
-			<div class="accordion" id="objectiveAccordion">
-			  <div class="card">
-				<div class="card-header" id="headingOne">
-				  <div class="mb-0">
-					<button class="btn btn-wrap-text btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						The first higher objective of Islam: the preservation of religion
-					</button>
-				  </div>
-				</div>
-				<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#objectiveAccordion">
-				  <div class="card-body">
-					<blockquote>
-						<p>
-							Religion is the sum of beliefs, rituals and rules commanded by God Almighty to regulate people's relationship to their Lord and relationships with each other. God Most High has intended through those provisions to establishing religion and install it in the people’s souls as they follow it. The reservation of religion is legitimated in many Shari’ah texts that call to faith and encourage it and forbid infidelity. Some of these Quranic texts are:
-							<br><br>
-							“And whoever desires other than Islam as religion - never will it be accepted from him, and he, in the Hereafter, will be among the losers.” (3:85).
-							<br>
-							And:
-							<br><br>									
-							“Surely the religion in the Providence of Allah is Islam. And in no way did the ones to whom the Book was brought differ (among themselves) except even after the knowledge came to them, being inequitable among themselves. And whoever disbelieves in the signs of Allah, then surely Allah is swift at the reckoning.” (3: 19).
-						</p>
-						<footer>
-							Source: 
-								<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
-									<cite> Dar Al-Ifta Al-Missriyyah</cite>
-								</a>
-						</footer> 
-					</blockquote>
-				  </div>
-				</div>
-			  </div>
-			  <div class="card">
-				<div class="card-header" id="headingTwo">
-				  <div class="mb-0">
-					<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						The second higher objective of Islam: the preservation of the self/soul (life)
-					</button>
-				  </div>
-				</div>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#objectiveAccordion">
-				  <div class="card-body">
-					<blockquote>
-						<p>
-							Islam has devoted a significant amount of texts and teaching into establishing the preservation of one’s soul as the most fundamental principle of all. It is through life that Mankind is able to maintain or preserve all of Almighty’s provisions and principles. Therefore, Islam has not only protected the soul from being killed or wasted but also established a set of rules to ensure its welfare spiritually and humanly—that is to secure surviving needs such as food, marriage, shelter, drinks and clothing—as well as establishing rules that deny and forbid the all means of self’s distractions.
-						</p>
-						<p>	
-							Allah Most High says:
-							<br>
-							“And in no way is it for a believer to kill a believer, except it be by mistake; and whoever kills a believer by mistake must set free a believing slave, and present a blood money (diya) to [the deceased’s] family, unless they [charitably] remit it. As if [the slain] was from a people hostile to you and he was a believer, then [the penance is] to set free a believing slave; and if [the slain] was from a people between whom and you there is a covenant, then a blood money (diya) is to be presented to his family and [also] a believing slave must be set free. And whoever does not find [the means to do so] must fast two months consecutively, a penance from Allah. And Allah has ever been Knowing, Wise. (Q 4:92)”
-							<br>
-							And says:
-							<br><br>									
-							“O you who believe! Retaliation (qiṣāṣ) is prescribed on you for the ones murdered; the freeman for the freeman, the slave for the slave, and the female for the female. But whoever is forgiven somewhat by his [slain] brother (i.e., his family), then adhering to with fairness and payment ( adāʾ) [of blood money] to him in kindness (iḥsān). That is an alleviation and mercy from your Lord, but whoever transgresses [the limits of Allah] after that, he shall receive a painful torment. (Q 2:178)
-							<br>
-							Also:
-							<br><br>									
-							“And do not kill the soul which Allah has forbade[to be killed] except by [legal] right. This has He instructed you that you may use reason.” (6:33)
-							<br><br>									
-							As well as many other examples from Quran and Hadith.
-						</p>
-						<footer>
-							Source: 
-								<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
-									<cite> Dar Al-Ifta Al-Missriyyah</cite>
-								</a>
-						</footer> 
-					</blockquote>									
-				  </div>
-				</div>
-			  </div>
-			  <div class="card">
-				<div class="card-header" id="headingThree">
-				  <div class="mb-0">
-					<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-						The third higher objective of Islam: the preservation of the mind
-					</button>
-				  </div>
-				</div>
-				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#objectiveAccordion">
-				  <div class="card-body">
-					<blockquote>
-						<p>
-							Allah Most High has commanded us to preserve our minds and has forbid all the means to disable it through the toxicities, alcohols. That is Allah Almighty has granted and distinguished humans from all other creatures by the grace of the mind, which means the ability to distinguish and making choices, and solving the difficulties faced in life. Allah has made humans, therefore, His successor on earth, and so they need to maintain the their mind, which is the basis of the discourse of the succession on earth. Numerous amount of Islamic teachings exhorts on the realization of the mind, its importance, and the describes it as the altitude grace. Some of the Quranic texts that encourage humans to use their mind to contemplate upon the creation of Allah Almighty and to understand their succession on earth are:
-							<br><br>									
-							“So have they not traveled through the earth and have hearts by which to reason and ears by which to hear? For indeed, it is not eyes that are blinded, but blinded are the hearts which are within the breasts.” (22: 46)
-							<br>
-							And:
-							<br><br>									
-							“Who remember Allah while standing or sitting or [lying] on their sides and give thought to the creation of the heavens and the earth, [saying], "Our Lord, You did not create this aimlessly; exalted are You [above such a thing]; then protect us from the punishment of the Fire.” (3:191)
-							<br><br>									
-							And regarding forbidding what affects the mind or disables it, the intoxicants, Allah Almighty says:
-							“O you who have believed, indeed, intoxicants, gambling, [sacrificing on] stone alters [to other than Allah ], and divining arrows are but defilement from the work of Satan, so avoid it that you may be successful.” (5:90)
-						</p>
-						<footer>
-							Source: 
-								<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
-									<cite> Dar Al-Ifta Al-Missriyyah</cite>
-								</a>
-						</footer> 
-					</blockquote>									
-				  </div>
-				</div>
-			  </div>						  
-			  <div class="card">
-				<div class="card-header" id="headingFour">
-				  <div class="mb-0">
-					<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-						The fourth higher objective of Islam: the preservation of lineage/offspring (honour)
-					</button>
-				  </div>
-				</div>
-				<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#objectiveAccordion">
-				  <div class="card-body">
-					<blockquote>
-						<p>
-							For the sake of persevering human’s offspring, Shari’ah has legitimized marriage and reproduction, and for the sake of protecting it, Shari’ah has forbade adultery and assigned a legal punishment (had) for whoever commit it. Moreover, Shari’ah also assigned a legal punishment for whoever lies about or render someone guilty unjustly of committing it (had al-Qazf). This proves that in maintaining the lineage a necessity for the purity of offspring from any potential distortion or corruption by mixing it so one does not even know who are their parents or who are their own children. In Quran we find the forbiddance of adultery is stated clearly and affirmly, Allah Most High says: “And do not approach unlawful sexual intercourse. Indeed, it is ever an immorality and is evil as a way. (17:32). And its punishment is stated in: “The [unmarried] woman or [unmarried] man found guilty of sexual intercourse - lash each one of them with a hundred lashes, and do not be taken by pity for them in the religion of Allah , if you should believe in Allah and the Last Day. And let a group of the believers witness their punishment.” (24:23)
-						</p>
-						<footer>
-							Source: 
-								<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
-									<cite> Dar Al-Ifta Al-Missriyyah</cite>
-								</a>
-						</footer> 
-					</blockquote>									
-				  </div>
-				</div>
-			  </div>						  
-			  <div class="card">
-				<div class="card-header" id="headingFive">
-				  <div class="mb-0">
-					<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-						The fifth higher objective of Islam: the preservation of wealth
-					</button>
-				  </div>
-				</div>
-				<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#objectiveAccordion">
-				  <div class="card-body">
-					<blockquote>
-						<p>
-							Shari’ah has commanded for the purpose of preserving human’s wealth the pursuit of earning a living and permitted transactions and exchanges and trade. Shari’ah also, for the sake of preserving wealth as well, forbid and placed punishments upon theft, deception, treason and consuming people’s wealth unjustly, in addition to discouraging the squandering of money.
-							<br><br>									
-							Money, as well as everything, belongs to God Almighty, who has granted humans the status of successors on earth, and so they are commanded to preserve such grace not to waste it.
-							<br>
-							Allah Almighty says in Holy Qur’an:
-							<br><br>									
-							“And do not consume one another's wealth unjustly or send it [in bribery] to the rulers in order that [they might aid] you [to] consume a portion of the wealth of the people in sin, while you know [it is unlawful].” (2:188)
-							<br><br>									
-							“And give to the orphans their properties and do not substitute the defective [of your own] for the good [of theirs]. And do not consume their properties into your own. Indeed, that is ever a great sin.” (4:2)
-							<br><br>									
-							“Those who consume interest cannot stand [on the Day of Resurrection] except as one stands who is being beaten by Satan into insanity. That is because they say, "Trade is [just] like interest." But Allah has permitted trade and has forbidden interest. So whoever has received an admonition from his Lord and desists may have what is past, and his affair rests with Allah . But whoeverreturns to [dealing in interest or usury] - those are the companions of the Fire; they will abide eternally therein.” (2:275)
-							<br><br>									
-							“Allah expunges riba (Interest or other unlawful) and He augments donations, and Allah does not love every most disbelieving most-vicious person.”(2:276)
-						</p>
-						<footer>
-							Source: 
-								<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
-									<cite> Dar Al-Ifta Al-Missriyyah</cite>
-								</a>
-						</footer> 
-					</blockquote>																		
-				  </div>
-				</div>
-			  </div>
+				</form>
+				<table 
+					id="table"
+					data-toggle="table" 
+					data-sortable="true" 
+					data-show-export="true" 
+					data-show-print="true" 
+					data-show-columns="true" 
+					data-virtual-scroll="true" 
+					data-pagination="true"
+					data-page-size= "1"
+					data-page-list= "[1, 2 ,3, 5, 10, 25, 50, 100, 200]"
+					data-pagination-v-align="top"
+					data-search="true" 
+					data-show-search-clear-button="true" 
+					data-mobile-responsive="true" 
+					data-check-on-init="true" 
+					data-single-select="true"
+					data-click-to-select="true"
+					data-escape="true"							
+					data-min-width="750">
+					<thead>
+						<tr id="iwoq03">
+							<th data-field="state" data-checkbox="true">
+							</th>
+							<th data-field="Topic Name" data-sortable="true">Topic
+							</th>
+							<th data-field="Textbook Name">Textbook
+							</th>
+							<th data-field="Page Number" data-sortable="true">Page
+							</th>
+							<th data-field="Question Statement">Question
+							</th>
+							<th data-field="Total Marks" data-sortable="true">Total Marks
+							</th>
+							<th data-field="Total Students (%)" data-sortable="true">Total Students (%)
+							</th>
+							<th data-visible="false" data-field="Obtained Marks (%)" data-sortable="true">Obtained Marks (%)
+							</th>
+						</tr>
+					</thead>
+					<tr></tr>
+				</table>
+				<select name="entryTopic" class="forethoughtEntry entryTopic" hidden required/>
+				</select>
 			</div>
 
-				  </div>
-				</div>
-			  </div>
-			  <div class="card">
-				<div class="card-header" id="orientationTwo">
-				  <div class="mb-0">
-					<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseOrientationTwo" aria-expanded="false" aria-controls="collapseOrientationTwo">
-						Priorities of higher objectives of Islam
-					</button>
-				  </div>
-				</div>
-				<div id="collapseOrientationTwo" class="collapse" aria-labelledby="orientationTwo" data-parent="#goalOrientationAccordion">
-					<div class="card-body">
-					<div class="accordion" id="priorityAccordion">
-					  <div class="card">
-						<div class="card-header" id="priorityOne">
-						  <div class="mb-0">
-							<button class="btn btn-wrap-text btn-link" type="button" data-toggle="collapse" data-target="#collapsePriorityOne" aria-expanded="true" aria-controls="collapsePriorityOne">
-								The essentials
-							</button>
-						  </div>
-						</div>
-
-						<div id="collapsePriorityOne" class="collapse" aria-labelledby="priorityOne" data-parent="#priorityAccordion">
-						  <div class="card-body">
-							<blockquote>
-								<p>
-									The essentials are these five objectives, that are conceived as absolute requirements to the survival and spiritual well-being of individuals, to the extent that their destruction or collapse would precipitate chaos and the demise of normal order in society. The Shari’ah, on the whole, seeks, primarily, to protect and promote these essential values, and validates all measures necessary for their preservation and advancement. There is also a general agreement that the preservation of these necessities is the ‘objective behind any revealed law, not just the Islamic law.												
-								</p>
-								<footer>
-									Source: 
-										<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
-											<cite> Dar Al-Ifta Al-Missriyyah</cite>
-										</a>
-								</footer> 
-							</blockquote>	
-							</div>
-						</div>
-					  </div>
-					  <div class="card">
-						<div class="card-header" id="priorityTwo">
-						  <div class="mb-0">
-							<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapsePriorityTwo" aria-expanded="false" aria-controls="collapsePriorityTwo">
-								The complementary
-							</button>
-						  </div>
-						</div>
-						<div id="collapsePriorityTwo" class="collapse" aria-labelledby="priorityTwo" data-parent="#priorityAccordion">
-						  <div class="card-body">
-							<blockquote>
-								<p>
-									The complementary or the needs (hajiyat), are less essential for human life. Examples are marriage, trade, and means of transportation. Islam encourages and regulates these needs. However, the lack of any of these needs is not a matter of life and death, especially on an individual basis.
-								</p>
-								<footer>
-									Source: 
-										<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
-											<cite> Dar Al-Ifta Al-Missriyyah</cite>
-										</a>
-								</footer> 
-							</blockquote>	
-							</div>
-						</div>
-					  </div>
-					  <div class="card">
-						<div class="card-header" id="priorityThree">
-						  <div class="mb-0">
-							<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapsePriorityThree" aria-expanded="false" aria-controls="collapsePriorityThree">
-								The desirable or the embellishments
-							</button>
-						  </div>
-						</div>
-						<div id="collapsePriorityThree" class="collapse" aria-labelledby="priorityThree" data-parent="#priorityAccordion">
-						  <div class="card-body">
-							<blockquote>
-								<p>
-									The embellishments or luxuries (tahsiniyat) are ‘beautifying purposes,’such as using perfume, stylish clothing, and beautiful homes. These are things that Islam encourages, but also asserts how they should take a lower priority in one’s life.
-								</p>
-								<footer>
-									Source: 
-										<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
-											<cite> Dar Al-Ifta Al-Missriyyah</cite>
-										</a>
-								</footer> 
-							</blockquote>
-						  </div>
-						</div>
-					  </div>						  
-					</div>
-
-				</div>
-			  </div>
-			</div>
-			</div>							
-		</div>
--->
-		<div class="section">						
-			<h5 class="mt-5" id="item-1-4">
-			Strategic planning
-			<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The outputs maybe written or oral."><i class="fa fa-question-circle"></i>
-			</a>															
-			</h5>
-			<div class="accordion" id="strategyAccordion">
-			  <div class="card">
-				<div class="card-header" id="strategyOne">
-				  <div class="mb-0">
-					<input required type="radio" class="forethoughtEntry" id="survey" name="entryDifficulty" value="survey" data-toggle="collapse" data-target="#collapseStrategyOne" aria-expanded="true" aria-controls="collapseStrategyOne"/>
-					<label for="survey" class='text-primary'>survey</label>
-				  </div>
-				</div>
-
-				<div id="collapseStrategyOne" class="collapse" aria-labelledby="strategyOne" data-parent="#strategyAccordion">
-				  <div class="card-body">
-					<b>Procedure: </b>Survey the following components of a topic:
-					<ul>
-						<li>Diagrams</li>
-						<li>Diagram captions</li>
-						<li>Subheadings</li>
-						<li>Tables</li>
-						<li>Table captions</li>
-						<li>Words in bold/italics</li>
-						<li>Words suffixed by "-" or ":"</li>
-						<li>Sentences with question mark</li>
-					</ul>
-					<b>Output: </b>List of key artifacts of the topic.
-				  </div>
-				</div>
-			  </div>
-			  <div class="card">
-				<div class="card-header" id="strategyTwo">
-				  <div class="mb-0">
-					<input required type="radio" class="forethoughtEntry" id="question" name="entryDifficulty" value="question" data-toggle="collapse" data-target="#collapseStrategyTwo" aria-expanded="true" aria-controls="collapseStrategyTwo"/>
-					<label for="question" class='text-primary'>question</label>
-				  </div>
-				</div>
-				<div id="collapseStrategyTwo" class="collapse" aria-labelledby="strategyTwo" data-parent="#strategyAccordion">
-				  <div class="card-body">
-					<b>Input: </b>Output of survey<br>
-					<b>Procedure: </b>Convert what was surveyed into questions. Center your questions around the following:
-					<ul>
-						<li>Purpose</li>
-						<li>Definitions</li>
-						<li>Description</li>
-						<li>Importance</li>
-						<li>Levels of abstractions</li>
-						<li>Costs</li>
-						<li>Trade-offs</li>
-						<li>Assumptions</li>
-						<li>Comparisons and contrasts</li>
-						<li>Examples</li>
-					</ul>
-					<b>Output: </b>List of questions.
-				  </div>
-				</div>
-			  </div>
-			  <div class="card">
-				<div class="card-header" id="strategyThree">
-				  <div class="mb-0">
-					<input required type="radio" class="forethoughtEntry" id="summarize" name="entryDifficulty" value="summarize" data-toggle="collapse" data-target="#collapseStrategyThree" aria-expanded="true" aria-controls="collapseStrategyThree"/>
-					<label for="summarize" class='text-primary'>summarize</label>
-				  </div>
-				</div>
-				<div id="collapseStrategyThree" class="collapse" aria-labelledby="strategyThree" data-parent="#strategyAccordion">
-				  <div class="card-body">
-					<b>Input: </b>Output of question<br>
-					<b>Procedure: </b>
-					<ol>
-						<li>Read the topic seeking to answer the questions formulated earlier.</li>
-						<li>Extract answers from the text by bracketing, underlining, highlighting etc.</li>
-					</ol>
-					<b>Output: </b>List of answers.									
-				  </div>
-				</div>
-			  </div>
-			  <div class="card">
-				<div class="card-header" id="strategyFour">
-				  <div class="mb-0">
-					<input required type="radio" class="forethoughtEntry" id="otherStrategy" name="entryDifficulty" value="other" data-toggle="collapse" data-target="#collapseStrategyFour" aria-expanded="true" aria-controls="collapseStrategyFour"/>
-					<label for="otherStrategy" class='text-primary'>other</label>
-				  </div>
-				</div>
-				<div id="collapseStrategyFour" class="collapse" aria-labelledby="strategyFour" data-parent="#strategyAccordion">
-				  <div class="card-body">
-					<b>Output: </b>List of answers.									
-				  </div>
-				</div>								
-			  </div>
-			  </div>
-		</div>						
-		<div class="section">
-			<h5 id="item-1-2">
-				Assesment criteria
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Standards against which text reading will be assessed"><i class="fa fa-question-circle"></i>
-				</a>							
-			</h5>
-			Self assesment must be done by self-explaning the <strong> output </strong> of <strong>strategic planning</strong>,
-			<ol>
-				<li>While looking at the output. (If unable to self explain, read the topic only so much so as to be able to coherently correlate the items in the output list)</li>
-				<li>Without looking at the output.</li>
-			</ol>
-		</div>
-		<div class="section" >
-			<h5 class="alert-heading" id="item-1-3">
-				Performance level
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The level of perfection that is intended to be achieved"><i class="fa fa-question-circle"></i>
-				</a>														
-			</h5>
-			<p>To remember everything studied without hesitation</p>
-		</div>
-		<div class="section" >
-			<h4 id="item-3" class="mb-3" style="text-align:center;">
-				Afterthought phase
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="This is the phase of learning that comes after reading a text."><i class="fa fa-question-circle"></i>
-				</a>								
-			</h4>
-			<form method="post" id="loginForm" class="form">
-				<div class="form-group">
-					<label class="label">USN</label>
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="try for example: 1hk16cs000"><i class="fa fa-question-circle"></i>
-				</a>
-					<input placeholder="1hkXXcsXXX" id="loginUsn" name="loginUsn" type="text" class="input" required/>
-				</div>
-				<div class="form-group">
-					<label class="label">Password</label>
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="try for example:  test"><i class="fa fa-question-circle"></i>
-					</a>
-					<input placeholder="Type here your password" name="loginPassword" type="password" class="input" required/>
-				</div>
-				<div class="form-group">
-					<button type="submit" class="button">Login</button>
-				</div>
-				<div data-form-state="loginSuccess" class="state-success" id="i1124e">Logged in successfully</div>
-				<div data-form-state="loginError" class="state-error" id="iszsuh">There was a problem in logging in</div>
-			</form>
-			<div id="entryDiv" style="display: none;">
-				<div class="accordion" id="entryAccordion">			
+	<!--
+			<div class="section">
+				<h5 id="item-1-5">
+					Goal orientation
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Beliefs about learning purposes"><i class="fa fa-question-circle"></i>
+					</a>														
+				</h5>
+				<div class="accordion" id="goalOrientationAccordion">
 				  <div class="card">
-					<div class="card-header" id="statusEntryHeading">
+					<div class="card-header" id="orientationOne">
 					  <div class="mb-0">
-						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseStatusEntry" aria-expanded="false" aria-controls="collapseStatusEntry">
-							Diary Entry
+						<button class="btn btn-wrap-text btn-link" type="button" data-toggle="collapse" data-target="#collapseOrientationOne" aria-expanded="true" aria-controls="collapseOrientationOne">
+							Higher objective of Islam
 						</button>
-						<button title="refresh conversation" type="button" class="btn btn-link btn-wrap-text collapsed" id="refreshConversation"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+					  </div>
+					</div>
+
+					<div id="collapseOrientationOne" class="collapse" aria-labelledby="orientationOne" data-parent="#goalOrientationAccordion">
+					  <div class="card-body">
+				<div class="accordion" id="objectiveAccordion">
+				  <div class="card">
+					<div class="card-header" id="headingOne">
+					  <div class="mb-0">
+						<button class="btn btn-wrap-text btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							The first higher objective of Islam: the preservation of religion
+						</button>
+					  </div>
+					</div>
+					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#objectiveAccordion">
+					  <div class="card-body">
+						<blockquote>
+							<p>
+								Religion is the sum of beliefs, rituals and rules commanded by God Almighty to regulate people's relationship to their Lord and relationships with each other. God Most High has intended through those provisions to establishing religion and install it in the people’s souls as they follow it. The reservation of religion is legitimated in many Shari’ah texts that call to faith and encourage it and forbid infidelity. Some of these Quranic texts are:
+								<br><br>
+								“And whoever desires other than Islam as religion - never will it be accepted from him, and he, in the Hereafter, will be among the losers.” (3:85).
+								<br>
+								And:
+								<br><br>									
+								“Surely the religion in the Providence of Allah is Islam. And in no way did the ones to whom the Book was brought differ (among themselves) except even after the knowledge came to them, being inequitable among themselves. And whoever disbelieves in the signs of Allah, then surely Allah is swift at the reckoning.” (3: 19).
+							</p>
+							<footer>
+								Source: 
+									<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
+										<cite> Dar Al-Ifta Al-Missriyyah</cite>
+									</a>
+							</footer> 
+						</blockquote>
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="headingTwo">
+					  <div class="mb-0">
+						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							The second higher objective of Islam: the preservation of the self/soul (life)
+						</button>
+					  </div>
+					</div>
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#objectiveAccordion">
+					  <div class="card-body">
+						<blockquote>
+							<p>
+								Islam has devoted a significant amount of texts and teaching into establishing the preservation of one’s soul as the most fundamental principle of all. It is through life that Mankind is able to maintain or preserve all of Almighty’s provisions and principles. Therefore, Islam has not only protected the soul from being killed or wasted but also established a set of rules to ensure its welfare spiritually and humanly—that is to secure surviving needs such as food, marriage, shelter, drinks and clothing—as well as establishing rules that deny and forbid the all means of self’s distractions.
+							</p>
+							<p>	
+								Allah Most High says:
+								<br>
+								“And in no way is it for a believer to kill a believer, except it be by mistake; and whoever kills a believer by mistake must set free a believing slave, and present a blood money (diya) to [the deceased’s] family, unless they [charitably] remit it. As if [the slain] was from a people hostile to you and he was a believer, then [the penance is] to set free a believing slave; and if [the slain] was from a people between whom and you there is a covenant, then a blood money (diya) is to be presented to his family and [also] a believing slave must be set free. And whoever does not find [the means to do so] must fast two months consecutively, a penance from Allah. And Allah has ever been Knowing, Wise. (Q 4:92)”
+								<br>
+								And says:
+								<br><br>									
+								“O you who believe! Retaliation (qiṣāṣ) is prescribed on you for the ones murdered; the freeman for the freeman, the slave for the slave, and the female for the female. But whoever is forgiven somewhat by his [slain] brother (i.e., his family), then adhering to with fairness and payment ( adāʾ) [of blood money] to him in kindness (iḥsān). That is an alleviation and mercy from your Lord, but whoever transgresses [the limits of Allah] after that, he shall receive a painful torment. (Q 2:178)
+								<br>
+								Also:
+								<br><br>									
+								“And do not kill the soul which Allah has forbade[to be killed] except by [legal] right. This has He instructed you that you may use reason.” (6:33)
+								<br><br>									
+								As well as many other examples from Quran and Hadith.
+							</p>
+							<footer>
+								Source: 
+									<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
+										<cite> Dar Al-Ifta Al-Missriyyah</cite>
+									</a>
+							</footer> 
+						</blockquote>									
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="headingThree">
+					  <div class="mb-0">
+						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							The third higher objective of Islam: the preservation of the mind
+						</button>
+					  </div>
+					</div>
+					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#objectiveAccordion">
+					  <div class="card-body">
+						<blockquote>
+							<p>
+								Allah Most High has commanded us to preserve our minds and has forbid all the means to disable it through the toxicities, alcohols. That is Allah Almighty has granted and distinguished humans from all other creatures by the grace of the mind, which means the ability to distinguish and making choices, and solving the difficulties faced in life. Allah has made humans, therefore, His successor on earth, and so they need to maintain the their mind, which is the basis of the discourse of the succession on earth. Numerous amount of Islamic teachings exhorts on the realization of the mind, its importance, and the describes it as the altitude grace. Some of the Quranic texts that encourage humans to use their mind to contemplate upon the creation of Allah Almighty and to understand their succession on earth are:
+								<br><br>									
+								“So have they not traveled through the earth and have hearts by which to reason and ears by which to hear? For indeed, it is not eyes that are blinded, but blinded are the hearts which are within the breasts.” (22: 46)
+								<br>
+								And:
+								<br><br>									
+								“Who remember Allah while standing or sitting or [lying] on their sides and give thought to the creation of the heavens and the earth, [saying], "Our Lord, You did not create this aimlessly; exalted are You [above such a thing]; then protect us from the punishment of the Fire.” (3:191)
+								<br><br>									
+								And regarding forbidding what affects the mind or disables it, the intoxicants, Allah Almighty says:
+								“O you who have believed, indeed, intoxicants, gambling, [sacrificing on] stone alters [to other than Allah ], and divining arrows are but defilement from the work of Satan, so avoid it that you may be successful.” (5:90)
+							</p>
+							<footer>
+								Source: 
+									<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
+										<cite> Dar Al-Ifta Al-Missriyyah</cite>
+									</a>
+							</footer> 
+						</blockquote>									
+					  </div>
+					</div>
+				  </div>						  
+				  <div class="card">
+					<div class="card-header" id="headingFour">
+					  <div class="mb-0">
+						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							The fourth higher objective of Islam: the preservation of lineage/offspring (honour)
+						</button>
+					  </div>
+					</div>
+					<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#objectiveAccordion">
+					  <div class="card-body">
+						<blockquote>
+							<p>
+								For the sake of persevering human’s offspring, Shari’ah has legitimized marriage and reproduction, and for the sake of protecting it, Shari’ah has forbade adultery and assigned a legal punishment (had) for whoever commit it. Moreover, Shari’ah also assigned a legal punishment for whoever lies about or render someone guilty unjustly of committing it (had al-Qazf). This proves that in maintaining the lineage a necessity for the purity of offspring from any potential distortion or corruption by mixing it so one does not even know who are their parents or who are their own children. In Quran we find the forbiddance of adultery is stated clearly and affirmly, Allah Most High says: “And do not approach unlawful sexual intercourse. Indeed, it is ever an immorality and is evil as a way. (17:32). And its punishment is stated in: “The [unmarried] woman or [unmarried] man found guilty of sexual intercourse - lash each one of them with a hundred lashes, and do not be taken by pity for them in the religion of Allah , if you should believe in Allah and the Last Day. And let a group of the believers witness their punishment.” (24:23)
+							</p>
+							<footer>
+								Source: 
+									<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
+										<cite> Dar Al-Ifta Al-Missriyyah</cite>
+									</a>
+							</footer> 
+						</blockquote>									
+					  </div>
+					</div>
+				  </div>						  
+				  <div class="card">
+					<div class="card-header" id="headingFive">
+					  <div class="mb-0">
+						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+							The fifth higher objective of Islam: the preservation of wealth
+						</button>
+					  </div>
+					</div>
+					<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#objectiveAccordion">
+					  <div class="card-body">
+						<blockquote>
+							<p>
+								Shari’ah has commanded for the purpose of preserving human’s wealth the pursuit of earning a living and permitted transactions and exchanges and trade. Shari’ah also, for the sake of preserving wealth as well, forbid and placed punishments upon theft, deception, treason and consuming people’s wealth unjustly, in addition to discouraging the squandering of money.
+								<br><br>									
+								Money, as well as everything, belongs to God Almighty, who has granted humans the status of successors on earth, and so they are commanded to preserve such grace not to waste it.
+								<br>
+								Allah Almighty says in Holy Qur’an:
+								<br><br>									
+								“And do not consume one another's wealth unjustly or send it [in bribery] to the rulers in order that [they might aid] you [to] consume a portion of the wealth of the people in sin, while you know [it is unlawful].” (2:188)
+								<br><br>									
+								“And give to the orphans their properties and do not substitute the defective [of your own] for the good [of theirs]. And do not consume their properties into your own. Indeed, that is ever a great sin.” (4:2)
+								<br><br>									
+								“Those who consume interest cannot stand [on the Day of Resurrection] except as one stands who is being beaten by Satan into insanity. That is because they say, "Trade is [just] like interest." But Allah has permitted trade and has forbidden interest. So whoever has received an admonition from his Lord and desists may have what is past, and his affair rests with Allah . But whoeverreturns to [dealing in interest or usury] - those are the companions of the Fire; they will abide eternally therein.” (2:275)
+								<br><br>									
+								“Allah expunges riba (Interest or other unlawful) and He augments donations, and Allah does not love every most disbelieving most-vicious person.”(2:276)
+							</p>
+							<footer>
+								Source: 
+									<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
+										<cite> Dar Al-Ifta Al-Missriyyah</cite>
+									</a>
+							</footer> 
+						</blockquote>																		
+					  </div>
+					</div>
+				  </div>
+				</div>
+
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="orientationTwo">
+					  <div class="mb-0">
+						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseOrientationTwo" aria-expanded="false" aria-controls="collapseOrientationTwo">
+							Priorities of higher objectives of Islam
+						</button>
+					  </div>
+					</div>
+					<div id="collapseOrientationTwo" class="collapse" aria-labelledby="orientationTwo" data-parent="#goalOrientationAccordion">
+						<div class="card-body">
+						<div class="accordion" id="priorityAccordion">
+						  <div class="card">
+							<div class="card-header" id="priorityOne">
+							  <div class="mb-0">
+								<button class="btn btn-wrap-text btn-link" type="button" data-toggle="collapse" data-target="#collapsePriorityOne" aria-expanded="true" aria-controls="collapsePriorityOne">
+									The essentials
+								</button>
+							  </div>
+							</div>
+
+							<div id="collapsePriorityOne" class="collapse" aria-labelledby="priorityOne" data-parent="#priorityAccordion">
+							  <div class="card-body">
+								<blockquote>
+									<p>
+										The essentials are these five objectives, that are conceived as absolute requirements to the survival and spiritual well-being of individuals, to the extent that their destruction or collapse would precipitate chaos and the demise of normal order in society. The Shari’ah, on the whole, seeks, primarily, to protect and promote these essential values, and validates all measures necessary for their preservation and advancement. There is also a general agreement that the preservation of these necessities is the ‘objective behind any revealed law, not just the Islamic law.												
+									</p>
+									<footer>
+										Source: 
+											<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
+												<cite> Dar Al-Ifta Al-Missriyyah</cite>
+											</a>
+									</footer> 
+								</blockquote>	
+								</div>
+							</div>
+						  </div>
+						  <div class="card">
+							<div class="card-header" id="priorityTwo">
+							  <div class="mb-0">
+								<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapsePriorityTwo" aria-expanded="false" aria-controls="collapsePriorityTwo">
+									The complementary
+								</button>
+							  </div>
+							</div>
+							<div id="collapsePriorityTwo" class="collapse" aria-labelledby="priorityTwo" data-parent="#priorityAccordion">
+							  <div class="card-body">
+								<blockquote>
+									<p>
+										The complementary or the needs (hajiyat), are less essential for human life. Examples are marriage, trade, and means of transportation. Islam encourages and regulates these needs. However, the lack of any of these needs is not a matter of life and death, especially on an individual basis.
+									</p>
+									<footer>
+										Source: 
+											<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
+												<cite> Dar Al-Ifta Al-Missriyyah</cite>
+											</a>
+									</footer> 
+								</blockquote>	
+								</div>
+							</div>
+						  </div>
+						  <div class="card">
+							<div class="card-header" id="priorityThree">
+							  <div class="mb-0">
+								<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapsePriorityThree" aria-expanded="false" aria-controls="collapsePriorityThree">
+									The desirable or the embellishments
+								</button>
+							  </div>
+							</div>
+							<div id="collapsePriorityThree" class="collapse" aria-labelledby="priorityThree" data-parent="#priorityAccordion">
+							  <div class="card-body">
+								<blockquote>
+									<p>
+										The embellishments or luxuries (tahsiniyat) are ‘beautifying purposes,’such as using perfume, stylish clothing, and beautiful homes. These are things that Islam encourages, but also asserts how they should take a lower priority in one’s life.
+									</p>
+									<footer>
+										Source: 
+											<a href="http://www.dar-alifta.org/Foreign/ViewArticle.aspx?ID=499&CategoryID=3">
+												<cite> Dar Al-Ifta Al-Missriyyah</cite>
+											</a>
+									</footer> 
+								</blockquote>
+							  </div>
+							</div>
+						  </div>						  
 						</div>
-					</div>
-					<div id="collapseStatusEntry" class="collapse show" aria-labelledby="statusEntryHeading" data-parent="#entryAccordion">
-					  <div id="statusEntryContainer" class="card-body">								
-						<form method="post" action="/enter/status" id="statusEntryForm" class="form">
-							<div class="form-group">
-								<label for="entryEffort">Effort to apply strategy</label>
-								<select cf-questions="Effort to apply strategy" type="text" class="form-control student-required" id="entryEffort" name="entryEffort" required>
-									<option value="">
-									unselected
-									</option>
-									<option value="1">
-									very, very low mental effort
-									</option>
-									<option value="2">
-									very low mental effort
-									</option>
-									<option value="3">
-									low mental effort
-									</option>
-									<option value="4">
-									rather low mental effort
-									</option>
-									<option value="5">
-									neither low nor high mental effort
-									</option>
-									<option value="6">
-									rather high mental effort
-									</option>
-									<option value="7">
-									high mental effort
-									</option>
-									<option value="8">
-									very high mental effort
-									</option>
-									<option value="9">
-									very, very high mental effort
-									</option>
-								</select>
-							</div>
-							<cf-robot-message cf-questions="Even minimally counter intuitive content is memorable in the long term"></cf-robot-message>
-							<div class="form-group">
-								<label for="entryIntuition">Intuition</label>
-								<select type="text" class="form-control" id="entryIntuition" name="entryIntuition" required>
-									<option value="">
-									unselected
-									</option>
-									<option value="1">
-									maximally counterintuitive
-									</option>
-									<option value="2">
-									minimally counterintuitive
-									</option>
-									<option value="3">
-									maximally unintuitive
-									</option>
-									<option value="4">
-									minimally unintuitive
-									</option>
-									<option value="5">
-									intuitive
-									</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="entryCoverage">Coverage</label>
-								<select type="text" class="form-control" id="entryCoverage" name="entryCoverage" required>
-									<option value="">unselected</option>
-									<option value="Minor">Minor</option>
-									<option value="Major">Major</option>
-									<option value="Full">Full</option>
-								</select>
-							</div>
-							<cf-robot-message cf-questions="Even recalling with great difficulty helps in long term retention"></cf-robot-message>
-							<div class="form-group">
-								<label for="entryRetention">Retention</label>
-								<select type="text" class="form-control" name="entryRetention" id="entryRetention" required>
-									<option value="">unselected</option>
-									<option value="0">complete blackout</option>
-									<option value="1">incomplete response; the complete one can be recognized</option>
-									<option value="2">incomplete response; the complete one seemed easy to recall</option>
-									<option value="3">complete response recalled with serious difficulty</option>
-									<option value="4">complete response after a hesitation</option>
-									<option value="5">perfect response</option>
-								</select>
-							</div>							
-							<div class="form-group">
-								<label for="entryFavourRecognition">Recognition of favour</label>
-								<select 
-								class="form-control adminComponent" 
-								name="entryFavourRecognition" 
-								id="entryFavourRecognition"
-								cf-questions=
-								"How aware were you of Allah's favour of teaching you what you just learned ?
-								||How aware were you of Allah favouring you over others who haven't learned this topic ?
-								||How aware were you that all of creation is a shadow of Allah's command ?
-								"
-								>
-									<option value="">unselected</option>
-									<option value="0">Not at all</option>
-									<option value="1">Rarely</option>
-									<option value="2">Frequently</option>
-									<option value="3">Constantly</option>
-								</select>
-							</div>
-							<cf-robot-message 
-							class="adminComponent"
-							cf-questions="And He gave you much of what you seek; and if you enumerate the favours of Allah, you will never be able to count them; indeed man is very unjust, most ungrateful. (Surah Ibrahim Verse 34)"
-							>
-							</cf-robot-message>
-						</form>
-					  </div>
+
 					</div>
 				  </div>
-				  <div class="card adminComponent">
-					<div class="card-header" id="adminEntryHeading">
-					  <div class="mb-0">
-						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseAdminEntry" aria-expanded="false" aria-controls="collapseAdminEntry">
-							Admin Entry
-						</button>
-					  </div>
-					</div>
-					<div id="collapseAdminEntry" class="collapse" aria-labelledby="adminEntryHeading" data-parent="#entryAccordion">
-					  <div class="card-body">															  
-						<form method="post" action="/enter/adminStatus" id="adminEntryForm" class="form entryForm">
-							<label class="label">Lecture date</label>
-							<div class="input-group mb-3 flatpickr-single">
-								<input requried name="entryLectureDate" class="form-control" data-input/>	<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
-							</div>
-							<div class="form-group">
-								<label for="entryTopic">Topic</label>
-								<select name="entryTopic" class="form-control entryTopic" required/>
-									<option value="">please select a topic in the forethought phase</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary">Enter</button>
-								<button type="reset" class="btn btn-outline-primary">Clear</button>
-							</div>
-							<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
-							<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
-						</form>
-					  </div>
-					</div>
-				  </div>
-				  <div class="card adminComponent">
-					<div class="card-header" id="questionEntryHeading">
-					  <div class="mb-0">
-						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseQuestionEntry" aria-expanded="false" aria-controls="collapseQuestionEntry">
-							Question Entry
-						</button>
-					  </div>
-					</div>
-					<div id="collapseQuestionEntry" class="collapse" aria-labelledby="questionEntryHeading" data-parent="#entryAccordion">
-					  <div class="card-body">															  
-						<form method="post" action="/enter/question" id="questionEntryForm" class="form entryForm">
-							<div class="form-group">
-								<label for="entryTopic">Topic</label>
-								<select required name="entryTopic" class="form-control entryTopic" required/>
-									<option value="">please select a topic in the forethought phase</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="entryQuestion">Question</label>
-								<textarea required class="form-control" name="entryQuestion" id="entryQuestion" rows="4">
-								</textarea>
-							</div>
-							<div class="form-group">
-								<label for="entryTotalMarks">Total Marks</label>
-								<input required class="form-control" type="text" name="entryTotalMarks" id="entryTotalMarks"/>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary">Enter</button>
-								<button type="reset" class="btn btn-outline-primary">Clear</button>
-							</div>
-							<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
-							<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
-						</form>
-					  </div>
-					</div>
-				  </div>
-				  <div class="card adminComponent">
-					<div class="card-header" id="syllabusEntryHeading">
-					  <div class="mb-0">
-						<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseSyllabusEntry" aria-expanded="false" aria-controls="collapseSyllabusEntry">
-							Syllabus Entry
-						</button>
-					  </div>
-					</div>
-					<div id="collapseSyllabusEntry" class="collapse" aria-labelledby="syllabusEntryHeading" data-parent="#entryAccordion">
-					  <div class="card-body">								
-						<form method="post" action="/enter/syllabus" id="syllabusEntryForm" class="form entryForm">
-							<div class="form-group">
-								<label for="entrySemester" >Semester</label>
-								<select name="semester" id="entrySemester" class="form-control">
-									<option value="unselected">unselected</option>
-									<option value="0">0</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-								</select>
-							</div>									
-							<div class="form-group">
-								<label for="entrySubject" >Subject</label>
-								<select name="subject" id="entrySubject" class="form-control ">
-									<option value="">unselected</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="entryModule">Module</label>
-								<select name="module" id="entryModule" class="form-control">
-									<option value="">unselected</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="entryNewTopic">New Topic</label>
-								<input class="form-control" type="text" name="entryNewTopic" id="entryNewTopic"/>
-							</div>
-							<div class="form-group">
-								<label for="entryPage">Page</label>
-								<input class="form-control" type="text" name="entryPage" id="entryPage"/>
-							</div>
-							<div class="form-group">
-								<label for="entryTextbook" >Textbook</label>
-								<select name="entryTextbook" id="entryTextbook" class="form-control">
-									<option value="">unselected</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary">Enter</button>
-								<button type="reset" class="btn btn-outline-primary">Clear</button>
-							</div>
-							<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
-							<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
-						</form>
-					  </div>
-					</div>
-				  </div>
-				<center>
-					<button type="button" class="btn btn-light" onclick="logout()" class="button">Logout</button> 
-				</center>
 				</div>
+				</div>							
 			</div>
-		</div>  
-<!--
-			<form method="post" id="entryForm" style="display: none;" class="form">
-				<div id="entryLectureDateDiv"  class="admin">
-				</div>
+	-->
+			<div class="section">						
+				<h5 class="mt-5" id="item-1-4">
+				Strategic planning
+				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The outputs maybe written or oral."><i class="fa fa-question-circle"></i>
+				</a>															
+				</h5>
+				<div class="accordion" id="strategyAccordion">
+				  <div class="card">
+					<div class="card-header" id="strategyOne">
+					  <div class="mb-0">
+						<input required type="radio" class="forethoughtEntry" id="survey" name="entryDifficulty" value="survey" data-toggle="collapse" data-target="#collapseStrategyOne" aria-expanded="true" aria-controls="collapseStrategyOne"/>
+						<label for="survey" class='text-primary'>survey</label>
+					  </div>
+					</div>
 
-				<div class="form-group student">
-					<label for="entryCo">Course Outcome</label>
-					<select type="text" class="form-control student-required" id="entryCo" name="entryCo" required>
-						<option value="unselected">unselected</option>
-					</select>
+					<div id="collapseStrategyOne" class="collapse" aria-labelledby="strategyOne" data-parent="#strategyAccordion">
+					  <div class="card-body">
+						<b>Procedure: </b>Survey the following components of a topic:
+						<ul>
+							<li>Diagrams</li>
+							<li>Diagram captions</li>
+							<li>Subheadings</li>
+							<li>Tables</li>
+							<li>Table captions</li>
+							<li>Words in bold/italics</li>
+							<li>Words suffixed by "-" or ":"</li>
+							<li>Sentences with question mark</li>
+						</ul>
+						<b>Output: </b>List of key artifacts of the topic.
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="strategyTwo">
+					  <div class="mb-0">
+						<input required type="radio" class="forethoughtEntry" id="question" name="entryDifficulty" value="question" data-toggle="collapse" data-target="#collapseStrategyTwo" aria-expanded="true" aria-controls="collapseStrategyTwo"/>
+						<label for="question" class='text-primary'>question</label>
+					  </div>
+					</div>
+					<div id="collapseStrategyTwo" class="collapse" aria-labelledby="strategyTwo" data-parent="#strategyAccordion">
+					  <div class="card-body">
+						<b>Input: </b>Output of survey<br>
+						<b>Procedure: </b>Convert what was surveyed into questions. Center your questions around the following:
+						<ul>
+							<li>Purpose</li>
+							<li>Definitions</li>
+							<li>Description</li>
+							<li>Importance</li>
+							<li>Levels of abstractions</li>
+							<li>Costs</li>
+							<li>Trade-offs</li>
+							<li>Assumptions</li>
+							<li>Comparisons and contrasts</li>
+							<li>Examples</li>
+						</ul>
+						<b>Output: </b>List of questions.
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="strategyThree">
+					  <div class="mb-0">
+						<input required type="radio" class="forethoughtEntry" id="summarize" name="entryDifficulty" value="summarize" data-toggle="collapse" data-target="#collapseStrategyThree" aria-expanded="true" aria-controls="collapseStrategyThree"/>
+						<label for="summarize" class='text-primary'>summarize</label>
+					  </div>
+					</div>
+					<div id="collapseStrategyThree" class="collapse" aria-labelledby="strategyThree" data-parent="#strategyAccordion">
+					  <div class="card-body">
+						<b>Input: </b>Output of question<br>
+						<b>Procedure: </b>
+						<ol>
+							<li>Read the topic seeking to answer the questions formulated earlier.</li>
+							<li>Extract answers from the text by bracketing, underlining, highlighting etc.</li>
+						</ol>
+						<b>Output: </b>List of answers.									
+					  </div>
+					</div>
+				  </div>
+				  <div class="card">
+					<div class="card-header" id="strategyFour">
+					  <div class="mb-0">
+						<input required type="radio" class="forethoughtEntry" id="otherStrategy" name="entryDifficulty" value="other" data-toggle="collapse" data-target="#collapseStrategyFour" aria-expanded="true" aria-controls="collapseStrategyFour"/>
+						<label for="otherStrategy" class='text-primary'>other</label>
+					  </div>
+					</div>
+					<div id="collapseStrategyFour" class="collapse" aria-labelledby="strategyFour" data-parent="#strategyAccordion">
+					  <div class="card-body">
+						<b>Output: </b>List of answers.									
+					  </div>
+					</div>								
+				  </div>
+				  </div>
+			</div>						
+			<div class="section">
+				<h5 id="item-1-2">
+					Assesment criteria
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="Standards against which text reading will be assessed"><i class="fa fa-question-circle"></i>
+					</a>							
+				</h5>
+				Self assesment must be done by self-explaning the <strong> output </strong> of <strong>strategic planning</strong>,
+				<ol>
+					<li>While looking at the output. (If unable to self explain, read the topic only so much so as to be able to coherently correlate the items in the output list)</li>
+					<li>Without looking at the output.</li>
+				</ol>
+			</div>
+			<div class="section" >
+				<h5 class="alert-heading" id="item-1-3">
+					Performance level
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="The level of perfection that is intended to be achieved"><i class="fa fa-question-circle"></i>
+					</a>														
+				</h5>
+				<p>To remember everything studied without hesitation</p>
+			</div>
+			<div class="section" >
+				<h4 id="item-3" class="mb-3" style="text-align:center;">
+					Afterthought phase
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="This is the phase of learning that comes after reading a text."><i class="fa fa-question-circle"></i>
+					</a>								
+				</h4>
+				<form method="post" id="loginForm" class="form">
+					<div class="form-group">
+						<label class="label">USN</label>
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="try for example: 1hk16cs000"><i class="fa fa-question-circle"></i>
+					</a>
+						<input placeholder="1hkXXcsXXX" id="loginUsn" name="loginUsn" type="text" class="input" required/>
+					</div>
+					<div class="form-group">
+						<label class="label">Password</label>
+						<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="try for example:  test"><i class="fa fa-question-circle"></i>
+						</a>
+						<input placeholder="Type here your password" name="loginPassword" type="password" class="input" required/>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="button">Login</button>
+					</div>
+					<div data-form-state="loginSuccess" class="state-success" id="i1124e">Logged in successfully</div>
+					<div data-form-state="loginError" class="state-error" id="iszsuh">There was a problem in logging in</div>
+				</form>
+				<div id="entryDiv" style="display: none;">
+					<div class="accordion" id="entryAccordion">			
+					  <div class="card">
+						<div class="card-header" id="statusEntryHeading">
+						  <div class="mb-0">
+							<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseStatusEntry" aria-expanded="false" aria-controls="collapseStatusEntry">
+								Diary Entry
+							</button>
+							<button title="refresh conversation" type="button" class="btn btn-link btn-wrap-text collapsed" id="refreshConversation"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+							</div>
+						</div>
+						<div id="collapseStatusEntry" class="collapse show" aria-labelledby="statusEntryHeading" data-parent="#entryAccordion">
+						  <div id="statusEntryContainer" class="card-body">								
+							<form method="post" action="/enter/status" id="statusEntryForm" class="form">
+								<div class="form-group">
+									<label for="entryEffort">Effort to apply strategy</label>
+									<select cf-questions="Effort to apply strategy" type="text" class="form-control student-required" id="entryEffort" name="entryEffort" required>
+										<option value="">
+										unselected
+										</option>
+										<option value="1">
+										very, very low mental effort
+										</option>
+										<option value="2">
+										very low mental effort
+										</option>
+										<option value="3">
+										low mental effort
+										</option>
+										<option value="4">
+										rather low mental effort
+										</option>
+										<option value="5">
+										neither low nor high mental effort
+										</option>
+										<option value="6">
+										rather high mental effort
+										</option>
+										<option value="7">
+										high mental effort
+										</option>
+										<option value="8">
+										very high mental effort
+										</option>
+										<option value="9">
+										very, very high mental effort
+										</option>
+									</select>
+								</div>
+								<cf-robot-message cf-questions="Even minimally counter intuitive content is memorable in the long term"></cf-robot-message>
+								<div class="form-group">
+									<label for="entryIntuition">Intuition</label>
+									<select type="text" class="form-control" id="entryIntuition" name="entryIntuition" required>
+										<option value="">
+										unselected
+										</option>
+										<option value="1">
+										maximally counterintuitive
+										</option>
+										<option value="2">
+										minimally counterintuitive
+										</option>
+										<option value="3">
+										maximally unintuitive
+										</option>
+										<option value="4">
+										minimally unintuitive
+										</option>
+										<option value="5">
+										intuitive
+										</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="entryCoverage">Coverage</label>
+									<select type="text" class="form-control" id="entryCoverage" name="entryCoverage" required>
+										<option value="">unselected</option>
+										<option value="Minor">Minor</option>
+										<option value="Major">Major</option>
+										<option value="Full">Full</option>
+									</select>
+								</div>
+								<cf-robot-message cf-questions="Even recalling with great difficulty helps in long term retention"></cf-robot-message>
+								<div class="form-group">
+									<label for="entryRetention">Retention</label>
+									<select type="text" class="form-control" name="entryRetention" id="entryRetention" required>
+										<option value="">unselected</option>
+										<option value="0">complete blackout</option>
+										<option value="1">incomplete response; the complete one can be recognized</option>
+										<option value="2">incomplete response; the complete one seemed easy to recall</option>
+										<option value="3">complete response recalled with serious difficulty</option>
+										<option value="4">complete response after a hesitation</option>
+										<option value="5">perfect response</option>
+									</select>
+								</div>							
+								<div class="form-group">
+									<label for="entryFavourRecognition">Recognition of favour</label>
+									<select 
+									class="form-control adminComponent" 
+									name="entryFavourRecognition" 
+									id="entryFavourRecognition"
+									cf-questions=
+									"How aware were you of Allah's favour of teaching you what you just learned ?
+									||How aware were you of Allah favouring you over others who haven't learned this topic ?
+									||How aware were you that all of creation is a shadow of Allah's command ?
+									"
+									>
+										<option value="">unselected</option>
+										<option value="0">Not at all</option>
+										<option value="1">Rarely</option>
+										<option value="2">Frequently</option>
+										<option value="3">Constantly</option>
+									</select>
+								</div>
+								<cf-robot-message 
+								class="adminComponent"
+								cf-questions="Allah says: And He gave you much of what you seek; and if you enumerate the favours of Allah, you will never be able to count them; indeed man is very unjust, most ungrateful. (Surah Ibrahim Verse 34)
+								|Allah says: Read! Your Lord is the Most Bountiful One, who taught by [means of] the pen, who taught man what he did not know.(Surah Al-'Alaq Verses 3-5)"
+								>
+								</cf-robot-message>
+							</form>
+						  </div>
+						</div>
+					  </div>
+					  <div class="card adminComponent">
+						<div class="card-header" id="adminEntryHeading">
+						  <div class="mb-0">
+							<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseAdminEntry" aria-expanded="false" aria-controls="collapseAdminEntry">
+								Admin Entry
+							</button>
+						  </div>
+						</div>
+						<div id="collapseAdminEntry" class="collapse" aria-labelledby="adminEntryHeading" data-parent="#entryAccordion">
+						  <div class="card-body">															  
+							<form method="post" action="/enter/adminStatus" id="adminEntryForm" class="form entryForm">
+								<label class="label">Lecture date</label>
+								<div class="input-group mb-3 flatpickr-single">
+									<input requried name="entryLectureDate" class="form-control" data-input/>	<a class="btn btn-outline-primary btn-sm" title="clear" data-clear role="button">Clear</a>
+								</div>
+								<div class="form-group">
+									<label for="entryTopic">Topic</label>
+									<select name="entryTopic" class="form-control entryTopic" required/>
+										<option value="">please select a topic in the forethought phase</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Enter</button>
+									<button type="reset" class="btn btn-outline-primary">Clear</button>
+								</div>
+								<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
+								<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
+							</form>
+						  </div>
+						</div>
+					  </div>
+					  <div class="card adminComponent">
+						<div class="card-header" id="questionEntryHeading">
+						  <div class="mb-0">
+							<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseQuestionEntry" aria-expanded="false" aria-controls="collapseQuestionEntry">
+								Question Entry
+							</button>
+						  </div>
+						</div>
+						<div id="collapseQuestionEntry" class="collapse" aria-labelledby="questionEntryHeading" data-parent="#entryAccordion">
+						  <div class="card-body">															  
+							<form method="post" action="/enter/question" id="questionEntryForm" class="form entryForm">
+								<div class="form-group">
+									<label for="entryTopic">Topic</label>
+									<select required name="entryTopic" class="form-control entryTopic" required/>
+										<option value="">please select a topic in the forethought phase</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="entryQuestion">Question</label>
+									<textarea required class="form-control" name="entryQuestion" id="entryQuestion" rows="4">
+									</textarea>
+								</div>
+								<div class="form-group">
+									<label for="entryTotalMarks">Total Marks</label>
+									<input required class="form-control" type="text" name="entryTotalMarks" id="entryTotalMarks"/>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Enter</button>
+									<button type="reset" class="btn btn-outline-primary">Clear</button>
+								</div>
+								<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
+								<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
+							</form>
+						  </div>
+						</div>
+					  </div>
+					  <div class="card adminComponent">
+						<div class="card-header" id="syllabusEntryHeading">
+						  <div class="mb-0">
+							<button class="btn btn-link btn-wrap-text collapsed" type="button" data-toggle="collapse" data-target="#collapseSyllabusEntry" aria-expanded="false" aria-controls="collapseSyllabusEntry">
+								Syllabus Entry
+							</button>
+						  </div>
+						</div>
+						<div id="collapseSyllabusEntry" class="collapse" aria-labelledby="syllabusEntryHeading" data-parent="#entryAccordion">
+						  <div class="card-body">								
+							<form method="post" action="/enter/syllabus" id="syllabusEntryForm" class="form entryForm">
+								<div class="form-group">
+									<label for="entrySemester" >Semester</label>
+									<select name="semester" id="entrySemester" class="form-control">
+										<option value="unselected">unselected</option>
+										<option value="0">0</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+									</select>
+								</div>									
+								<div class="form-group">
+									<label for="entrySubject" >Subject</label>
+									<select name="subject" id="entrySubject" class="form-control ">
+										<option value="">unselected</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="entryModule">Module</label>
+									<select name="module" id="entryModule" class="form-control">
+										<option value="">unselected</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="entryNewTopic">New Topic</label>
+									<input class="form-control" type="text" name="entryNewTopic" id="entryNewTopic"/>
+								</div>
+								<div class="form-group">
+									<label for="entryPage">Page</label>
+									<input class="form-control" type="text" name="entryPage" id="entryPage"/>
+								</div>
+								<div class="form-group">
+									<label for="entryTextbook" >Textbook</label>
+									<select name="entryTextbook" id="entryTextbook" class="form-control">
+										<option value="">unselected</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Enter</button>
+									<button type="reset" class="btn btn-outline-primary">Clear</button>
+								</div>
+								<div data-form-state="entrySuccess" class="state-success">Entered successfully</div>
+								<div data-form-state="entryError" class="state-error">There was an error in entering the details</div>
+							</form>
+						  </div>
+						</div>
+					  </div>
+					<center>
+						<button type="button" class="btn btn-light" onclick="logout()" class="button">Logout</button> 
+					</center>
+					</div>
 				</div>
-				<div class="form-group adminComponent">
-					<label for="entryAbstraction">Abstraction</label>
-					<select type="text" id="entryAbstraction" name="entryAbstraction" class="form-control">
-						<option value="">unselected</option>
-						<option value="1">Creations of Allah</option>
-						<option value="1.1">&#10148;Vocabulary of Programmer</option>
-						<option value="1.11">&nbsp;&#9871;Algorithm</option>
-						<option value="1.12">&nbsp;&#9871;High Level Language</option>
-						<option value="1.13">&nbsp;&#9871;System Softwares</option>
-						<option value="1.2">&#10148;Vocabulary of Processor</option>
-						<option value="1.21">&nbsp;&#9871;Assembly Language</option>
-						<option value="1.22">&nbsp;&#9871;Machine Language</option>
-						<option value="1.3">&#10148;Microarchitecture</option>
-						<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
-						<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
-						<option value="1.4">&#10148;Analog & Digital Circuits</option>
-						<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
-						<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
-						<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
-						<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
-						<option value="1.5">&#10148;Voltage</option>
-						<option value="1.51">&nbsp;&#9871;Electric Power System</option>
-						<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
-						<option value="2">Allah</option>
-						<option value="2.1">&#10148;His Actions</option>
-						<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
-						<option value="2.2">&#10148;His Attributes</option>
-						<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
-						<option value="2.3">&#10148;His Essence</option>
-					</select>
-				</div>
+			</div>  
+	<!--
+				<form method="post" id="entryForm" style="display: none;" class="form">
+					<div id="entryLectureDateDiv"  class="admin">
+					</div>
 
-				<div class="form-group student">
-					<label for="entryLocation">Location</label>
-					<select type="text" class="form-control student-required" id="entryLocation" name="entryLocation" required>
-						<option value="unselected">unselected</option>
-						<option value="Home">Home</option>
-						<option value="College">College</option>
-						<option value="Other">Other</option>
-					</select>
-				</div>
+					<div class="form-group student">
+						<label for="entryCo">Course Outcome</label>
+						<select type="text" class="form-control student-required" id="entryCo" name="entryCo" required>
+							<option value="unselected">unselected</option>
+						</select>
+					</div>
+					<div class="form-group adminComponent">
+						<label for="entryAbstraction">Abstraction</label>
+						<select type="text" id="entryAbstraction" name="entryAbstraction" class="form-control">
+							<option value="">unselected</option>
+							<option value="1">Creations of Allah</option>
+							<option value="1.1">&#10148;Vocabulary of Programmer</option>
+							<option value="1.11">&nbsp;&#9871;Algorithm</option>
+							<option value="1.12">&nbsp;&#9871;High Level Language</option>
+							<option value="1.13">&nbsp;&#9871;System Softwares</option>
+							<option value="1.2">&#10148;Vocabulary of Processor</option>
+							<option value="1.21">&nbsp;&#9871;Assembly Language</option>
+							<option value="1.22">&nbsp;&#9871;Machine Language</option>
+							<option value="1.3">&#10148;Microarchitecture</option>
+							<option value="1.31">&nbsp;&#9871;Control & Hardware Signals</option>
+							<option value="1.32">&nbsp;&#9871;I/O unit,Memory,CPU,Bus</option>
+							<option value="1.4">&#10148;Analog & Digital Circuits</option>
+							<option value="1.41">&nbsp;&#9871;Analog & Digital Signals</option>
+							<option value="1.42">&nbsp;&#9871;Flip-Flops,..</option>
+							<option value="1.43">&nbsp;&#9871;Gates, OPAMPs,...</option>
+							<option value="1.44">&nbsp;&#9871;Electronic Devices(L,C,R,TR)</option>
+							<option value="1.5">&#10148;Voltage</option>
+							<option value="1.51">&nbsp;&#9871;Electric Power System</option>
+							<option value="1.52">&nbsp;&#9871;Quantum Particles</option>
+							<option value="2">Allah</option>
+							<option value="2.1">&#10148;His Actions</option>
+							<option value="2.11">&nbsp;&#9871;The command of 'Be'</option>
+							<option value="2.2">&#10148;His Attributes</option>
+							<option value="2.21">&nbsp;&#9871;Beauty & Majesty</option>
+							<option value="2.3">&#10148;His Essence</option>
+						</select>
+					</div>
 
-				<div class="form-group question">
-					<label for="entryCo">Course Outcome</label>
-					<input class="form-control question-required" type="text" name="entryCo" id="entryCo" placeholder="1,2.."/>
-				</div>
+					<div class="form-group student">
+						<label for="entryLocation">Location</label>
+						<select type="text" class="form-control student-required" id="entryLocation" name="entryLocation" required>
+							<option value="unselected">unselected</option>
+							<option value="Home">Home</option>
+							<option value="College">College</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
 
-				</div>
-			</form>
--->
-	</div>
+					<div class="form-group question">
+						<label for="entryCo">Course Outcome</label>
+						<input class="form-control question-required" type="text" name="entryCo" id="entryCo" placeholder="1,2.."/>
+					</div>
 
-	<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
+					</div>
+				</form>
+	-->
+		</div>
 
-		<!-- Modal content-->
-		<div class="modal-content">
-		  <div class="modal-body">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-	<form method="post" id="registrationForm" class="form">
-		<div class="form-group">
-			<label class="label">USN</label>
-			<input placeholder="Type here your USN" id="registrationUsn" name="registrationUsn" type="text" class="input" required/>
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+			  <div class="modal-body">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		  </div>
+		<form method="post" id="registrationForm" class="form">
+			<div class="form-group">
+				<label class="label">USN</label>
+				<input placeholder="Type here your USN" id="registrationUsn" name="registrationUsn" type="text" class="input" required/>
+			</div>
+			<div class="form-group">
+				<label class="label">Section</label>
+				<!--Start Edit-->
+				<select id="registrationSection" name="registrationSection" class="select" required>
+					<option value="">unselected</option>
+					<option value="A">A</option>
+					<option value="B">B</option>
+					<option value="C">C</option>
+					<!--End Edit-->
+				</select>
+			</div>
+			<div class="form-group">
+				<label class="label">Password</label>
+				<input placeholder="Type here your password" name="registrationPassword" type="password" class="input" required/>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="button">Register</button>
+			</div>
+			<div data-form-state="registrationSuccess" class="state-success" id="i1124ef">Registered successfully</div>
+			<div data-form-state="registrationError" class="state-error" id="iszsuhs">There was a problem in registering</div>
+		</form>
+		  </div>
+			</div>
+			</div>
 		</div>
-		<div class="form-group">
-			<label class="label">Section</label>
-			<!--Start Edit-->
-			<select id="registrationSection" name="registrationSection" class="select" required>
-				<option value="">unselected</option>
-				<option value="A">A</option>
-				<option value="B">B</option>
-				<option value="C">C</option>
-				<!--End Edit-->
-			</select>
-		</div>
-		<div class="form-group">
-			<label class="label">Password</label>
-			<input placeholder="Type here your password" name="registrationPassword" type="password" class="input" required/>
-		</div>
-		<div class="form-group">
-			<button type="submit" class="button">Register</button>
-		</div>
-		<div data-form-state="registrationSuccess" class="state-success" id="i1124ef">Registered successfully</div>
-		<div data-form-state="registrationError" class="state-error" id="iszsuhs">There was a problem in registering</div>
-	</form>
-	  </div>
-		</div>
-		</div>
-	</div>
-	<!--Start Edit-->
-	<script>
-		var serverUrl="https://ssms-app.herokuapp.com";
-	</script>
-	<script>
+		<!--Start Edit-->
+		<script>
+			var serverUrl="https://ssms-app.herokuapp.com";
+		</script>
+		<script>
 			$('#refreshConversation').click(function() {
 				initializeConversation();
 			});	
@@ -1241,7 +1238,7 @@
 					$.merge(formData,$(".forethoughtEntry").serializeArray());
 					$.merge(formData,$("#loginForm").serializeArray());
 					formData.push({ name: "entryDateTime", value: moment().format('YYYY-MM-DD H:mm:ss') });
-					  					  
+										  
 					var action =serverUrl+$('#statusEntryForm').attr('action');
 					 $.ajax({
 						 url: action,
@@ -1258,7 +1255,7 @@
 			}
 			$('[data-toggle="popover"]').popover(
 			{
-			    placement: 'top',
+				placement: 'top',
 				html: true
 			}
 			);
@@ -1306,7 +1303,7 @@
 				},
 				//Default is 75px, set to 0 for demo so any distance triggers swipe
 				threshold: 45,
-				excludedElements: "a,label, button, input, select, textarea"
+				excludedElements: "a, label, button, input, select, textarea"
 			});
 			
 			function countEvenSemMinTopics(){
@@ -1319,6 +1316,7 @@
 					}
 				});
 			}
+			
 			function countOddSemMinTopics(){
 				$.getJSON(serverUrl+"/countOddSemMinTopics?"+$('#filters').serialize(), function(count) {
 					if(count==-1){
@@ -1329,289 +1327,286 @@
 					}
 				});
 			}
-	</script>
-	<script>
-		flatpickr(".flatpickr-single", {wrap: true, dateFormat: "Y-m-d"});
-		flatpickr
-			(".flatpickr-multi"
-			, {
-			   wrap: true,
-			   mode: "range",
-			   dateFormat: "Y-m-d"
-			  }
-			);
-	</script>
-	<script>
-		function fillCombo(comboId,formId,path,fieldName){
-	         	var combo = document.getElementById(comboId);
-			combo.addEventListener('click',function clicked() {populateData(combo,formId,path,fieldName,clicked)});
-	         	combo.addEventListener('focusout',()=>combo.addEventListener('click',function clicked() {populateData(combo,formId,path,fieldName,clicked)}));
-	         }
-	
-		 function populateData(combo,formId,path,fieldName,clicked){
-	         	$.getJSON(serverUrl+path+$('#'+formId).serialize(),function(data){
-		         	combo.value = "";
-	        	 	combo.options.length=1;
-	         		for( index in data ) {
-	             			combo.add( new Option( data[index][fieldName] ) );
-	         		}
-	         		combo.removeEventListener('click',clicked);
-	         	});
-		}
-	
-	
-		fillCombo('subject','filters','/fill/subjects?','Subject_Name');
-		fillCombo('usn','filters','/fill/usn?','USN');
-		fillCombo('entryTextbook','syllabusEntryForm','/fill/textbooks?','Textbook_Name');
-		fillCombo('entrySubject','syllabusEntryForm','/fill/subjects?','Subject_Name');
-	</script>
-	<script>
-		function loadTable(){
-			$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filters').serialize()})
-		}
-	</script>
-	<script>
-		function filterUsing (element,reactTo=function (e){}){
-		    $(element).change(function() {
-				reactTo(event);
-				loadTable();
-			})
-		}
-	</script>
-	<script>
-		filterUsing('.filters');
-		filterUsing(
-			'#usn'
-			,function(event){
-				if(event.target.value=="unselected" || event.target.value==""){
-					$('#table').bootstrapTable('showColumn', 'Total Students (%)');
-					$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
-				}
-				else{
-					$('#table').bootstrapTable('hideColumn', 'Total Students (%)');
-					$('#table').bootstrapTable('showColumn', 'Obtained Marks (%)');
-				}
+		</script>
+		<script>
+			flatpickr(".flatpickr-single", {wrap: true, dateFormat: "Y-m-d"});
+			flatpickr
+				(".flatpickr-multi"
+				, {
+				   wrap: true,
+				   mode: "range",
+				   dateFormat: "Y-m-d"
+				  }
+				);
+		</script>
+		<script>
+			function fillCombo(comboId,formId,path,fieldName){
+				var combo = document.getElementById(comboId);
+				combo.addEventListener('click',function clicked() {populateData(combo,formId,path,fieldName,clicked)});
+				combo.addEventListener('focusout',()=>combo.addEventListener('click',function clicked() {populateData(combo,formId,path,fieldName,clicked)}));
 			}
-		);
-	</script>
-	<!--End Edit-->
-	<script>
-		var items = document.querySelectorAll('#i1ar');
-		for (var i = 0, len = items.length; i < len; i++) {
-			 (function() {
-				 var t, e = this,
-					 n = "[data-tab]",
-					 r = document.body,
-					 o = r.matchesSelector || r.webkitMatchesSelector || r.mozMatchesSelector || r.msMatchesSelector,
-					 i = function(r) {
-						 var o = e.querySelectorAll(n) || [];
-						 for (t = 0; t < o.length; t++) {
-							 var i = o[t],
-								 a = i.className.replace("tab-active", "").trim();
-							 i.className = a
-						 }(function() {
-							 var n = e.querySelectorAll("[data-tab-content]") || [];
-							 for (t = 0; t < n.length; t++) n[t].style.display = "none"
-						 })(), r.className += " tab-active";
-						 var s = r.getAttribute("href"),
-							 l = e.querySelector(s);
-						 l && (l.style.display = "")
-					 },
-					 a = e.querySelector(".tab-active" + n);
-				 (a = a || e.querySelector(n)) && i(a), e.addEventListener("click", function(t) {
-					 var e = t.target;
-					 o.call(e, n) && i(e)
-				 })
-			 }.bind(items[i]))();
-		}
-	</script>
-	<style>
-		a.page-brand-badge {
-			 border-radius: 3px !important;
-			 background-color: white !important;
-			 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-			 padding: 5px 7px !important;
-			 font-family: Helvetica, sans-serif !important;
-			 font-size: 12px !important;
-			 text-decoration: none !important;
-			 color: #555 !important;
-			 transition: box-shadow 0.25s !important;
-			 }
-			 a.page-brand-badge:hover {
-			 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
-		}
-	</style>
-
-         <a href="#" data-toggle="modal" data-target="#myModal" class="page-brand-badge" style="bottom: 10px !important; left: 10px !important; display: block !
-         
-         important; opacity: 1 !important; visibility: visible !important; position: fixed !important;">
-             <svg class="logo-circ" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" style="width:13px; height:13px; vertical-align: 
-         
-         middle; 
-         
-         margin-right: 3px; margin-top: -2px;">
-                 <defs>
-                     <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-2">
-                         <stop stop-color="#EAB3D5" offset="0%"></stop>
-                         <stop stop-color="#D06E9A" offset="100%"></stop>
-                     </linearGradient>
-                 </defs>
-                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                     <g>
-                         <circle fill="url(#linearGradient-2)" cx="251" cy="251" r="250"></circle>
-                         <path d="M244.664082,104.558858 L162.460627,248.205767 C145.186418,278.574619 143.852224,317.189676 162.460627,349.706818 
-         
-         C190.433829,398.588565 252.659,415.493783 301.444357,387.464755 C350.229714,359.436081 367.101474,297.087868 339.127919,248.205413 
-         
-         L256.924464,104.558858 
-         
-         C254.209082,99.813714 247.379111,99.813714 244.664082,104.558858 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
-                     </g>
-                 </g>
-             </svg>
-             Register
-         </a>
-
-	<script>
-		function logout(){
-			$("#loginForm").show("slow");
-			$("#entryDiv").hide("slow");			
-		}
-		var loginUsnParam="";
-		 var formStateName = 'data-form-state';
-		 var formStateEls = $('[' + formStateName + ']');
-		 formStateEls.hide();
-		 $('#loginForm').submit(function(e) {
-			 e.preventDefault();
-			 var form = $(this);
-			 var action = serverUrl+"/login";
-			 var formData = $('#loginForm').serialize();
-			 var chkSelected = {};
-			 var name = this.getAttribute('name');
-			 name && formData.append('__name', name);
-		 
-			 form.find('[type=radio], [type=checkbox]').each(function(item){
-				 var chkName = this.name;
-				 if (this.checked) {
-					 chkSelected[chkName] = 1;
-					 return;
-				 }
-				 chkSelected[chkName] = 0;
-			 });
-		 
-			 for (var chk in chkSelected) {
-				 if (!chkSelected[chk]) {
-					 formData.append(chk, '');
-				 }
-			 }
-		 
-			 $.ajax({
-				 url: action,
-				 method: 'POST',
-				 processData: false,
-				 data: formData,
-			 }).done(function(data) {
-				 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
-				 formStateEls.hide();
-				 if(data=="admin"){
-					$(".adminComponent").show("slow");
+		
+			function populateData(combo,formId,path,fieldName,clicked){
+				$.getJSON(serverUrl+path+$('#'+formId).serialize(),function(data){
+					combo.value = "";
+					combo.options.length=1;
+					for( index in data ) {
+						combo.add( new Option( data[index][fieldName] ) );
+					}
+					combo.removeEventListener('click',clicked);
+				});
+			}
+			fillCombo('subject','filters','/fill/subjects?','Subject_Name');
+			fillCombo('usn','filters','/fill/usn?','USN');
+			fillCombo('entryTextbook','syllabusEntryForm','/fill/textbooks?','Textbook_Name');
+			fillCombo('entrySubject','syllabusEntryForm','/fill/subjects?','Subject_Name');
+		</script>
+		<script>
+			function loadTable(){
+				$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filters').serialize()})
+			}
+		</script>
+		<script>
+			function filterUsing (element,reactTo=function (e){}){
+				$(element).change(function() {
+					reactTo(event);
+					loadTable();
+				})
+			}
+		</script>
+		<script>
+			filterUsing('.filters');
+			filterUsing(
+				'#usn'
+				,function(event){
+					if(event.target.value=="unselected" || event.target.value==""){
+						$('#table').bootstrapTable('showColumn', 'Total Students (%)');
+						$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
+					}
+					else{
+						$('#table').bootstrapTable('hideColumn', 'Total Students (%)');
+						$('#table').bootstrapTable('showColumn', 'Obtained Marks (%)');
+					}
 				}
-				 else{
-					$(".adminComponent").hide();
-				}
-				$("#loginForm").hide("slow");
-				$("#entryDiv").show("slow");
-				initializeConversation();
-			 }).fail(function(data) {
-				 loginUsnParam="";
-				 formStateEls.hide();
-				 form.find('[' + formStateName + '=loginError]').stop(1).fadeIn().delay(3000).fadeOut();
-			 });
-		 });
-	</script>
-	<script>
-		 $('.entryForm').submit(function(e) {
-			 e.preventDefault();
-			 var form = $(this);
-			 var action=serverUrl+$(this).attr('action');
-			 var formData = 
-			 $(this).serialize()
-			 +"&"+loginUsnParam
-			 +"&"+$.param({"entryDateTime" : moment().format('YYYY-MM-DD H:mm:ss')});
-			 var chkSelected = {};
-			 var name = this.getAttribute('name');
-			 name && formData.append('__name', name);
-		 
-			 form.find('[type=radio], [type=checkbox]').each(function(item) {
-				 var chkName = this.name;
-				 if (this.checked) {
-					 chkSelected[chkName] = 1;
-					 return;
+			);
+		</script>
+		<!--End Edit-->
+		<script>
+			var items = document.querySelectorAll('#i1ar');
+			for (var i = 0, len = items.length; i < len; i++) {
+				 (function() {
+					 var t, e = this,
+						 n = "[data-tab]",
+						 r = document.body,
+						 o = r.matchesSelector || r.webkitMatchesSelector || r.mozMatchesSelector || r.msMatchesSelector,
+						 i = function(r) {
+							 var o = e.querySelectorAll(n) || [];
+							 for (t = 0; t < o.length; t++) {
+								 var i = o[t],
+									 a = i.className.replace("tab-active", "").trim();
+								 i.className = a
+							 }(function() {
+								 var n = e.querySelectorAll("[data-tab-content]") || [];
+								 for (t = 0; t < n.length; t++) n[t].style.display = "none"
+							 })(), r.className += " tab-active";
+							 var s = r.getAttribute("href"),
+								 l = e.querySelector(s);
+							 l && (l.style.display = "")
+						 },
+						 a = e.querySelector(".tab-active" + n);
+					 (a = a || e.querySelector(n)) && i(a), e.addEventListener("click", function(t) {
+						 var e = t.target;
+						 o.call(e, n) && i(e)
+					 })
+				 }.bind(items[i]))();
+			}
+		</script>
+		<style>
+			a.page-brand-badge {
+				 border-radius: 3px !important;
+				 background-color: white !important;
+				 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+				 padding: 5px 7px !important;
+				 font-family: Helvetica, sans-serif !important;
+				 font-size: 12px !important;
+				 text-decoration: none !important;
+				 color: #555 !important;
+				 transition: box-shadow 0.25s !important;
 				 }
-				 chkSelected[chkName] = 0;
-			 });
-		 
-			 for (var chk in chkSelected) {
-				 if (!chkSelected[chk]) {
-					 formData.append(chk, '');
-				 }
-			 }
-		 
-			 $.ajax({
-				 url: action,
-				 method: 'POST',
-				 processData: false,
-				 data: formData,
-			 }).done(function(data) {
-				 formStateEls.hide();
-				 form.find('[' + formStateName + '=entrySuccess]').stop(1).fadeIn().delay(3000).fadeOut();
-			 }).fail(function(data) {
-				 formStateEls.hide();
-				 form.find('[' + formStateName + '=entryError]').stop(1).fadeIn().delay(3000).fadeOut();
-			 });
+				 a.page-brand-badge:hover {
+				 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
+			}
+		</style>
 
-		 });
-	</script>
-	<script>
-		 $('#registrationForm').submit(function(e) {
-			 e.preventDefault();
-			 var form = $(this);
-			 var action=serverUrl+"/register";
-			 var formData = $('#registrationForm').serialize();
-			 var chkSelected = {};
-			 var name = this.getAttribute('name');
-			 name && formData.append('__name', name);
-		 
-			 form.find('[type=radio], [type=checkbox]').each(function(item) {
-				 var chkName = this.name;
-				 if (this.checked) {
-					 chkSelected[chkName] = 1;
-					 return;
-				 }
-				 chkSelected[chkName] = 0;
-			 });
-		 
-			 for (var chk in chkSelected) {
-				 if (!chkSelected[chk]) {
-					 formData.append(chk, '');
-				 }
-			 }
-		 
-			 $.ajax({
-				 url: action,
-				 method: 'POST',
-				 processData: false,
-				 data: formData,
-			 }).done(function(data) {
-				formStateEls.hide();
-				 form.find('[' + formStateName + '=registrationSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
-			 }).fail(function(data) {
-				 formStateEls.hide();
-				 form.find('[' + formStateName + '=registrationError]').stop(1).fadeIn().delay(3000).fadeOut();
-			 });
+			 <a href="#" data-toggle="modal" data-target="#myModal" class="page-brand-badge" style="bottom: 10px !important; left: 10px !important; display: block !
+			 
+			 important; opacity: 1 !important; visibility: visible !important; position: fixed !important;">
+				 <svg class="logo-circ" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" style="width:13px; height:13px; vertical-align: 
+			 
+			 middle; 
+			 
+			 margin-right: 3px; margin-top: -2px;">
+					 <defs>
+						 <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-2">
+							 <stop stop-color="#EAB3D5" offset="0%"></stop>
+							 <stop stop-color="#D06E9A" offset="100%"></stop>
+						 </linearGradient>
+					 </defs>
+					 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+						 <g>
+							 <circle fill="url(#linearGradient-2)" cx="251" cy="251" r="250"></circle>
+							 <path d="M244.664082,104.558858 L162.460627,248.205767 C145.186418,278.574619 143.852224,317.189676 162.460627,349.706818 
+			 
+			 C190.433829,398.588565 252.659,415.493783 301.444357,387.464755 C350.229714,359.436081 367.101474,297.087868 339.127919,248.205413 
+			 
+			 L256.924464,104.558858 
+			 
+			 C254.209082,99.813714 247.379111,99.813714 244.664082,104.558858 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+						 </g>
+					 </g>
+				 </svg>
+				 Register
+			 </a>
 
-		 });
-	</script>
-</body>
+		<script>
+			function logout(){
+				$("#loginForm").show("slow");
+				$("#entryDiv").hide("slow");			
+			}
+			var loginUsnParam="";
+			 var formStateName = 'data-form-state';
+			 var formStateEls = $('[' + formStateName + ']');
+			 formStateEls.hide();
+			 $('#loginForm').submit(function(e) {
+				 e.preventDefault();
+				 var form = $(this);
+				 var action = serverUrl+"/login";
+				 var formData = $('#loginForm').serialize();
+				 var chkSelected = {};
+				 var name = this.getAttribute('name');
+				 name && formData.append('__name', name);
+			 
+				 form.find('[type=radio], [type=checkbox]').each(function(item){
+					 var chkName = this.name;
+					 if (this.checked) {
+						 chkSelected[chkName] = 1;
+						 return;
+					 }
+					 chkSelected[chkName] = 0;
+				 });
+			 
+				 for (var chk in chkSelected) {
+					 if (!chkSelected[chk]) {
+						 formData.append(chk, '');
+					 }
+				 }
+			 
+				 $.ajax({
+					 url: action,
+					 method: 'POST',
+					 processData: false,
+					 data: formData,
+				 }).done(function(data) {
+					 loginUsnParam=$.param({"loginUsn" : $("#loginUsn").val()});
+					 formStateEls.hide();
+					 if(data=="admin"){
+						$(".adminComponent").show("slow");
+					}
+					 else{
+						$(".adminComponent").hide();
+					}
+					$("#loginForm").hide("slow");
+					$("#entryDiv").show("slow");
+					initializeConversation();
+				 }).fail(function(data) {
+					 loginUsnParam="";
+					 formStateEls.hide();
+					 form.find('[' + formStateName + '=loginError]').stop(1).fadeIn().delay(3000).fadeOut();
+				 });
+			 });
+		</script>
+		<script>
+			 $('.entryForm').submit(function(e) {
+				 e.preventDefault();
+				 var form = $(this);
+				 var action=serverUrl+$(this).attr('action');
+				 var formData = 
+				 $(this).serialize()
+				 +"&"+loginUsnParam
+				 +"&"+$.param({"entryDateTime" : moment().format('YYYY-MM-DD H:mm:ss')});
+				 var chkSelected = {};
+				 var name = this.getAttribute('name');
+				 name && formData.append('__name', name);
+			 
+				 form.find('[type=radio], [type=checkbox]').each(function(item) {
+					 var chkName = this.name;
+					 if (this.checked) {
+						 chkSelected[chkName] = 1;
+						 return;
+					 }
+					 chkSelected[chkName] = 0;
+				 });
+			 
+				 for (var chk in chkSelected) {
+					 if (!chkSelected[chk]) {
+						 formData.append(chk, '');
+					 }
+				 }
+			 
+				 $.ajax({
+					 url: action,
+					 method: 'POST',
+					 processData: false,
+					 data: formData,
+				 }).done(function(data) {
+					 formStateEls.hide();
+					 form.find('[' + formStateName + '=entrySuccess]').stop(1).fadeIn().delay(3000).fadeOut();
+				 }).fail(function(data) {
+					 formStateEls.hide();
+					 form.find('[' + formStateName + '=entryError]').stop(1).fadeIn().delay(3000).fadeOut();
+				 });
 
+			 });
+		</script>
+		<script>
+			 $('#registrationForm').submit(function(e) {
+				 e.preventDefault();
+				 var form = $(this);
+				 var action=serverUrl+"/register";
+				 var formData = $('#registrationForm').serialize();
+				 var chkSelected = {};
+				 var name = this.getAttribute('name');
+				 name && formData.append('__name', name);
+			 
+				 form.find('[type=radio], [type=checkbox]').each(function(item) {
+					 var chkName = this.name;
+					 if (this.checked) {
+						 chkSelected[chkName] = 1;
+						 return;
+					 }
+					 chkSelected[chkName] = 0;
+				 });
+			 
+				 for (var chk in chkSelected) {
+					 if (!chkSelected[chk]) {
+						 formData.append(chk, '');
+					 }
+				 }
+			 
+				 $.ajax({
+					 url: action,
+					 method: 'POST',
+					 processData: false,
+					 data: formData,
+				 }).done(function(data) {
+					formStateEls.hide();
+					 form.find('[' + formStateName + '=registrationSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
+				 }).fail(function(data) {
+					 formStateEls.hide();
+					 form.find('[' + formStateName + '=registrationError]').stop(1).fadeIn().delay(3000).fadeOut();
+				 });
+
+			 });
+		</script>
+	</body>
 </html>
