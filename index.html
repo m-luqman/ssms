@@ -54,6 +54,7 @@
 		/>	
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.css" integrity="sha256-3IkGqGYOvq1Ype2MXFwVJFeBtBACgiveho3SacOEEP8=" crossorigin="anonymous" />
 		<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Alfa Slab One' rel='stylesheet'>
 	</head>
 	<body>
 		<style>
@@ -81,10 +82,13 @@
 				top: 14px;
 				left: 14px;
 			}
+			.phase-heading{
+				font-family: 'Alfa Slab One';
+			}
 		</style>
-		<div id="fullpage" class="px-5" >
+		<div id="fullpage" class="px-5 mx-5" >
 			<div class="section" style="text-align:center;">
-				<h4 id="item-1">
+				<h4 class="phase-heading" id="item-1">
 					Forethought phase
 					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="This is the phase of learning that comes before reading a text."><i class="fa fa-question-circle"></i>
 					</a>
@@ -821,7 +825,7 @@
 				<p>To remember everything studied without hesitation</p>
 			</div>
 			<div class="section" >
-				<h4 id="item-3" class="mb-3" style="text-align:center;">
+				<h4 id="item-3" class="mb-3 phase-heading" style="text-align:center;">
 					Afterthought phase
 					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content="This is the phase of learning that comes after reading a text."><i class="fa fa-question-circle"></i>
 					</a>								
