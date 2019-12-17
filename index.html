@@ -176,7 +176,7 @@
 								<div class="form-group">
 									<label class="label">USN</label>
 									<div class="input-group">										
-										<select id="usn" name="usn" class="select">
+										<select id="usn" name="usn" class="select no-change">
 											<option value="unselected">unselected</option>
 										</select>
 										<input id="newOldToggle" name="newOldToggle" type="checkbox" class="filters" data-on="uncovered" data-off="covered" data-offstyle="outline-primary" data-onstyle="outline-secondary" data-toggle="toggle" data-size="sm"/>
@@ -199,7 +199,7 @@
 								</div>
 								<div class="form-group">
 									<label class="label">Subject</label>
-									<select name="subject" id="subject" class="select filters">
+									<select name="subject" id="subject" class="select filters no-change">
 										<option value="">unselected</option>
 									</select>
 								</div>
@@ -1356,7 +1356,7 @@
 						combo.add( new Option( data[index][fieldName] ) );
 					}
 				});
-				$(combo).val(selected);				
+				$(combo).val(selected);
 			}
 			function fillFilterCombos(){
 				fillCombo('subject','filter-form','/fill/subjects?','Subject_Name');
@@ -1366,12 +1366,12 @@
 				fillCombo('entryTextbook','syllabusEntryForm','/fill/textbooks?','Textbook_Name');
 				fillCombo('entrySubject','syllabusEntryForm','/fill/subjects?','Subject_Name');
 			}
-			$(".filters[id!='subject']").on('change',fillFilterCombos);
+			$(".filters:not('.no-change')").on('change',fillFilterCombos);
 			$('.entries').on('change',fillEntryCombos);
 		</script>
 		<script>
 			function loadTable(){
-				$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filter-form').serialize()})
+				$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filter-form').serialize()});
 			}
 		</script>
 		<script>
