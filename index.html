@@ -1350,13 +1350,14 @@
 				let combo = document.getElementById(comboId);
 				let selected=$(combo).val();
 				$.getJSON(serverUrl+path+$('#'+formId).serialize(),function(data){
+					console.log($(combo).val());
 					combo.value = "";
 					combo.options.length=1;
 					for( index in data ) {
 						combo.add( new Option( data[index][fieldName] ) );
 					}
+					$(combo).val(selected);
 				});
-				$(combo).val(selected);
 			}
 			function fillFilterCombos(){
 				fillCombo('subject','filter-form','/fill/subjects?','Subject_Name');
