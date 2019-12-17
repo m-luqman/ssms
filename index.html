@@ -140,7 +140,7 @@
 					</dt>
 					<dd class="list-group-item">To self-test the topics of high retention</dd>
 				</dl>
-				<form id="filters">
+				<form id="filter-form">
 					<div id="sidr">
 						<div class="card">
 							<div class="card-header">Date Filters:</div>
@@ -1053,7 +1053,7 @@
 							<form method="post" action="/enter/syllabus" id="syllabusEntryForm" class="form entryForm">
 								<div class="form-group">
 									<label for="entrySemester" >Semester</label>
-									<select name="semester" id="entrySemester" class="form-control">
+									<select name="semester" id="entrySemester" class="form-control entries">
 										<option value="unselected">unselected</option>
 										<option value="0">0</option>
 										<option value="5">5</option>
@@ -1069,7 +1069,7 @@
 								</div>
 								<div class="form-group">
 									<label for="entryModule">Module</label>
-									<select name="module" id="entryModule" class="form-control">
+									<select name="module" id="entryModule" class="form-control entries">
 										<option value="">unselected</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -1088,7 +1088,7 @@
 								</div>
 								<div class="form-group">
 									<label for="entryTextbook" >Textbook</label>
-									<select name="entryTextbook" id="entryTextbook" class="form-control">
+									<select name="entryTextbook" id="entryTextbook" class="form-control entries">
 										<option value="">unselected</option>
 									</select>
 								</div>
@@ -1264,6 +1264,8 @@
 			}
 			);
 			$(document).ready(function(){
+				fillFilterCombos();
+				fillEntryCombos();
 				$('#fullpage').fullpage({
 					//options here
 					loopBottom: false,
@@ -1311,7 +1313,7 @@
 			});
 			
 			function countEvenSemMinTopics(){
-				$.getJSON(serverUrl+"/countEvenSemMinTopics?"+$('#filters').serialize(), function(count) {
+				$.getJSON(serverUrl+"/countEvenSemMinTopics?"+$('#filter-form').serialize(), function(count) {
 					if(count==-1){
 						alert("Select the usn and semester filters");
 					}
@@ -1322,7 +1324,7 @@
 			}
 			
 			function countOddSemMinTopics(){
-				$.getJSON(serverUrl+"/countOddSemMinTopics?"+$('#filters').serialize(), function(count) {
+				$.getJSON(serverUrl+"/countOddSemMinTopics?"+$('#filter-form').serialize(), function(count) {
 					if(count==-1){
 						alert("Select the usn and semester filters");
 					}
@@ -1345,29 +1347,31 @@
 		</script>
 		<script>
 			function fillCombo(comboId,formId,path,fieldName){
-				var combo = document.getElementById(comboId);
-				combo.addEventListener('click',function clicked() {populateData(combo,formId,path,fieldName,clicked)});
-				combo.addEventListener('focusout',()=>combo.addEventListener('click',function clicked() {populateData(combo,formId,path,fieldName,clicked)}));
-			}
-		
-			function populateData(combo,formId,path,fieldName,clicked){
+				let combo = document.getElementById(comboId);
+				let selected=$(combo).val();
 				$.getJSON(serverUrl+path+$('#'+formId).serialize(),function(data){
 					combo.value = "";
 					combo.options.length=1;
 					for( index in data ) {
 						combo.add( new Option( data[index][fieldName] ) );
 					}
-					combo.removeEventListener('click',clicked);
 				});
+				$(combo).val(selected);				
 			}
-			fillCombo('subject','filters','/fill/subjects?','Subject_Name');
-			fillCombo('usn','filters','/fill/usn?','USN');
-			fillCombo('entryTextbook','syllabusEntryForm','/fill/textbooks?','Textbook_Name');
-			fillCombo('entrySubject','syllabusEntryForm','/fill/subjects?','Subject_Name');
+			function fillFilterCombos(){
+				fillCombo('subject','filter-form','/fill/subjects?','Subject_Name');
+				fillCombo('usn','filter-form','/fill/usn?','USN');
+			}
+			function fillEntryCombos(){
+				fillCombo('entryTextbook','syllabusEntryForm','/fill/textbooks?','Textbook_Name');
+				fillCombo('entrySubject','syllabusEntryForm','/fill/subjects?','Subject_Name');
+			}
+			$(".filters[id!='subject']").on('change',fillFilterCombos);
+			$('.entries').on('change',fillEntryCombos);
 		</script>
 		<script>
 			function loadTable(){
-				$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filters').serialize()})
+				$('#table').bootstrapTable('refresh', {url: serverUrl+"/filter?"+$('#filter-form').serialize()})
 			}
 		</script>
 		<script>
