@@ -1054,13 +1054,13 @@
 								</div>									
 								<div class="form-group">
 									<label for="entrySubject" >Subject</label>
-									<select name="subject" id="entrySubject" class="form-control ">
+									<select name="subject" id="entrySubject" class="form-control entries no-change">
 										<option value="">unselected</option>
 									</select>
 								</div>
 								<div class="form-group">
 									<label for="entryModule">Module</label>
-									<select name="module" id="entryModule" class="form-control entries">
+									<select name="module" id="entryModule" class="form-control entries no-change">
 										<option value="">unselected</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -1359,7 +1359,7 @@
 				fillCombo('entrySubject','syllabusEntryForm','/fill/subjects?','Subject_Name');
 			}
 			$(".filters:not('.no-change')").on('change',fillFilterCombos);
-			$('.entries').on('change',fillEntryCombos);
+			$(".entries:not('.no-change')").on('change',fillEntryCombos);
 		</script>
 		<script>
 			function loadTable(){
