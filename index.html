@@ -1341,9 +1341,14 @@
 				let combo = document.getElementById(comboId);
 				let selected=$(combo).val();
 				$.getJSON(serverUrl+path+$('#'+formId).serialize(),function(data){
-					console.log($(combo).val());
 					combo.value = "";
 					combo.options.length=1;
+					if(selected!="" && selected!="unselected"){
+						i=data.findIndex(x => x[fieldName] == selected)
+						if (i==-1){
+							combo.add( new Option(selected) );	
+						}			
+					}
 					for( index in data ) {
 						combo.add( new Option( data[index][fieldName] ) );
 					}
