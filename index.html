@@ -404,7 +404,7 @@
 							</th>
 							<th data-field="Topic Name" data-sortable="true">Topic
 							</th>
-							<th data-visible="false" data-field="Textbook Name">Textbook
+							<th data-visible="false" data-field="Textbook Name" data-formatter="LinkFormatter">Textbook
 							</th>
 							<th data-field="Page Number" data-sortable="true">Page
 							</th>
@@ -1216,6 +1216,12 @@
 			var serverUrl="https://ssms-app.herokuapp.com";
 		</script>
 		<script>
+			function LinkFormatter(value, row, index) {
+				if (!row.url){
+					return value;
+				}
+				return "<a href='"+row.url+"'>"+value+"</a>";
+			}
 			$('#refreshConversation').click(function() {
 				initializeConversation();
 			});	
