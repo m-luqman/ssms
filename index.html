@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 	<head>
@@ -278,10 +278,10 @@
 									<label class="label">Strategy</label>
 									<select name="difficulty" id="difficulty" class="select filters">
 										<option value="unselected">unselected</option>
-										<option value="survey">survey</option>
-										<option value="question">question</option>
-										<option value="summarize">summarize</option>
-										<option value="other">other</option>
+										<option value="1">survey</option>
+										<option value="2">question</option>
+										<option value="3">summarize</option>
+										<option value="4">other</option>
 									</select>
 								</div>
 								<div class="form-group">
@@ -354,9 +354,9 @@
 									<label class="label">Coverage</label>
 									<select name="coverage" id="coverage" class="select filters">
 										<option value="unselected">unselected</option>
-										<option value="Minor">Minor</option>
-										<option value="Major">Major</option>
-										<option value="Full">Full</option>
+										<option value="1">Minor</option>
+										<option value="2">Major</option>
+										<option value="3">Full</option>
 									</select>
 								</div>
 							</div>
@@ -714,7 +714,7 @@
 				  <div class="card">
 					<div class="card-header" id="strategyOne">
 					  <div class="mb-0">
-						<input required type="radio" class="forethoughtEntry" id="survey" name="entryDifficulty" value="survey" data-toggle="collapse" data-target="#collapseStrategyOne" aria-expanded="true" aria-controls="collapseStrategyOne"/>
+						<input required type="radio" class="forethoughtEntry" id="survey" name="entryDifficulty" value="1" data-toggle="collapse" data-target="#collapseStrategyOne" aria-expanded="true" aria-controls="collapseStrategyOne"/>
 						<label for="survey" class='text-primary'>survey</label>
 					  </div>
 					</div>
@@ -739,7 +739,7 @@
 				  <div class="card">
 					<div class="card-header" id="strategyTwo">
 					  <div class="mb-0">
-						<input required type="radio" class="forethoughtEntry" id="question" name="entryDifficulty" value="question" data-toggle="collapse" data-target="#collapseStrategyTwo" aria-expanded="true" aria-controls="collapseStrategyTwo"/>
+						<input required type="radio" class="forethoughtEntry" id="question" name="entryDifficulty" value="2" data-toggle="collapse" data-target="#collapseStrategyTwo" aria-expanded="true" aria-controls="collapseStrategyTwo"/>
 						<label for="question" class='text-primary'>question</label>
 					  </div>
 					</div>
@@ -766,7 +766,7 @@
 				  <div class="card">
 					<div class="card-header" id="strategyThree">
 					  <div class="mb-0">
-						<input required type="radio" class="forethoughtEntry" id="summarize" name="entryDifficulty" value="summarize" data-toggle="collapse" data-target="#collapseStrategyThree" aria-expanded="true" aria-controls="collapseStrategyThree"/>
+						<input required type="radio" class="forethoughtEntry" id="summarize" name="entryDifficulty" value="3" data-toggle="collapse" data-target="#collapseStrategyThree" aria-expanded="true" aria-controls="collapseStrategyThree"/>
 						<label for="summarize" class='text-primary'>summarize</label>
 					  </div>
 					</div>
@@ -785,7 +785,7 @@
 				  <div class="card">
 					<div class="card-header" id="strategyFour">
 					  <div class="mb-0">
-						<input required type="radio" class="forethoughtEntry" id="otherStrategy" name="entryDifficulty" value="other" data-toggle="collapse" data-target="#collapseStrategyFour" aria-expanded="true" aria-controls="collapseStrategyFour"/>
+						<input required type="radio" class="forethoughtEntry" id="otherStrategy" name="entryDifficulty" value="4" data-toggle="collapse" data-target="#collapseStrategyFour" aria-expanded="true" aria-controls="collapseStrategyFour"/>
 						<label for="otherStrategy" class='text-primary'>other</label>
 					  </div>
 					</div>
@@ -919,17 +919,17 @@
 									<label for="entryCoverage">Coverage</label>
 									<select type="text" class="form-control" id="entryCoverage" name="entryCoverage" required>
 										<option value="">unselected</option>
-										<option value="Minor">Minor</option>
-										<option value="Major">Major</option>
-										<option value="Full">Full</option>
+										<option value="1">Minor</option>
+										<option value="2">Major</option>
+										<option value="3">Full</option>
 									</select>
 								</div>
 								<div class="form-group">
-									<label for="entryTime">Time</label>
-									<select type="text" class="form-control" name="entryTime" id="entryTime" required>
+									<label for="muchTimeExceeded">Time</label>
+									<select type="text" class="form-control" name="muchTimeExceeded" id="muchTimeExceeded" required>
 										<option value="">unselected</option>
-										<option value="1">Much Time Exceded</option>
-										<option value="2">Much Time Left</option>
+										<option value="true">Much Time Exceded</option>
+										<option value="false">Not Much Time Exceded</option>
 									</select>
 								</div>
 								<cf-robot-message cf-questions="Even recalling with great difficulty helps in long term retention"></cf-robot-message>
