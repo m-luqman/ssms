@@ -965,7 +965,7 @@
 									</select>
 								</div>
 								<cf-robot-message 
-								class="adminComponent"
+								class="adminComponent" 
 								cf-questions="Allah says: And He gave you much of what you seek; and if you enumerate the favours of Allah, you will never be able to count them; indeed man is very unjust, most ungrateful. (Surah Ibrahim, Ayah 34)
 								|Allah says: We guided him (man) to the right path, whether he was grateful or not. (Surah al-Insan, Ayah 3)"
 								>
@@ -1214,7 +1214,7 @@
 		</div>
 		<!--Start Edit-->
 		<script>
-			var serverUrl="https://ssms-app.herokuapp.com";
+			var serverUrl="http://localhost:5000";
 		</script>
 		<script>
 			function LinkFormatter(value, row, index) {
@@ -1225,44 +1225,110 @@
 			}
 			$('#refreshConversation').click(function() {
 				initializeConversation();
-			});	
+			});
+
 			function initializeConversation(){
 				$("#statusEntryForm").conversationalForm({
 					formEl:document.getElementById("statusEntryForm"),
 					context:document.getElementById("statusEntryContainer"),
 					hideUserInputOnNoneTextInput:true,
 					preventAutoFocus:true,
-					submitCallback: function() {
-					
-					var slides = document.getElementsByClassName("forethoughtEntry");
-					for(var i = 0; i < slides.length; i++)
-						if(! slides.item(i).validity.valid){
-							window.ConversationalForm.addRobotChatResponse("Some fields in forethought phase have not been filled");
-							return;						
+					flowStepCallback: function (dto, success, error) {
+						var currentStep = window.ConversationalForm.flowManager.getStep() + 1; // Steps are 0-based so we add 1
+						var maxSteps = window.ConversationalForm.flowManager.maxSteps; // This value is not 0-based
+						console.log("current step: "+currentStep);
+						console.log("max steps: "+maxSteps);
+						if (currentStep == maxSteps) {
+							let action =serverUrl+"/coach";
+							let slides = document.getElementsByClassName("forethoughtEntry");
+							for(let i = 0; i < slides.length; i++)
+								if(! slides.item(i).validity.valid){
+									window.ConversationalForm.addRobotChatResponse("Some fields in forethought phase have not been filled");
+									return;						
+								}
+							
+							if( ! $('#statusEntryForm')[0].checkValidity()){
+								window.ConversationalForm.addRobotChatResponse("Some fields have not been filled");
+								return;
+							}
+							
+							let formData=$('#statusEntryForm').serializeArray();
+							$.merge(formData,$(".forethoughtEntry").serializeArray());
+							$.merge(formData,$("#loginForm").serializeArray());
+							
+							$.ajax({
+								url: action,
+								method: 'POST',
+								processData: false,
+								data: $.param(formData)
+							}).done(function(data) {
+								let children = data.map(val => ({ 
+									"tag": "option",
+									"cf-label": Object.keys(val)[0],
+									"value": Object.keys(val)[0] }) );
+								
+								let conditionalTags = data.map(val => ({ 
+									"tag": "cf-robot-message",
+									"cf-questions": JSON.stringify(val[Object.keys(val)[0]]),
+									"cf-conditional-coach-options": Object.keys(val)[0] }) );
+								
+								let tags = [
+									{
+										// select group
+										"tag": "select",
+										"cf-questions": "Select one to get suggestions",
+										"name": "coach-options",
+										"isMultiChoice": false, 
+										"children": children
+									},
+									{
+										"tag": "cf-robot-message",
+										"name": "coach-options",
+										"cf-questions": "The following suggestions may aid your study."
+									}
+								];
+
+								window.ConversationalForm.addTags(tags.concat(conditionalTags));
+								success();
+								}).fail(function(data) {
+									window.ConversationalForm.addRobotChatResponse("There was an error entering the details");
+									error();
+							});
 						}
-					
-					if( ! $('#statusEntryForm')[0].checkValidity()){
-						window.ConversationalForm.addRobotChatResponse("Some fields have not been filled");
-						return;
+						else{
+							success();
+						}
+					},
+					submitCallback: function() {					
+						let slides = document.getElementsByClassName("forethoughtEntry");
+						for(let i = 0; i < slides.length; i++)
+							if(! slides.item(i).validity.valid){
+								window.ConversationalForm.addRobotChatResponse("Some fields in forethought phase have not been filled");
+								return;						
+							}
+						
+						if( ! $('#statusEntryForm')[0].checkValidity()){
+							window.ConversationalForm.addRobotChatResponse("Some fields have not been filled");
+							return;
+						}
+						
+						let formData=$('#statusEntryForm').serializeArray();
+						$.merge(formData,$(".forethoughtEntry").serializeArray());
+						$.merge(formData,$("#loginForm").serializeArray());
+						formData.push({ name: "entryDateTime", value: moment().format('YYYY-MM-DD H:mm:ss') });
+											
+						let action =serverUrl+$('#statusEntryForm').attr('action');
+						$.ajax({
+							url: action,
+							method: 'POST',
+							processData: false,
+							data: $.param(formData)
+						}).done(function(data) {
+							window.ConversationalForm.addRobotChatResponse("Successfully entered");
+						}).fail(function(data) {
+							window.ConversationalForm.addRobotChatResponse("There was an error entering the details");
+						});
 					}
-					
-					var formData=$('#statusEntryForm').serializeArray();
-					$.merge(formData,$(".forethoughtEntry").serializeArray());
-					$.merge(formData,$("#loginForm").serializeArray());
-					formData.push({ name: "entryDateTime", value: moment().format('YYYY-MM-DD H:mm:ss') });
-										  
-					var action =serverUrl+$('#statusEntryForm').attr('action');
-					 $.ajax({
-						 url: action,
-						 method: 'POST',
-						 processData: false,
-						 data: $.param(formData),
-					 }).done(function(data) {
-						window.ConversationalForm.addRobotChatResponse("Successfully entered");
-					 }).fail(function(data) {
-						window.ConversationalForm.addRobotChatResponse("There was an error entering the details");
-					 });
-					}			
 				});
 			}
 			$('[data-toggle="popover"]').popover(
