@@ -965,7 +965,7 @@
 									</select>
 								</div>
 								<cf-robot-message 
-								class="adminComponent" 
+								class="adminComponent"
 								cf-questions="Allah says: And He gave you much of what you seek; and if you enumerate the favours of Allah, you will never be able to count them; indeed man is very unjust, most ungrateful. (Surah Ibrahim, Ayah 34)
 								|Allah says: We guided him (man) to the right path, whether he was grateful or not. (Surah al-Insan, Ayah 3)"
 								>
@@ -1214,7 +1214,7 @@
 		</div>
 		<!--Start Edit-->
 		<script>
-			var serverUrl="http://localhost:5000";
+			var serverUrl="https://ssms-app.herokuapp.com";
 		</script>
 		<script>
 			function LinkFormatter(value, row, index) {
@@ -1236,8 +1236,6 @@
 					flowStepCallback: function (dto, success, error) {
 						var currentStep = window.ConversationalForm.flowManager.getStep() + 1; // Steps are 0-based so we add 1
 						var maxSteps = window.ConversationalForm.flowManager.maxSteps; // This value is not 0-based
-						console.log("current step: "+currentStep);
-						console.log("max steps: "+maxSteps);
 						if (currentStep == maxSteps) {
 							let action =serverUrl+"/coach";
 							let slides = document.getElementsByClassName("forethoughtEntry");
