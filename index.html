@@ -1026,10 +1026,13 @@
 											<option value="3">Constantly</option>
 										</select>
 									</div>
-									<cf-robot-message class="adminComponent"
+									<div class="form-group">
+										<select class="form-control adminComponent" 
 										cf-questions="Allah says: And He gave you much of what you seek; and if you enumerate the favours of Allah, you will never be able to count them; indeed man is very unjust, most ungrateful. (Surah Ibrahim, Ayah 34)
 											|Allah says: We guided him (man) to the right path, whether he was grateful or not. (Surah al-Insan, Ayah 3)">
-									</cf-robot-message>
+											<option>Ya Allah! will recognize your favours while studying.</option>
+										</select>
+									</div>
 								</form>
 							</div>
 						</div>
@@ -1387,7 +1390,7 @@
 									// select group
 									"id": "entryCoach",
 									"tag": "select",
-									"cf-questions": "Select one to get suggestions",
+									"cf-questions": "Select one of the options below to get suggestions on how you could make your study more efficient.",
 									"name": "coach-options",
 									"isMultiChoice": false,
 									"children": children
@@ -1395,7 +1398,7 @@
 								{
 									"tag": "cf-robot-message",
 									"name": "coach-options",
-									"cf-questions": "The following suggestions may aid your study."
+									"cf-questions": "Try focusing on one of the options below when repeating the study of this topic or when studying similar topics."
 								}
 							];
 
@@ -1438,10 +1441,8 @@
 						data: $.param(diaryData)
 					}).done(function (data) {
 						window.ConversationalForm.addRobotChatResponse("Diary successfully entered");
-						success();
 					}).fail(function (data) {
 						window.ConversationalForm.addRobotChatResponse("There was an error entering the diary. Please try again.");
-						error();
 					});
 				}
 			});
