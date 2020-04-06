@@ -1319,6 +1319,9 @@
 			return $('[name=' + entryName + ']').attr("coachname")
 		}
 		function optionNumberToOptionName(elementName, optionNumber) {
+			if (elementName == "entryDifficulty")
+				return $("label[for='" +$('[name=' + elementName + '][value=' + optionNumber + ']').attr('id') + "']").html();
+
 			return $('[name=' + elementName + '] option[value=' + optionNumber + ']').text();
 		}
 		function getKey(anObject) {
