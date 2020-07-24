@@ -372,10 +372,11 @@ $(document).ready(function () {
                     processData: false,
                 }).done(function (data) {
                     $('#daily-topic-count').text(data)
-                    $('#daily-topic-count-alert').show();
+                    $('#daily-topic-count-alert').hide();
+                    $('#daily-topic-count-alert').show('slow');
                 }).fail(function (data) {
                     alert("failure");
-                    $('#daily-topic-count-alert').hide();
+                    $('#daily-topic-count-alert').hide('slow');
                 });
             }
           });
