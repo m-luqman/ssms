@@ -286,6 +286,8 @@ $(document).ready(function () {
     
         $('#filter-btn').on('click', loadTable);
     
+        $('#logout').on('click', logout);
+
         $('#loginForm').submit(function (e) {
             e.preventDefault();
             var form = $(this);
