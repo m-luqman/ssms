@@ -105,7 +105,9 @@
 		a.page-brand-badge:hover {
 			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
 		}
-		.animated-btn::before, .animated-btn::after {
+
+		.animated-btn::before,
+		.animated-btn::after {
 			content: '';
 			display: block;
 			position: absolute;
@@ -411,14 +413,14 @@
 				<div class="mb-3">
 					<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">
 						<button type="reset" class="btn btn-secondary">Clear</button>
-						<button id = 'filter-btn' type="button" class="btn btn-secondary " >Filter</button>
-						<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary animated-btn" data-toggle="button"
-							aria-pressed="false" autocomplete="off">Filters</a>
+						<button id='filter-btn' type="button" class="btn btn-secondary ">Filter</button>
+						<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary animated-btn"
+							data-toggle="button" aria-pressed="false" autocomplete="off">Filters</a>
 					</div>
 				</div>
 				<div class="mb-3">
 					<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Count Buttons">
-						<button id='time-popover' class="btn btn-secondary"  data-toggle="button" type="button">
+						<button id='time-popover' class="btn btn-secondary" data-toggle="button" type="button">
 							<i class="fa fa-hourglass-half"></i></button>
 					</div>
 				</div>
@@ -426,9 +428,9 @@
 			<div class="d-none" id='time-popover-content'>
 				<form id='time-popover-form'>
 					<div class="input-group mb-3 ">
-							<input required type="date" id="exam-date" name="examDate" class="form-control " data-input />
+						<input required type="date" id="exam-date" name="examDate" class="form-control " data-input />
 						<div class="input-group-append">
-							<span class="input-group-text" >Exam Date</span>
+							<span class="input-group-text">Exam Date</span>
 						</div>
 					</div>
 					<div class="input-group mb-3">
@@ -436,7 +438,7 @@
 							<option value="">unselected</option>
 						</select>
 						<div class="input-group-append">
-							<span class="input-group-text" >USN</span>
+							<span class="input-group-text">USN</span>
 						</div>
 					</div>
 					<div class="input-group mb-3">
@@ -448,7 +450,7 @@
 							<option value="7">7</option>
 							<option value="8">8</option>
 						</select>
-						<div class="input-group-append"  >
+						<div class="input-group-append">
 							<span class="input-group-text">Semester</span>
 						</div>
 					</div>
@@ -1010,14 +1012,14 @@
 		</svg>
 		Register
 	</a>
-<script>	    
-	function LinkFormatter(value, row, index) {
-        if (!row.url) {
-            return value;
-        }
-        return "<a href='" + row.url + "'>" + value + "</a>";
-    }
-</script>
+	<script>
+		function LinkFormatter(value, row, index) {
+			if (!row.url) {
+				return value;
+			}
+			return "<a href='" + row.url + "'>" + value + "</a>";
+		}
+	</script>
 </body>
 
 </html>
