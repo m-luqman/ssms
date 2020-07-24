@@ -53,6 +53,7 @@
 		crossorigin></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.js"
 		integrity="sha256-2TmoPqKfma3+qUJlrw6vBxLkXhLZG81GZsP7dJov1/o=" crossorigin="anonymous"></script>
+	<script src="main.js"></script>
 	<!--End Edit-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -85,33 +86,73 @@
 			word-wrap: break-word !important;
 		}
 
-		#fp-nav ul li .fp-tooltip {
-			color: #000000;
-		}
-
-		div#fp-nav li {
-			width: 45px;
-			height: 45px;
-			margin-top: 15px;
-		}
-
-		div#fp-nav span {
-			width: 16px;
-			height: 16px;
-
-			top: 14px;
-			left: 14px;
-		}
-
 		.phase-heading {
 			font-family: 'Alfa Slab One';
+		}
+
+		a.page-brand-badge {
+			border-radius: 3px !important;
+			background-color: white !important;
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+			padding: 5px 7px !important;
+			font-family: Helvetica, sans-serif !important;
+			font-size: 12px !important;
+			text-decoration: none !important;
+			color: #555 !important;
+			transition: box-shadow 0.25s !important;
+		}
+
+		a.page-brand-badge:hover {
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
+		}
+		.animated-btn::before, .animated-btn::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba(63, 146, 255, 0.8);
+			animation: ripple-1 2s infinite ease-in-out;
+			z-index: -1;
+		}
+
+		.animated-btn::after {
+			background: rgba(63, 146, 255, 0.6);
+			animation: ripple-2 2s infinite ease-in-out;
+			animation-delay: 0.5s;
+		}
+
+		@keyframes ripple-1 {
+			0% {
+				transform: scale(1);
+				opacity: 1;
+			}
+
+			100% {
+				transform: scale(1.5);
+				opacity: 0;
+			}
+		}
+
+		@keyframes ripple-2 {
+			0% {
+				transform: scale(1);
+				opacity: 1;
+			}
+
+			100% {
+				transform: scale(1.7);
+				opacity: 0;
+			}
 		}
 	</style>
 	<div id="fullpage" class="px-5 ml-4">
 		<div class="section" style="text-align:center;">
 			<h4 class="phase-heading" id="item-1">
 				Forethought phase
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus"
+				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover"
 					data-content="This is the phase of learning that comes before reading a text."><i
 						class="fa fa-question-circle"></i>
 				</a>
@@ -124,7 +165,7 @@
 		<div class="section">
 			<h5 id="item-1-1">
 				Goal setting
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus"
+				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover"
 					data-content="Opening the textbook with the chosen page number"><i
 						class="fa fa-question-circle"></i>
 				</a>
@@ -132,7 +173,7 @@
 			<dl class="list-group">
 				<dt class="list-group-item list-group-item-light">
 					Goal 1
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus" data-content='
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover" data-content='
 									<ul class="list-group">
 										<li class="list-group-item">Click <i class="fa fa-hourglass-half text-primary"></i> to get the count for odd semester</li>
 										<li class="list-group-item">Click <i class="fa fa-hourglass-half text-secondary"></i> to get the count for even semester</li>
@@ -142,14 +183,14 @@
 				<dd class="list-group-item">To learn minimum number of new topics per day</dd>
 				<dt class="list-group-item list-group-item-light">
 					Goal 2
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus"
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover"
 						data-content="Use 'revision date range' filter to get the topics for revision">
 						<i class="text-secondary fa fa-question-circle"></i></a>
 				</dt>
 				<dd class="list-group-item">To revise topics with low retention</dd>
 				<dt class="list-group-item list-group-item-light">
 					Goal 3
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus"
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover"
 						data-content="Click the 'Total Marks' header to sort topics by it">
 						<i class="text-secondary fa fa-question-circle"></i></a>
 				</dt>
@@ -273,37 +314,6 @@
 							</div>
 						</div>
 					</div>
-					<!--
-									<div class="card">
-										<div class="card-header">Motivational Filters:</div>
-										<div class="card-body">
-											
-											<div class="form-group">
-												<label class="label">Objective</label>
-												<select name="objective" id="objective" class="select filters">
-													<option value="unselected">unselected</option>
-													<option value="religion">preservation of religion</option>
-													<option value="life">preservation of the life</option>
-													<option value="mind">preservation of the mind</option>
-													<option value="family">preservation of lineage/offspring/honour/dignity</option>
-													<option value="wealth">preservation of wealth</option>
-												</select>
-											</div>
-			
-											<div class="form-group">
-												<label class="label">Course Outcome</label>
-												<select name="co" id="co" class="select filters">
-													<option value="unselected">unselected</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-												</select>
-											</div>
-										</div>
-									</div>
-				-->
 					<div class="card">
 						<div class="card-header">Cognitive Filters:</div>
 						<div class="card-body">
@@ -395,26 +405,56 @@
 						</div>
 					</div>
 				</div>
+				<div id='daily-topic-count-alert' class="alert alert-warning" role="alert">
+					Need to cover atleast <strong id='daily-topic-count'>X</strong> topic(s)
+				</div>
 				<div class="mb-3">
 					<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Filter Buttons">
 						<button type="reset" class="btn btn-secondary">Clear</button>
-						<button type="button" class="btn btn-secondary" onclick="loadTable()">Filter</button>
-						<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary" data-toggle="button"
+						<button id = 'filter-btn' type="button" class="btn btn-secondary " >Filter</button>
+						<a id="simple-menu" href="#sidr" role="button" class="btn btn-primary animated-btn" data-toggle="button"
 							aria-pressed="false" autocomplete="off">Filters</a>
 					</div>
 				</div>
 				<div class="mb-3">
 					<div class="btn-group float-right ml-2 mt-2" role="group" aria-label="Count Buttons">
-						<button id="minOddCount" class="btn btn-outline-primary" type="button"
-							onClick="countOddSemMinTopics()"><i class="fa fa-hourglass-half"></i>
-						</button>
-						<button id="minEvenCount" class="btn btn-outline-secondary" type="button"
-							onClick="countEvenSemMinTopics()">
-							<i class="fa fa-hourglass-half"></i>
-						</button>
+						<button id='time-popover' class="btn btn-secondary"  data-toggle="button" type="button">
+							<i class="fa fa-hourglass-half"></i></button>
 					</div>
 				</div>
 			</form>
+			<div class="d-none" id='time-popover-content'>
+				<form id='time-popover-form'>
+					<div class="input-group mb-3 ">
+							<input required type="date" id="exam-date" name="examDate" class="form-control " data-input />
+						<div class="input-group-append">
+							<span class="input-group-text" >Exam Date</span>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<select required id="time-usn" name="usn" class="form-control">
+							<option value="">unselected</option>
+						</select>
+						<div class="input-group-append">
+							<span class="input-group-text" >USN</span>
+						</div>
+					</div>
+					<div class="input-group mb-3">
+						<select required name="semester" id="time-semester" class="form-control">
+							<option value="">unselected</option>
+							<option value="0">0</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+						</select>
+						<div class="input-group-append"  >
+							<span class="input-group-text">Semester</span>
+						</div>
+					</div>
+					<button class="btn btn-outline-primary">Find</button>
+				</form>
+			</div>
 			<table id="table" data-toggle="table" data-sortable="true" data-show-export="true" data-show-print="true"
 				data-show-columns="true" data-virtual-scroll="true" data-pagination="true" data-page-size="1"
 				data-page-list="[1, 2 ,3, 5, 10, 25, 50, 100, 200]" data-pagination-v-align="top" data-search="true"
@@ -448,7 +488,7 @@
 		<div class="section">
 			<h5 class="mt-5" id="item-1-4">
 				Strategic planning
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus"
+				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover"
 					data-content="The outputs maybe written or oral."><i class="fa fa-question-circle"></i>
 				</a>
 			</h5>
@@ -559,7 +599,7 @@
 		<div class="section">
 			<h4 id="item-3" class="mb-3 phase-heading" style="text-align:center;">
 				Afterthought phase
-				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus"
+				<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover"
 					data-content="This is the phase of learning that comes after reading a text."><i
 						class="fa fa-question-circle"></i>
 				</a>
@@ -567,14 +607,14 @@
 			<form method="post" id="loginForm" class="form">
 				<div class="form-group">
 					<label class="label">USN</label>
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus"
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover"
 						data-content="try for example: 1hk16cs000"><i class="fa fa-question-circle"></i>
 					</a>
 					<input placeholder="1hkXXcsXXX" id="loginUsn" name="loginUsn" type="text" class="input" required />
 				</div>
 				<div class="form-group">
 					<label class="label">Password</label>
-					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="focus"
+					<a href="#" onClick="return false;" data-toggle="popover" data-trigger="hover"
 						data-content="try for example:  test"><i class="fa fa-question-circle"></i>
 					</a>
 					<input placeholder="Type here your password" name="loginPassword" type="password" class="input"
@@ -723,8 +763,8 @@
 										</select>
 									</div>
 									<div class="form-group">
-										<select class="form-control adminComponent" 
-										cf-questions="Allah says: And He gave you much of what you seek; and if you enumerate the favours of Allah, you will never be able to count them; indeed man is very unjust, most ungrateful. (Surah Ibrahim, Ayah 34)
+										<select class="form-control adminComponent"
+											cf-questions="Allah says: And He gave you much of what you seek; and if you enumerate the favours of Allah, you will never be able to count them; indeed man is very unjust, most ungrateful. (Surah Ibrahim, Ayah 34)
 											|Allah says: We guided him (man) to the right path, whether he was grateful or not. (Surah al-Insan, Ayah 3)">
 											<option>Ya Allah! will recognize your favours while studying.</option>
 										</select>
@@ -750,6 +790,7 @@
 									class="form entryForm">
 									<label class="label">Lecture date</label>
 									<div class="input-group mb-3 flatpickr-single">
+										<input requried name="entryLectureDate" class="form-control" data-input /><div class="input-group mb-3 flatpickr-single">
 										<input requried name="entryLectureDate" class="form-control" data-input /> <a
 											class="btn btn-outline-primary btn-sm" title="clear" data-clear
 											role="button">Clear</a>
@@ -888,7 +929,7 @@
 						<button type="button" class="btn btn-light" onclick="logout()" class="button">Logout</button>
 					</center>
 					<center>
-						<a class="btn btn-link" href="#" >Back to Forethought Phase</a>
+						<a class="btn btn-link" href="#">Back to Forethought Phase</a>
 					</center>
 				</div>
 			</div>
@@ -938,352 +979,6 @@
 			</div>
 		</div>
 	</div>
-	<!--Start Edit-->
-	<script>
-		var serverUrl = "https://ssms-app.herokuapp.com";
-	</script>
-	<script>
-		function LinkFormatter(value, row, index) {
-			if (!row.url) {
-				return value;
-			}
-			return "<a href='" + row.url + "'>" + value + "</a>";
-		}
-		$('#refreshConversation').click(function () {
-			initializeConversation();
-		});
-
-		function entryNameToCoachName(entryName) {
-			return $('[name=' + entryName + ']').attr("coachname")
-		}
-		function optionNumberToOptionName(elementName, optionNumber) {
-			if (elementName == "entryDifficulty")
-				return $("label[for='" +$('[name=' + elementName + '][value=' + optionNumber + ']').attr('id') + "']").html();
-
-			return $('[name=' + elementName + '] option[value=' + optionNumber + ']').text();
-		}
-		function getKey(anObject) {
-			return Object.keys(anObject)[0];
-		}
-		function getValue(anObject) {
-			return anObject[getKey(anObject)];
-		}
-		function diaryChecker() {
-			let slides = document.getElementsByClassName("forethoughtEntry");
-			for (let i = 0; i < slides.length; i++)
-				if (!slides.item(i).validity.valid) {
-					window.ConversationalForm.addRobotChatResponse("Some fields in forethought phase have not been filled");
-					return false;
-				}
-
-			if (!$('#statusEntryForm')[0].checkValidity()) {
-				window.ConversationalForm.addRobotChatResponse("Some fields have not been filled");
-				return false;
-			}
-
-			return true;
-		}
-		function getDiaryData() {
-			let diaryData = $('#statusEntryForm').serializeArray();
-			$.merge(diaryData, $(".forethoughtEntry").serializeArray());
-			$.merge(diaryData, $("#loginForm").serializeArray());
-			return diaryData
-		}
-		function initializeConversation() {
-			$("#statusEntryForm").conversationalForm({
-				formEl: document.getElementById("statusEntryForm"),
-				context: document.getElementById("statusEntryContainer"),
-				hideUserInputOnNoneTextInput: true,
-				preventAutoFocus: true,
-				flowStepCallback: function (dto, success, error) {
-					var currentStep = window.ConversationalForm.flowManager.getStep() + 1; // Steps are 0-based so we add 1
-					var maxSteps = window.ConversationalForm.flowManager.maxSteps; // This value is not 0-based
-					if (currentStep == maxSteps) {
-
-						if (!diaryChecker()) {
-							error();
-							return;
-						}
-
-						let action = serverUrl + "/coach";
-						let diaryData = getDiaryData();
-
-						$.ajax({
-							url: action,
-							method: 'POST',
-							processData: false,
-							data: $.param(diaryData)
-						}).done(function (data) {
-
-							if (data.length == 0) {
-								success();
-								return;
-							}
-
-							let children = data.map(val => ({
-								"tag": "option",
-								"cf-label": entryNameToCoachName(getKey(val)),
-								"value": getKey(val)
-							}));
-
-							let tags = [
-								{
-									// select group
-									"id": "entryCoach",
-									"tag": "select",
-									"cf-questions": "Select one of the options below to get suggestions on how you could make your study more efficient.",
-									"name": "coach-options",
-									"isMultiChoice": false,
-									"children": children
-								},
-								{
-									"tag": "cf-robot-message",
-									"name": "coach-options",
-									"cf-questions": "Try focusing on one of the options below when repeating the study of this topic or when studying similar topics."
-								}
-							];
-
-							let conditionalTags = data.flatMap(val => (getValue(val)
-								.map(op => (
-									{
-										"tag": "cf-robot-message",
-										"cf-questions": optionNumberToOptionName(getKey(val), op).trim(),
-										"cf-conditional-coach-options": getKey(val)
-									}
-								))));
-
-							window.ConversationalForm.addTags(tags.concat(conditionalTags));
-							success();
-
-						}).fail(function (data) {
-							window.ConversationalForm.addRobotChatResponse("There was an error in providing feedback");
-							error();
-						});
-					}
-					else {
-						success();
-					}
-				},
-				submitCallback: function () {
-
-					if (!diaryChecker()) {
-						error();
-						return;
-					}
-
-					let action = serverUrl + $('#statusEntryForm').attr('action');
-					let diaryData = getDiaryData();
-					diaryData.push({ name: "entryDateTime", value: moment().format('YYYY-MM-DD H:mm:ss') });
-
-					$.ajax({
-						url: action,
-						method: 'POST',
-						processData: false,
-						data: $.param(diaryData)
-					}).done(function (data) {
-						window.ConversationalForm.addRobotChatResponse("Diary successfully entered");
-					}).fail(function (data) {
-						window.ConversationalForm.addRobotChatResponse("There was an error entering the diary. Please try again.");
-					});
-				}
-			});
-		}
-		$('[data-toggle="popover"]').popover(
-			{
-				placement: 'top',
-				html: true
-			}
-		);
-		$(document).ready(function () {
-			fillFilterCombos();
-			fillEntryCombos();
-			$('#fullpage').fullpage({
-				//options here
-				loopBottom: false,
-				fitToSection: false,
-				autoScrolling: false,
-				scrollOverflow: false,
-				scrollBar: true,
-				navigation: false,
-				navigationPosition: 'top',
-				navigationTooltips: [
-					'Forethought phase',
-					'Goal setting',
-					'Strategic planning',
-					'Assesment criteria',
-					'Performance level',
-					'Afterthought phase'
-				],
-				licenseKey: "40E19E81-306A46E3-85506FDC-25A03E3A"
-			});
-		});
-		$('#table').on('check.bs.table', function (e, row) {
-			$('.entryTopic').find('option').remove();
-			$('.entryTopic').append(new Option(row['Topic Name'], row['Topic Name'], true, true));
-		});
-		$('#table').on('uncheck.bs.table', function (e, row) {
-			$('.entryTopic').find('option').remove();
-			$('.entryTopic').append(new Option("please select a topic in the forethought phase", "", true, true));
-		});
-		$('#simple-menu').sidr({
-			side: "right",
-			onOpenEnd: function () { $('html').css('overflow', 'hidden'); },
-			onCloseEnd: function () { $('html').css('overflow', 'auto'); }
-		});
-		$('#goalSetting').swipe({
-			//Single swipe handler for left swipes
-			swipeLeft: function () {
-				$.sidr('open');
-			},
-			swipeRight: function () {
-				$.sidr('close');
-			},
-			//Default is 75px, set to 0 for demo so any distance triggers swipe
-			threshold: 45,
-			excludedElements: "a, thead, button, input, select, textarea"
-		});
-
-		function countEvenSemMinTopics() {
-			$.getJSON(serverUrl + "/countEvenSemMinTopics?" + $('#filter-form').serialize(), function (count) {
-				if (count == -1) {
-					alert("Select the usn and semester filters");
-				}
-				else {
-					alert("The minimum number of new topics to be covered today is: " + count);
-				}
-			});
-		}
-
-		function countOddSemMinTopics() {
-			$.getJSON(serverUrl + "/countOddSemMinTopics?" + $('#filter-form').serialize(), function (count) {
-				if (count == -1) {
-					alert("Select the usn and semester filters");
-				}
-				else {
-					alert("The minimum number of new topics to be covered today is: " + count);
-				}
-			});
-		}
-	</script>
-	<script>
-		flatpickr(".flatpickr-single", { wrap: true, dateFormat: "Y-m-d" });
-		flatpickr
-			(".flatpickr-multi"
-				, {
-					wrap: true,
-					mode: "range",
-					dateFormat: "Y-m-d"
-				}
-			);
-	</script>
-	<script>
-		function fillCombo(comboId, formId, path, fieldName) {
-			let combo = document.getElementById(comboId);
-			let selected = $(combo).val();
-			$.getJSON(serverUrl + path + $('#' + formId).serialize(), function (data) {
-				combo.value = "";
-				combo.options.length = 1;
-				if (selected != "" && selected != "unselected") {
-					i = data.findIndex(x => x[fieldName] == selected)
-					if (i == -1) {
-						combo.add(new Option(selected));
-					}
-				}
-				for (index in data) {
-					combo.add(new Option(data[index][fieldName]));
-				}
-				$(combo).val(selected);
-			});
-		}
-		function fillFilterCombos() {
-			fillCombo('subject', 'filter-form', '/fill/subjects?', 'Subject_Name');
-			fillCombo('usn', 'filter-form', '/fill/usn?', 'USN');
-		}
-		function fillEntryCombos() {
-			fillCombo('entryTextbook', 'syllabusEntryForm', '/fill/textbooks?', 'Textbook_Name');
-			fillCombo('entrySubject', 'syllabusEntryForm', '/fill/subjects?', 'Subject_Name');
-		}
-		$(".filters:not('.no-change')").on('change', fillFilterCombos);
-		$(".entries:not('.no-change')").on('change', fillEntryCombos);
-	</script>
-	<script>
-		function loadTable() {
-			$('#table').bootstrapTable('refresh', { url: serverUrl + "/filter?" + $('#filter-form').serialize() });
-		}
-	</script>
-	<script>
-		function filterUsing(element, reactTo = function (e) { }) {
-			$(element).change(function () {
-				reactTo(event);
-				loadTable();
-			})
-		}
-	</script>
-	<script>
-		filterUsing('.filters');
-		filterUsing(
-			'#usn'
-			, function (event) {
-				if (event.target.value == "unselected" || event.target.value == "") {
-					$('#table').bootstrapTable('showColumn', 'Total Students (%)');
-					$('#table').bootstrapTable('hideColumn', 'Obtained Marks (%)');
-				}
-				else {
-					$('#table').bootstrapTable('hideColumn', 'Total Students (%)');
-					$('#table').bootstrapTable('showColumn', 'Obtained Marks (%)');
-				}
-			}
-		);
-	</script>
-	<!--End Edit-->
-	<script>
-		var items = document.querySelectorAll('#i1ar');
-		for (var i = 0, len = items.length; i < len; i++) {
-			(function () {
-				var t, e = this,
-					n = "[data-tab]",
-					r = document.body,
-					o = r.matchesSelector || r.webkitMatchesSelector || r.mozMatchesSelector || r.msMatchesSelector,
-					i = function (r) {
-						var o = e.querySelectorAll(n) || [];
-						for (t = 0; t < o.length; t++) {
-							var i = o[t],
-								a = i.className.replace("tab-active", "").trim();
-							i.className = a
-						} (function () {
-							var n = e.querySelectorAll("[data-tab-content]") || [];
-							for (t = 0; t < n.length; t++) n[t].style.display = "none"
-						})(), r.className += " tab-active";
-						var s = r.getAttribute("href"),
-							l = e.querySelector(s);
-						l && (l.style.display = "")
-					},
-					a = e.querySelector(".tab-active" + n);
-				(a = a || e.querySelector(n)) && i(a), e.addEventListener("click", function (t) {
-					var e = t.target;
-					o.call(e, n) && i(e)
-				})
-			}.bind(items[i]))();
-		}
-	</script>
-	<style>
-		a.page-brand-badge {
-			border-radius: 3px !important;
-			background-color: white !important;
-			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
-			padding: 5px 7px !important;
-			font-family: Helvetica, sans-serif !important;
-			font-size: 12px !important;
-			text-decoration: none !important;
-			color: #555 !important;
-			transition: box-shadow 0.25s !important;
-		}
-
-		a.page-brand-badge:hover {
-			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 3px 10px rgba(0, 0, 0, 0.1);
-		}
-	</style>
-
 	<a href="#" data-toggle="modal" data-target="#myModal" class="page-brand-badge" style="bottom: 10px !important; left: 10px !important; display: block !
 						 
 						 important; opacity: 1 !important; visibility: visible !important; position: fixed !important;">
@@ -1313,147 +1008,14 @@
 		</svg>
 		Register
 	</a>
-
-	<script>
-		function logout() {
-			$("#loginForm").show("slow");
-			$("#entryDiv").hide("slow");
-		}
-		var loginUsnParam = "";
-		var formStateName = 'data-form-state';
-		var formStateEls = $('[' + formStateName + ']');
-		formStateEls.hide();
-		$('#loginForm').submit(function (e) {
-			e.preventDefault();
-			var form = $(this);
-			var action = serverUrl + "/login";
-			var formData = $('#loginForm').serialize();
-			var chkSelected = {};
-			var name = this.getAttribute('name');
-			name && formData.append('__name', name);
-
-			form.find('[type=radio], [type=checkbox]').each(function (item) {
-				var chkName = this.name;
-				if (this.checked) {
-					chkSelected[chkName] = 1;
-					return;
-				}
-				chkSelected[chkName] = 0;
-			});
-
-			for (var chk in chkSelected) {
-				if (!chkSelected[chk]) {
-					formData.append(chk, '');
-				}
-			}
-
-			$.ajax({
-				url: action,
-				method: 'POST',
-				processData: false,
-				data: formData,
-			}).done(function (data) {
-				loginUsnParam = $.param({ "loginUsn": $("#loginUsn").val() });
-				formStateEls.hide();
-				if (data == "admin") {
-					$(".adminComponent").show("slow");
-				}
-				else {
-					$(".adminComponent").hide();
-				}
-				$("#loginForm").hide("slow");
-				$("#entryDiv").show("slow");
-				initializeConversation();
-			}).fail(function (data) {
-				loginUsnParam = "";
-				formStateEls.hide();
-				form.find('[' + formStateName + '=loginError]').stop(1).fadeIn().delay(3000).fadeOut();
-			});
-		});
-	</script>
-	<script>
-		$('.entryForm').submit(function (e) {
-			e.preventDefault();
-			var form = $(this);
-			var action = serverUrl + $(this).attr('action');
-			var formData =
-				$(this).serialize()
-				+ "&" + loginUsnParam
-				+ "&" + $.param({ "entryDateTime": moment().format('YYYY-MM-DD H:mm:ss') });
-			var chkSelected = {};
-			var name = this.getAttribute('name');
-			name && formData.append('__name', name);
-
-			form.find('[type=radio], [type=checkbox]').each(function (item) {
-				var chkName = this.name;
-				if (this.checked) {
-					chkSelected[chkName] = 1;
-					return;
-				}
-				chkSelected[chkName] = 0;
-			});
-
-			for (var chk in chkSelected) {
-				if (!chkSelected[chk]) {
-					formData.append(chk, '');
-				}
-			}
-
-			$.ajax({
-				url: action,
-				method: 'POST',
-				processData: false,
-				data: formData,
-			}).done(function (data) {
-				formStateEls.hide();
-				form.find('[' + formStateName + '=entrySuccess]').stop(1).fadeIn().delay(3000).fadeOut();
-			}).fail(function (data) {
-				formStateEls.hide();
-				form.find('[' + formStateName + '=entryError]').stop(1).fadeIn().delay(3000).fadeOut();
-			});
-
-		});
-	</script>
-	<script>
-		$('#registrationForm').submit(function (e) {
-			e.preventDefault();
-			var form = $(this);
-			var action = serverUrl + "/register";
-			var formData = $('#registrationForm').serialize();
-			var chkSelected = {};
-			var name = this.getAttribute('name');
-			name && formData.append('__name', name);
-
-			form.find('[type=radio], [type=checkbox]').each(function (item) {
-				var chkName = this.name;
-				if (this.checked) {
-					chkSelected[chkName] = 1;
-					return;
-				}
-				chkSelected[chkName] = 0;
-			});
-
-			for (var chk in chkSelected) {
-				if (!chkSelected[chk]) {
-					formData.append(chk, '');
-				}
-			}
-
-			$.ajax({
-				url: action,
-				method: 'POST',
-				processData: false,
-				data: formData,
-			}).done(function (data) {
-				formStateEls.hide();
-				form.find('[' + formStateName + '=registrationSuccess]').stop(1).fadeIn().delay(3000).fadeOut();
-			}).fail(function (data) {
-				formStateEls.hide();
-				form.find('[' + formStateName + '=registrationError]').stop(1).fadeIn().delay(3000).fadeOut();
-			});
-
-		});
-	</script>
+<script>	    
+	function LinkFormatter(value, row, index) {
+        if (!row.url) {
+            return value;
+        }
+        return "<a href='" + row.url + "'>" + value + "</a>";
+    }
+</script>
 </body>
 
 </html>
