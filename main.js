@@ -288,6 +288,8 @@ $(document).ready(function () {
     
         $('#logout').on('click', logout);
 
+        $('.hide-parent').on('click', () => $('.hide-parent').parent().hide('slow'));
+
         $('#loginForm').submit(function (e) {
             e.preventDefault();
             var form = $(this);
