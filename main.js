@@ -361,14 +361,13 @@ $(document).ready(function () {
         document.querySelector('body').addEventListener('submit', function(e) {
             if (e.target.id === 'time-popover-form') {
                 e.preventDefault();
-                var form = $(this);
+                var form = $(e.target);
                 var action = serverUrl + "/dailyTopicCount";
-                var formData = form.serialize();
+                var params = form.serialize();
                 $.ajax({
-                    url: action,
-                    method: 'POST',
+                    url: action + "?" + params,
+                    method: 'GET',
                     processData: false,
-                    data: formData
                 }).done(function (data) {
                     $('#daily-topic-count').text(data)
                     $('#daily-topic-count-alert').show();
