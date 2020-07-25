@@ -222,6 +222,8 @@ $(document).ready(function () {
     
         $('#fullpage').fullpage({
             //options here
+            paddingTop: '50px',
+            paddingBottom: '50px',
             loopBottom: false,
             fitToSection: false,
             autoScrolling: false,
