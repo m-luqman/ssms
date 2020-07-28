@@ -375,7 +375,8 @@ $(document).ready(function () {
                     method: 'GET',
                     processData: false,
                 }).done(function (data) {
-                    $('#daily-topic-count').text(data)
+                    $('#daily-topics-to-study').text(data['to_study'])
+                    $('#daily-topics-studied').text(data['studied'])
                     $('#daily-topic-count-alert').hide();
                     $('#daily-topic-count-alert').show('slow');
                 }).fail(function (data) {
