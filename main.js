@@ -91,7 +91,7 @@ $(document).ready(function () {
                                 // select group
                                 "id": "entryCoach",
                                 "tag": "select",
-                                "cf-questions": "Select one of the options below to get suggestions on how you could make your study more efficient.",
+                                "cf-questions": "Select one of the options below to get suggestions to improve your study.",
                                 "name": "coach-options",
                                 "isMultiChoice": false,
                                 "children": children
@@ -99,7 +99,7 @@ $(document).ready(function () {
                             {
                                 "tag": "cf-robot-message",
                                 "name": "coach-options",
-                                "cf-questions": "Try focusing on one of the options below when repeating the study of this topic or when studying similar topics."
+                                "cf-questions": "Reflect upon how you can apply these suggestions to study this topic better."
                             }
                         ];
     
