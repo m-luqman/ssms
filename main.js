@@ -142,6 +142,7 @@ $(document).ready(function () {
                     data: $.param(diaryData)
                 }).done(function (data) {
                     window.ConversationalForm.addRobotChatResponse("Diary successfully entered");
+                    if(new_topic_count_query) updateDailyTopicCounts(new_topic_count_query);                    
                 }).fail(function (data) {
                     window.ConversationalForm.addRobotChatResponse("There was an error entering the diary. Please try again.");
                 });
@@ -364,25 +365,14 @@ $(document).ready(function () {
     
         });
 
+        var new_topic_count_query="";
+
         document.querySelector('body').addEventListener('submit', function(e) {
             if (e.target.id === 'time-popover-form') {
                 e.preventDefault();
                 var form = $(e.target);
-                var action = serverUrl + "/dailyTopicCount";
-                var params = form.serialize();
-                $.ajax({
-                    url: action + "?" + params,
-                    method: 'GET',
-                    processData: false,
-                }).done(function (data) {
-                    $('#daily-topics-to-study').text(data['to_study'])
-                    $('#daily-topics-studied').text(data['studied'])
-                    $('#daily-topic-count-alert').hide();
-                    $('#daily-topic-count-alert').show('slow');
-                }).fail(function (data) {
-                    alert("failure");
-                    $('#daily-topic-count-alert').hide('slow');
-                });
+                new_topic_count_query = form.serialize() 
+                updateDailyTopicCounts(new_topic_count_query);
             }
           });
 
@@ -409,5 +399,24 @@ $(document).ready(function () {
                 }
             }
         );
+
+        function updateDailyTopicCounts(query_string) {
+            var action = serverUrl + "/dailyTopicCount";
+            var params = query_string;
+            $.ajax({
+                url: action + "?" + params,
+                method: 'GET',
+                processData: false,
+            }).done(function (data) {
+                $('#daily-topics-to-study').text(data['to_study']);
+                $('#daily-topics-studied').text(data['studied']);
+                $('#daily-topic-count-alert').hide();
+                $('#daily-topic-count-alert').show('slow');
+            }).fail(function (data) {
+                alert("failure");
+                $('#daily-topic-count-alert').hide('slow');
+            });
+        }
+        
     });
     
