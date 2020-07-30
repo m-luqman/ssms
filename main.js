@@ -93,7 +93,7 @@ $(document).ready(function () {
                                 // select group
                                 "id": "entryCoach",
                                 "tag": "select",
-                                "cf-questions": "Select the parameter you think you need to improve in, to better study this topic within time.",
+                                "cf-questions": "Select the aspect of your study you think you need to adjust",
                                 "name": "coach-options",
                                 "isMultiChoice": false,
                                 "children": children
@@ -101,7 +101,7 @@ $(document).ready(function () {
                             {
                                 "tag": "cf-robot-message",
                                 "name": "coach-options",
-                                "cf-questions": "Reflect upon which of these suggestions is most helpful and how you could have applied it."
+                                "cf-questions": "Reflect upon how you could have better studied this topic within time, if you had adjusted this aspect of your study as suggested below"
                             }
                         ];
     
