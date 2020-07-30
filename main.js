@@ -153,6 +153,7 @@ $(document).ready(function () {
     async function fillCombo(comboId, formId, path, fieldName) {
         let combo = document.getElementById(comboId);
         let selected = $(combo).val();
+        $(combo).css("cursor", "progress");
         return $.getJSON(serverUrl + path + $('#' + formId).serialize(), function (data) {
             combo.value = "";
             combo.options.length = 1;
@@ -166,6 +167,7 @@ $(document).ready(function () {
                 combo.add(new Option(data[index][fieldName]));
             }
             $(combo).val(selected);
+            $(combo).css("cursor", "default");
         });
     }
     
