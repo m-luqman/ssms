@@ -8,6 +8,8 @@ $(document).ready(function () {
     
     const serverUrl = "https://ssms-app.herokuapp.com";
     
+    var new_topic_count_query="";
+    
     function entryNameToCoachName(entryName) {
         return $('[name=' + entryName + ']').attr("coachname")
     }
@@ -295,7 +297,9 @@ $(document).ready(function () {
         $('#logout').on('click', logout);
 
         $('.hide-parent').on('click', () => $('.hide-parent').parent().hide('slow'));
-
+        
+        $("#daily-topic-count-close-btn").on('click', () => new_topic_count_query="")
+        
         $('#loginForm').submit(function (e) {
             e.preventDefault();
             var form = $(this);
@@ -367,8 +371,6 @@ $(document).ready(function () {
             });
     
         });
-
-        var new_topic_count_query="";
 
         document.querySelector('body').addEventListener('submit', function(e) {
             if (e.target.id === 'time-popover-form') {
