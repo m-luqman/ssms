@@ -143,6 +143,7 @@ $(document).ready(function () {
                 }).done(function (data) {
                     window.ConversationalForm.addRobotChatResponse("Diary successfully entered");
                     if(new_topic_count_query) updateDailyTopicCounts(new_topic_count_query);                    
+                    loadTable();
                 }).fail(function (data) {
                     window.ConversationalForm.addRobotChatResponse("There was an error entering the diary. Please try again.");
                 });
