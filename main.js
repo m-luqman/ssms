@@ -447,6 +447,9 @@ $(document).ready(function () {
           alert("error");
         });
     }
+    else {
+      $("#coach-revision-section").hide("slow");
+    }
   });
 
   $("#table").on("uncheck.bs.table", function (e, row) {
