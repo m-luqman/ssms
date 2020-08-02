@@ -438,6 +438,7 @@ $(document).ready(function () {
       })
         .done(function (data) {
           if (data.length == 0) {
+            $("#coach-revision-section").hide("slow");
             return;
           }
           forethought_coach_data = data;
