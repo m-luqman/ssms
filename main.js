@@ -72,7 +72,7 @@ $(document).ready(function () {
         class: "forethoughtEntry",
         tag: "select",
         "cf-questions":
-          "Select the aspect of your study you think you need to adjust",
+          "Select one aspect of your prior study that you think needs to be changed",
         name: "entryRevisionFocus",
         isMultiChoice: false,
         children: data.map((val) => ({
@@ -86,7 +86,7 @@ $(document).ready(function () {
         tag: "select",
         name: "recommendation",
         "cf-questions":
-          "Reflect upon how you could have better studied this topic within time, if you had chosen one of the following",
+          "Select the change that you think would help you better study this topic within time",
         "cf-conditional-entryRevisionFocus": getKey(val),
         children: getValue(val).map((op) => ({
           tag: "option",
