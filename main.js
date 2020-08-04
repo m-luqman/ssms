@@ -65,35 +65,49 @@ $(document).ready(function () {
             }));
       },
     },
-    tags: [
-      {
-        // select group
-        class: "forethoughtEntry",
-        tag: "select",
+    tags: [{
+      tag: "cf-robot-message",
+      "cf-questions": "The following are the study choices you made for this topic last time"
+    }].concat(
+    data.past_choices
+      .map((val) => ({
+        tag: "cf-robot-message",
         "cf-questions":
-          "Select one aspect of your prior study that you think needs to be changed",
-        name: "entryRevisionFocus",
-        isMultiChoice: false,
-        children: data.map((val) => ({
-          tag: "option",
-          "cf-label": entryNameToCoachName(getKey(val)),
-          value: getKey(val),
-        })),
-      },
-    ].concat(
-      data.map((val) => ({
-        tag: "select",
-        name: "recommendation",
-        "cf-questions":
-          "Select the change that you think would help you better study this topic within time",
-        "cf-conditional-entryRevisionFocus": getKey(val),
-        children: getValue(val).map((op) => ({
-          tag: "option",
-          "cf-label": optionNumberToOptionName(getKey(val), op).trim(),
-          value: op,
-        })),
-      }))
-    ),
+          entryNameToCoachName(getKey(val)) +
+          "&&" +
+          getValue(val).flatMap((op) =>
+            optionNumberToOptionName(getKey(val), op).trim()
+          ),
+      })))
+      .concat([
+        {
+          // select group
+          tag: "select",
+          "cf-questions":
+            "Select one aspect of your prior study that you want to change this time",
+          name: "entryRevisionFocus",
+          isMultiChoice: false,
+          children: data.recommended_choices.map((val) => ({
+            tag: "option",
+            "cf-label": entryNameToCoachName(getKey(val)),
+            value: getKey(val),
+          })),
+        },
+      ])
+      .concat(
+        data.recommended_choices.map((val) => ({
+          tag: "select",
+          name: "recommendation",
+          "cf-questions":
+            "Select the change that you think would help you better study this topic within time",
+          "cf-conditional-entryRevisionFocus": getKey(val),
+          children: getValue(val).map((op) => ({
+            tag: "option",
+            "cf-label": optionNumberToOptionName(getKey(val), op).trim(),
+            value: op,
+          })),
+        }))
+      ),
   });
 
   function entryNameToCoachName(entryName) {
@@ -436,7 +450,7 @@ $(document).ready(function () {
         data: $.param(dataArray),
       })
         .done(function (data) {
-          if (data.length == 0) {
+          if (data.recommended_choices.length == 0) {
             $("#coach-revision-section").hide("slow");
             return;
           }
