@@ -861,7 +861,9 @@ cf-chat-response text {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  display: inline-block;
+  display: flex;
+  flex-flow: column;
+  align-items: start;
   position: relative;
   min-height: 40px;
   height: auto;
