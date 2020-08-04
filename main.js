@@ -56,7 +56,6 @@ $(document).ready(function () {
       loadExternalStyleSheet: false,
       submitCallback: function (form) {
         let formData = form.getFormData(true);
-        console.log(formData)
         getIsRecommendationFollowed = (nameValuePairs) =>
           nameValuePairs
             .filter((pair) => pair.name === formData.entryRevisionFocus[0])
