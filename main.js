@@ -58,26 +58,31 @@ $(document).ready(function () {
         forethoughtConversationData = form.getFormData(true);
       },
     },
-    tags: [{
-      tag: "cf-robot-message",
-      "cf-questions": "The following are the study choices you made for this topic last time"
-    }].concat(
-    data.past_choices
-      .map((val) => ({
+    tags: [
+      {
         tag: "cf-robot-message",
         "cf-questions":
-          entryNameToCoachName(getKey(val)) +
-          "&&" +
-          getValue(val).flatMap((op) =>
-            optionNumberToOptionName(getKey(val), op).trim()
-          ),
-      })))
+          "The following are the study choices you made for this topic, last time",
+      },
+    ]
+      .concat(
+        data.past_choices.map((val) => ({
+          tag: "select",
+          name: "previous_" + getKey(val),
+          "cf-questions": entryNameToCoachName(getKey(val)),
+          children: getValue(val).flatMap((op) => ({
+            tag: "option",
+            value: op,
+            "cf-label": optionNumberToOptionName(getKey(val), op).trim(),
+          })),
+        }))
+      )
       .concat([
         {
           // select group
           tag: "select",
           "cf-questions":
-            "Select one aspect of your prior study that you want to change this time",
+            "Select one aspect of your prior study that you want to change, this time",
           name: "entryRevisionFocus",
           isMultiChoice: false,
           children: data.recommended_choices.map((val) => ({
@@ -90,7 +95,7 @@ $(document).ready(function () {
       .concat(
         data.recommended_choices.map((val) => ({
           tag: "select",
-          name: "recommendation",
+          name: "coach_" + getKey(val),
           "cf-questions":
             "Select the change that you think would help you better study this topic within time",
           "cf-conditional-entryRevisionFocus": getKey(val),
