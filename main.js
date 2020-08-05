@@ -11,6 +11,9 @@ $(document).ready(function () {
 
   var forethought_coach_data = [];
 
+
+  var formSelectors = [];
+
   var forethoughtConversationData = null;
 
   // const forethoughtConversationJson = (data) => ({
@@ -134,37 +137,31 @@ $(document).ready(function () {
     return anObject[getKey(anObject)];
   }
 
-  function diaryChecker() {
-    let slides = document.getElementsByClassName("forethoughtEntry");
-    for (let i = 0; i < slides.length; i++)
-      if (!slides.item(i).validity.valid) {
-        window.ConversationalForm.addRobotChatResponse(
-          "Some fields in forethought phase have not been filled"
-        );
-        return false;
-      }
-
-    if (!$("#statusEntryForm")[0].checkValidity()) {
-      window.ConversationalForm.addRobotChatResponse(
-        "Some fields have not been filled"
+  function FormSerializer(serializedArray = [], selectors = []) {
+    this.serializedArray = serializedArray;
+    this.selectors = selectors;
+    this.withSerializedArrayFromConversation = (formData) =>
+      formData == null
+        ? this
+        : new FormSerializer(
+            this.serializedArray.concat(
+              Object.keys(formData).map((key) => ({
+                name: key,
+                value: formData[key][0],
+              }))
+            ),
+            this.selectors
+          );
+    this.withSerializedArrayFromSelectors = (selectors) =>
+      new FormSerializer(
+        this.serializedArray.concat($(selectors.join(", ")).serializeArray()),
+        this.selectors.concat(selectors)
       );
-      return false;
-    }
-
-    return true;
-  }
-
-  function getDiaryData() {
-    return $(
-      "#statusEntryForm, .forethoughtEntry, #loginForm"
-    ).serializeArray();
-  }
-
-  function showForethoughtConversation(data) {
-    $("#coach-revision-section").show("slow");
-    var cf = window.cf.ConversationalForm.startTheConversation(
-      forethoughtConversationJson(data)
-    );
+    this.isValidData = () =>
+      this.serializedArray.filter((item) => item.value === "").length === 0 &&
+      $(this.selectors.join(", "))
+        .toArray()
+        .every((element) => element.checkValidity());
   }
 
   function initializeConversation() {
@@ -178,14 +175,23 @@ $(document).ready(function () {
         var currentStep = window.ConversationalForm.flowManager.getStep() + 1; // Steps are 0-based so we add 1
         var maxSteps = window.ConversationalForm.flowManager.maxSteps; // This value is not 0-based
 
+        let serializer = new FormSerializer()
+          .withSerializedArrayFromSelectors(formSelectors)
+          .withSerializedArrayFromConversation(
+            this.cfReference.getFormData(true)
+          );
+
         if (currentStep == maxSteps) {
-          if (!diaryChecker()) {
+          if (!serializer.isValidData()) {
+            window.ConversationalForm.addRobotChatResponse(
+              "Some fields have not been filled"
+            );
             error();
             return;
           }
 
           let action = serverUrl + "/coach_afterthought";
-          let diaryData = getDiaryData();
+          let diaryData = serializer.serializedArray;
 
           $.ajax({
             url: action,
@@ -248,14 +254,21 @@ $(document).ready(function () {
           success();
         }
       },
-      submitCallback: function () {
-        if (!diaryChecker()) {
+      submitCallback: function (form) {
+        let serializer = new FormSerializer()
+          .withSerializedArrayFromSelectors(formSelectors)
+          .withSerializedArrayFromConversation(form.getFormData(true))
+          .withSerializedArrayFromConversation(forethoughtConversationData);
+        if (!serializer.isValidData()) {
+          window.ConversationalForm.addRobotChatResponse(
+            "Some fields have not been filled"
+          );
           error();
           return;
         }
 
         let action = serverUrl + $("#statusEntryForm").attr("action");
-        let diaryData = getDiaryData().concat([
+        let diaryData = serializer.serializedArray.concat([
           {
             name: "entryDateTime",
             value: moment().format("YYYY-MM-DD H:mm:ss"),
@@ -354,8 +367,7 @@ $(document).ready(function () {
     initializeConversation();
   });
   $("#refreshForethoughtConversation").click(function () {
-    if (forethought_coach_data)
-      showForethoughtConversation(forethought_coach_data);
+    if (forethought_coach_data) whenForethoughtCoach(forethought_coach_data);
   });
 
   $('[data-toggle="popover"]').popover({
