@@ -432,62 +432,68 @@ $(document).ready(function () {
     licenseKey: "40E19E81-306A46E3-85506FDC-25A03E3A",
   });
 
-  $("#table").on("check.bs.table", function (e, row) {
-    $(".entryTopic").find("option").remove();
-    $(".entryTopic").append(
-      new Option(row["Topic Name"], row["Topic Name"], true, true)
-    );
-    if (!$("#newOldToggle").is(":checked") && $("#usn").val() != "unselected") {
-      let dataArray = [
-        {
-          name: "usn",
-          value: $("#usn").val(),
-        },
-        {
-          name: "entryTopic",
-          value: row["Topic Name"],
-        },
-      ];
-      $.ajax({
-        url: serverUrl + "/coach_forethought",
-        method: "POST",
-        processData: false,
-        data: $.param(dataArray),
-      })
-        .done(function (data) {
-          if (data.recommended_choices.length == 0) {
-            $("#coach-revision-section").hide("slow");
-            return;
-          }
-          forethought_coach_data = data;
-          showForethoughtConversation(data);
+  function forethoughtCoachStateTransition(
+    whenForethoughtCoach,
+    whenNotForethoughtCoach
+  ) {
+    $("#table").on("check.bs.table", function (e, row) {
+      $(".entryTopic").find("option").remove();
+      $(".entryTopic").append(
+        new Option(row["Topic Name"], row["Topic Name"], true, true)
+      );
+      if (
+        !$("#newOldToggle").is(":checked") &&
+        $("#usn").val() != "unselected"
+      ) {
+        let dataArray = [
+          {
+            name: "usn",
+            value: $("#usn").val(),
+          },
+          {
+            name: "entryTopic",
+            value: row["Topic Name"],
+          },
+        ];
+        $.ajax({
+          url: serverUrl + "/coach_forethought",
+          method: "POST",
+          processData: false,
+          data: $.param(dataArray),
         })
-        .fail(function (data) {
-          alert("error");
-        });
-    }
-    else {
-      $("#coach-revision-section").hide("slow");
-    }
-  });
+          .done(function (data) {
+            if (data.recommended_choices.length == 0) {
+              whenNotForethoughtCoach();
+              return;
+            }
+            forethought_coach_data = data;
+            whenForethoughtCoach(data);
+          })
+          .fail(function (data) {
+            alert("error");
+          });
+      } else {
+        whenNotForethoughtCoach();
+      }
+    });
 
-  $("#table").on("uncheck.bs.table", function (e, row) {
-    $(".entryTopic").find("option").remove();
-    $(".entryTopic").append(
-      new Option(
-        "please select a topic in the forethought phase",
-        "",
-        true,
-        true
-      )
-    );
-    $("#coach-revision-section").hide("slow");
-  });
+    $("#table").on("uncheck.bs.table", function (e, row) {
+      $(".entryTopic").find("option").remove();
+      $(".entryTopic").append(
+        new Option(
+          "please select a topic in the forethought phase",
+          "",
+          true,
+          true
+        )
+      );
+      whenNotForethoughtCoach();
+    });
 
-  $("#collapse-coach-revision-body").on("show.bs.collapse", function () {
-    $("#coach-revision-body").css("min-height", "500px");
-  });
-
+    $("#collapse-coach-revision-body").on("show.bs.collapse", function () {
+      $("#coach-revision-body").css("min-height", "500px");
+    });
+  }
   $("#simple-menu").sidr({
     side: "right",
     onOpenEnd: function () {
