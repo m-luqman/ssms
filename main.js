@@ -11,7 +11,7 @@ $(document).ready(function () {
 
   var forethought_coach_data = [];
 
-  var getIsRecommendationFollowed = null;
+  var forethoughtConversationData = null;
 
   // const forethoughtConversationJson = (data) => ({
   //   options: {
@@ -55,14 +55,7 @@ $(document).ready(function () {
       preventAutoFocus: true,
       loadExternalStyleSheet: false,
       submitCallback: function (form) {
-        let formData = form.getFormData(true);
-        getIsRecommendationFollowed = (nameValuePairs) =>
-          nameValuePairs
-            .filter((pair) => pair.name === formData.entryRevisionFocus[0])
-            .map((pair) => ({
-              name: "isRecommendationFollowed",
-              value: pair.value === formData.recommendation[0],
-            }));
+        forethoughtConversationData = form.getFormData(true);
       },
     },
     tags: [{
@@ -164,7 +157,6 @@ $(document).ready(function () {
 
   function showForethoughtConversation(data) {
     $("#coach-revision-section").show("slow");
-    getIsRecommendationFollowed = null;
     var cf = window.cf.ConversationalForm.startTheConversation(
       forethoughtConversationJson(data)
     );
@@ -263,10 +255,6 @@ $(document).ready(function () {
             name: "entryDateTime",
             value: moment().format("YYYY-MM-DD H:mm:ss"),
           },
-          ...[
-            getIsRecommendationFollowed != null &&
-              getIsRecommendationFollowed(getDiaryData()),
-          ],
         ]);
 
         $.ajax({
