@@ -654,8 +654,58 @@ $(document).ready(function () {
   }
 
   loadInitialData();
+  function whenNotForethoughtCoach() {
+    $("#coach-revision-section").hide("slow");
+    $("#afterthought-strategies").hide();
+    $("#forethought-strategy-section").show("slow");
+    formSelectors = [
+      "#loginForm",
+      "#forethoughtTopicEntry",
+      ".forethoughtStrategyEntry",
+    ];
+    afterthoughtStrategyTag = [];
+    forethoughtConversationData = null;
+  }
 
   $("#daily-topic-count-alert").hide();
+  function whenForethoughtCoach(data) {
+    $("#coach-revision-section").show("slow");
+    $("#afterthought-strategies").show();
+    $("#forethought-strategy-section").hide("slow");
+    formSelectors = ["#loginForm", "#forethoughtTopicEntry"];
+    window.cf.ConversationalForm.startTheConversation(
+      forethoughtConversationJson(data)
+    );
+    afterthoughtStrategyTag = [
+      {
+        tag: "select",
+        "cf-questions": "Strategy Applied",
+        name: "entryDifficulty",
+        children: [
+          {
+            tag: "option",
+            "cf-label": "survey",
+            value: 1,
+          },
+          {
+            tag: "option",
+            "cf-label": "question",
+            value: 2,
+          },
+          {
+            tag: "option",
+            "cf-label": "summarize",
+            value: 3,
+          },
+          {
+            tag: "option",
+            "cf-label": "other",
+            value: 4,
+          },
+        ],
+      },
+    ];
+  }
 
   $("#coach-revision-section").hide();
 
