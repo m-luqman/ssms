@@ -659,7 +659,6 @@ $(document).ready(function () {
     ]);
   }
 
-  loadInitialData();
   function whenNotForethoughtCoach() {
     $("#coach-revision-section").hide("slow");
     $("#afterthought-strategies").hide();
@@ -673,7 +672,6 @@ $(document).ready(function () {
     forethoughtConversationData = null;
   }
 
-  $("#daily-topic-count-alert").hide();
   function whenForethoughtCoach(data) {
     $("#coach-revision-section").show("slow");
     $("#afterthought-strategies").show();
@@ -713,7 +711,18 @@ $(document).ready(function () {
     ];
   }
 
-  $("#coach-revision-section").hide();
+  forethoughtCoachStateTransition(
+    whenForethoughtCoach,
+    whenNotForethoughtCoach
+  );
+
+  function initialState() {
+    loadInitialData();
+    whenNotForethoughtCoach();
+    $("#daily-topic-count-alert").hide();
+  }
+
+  initialState();
 
   filterUsing(".filters");
 
