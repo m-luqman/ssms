@@ -11,6 +11,7 @@ $(document).ready(function () {
 
   var forethought_coach_data = [];
 
+  var afterthoughtStrategyTag = [];
 
   var formSelectors = [];
 
@@ -174,6 +175,10 @@ $(document).ready(function () {
       flowStepCallback: function (dto, success, error) {
         var currentStep = window.ConversationalForm.flowManager.getStep() + 1; // Steps are 0-based so we add 1
         var maxSteps = window.ConversationalForm.flowManager.maxSteps; // This value is not 0-based
+
+        if (currentStep == 1) {
+          window.ConversationalForm.addTags(afterthoughtStrategyTag);
+        }
 
         let serializer = new FormSerializer()
           .withSerializedArrayFromSelectors(formSelectors)
