@@ -103,31 +103,20 @@ $(document).ready(function () {
     return anObject[getKey(anObject)];
   }
 
-  function FormSerializer(serializedArray = [], selectors = []) {
-    this.serializedArray = serializedArray;
-    this.selectors = selectors;
-    this.withSerializedArrayFromConversation = (formData) =>
-      formData == null
-        ? this
-        : new FormSerializer(
-            this.serializedArray.concat(
-              Object.keys(formData).map((key) => ({
-                name: key,
-                value: formData[key][0],
-              }))
-            ),
-            this.selectors
-          );
-    this.withSerializedArrayFromSelectors = (selectors) =>
+  function FormSerializer(elements = []) {
+    this.formElements = elements;
+    this.withElementsFromSelectors = (selectors) =>
       new FormSerializer(
-        this.serializedArray.concat($(selectors.join(", ")).serializeArray()),
-        this.selectors.concat(selectors)
+        this.formElements.concat($(selectors.join(", ")).toArray())
+      );
+    this.withElement = (element) =>
+      new FormSerializer(this.formElements.concat([element]));
+    this.getSerializedArray = () =>
+      this.formElements.reduce((prev, curr) =>
+        prev.concat(curr.serializeArray())
       );
     this.isValidData = () =>
-      this.serializedArray.filter((item) => item.value === "").length === 0 &&
-      $(this.selectors.join(", "))
-        .toArray()
-        .every((element) => element.checkValidity());
+      this.formElements.every((element) => element.checkValidity());
   }
 
   function initializeConversation() {
@@ -146,10 +135,8 @@ $(document).ready(function () {
         }
 
         let serializer = new FormSerializer()
-          .withSerializedArrayFromSelectors(formSelectors)
-          .withSerializedArrayFromConversation(
-            this.cfReference.getFormData(true)
-          );
+          .withElementsFromSelectors(formSelectors)
+          .withElement(this.cfReference.formEl);
 
         if (currentStep == maxSteps) {
           if (!serializer.isValidData()) {
@@ -161,7 +148,7 @@ $(document).ready(function () {
           }
 
           let action = serverUrl + "/coach_afterthought";
-          let diaryData = serializer.serializedArray;
+          let diaryData = serializer.getSerializedArray();
 
           $.ajax({
             url: action,
@@ -226,8 +213,8 @@ $(document).ready(function () {
       },
       submitCallback: function (form) {
         let serializer = new FormSerializer()
-          .withSerializedArrayFromSelectors(formSelectors)
-          .withSerializedArrayFromConversation(form.getFormData(true))
+          .withElementsFromSelectors(formSelectors)
+          .withElement(form.formEl)
         if (!serializer.isValidData()) {
           window.ConversationalForm.addRobotChatResponse(
             "Some fields have not been filled"
@@ -237,7 +224,7 @@ $(document).ready(function () {
         }
 
         let action = serverUrl + $("#statusEntryForm").attr("action");
-        let diaryData = serializer.serializedArray.concat([
+        let diaryData = serializer.getSerializedArray().concat([
           {
             name: "entryDateTime",
             value: moment().format("YYYY-MM-DD H:mm:ss"),
