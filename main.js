@@ -15,7 +15,7 @@ $(document).ready(function () {
 
   var formSelectors = [];
 
-  var forethoughtConversationData = null;
+  var forethoughtConversationElement = null;
 
   const forethoughtConversationJson = (data) => ({
     options: {
@@ -24,7 +24,7 @@ $(document).ready(function () {
       preventAutoFocus: true,
       loadExternalStyleSheet: false,
       submitCallback: function (form) {
-        forethoughtConversationData = form.getFormData(true);
+        console.log("SUBMITTED!!");
       },
     },
     tags: [
@@ -228,7 +228,6 @@ $(document).ready(function () {
         let serializer = new FormSerializer()
           .withSerializedArrayFromSelectors(formSelectors)
           .withSerializedArrayFromConversation(form.getFormData(true))
-          .withSerializedArrayFromConversation(forethoughtConversationData);
         if (!serializer.isValidData()) {
           window.ConversationalForm.addRobotChatResponse(
             "Some fields have not been filled"
@@ -639,7 +638,7 @@ $(document).ready(function () {
       ".forethoughtStrategyEntry",
     ];
     afterthoughtStrategyTag = [];
-    forethoughtConversationData = null;
+    forethoughtConversationElement = null;
   }
 
   function whenForethoughtCoach(data) {
