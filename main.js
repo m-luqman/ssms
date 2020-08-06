@@ -186,25 +186,30 @@ $(document).ready(function () {
             "Select one aspect of your prior study that you want to change, this time",
           name: "entryRevisionFocus",
           isMultiChoice: false,
-          children: data.recommended_choices.map((val) => ({
-            tag: "option",
-            "cf-label": entryNameToCoachName(getKey(val)),
-            value: getKey(val),
-          })),
+          children: [unselectedOption].concat(
+            data.recommended_choices.map((val) => ({
+              tag: "option",
+              "cf-label": entryNameToCoachName(getKey(val)),
+              value: getKey(val),
+            }))
+          ),
         },
       ])
       .concat(
         data.recommended_choices.map((val) => ({
           tag: "select",
           name: "coach_" + getKey(val),
+          required: true,
           "cf-questions":
             "Select the change that you think would help you better study this topic within time",
           "cf-conditional-entryRevisionFocus": getKey(val),
-          children: getValue(val).map((op) => ({
-            tag: "option",
-            "cf-label": optionNumberToOptionName(getKey(val), op).trim(),
-            value: op,
-          })),
+          children: [unselectedOption].concat(
+            getValue(val).map((op) => ({
+              tag: "option",
+              "cf-label": optionNumberToOptionName(getKey(val), op).trim(),
+              value: op,
+            }))
+          ),
         }))
       ),
   });
