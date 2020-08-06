@@ -154,7 +154,15 @@ $(document).ready(function () {
       preventAutoFocus: true,
       loadExternalStyleSheet: false,
       submitCallback: function (form) {
-        console.log("SUBMITTED!!");
+        [...form.formEl.elements]
+          .filter((element) => element.value === "")
+          .forEach((element) => $(element).remove());
+      },
+      flowStepCallback: function (dto, success, error) {
+        if (!dto.tag.domElement.checkValidity()) {
+          return error();
+        }
+        return success();
       },
     },
     tags: [
