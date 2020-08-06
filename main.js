@@ -11,8 +11,6 @@ $(document).ready(function () {
 
   var forethought_coach_data = [];
 
-  var afterthoughtStrategyTag = [];
-
   var formSelectors = [];
 
   var forethoughtConversationElement = null;
@@ -132,9 +130,6 @@ $(document).ready(function () {
         var currentStep = window.ConversationalForm.flowManager.getStep() + 1; // Steps are 0-based so we add 1
         var maxSteps = window.ConversationalForm.flowManager.maxSteps; // This value is not 0-based
 
-        if (currentStep == 1) {
-          window.ConversationalForm.addTags(afterthoughtStrategyTag);
-        }
 
         let serializer = new FormSerializer()
           .withElementsFromSelectors(formSelectors)
@@ -623,12 +618,12 @@ $(document).ready(function () {
     $("#coach-revision-section").hide("slow");
     $("#afterthought-strategies").hide();
     $("#forethought-strategy-section").show("slow");
+    $("#afterthought-strategy").hide();
     formSelectors = [
       "#loginForm",
       "#forethoughtTopicEntry",
       ".forethoughtStrategyEntry",
     ];
-    afterthoughtStrategyTag = [];
     forethoughtConversationElement = null;
   }
 
@@ -636,39 +631,11 @@ $(document).ready(function () {
     $("#coach-revision-section").show("slow");
     $("#afterthought-strategies").show();
     $("#forethought-strategy-section").hide("slow");
+    $("#afterthought-strategy").show();
     formSelectors = ["#loginForm", "#forethoughtTopicEntry"];
     forethoughtConversationElement = window.cf.ConversationalForm.startTheConversation(
       forethoughtConversationJson(data)
     );
-    afterthoughtStrategyTag = [
-      {
-        tag: "select",
-        "cf-questions": "Strategy Applied",
-        name: "entryDifficulty",
-        children: [
-          {
-            tag: "option",
-            "cf-label": "survey",
-            value: 1,
-          },
-          {
-            tag: "option",
-            "cf-label": "question",
-            value: 2,
-          },
-          {
-            tag: "option",
-            "cf-label": "summarize",
-            value: 3,
-          },
-          {
-            tag: "option",
-            "cf-label": "other",
-            value: 4,
-          },
-        ],
-      },
-    ];
   }
 
   forethoughtCoachStateTransition(
