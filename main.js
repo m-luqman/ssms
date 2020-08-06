@@ -17,41 +17,6 @@ $(document).ready(function () {
 
   var forethoughtConversationData = null;
 
-  // const forethoughtConversationJson = (data) => ({
-  //   options: {
-  //     context: document.getElementById("coach-revision-body"),
-  //     hideUserInputOnNoneTextInput: true,
-  //     preventAutoFocus: true,
-  //     submitCallback: (data) => console.log(data),
-  //   },
-  //   tags: data
-  //     .map((val) => ({
-  //       class: "forethoughtEntry",
-  //       "cf-questions":
-  //         "Select the aspect of your study you think you need to adjust",
-  //       name: "entryRevisionFocus",
-  //       tag: "input",
-  //       type: "radio",
-  //       "cf-label": entryNameToCoachName(getKey(val)),
-  //       value: getKey(val),
-  //     }))
-  //     .concat(
-  //       data.flatMap((val) =>
-  //         getValue(val).map((op) => ({
-  //           name: "recommendation",
-  //           class: "forethoughtEntry",
-  //           tag: "input",
-  //           type: "radio",
-  //           "cf-questions":
-  //             "Reflect upon how you could have better studied this topic within time, if you had chosen one of the following",
-  //           "cf-label": optionNumberToOptionName(getKey(val), op).trim(),
-  //           value: op,
-  //           "cf-conditional-entryRevisionFocus": getKey(val),
-  //         }))
-  //       )
-  //     ),
-  // });
-
   const forethoughtConversationJson = (data) => ({
     options: {
       context: document.getElementById("coach-revision-body"),
