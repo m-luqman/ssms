@@ -15,6 +15,138 @@ $(document).ready(function () {
 
   var forethoughtConversationElement = null;
 
+  var unselectedOption = {
+    tag: "option",
+    "cf-label": "unselected",
+    value: "",
+  };
+
+  const afterthoughtConversationJson = {
+    formEl: document.getElementById("statusEntryForm"),
+    context: document.getElementById("statusEntryContainer"),
+    hideUserInputOnNoneTextInput: true,
+    preventAutoFocus: true,
+    loadExternalStyleSheet: false,
+    submitCallback: function (form) {
+      let serializer = new FormSerializer()
+        .withElementsFromSelectors(formSelectors)
+        .withElement(form.formEl)
+        .withElement(forethoughtConversationElement.formEl);
+      if (!serializer.isValidData()) {
+        form.addRobotChatResponse("Some fields have not been filled");
+      }
+
+      let action = serverUrl + $("#statusEntryForm").attr("action");
+      let diaryData = serializer.getSerializedArray().concat([
+        {
+          name: "entryDateTime",
+          value: moment().format("YYYY-MM-DD H:mm:ss"),
+        },
+      ]);
+
+      $.ajax({
+        url: action,
+        method: "POST",
+        processData: false,
+        data: $.param(diaryData),
+      })
+        .done(function (data) {
+          form.addRobotChatResponse("Diary successfully entered");
+          if (new_topic_count_array.length)
+            updateDailyTopicCounts(new_topic_count_array);
+          loadTable();
+        })
+        .fail(function (data) {
+          form.addRobotChatResponse(
+            "There was an error entering the diary. Please try again."
+          );
+        });
+    },
+    flowStepCallback: function (dto, success, error) {
+      var currentStep = this.cfReference.flowManager.getStep() + 1; // Steps are 0-based so we add 1
+      var maxSteps = this.cfReference.flowManager.maxSteps; // This value is not 0-based
+
+      if (!dto.tag.domElement.checkValidity()) {
+        return error();
+      }
+
+      if (currentStep !== maxSteps) {
+        return success();
+      }
+
+      if (dto.tag.name.startsWith("coach")) {
+        return success();
+      }
+
+      let serializer = new FormSerializer()
+        .withElementsFromSelectors(formSelectors)
+        .withElement(this.cfReference.formEl);
+
+      if (!serializer.isValidData()) {
+        this.cfReference.addRobotChatResponse(
+          "Some fields have not been filled"
+        );
+        return error();
+      }
+
+      let action = serverUrl + "/coach_afterthought";
+      let diaryData = serializer.getSerializedArray();
+      let that = this;
+      $.ajax({
+        url: action,
+        method: "POST",
+        processData: false,
+        data: $.param(diaryData),
+      })
+        .done(function (data) {
+          if (data.length == 0) {
+            return success();
+          }
+
+          that.cfReference.addTags(
+            [
+              {
+                // select group
+                id: "entryCoach",
+                tag: "select",
+                required: true,
+                "cf-questions":
+                  "Select the aspect of your study you think you need to adjust",
+                name: "coach-options",
+                isMultiChoice: false,
+                children: data.map((val) => ({
+                  tag: "option",
+                  "cf-label": entryNameToCoachName(getKey(val)),
+                  value: getKey(val),
+                })),
+              },
+              {
+                tag: "cf-robot-message",
+                name: "coach-options",
+                "cf-questions":
+                  "Reflect upon how you could have better studied this topic within time, if you had chosen one of the following",
+              },
+            ].concat(
+              data.flatMap((val) => ({
+                tag: "cf-robot-message",
+                "cf-conditional-coach-options": getKey(val),
+                "cf-questions": getValue(val)
+                  .map((op) => optionNumberToOptionName(getKey(val), op).trim())
+                  .join("&&"),
+              }))
+            )
+          );
+          return success();
+        })
+        .fail(function (data) {
+          that.cfReference.addRobotChatResponse(
+            "There was an error in providing feedback"
+          );
+          return error();
+        });
+    },
+  };
+
   const forethoughtConversationJson = (data) => ({
     options: {
       context: document.getElementById("coach-revision-body"),
@@ -120,137 +252,7 @@ $(document).ready(function () {
   }
 
   function initializeConversation() {
-    $("#statusEntryForm").conversationalForm({
-      formEl: document.getElementById("statusEntryForm"),
-      context: document.getElementById("statusEntryContainer"),
-      hideUserInputOnNoneTextInput: true,
-      preventAutoFocus: true,
-      loadExternalStyleSheet: false,
-      flowStepCallback: function (dto, success, error) {
-        var currentStep = window.ConversationalForm.flowManager.getStep() + 1; // Steps are 0-based so we add 1
-        var maxSteps = window.ConversationalForm.flowManager.maxSteps; // This value is not 0-based
-
-
-        let serializer = new FormSerializer()
-          .withElementsFromSelectors(formSelectors)
-          .withElement(this.cfReference.formEl);
-
-        if (currentStep == maxSteps) {
-          if (!serializer.isValidData()) {
-            window.ConversationalForm.addRobotChatResponse(
-              "Some fields have not been filled"
-            );
-            error();
-            return;
-          }
-
-          let action = serverUrl + "/coach_afterthought";
-          let diaryData = serializer.getSerializedArray();
-
-          $.ajax({
-            url: action,
-            method: "POST",
-            processData: false,
-            data: $.param(diaryData),
-          })
-            .done(function (data) {
-              if (data.length == 0) {
-                success();
-                return;
-              }
-
-              let children = data.map((val) => ({
-                tag: "option",
-                "cf-label": entryNameToCoachName(getKey(val)),
-                value: getKey(val),
-              }));
-
-              let tags = [
-                {
-                  // select group
-                  id: "entryCoach",
-                  tag: "select",
-                  required: true,
-                  "cf-questions":
-                    "Select the aspect of your study you think you need to adjust",
-                  name: "coach-options",
-                  isMultiChoice: false,
-                  children: children,
-                },
-                {
-                  tag: "cf-robot-message",
-                  name: "coach-options",
-                  "cf-questions":
-                    "Reflect upon how you could have better studied this topic within time, if you had chosen one of the following",
-                },
-              ];
-
-              let conditionalTags = data.flatMap((val) =>
-                getValue(val).map((op) => ({
-                  tag: "cf-robot-message",
-                  "cf-questions": optionNumberToOptionName(
-                    getKey(val),
-                    op
-                  ).trim(),
-                  "cf-conditional-coach-options": getKey(val),
-                }))
-              );
-
-              window.ConversationalForm.addTags(tags.concat(conditionalTags));
-              success();
-            })
-            .fail(function (data) {
-              window.ConversationalForm.addRobotChatResponse(
-                "There was an error in providing feedback"
-              );
-              error();
-            });
-        } else {
-          success();
-        }
-      },
-      submitCallback: function (form) {
-        let serializer = new FormSerializer()
-          .withElementsFromSelectors(formSelectors)
-          .withElement(form.formEl)
-          .withElement(forethoughtConversationElement);
-        if (!serializer.isValidData()) {
-          window.ConversationalForm.addRobotChatResponse(
-            "Some fields have not been filled"
-          );
-          error();
-          return;
-        }
-
-        let action = serverUrl + $("#statusEntryForm").attr("action");
-        let diaryData = serializer.getSerializedArray().concat([
-          {
-            name: "entryDateTime",
-            value: moment().format("YYYY-MM-DD H:mm:ss"),
-          },
-        ]);
-
-        $.ajax({
-          url: action,
-          method: "POST",
-          processData: false,
-          data: $.param(diaryData),
-        })
-          .done(function (data) {
-            window.ConversationalForm.addRobotChatResponse(
-              "Diary successfully entered"
-            );
-            if (new_topic_count_array.length)
-              updateDailyTopicCounts(new_topic_count_array);
-            loadTable();
-          })
-          .fail(function (data) {
-            window.ConversationalForm.addRobotChatResponse(
-              "There was an error entering the diary. Please try again."
-            );
-          });
-      },
-    });
+    $("#statusEntryForm").conversationalForm(afterthoughtConversationJson);
   }
 
   async function fillCombo(comboId, formId, path, fieldName) {
