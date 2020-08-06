@@ -37,6 +37,7 @@ $(document).ready(function () {
       .concat(
         data.past_choices.map((val) => ({
           tag: "select",
+          required: true,
           name: "previous_" + getKey(val),
           "cf-questions": entryNameToCoachName(getKey(val)),
           children: getValue(val).flatMap((op) => ({
@@ -50,6 +51,7 @@ $(document).ready(function () {
         {
           // select group
           tag: "select",
+          required: true,
           "cf-questions":
             "Select one aspect of your prior study that you want to change, this time",
           name: "entryRevisionFocus",
@@ -173,6 +175,7 @@ $(document).ready(function () {
                   // select group
                   id: "entryCoach",
                   tag: "select",
+                  required: true,
                   "cf-questions":
                     "Select the aspect of your study you think you need to adjust",
                   name: "coach-options",
