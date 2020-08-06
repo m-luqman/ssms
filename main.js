@@ -215,6 +215,7 @@ $(document).ready(function () {
         let serializer = new FormSerializer()
           .withElementsFromSelectors(formSelectors)
           .withElement(form.formEl)
+          .withElement(forethoughtConversationElement);
         if (!serializer.isValidData()) {
           window.ConversationalForm.addRobotChatResponse(
             "Some fields have not been filled"
@@ -633,7 +634,7 @@ $(document).ready(function () {
     $("#afterthought-strategies").show();
     $("#forethought-strategy-section").hide("slow");
     formSelectors = ["#loginForm", "#forethoughtTopicEntry"];
-    window.cf.ConversationalForm.startTheConversation(
+    forethoughtConversationElement = window.cf.ConversationalForm.startTheConversation(
       forethoughtConversationJson(data)
     );
     afterthoughtStrategyTag = [
