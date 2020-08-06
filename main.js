@@ -242,11 +242,13 @@ $(document).ready(function () {
         this.formElements.concat($(selectors.join(", ")).toArray())
       );
     this.withElement = (element) =>
-      new FormSerializer(this.formElements.concat([element]));
+      element == null
+        ? this
+        : new FormSerializer(this.formElements.concat([element]));
     this.getSerializedArray = () =>
-      this.formElements.reduce((prev, curr) =>
-        prev.concat(curr.serializeArray())
-      );
+      this.formElements
+        .map((element) => $(element).serializeArray())
+        .reduce((prev, curr) => prev.concat(curr));
     this.isValidData = () =>
       this.formElements.every((element) => element.checkValidity());
   }
