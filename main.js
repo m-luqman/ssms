@@ -28,9 +28,6 @@ $(document).ready(function () {
     preventAutoFocus: true,
     loadExternalStyleSheet: false,
     submitCallback: function (form) {
-      [...form.formEl.elements]
-        .filter((element) => element.value === "")
-        .forEach((element) => $(element).remove());
 
       let serializer = new FormSerializer()
         .withElementsFromSelectors(formSelectors)
@@ -40,10 +37,6 @@ $(document).ready(function () {
         forethoughtConversationElement != null
           ? serializer.withElement(forethoughtConversationElement.formEl)
           : serializer;
-
-      if (!serializer.isValidData()) {
-        form.addRobotChatResponse("Some fields have not been filled");
-      }
 
       let action = serverUrl + $("#statusEntryForm").attr("action");
       let diaryData = serializer.getSerializedArray().concat([
@@ -90,6 +83,11 @@ $(document).ready(function () {
       let serializer = new FormSerializer()
         .withElementsFromSelectors(formSelectors)
         .withElement(this.cfReference.formEl);
+
+      serializer =
+        forethoughtConversationElement != null
+          ? serializer.withElement(forethoughtConversationElement.formEl)
+          : serializer;
 
       if (!serializer.isValidData()) {
         this.cfReference.addRobotChatResponse(
