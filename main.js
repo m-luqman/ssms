@@ -74,6 +74,10 @@ $(document).ready(function () {
         return success();
       }
 
+      if (dto.tag.name == null) {
+        return success();
+      }
+
       if (dto.tag.name.startsWith("coach")) {
         return success();
       }
