@@ -28,6 +28,10 @@ $(document).ready(function () {
     preventAutoFocus: true,
     loadExternalStyleSheet: false,
     submitCallback: function (form) {
+      [...form.formEl.elements]
+      .filter((element) => element.value === "")
+      .forEach((element) => $(element).remove());
+
       let serializer = new FormSerializer()
         .withElementsFromSelectors(formSelectors)
         .withElement(form.formEl);
