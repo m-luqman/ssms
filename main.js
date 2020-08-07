@@ -654,6 +654,7 @@ $(document).ready(function () {
   }
 
   function whenForethoughtCoach(data) {
+    whenNotForethoughtCoach();
     $("#coach-revision-section").show("slow");
     $("#afterthought-strategies").show();
     $("#forethought-strategy-section").hide("slow");
