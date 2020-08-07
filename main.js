@@ -29,8 +29,8 @@ $(document).ready(function () {
     loadExternalStyleSheet: false,
     submitCallback: function (form) {
       [...form.formEl.elements]
-      .filter((element) => element.value === "")
-      .forEach((element) => $(element).remove());
+        .filter((element) => element.value === "")
+        .forEach((element) => $(element).remove());
 
       let serializer = new FormSerializer()
         .withElementsFromSelectors(formSelectors)
@@ -83,11 +83,7 @@ $(document).ready(function () {
         return success();
       }
 
-      if (dto.tag.name == null) {
-        return success();
-      }
-
-      if (dto.tag.name.startsWith("coach")) {
+      if (dto.tag.name != null && dto.tag.name.startsWith("coach")) {
         return success();
       }
 
