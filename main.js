@@ -196,12 +196,30 @@ $(document).ready(function () {
       )
       .concat([
         {
+          tag: "select",
+          name: "isSuggestionNeeded",
+          "cf-questions": "Do you want to make changes to an aspect of your prior study?",
+          children: [
+            {
+              tag: "option",
+              "cf-label": "yes",
+              value: "yes"
+            },
+            {
+              tag: "option",
+              "cf-label": "no",
+              value: "no"
+            }
+          ]
+        },
+        {
           // select group
           tag: "select",
           required: true,
           "cf-questions":
             "Select one aspect of your prior study that you want to change, this time",
           name: "entryRevisionFocus",
+          "cf-conditional-isSuggestionNeeded": "yes",
           isMultiChoice: false,
           children: [unselectedOption].concat(
             data.recommended_choices.map((val) => ({
@@ -217,6 +235,7 @@ $(document).ready(function () {
           tag: "select",
           name: "coach_" + getKey(val),
           required: true,
+          "cf-conditional-isSuggestionNeeded": "yes",
           "cf-questions":
             "Select the change that you think would help you better study this topic within time",
           "cf-conditional-entryRevisionFocus": getKey(val),
