@@ -30,8 +30,13 @@ $(document).ready(function () {
     submitCallback: function (form) {
       let serializer = new FormSerializer()
         .withElementsFromSelectors(formSelectors)
-        .withElement(form.formEl)
-        .withElement(forethoughtConversationElement.formEl);
+        .withElement(form.formEl);
+
+      serializer =
+        forethoughtConversationElement != null
+          ? serializer.withElement(forethoughtConversationElement.formEl)
+          : serializer;
+
       if (!serializer.isValidData()) {
         form.addRobotChatResponse("Some fields have not been filled");
       }
