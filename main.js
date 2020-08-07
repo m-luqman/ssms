@@ -644,7 +644,7 @@ $(document).ready(function () {
     $("#coach-revision-section").hide("slow");
     $("#afterthought-strategies").hide();
     $("#forethought-strategy-section").show("slow");
-    $("#afterthought-strategy").hide();
+    $("#afterthought-strategy").remove();
     formSelectors = [
       "#loginForm",
       "#forethoughtTopicEntry",
@@ -657,7 +657,19 @@ $(document).ready(function () {
     $("#coach-revision-section").show("slow");
     $("#afterthought-strategies").show();
     $("#forethought-strategy-section").hide("slow");
-    $("#afterthought-strategy").show();
+$(    `                  
+    <div class="form-group">
+      <label for="afterthought-strategy">Effort to apply strategy</label>
+      <select required name="entryDifficulty" cf-questions="Strategy applied" id="afterthought-strategy"
+        class="form-control">
+        <option value="">unselected</option>
+        <option value="1">survey</option>
+        <option value="2">question</option>
+        <option value="3">summarize</option>
+        <option value="4">other</option>
+      </select>
+    </div>
+`).prependTo("#statusEntryForm");
     formSelectors = ["#loginForm", "#forethoughtTopicEntry"];
     forethoughtConversationElement = window.cf.ConversationalForm.startTheConversation(
       forethoughtConversationJson(data)
